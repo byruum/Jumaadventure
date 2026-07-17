@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { packages } from "@/lib/packages";
-import heroAsset from "@/assets/hero-safari.png.asset.json";
+import heroAsset from "../../hero-safari.png";
 
 export const Route = createFileRoute("/")({
   component: Index,
