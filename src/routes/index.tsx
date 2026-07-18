@@ -1,12 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { packages } from "@/lib/packages";
-import heroAsset from "../../hero-safari.png";
+
 
 export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const HERO_IMG = heroAsset.url;
+const HERO_IMG ="/hero-safari.png";
 
 const gallery = [
   "https://jumaadventure.webtool.co.ke/images/testimonials-gallery/Mount-kenya-1.jpg",
