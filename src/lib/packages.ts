@@ -257,9 +257,8 @@ export const packages: Package[] = [
     whatToBring: ["Comfortable walking shoes", "Camera", "Cash for shopping"],
     meetingPoint: "JKIA Airport NBO or your hotel lobby",
     tourStart: "Nairobi, Kenya",
-     tourStart: "Nairobi, Kenya",
     tourEnd: "Drop-off at your hotel or JKIA Airport"
-  },  // <-- ONLY 1 COMMA HERE. DELETE THE EXTRA }, ON LINE 257
+  }, 
   {
     id: "mt-kenya-4day",
     title: "Mt Kenya, idyllic landscapes and primeval wilderness",
@@ -281,7 +280,7 @@ export const packages: Package[] = [
       "Alpine lakes, glaciers & giant lobelias",
       "Professional licensed guide - Dennis J. #35393",
       "All meals during trek included",
-      "Private transportation from Nanyuki"
+      "Private transportation from Nanyuki",
     ],
     itinerary: [
       { 
@@ -399,7 +398,7 @@ export const packages: Package[] = [
     whatToBring: ["Hiking boots", "Water", "Snacks", "Jacket", "Camera", "Sun hat"],
     meetingPoint: "Nyeri - Nanyuki Road, Nanyuki, Laikipia County, Kenya",
     tourStart: "Nanyuki, Kenya",
-    tourEnd: "Drop-off in Nanyuki"
+    tourEnd: "Drop-off in Nanyuki",
   }]; 
 
 export const getPackage = (id: string) => packages.find((p) => p.id === id);
