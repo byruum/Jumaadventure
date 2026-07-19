@@ -154,7 +154,7 @@ export const packages: Package[] = [
     gallery: [
       "https://images.unsplash.com/photo-1547471080-7cc2caa01a7e",
       "https://images.unsplash.com/photo-1547036967-23d11aacaee0",
-      "https://images.unsplash.com/photo-1557050543-4d5f4e07ef46"
+      "https://images.unsplash.com/photo-1557050543-4d5f4e07ef46",
       "https://res-console.cloudinary.com/pbaxr6h4/thumbnails/transform/v1/image/upload/Y19maWxsLGhfMjAwLHdfMjAw/v1/V2hhdHNBcHBfSW1hZ2VfMjAyNi0wNy0xOV9hdF8yMi40MS4xNF96andxM3A=/template_primary",
       "https://res-console.cloudinary.com/pbaxr6h4/thumbnails/transform/v1/image/upload/Y19maWxsLGhfMjAwLHdfMjAw/v1/V2hhdHNBcHBfSW1hZ2VfMjAyNi0wNy0xOV9hdF8yMi40MS4yMl93bHRqYzY=/template_primary",
       "https://res-console.cloudinary.com/pbaxr6h4/thumbnails/transform/v1/image/upload/Y19maWxsLGhfMjAwLHdfMjAw/v1/V2hhdHNBcHBfSW1hZ2VfMjAyNi0wNy0xOV9hdF8yMi40MS4zM194aXgwbWE=/template_primary",
