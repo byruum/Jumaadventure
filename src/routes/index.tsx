@@ -104,20 +104,21 @@ function Index() {
                 className="group overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition hover:-translate-y-1 hover:shadow-xl"
               >
                 <div className="relative aspect-[4/3] overflow-hidden">
-                  <img src={p.image} alt={p.name} className="h-full w-full object-cover transition duration-700 group-hover:scale-105" loading="lazy" />
+                  <img src={p.gallery[0]} alt={p.name} className="h-full w-full object-cover transition duration-700 group-hover:scale-110" loading="eager" />
                   <div className="absolute inset-x-3 top-3 flex items-center justify-between">
                     <span className="rounded-full bg-black/60 px-3 py-1 text-[11px] font-medium text-white backdrop-blur">
                       {p.duration}
                     </span>
                     <span className="rounded-full bg-primary px-3 py-1 text-[11px] font-semibold text-primary-foreground">
-                      {p.priceFrom}
+                      From USD {p.priceFrom}}
                     </span>
                   </div>
                 </div>
                 <div className="p-5">
                   <h3 className="text-xl font-bold group-hover:text-primary">{p.name}</h3>
-                  <p className="mt-1 text-sm text-muted-foreground">📍 {p.location}</p>
-                  <p className="mt-3 text-sm text-foreground/80 line-clamp-2">{p.tagline}</p>
+                  119 <p className="mt-1 text-sm text-muted-foreground">📍 {p.location}</p>
+120 <p className="mt-1 text-sm text-muted-foreground">👥 Max {p.maxPeople || 2} People</p>
+121 <p className="mt-3 sm:text-sm text-foreground/80 line-clamp-2">{p.tagline}</p>
                   <div className="mt-4 flex items-center justify-between text-sm">
                     <span className="text-primary font-semibold">View details →</span>
                     <span className="text-yellow-500">★★★★★</span>
