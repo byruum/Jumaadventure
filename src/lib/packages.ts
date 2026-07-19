@@ -141,88 +141,119 @@ export const packages: Package[] = [
     includes: ["Beach transfers", "Guide services", "Selected activities"],
     excludes: ["Flights to Mombasa", "Meals unless specified", "Personal expenses"],
   },
-  {
-    id: "nairobi-city-tour-dennis",
-    title: "1-Day Amazing Nairobi City Tour",
-    subtitle: "History, Culture, Wildlife and City Views",
+{
+    id: "nairobi-wildlife-day",
+    title: "Nairobi Wildlife & Orphanage Day",
+    subtitle: "Max 2 people",
     from: "Nairobi",
     days: 1,
-    price: "363",
+    price: "480",
     duration: "8 Hours",
     route: "Round trip from Nairobi",
     pace: "Easy pace",
-
     gallery: [
-      "https://images.unsplash.com/photo-1578985545062-69928b1d9587", // KICC
+      "https://images.unsplash.com/photo-1547471080-7cc2caa01a7e", // Nairobi Park
       "https://images.unsplash.com/photo-1547036967-23d11aacaee0", // Sheldrick
-      "https://images.unsplash.com/photo-1557050543-4d5f4e07ef46", // Giraffe
-      "https://images.unsplash.com/photo-1547471080-7cc2caa01a7e"  // Nairobi Skyline
+      "https://images.unsplash.com/photo-1557050543-4d5f4e07ef46"  // Giraffe
     ],
-
-    journey: `Experience the best of Kenya’s capital with Juma Adventures on this full-day Nairobi City Tour...`,
-
-    quote: "From skyscrapers to giraffes - see all sides of Nairobi in 8 hours.",
-
+    journey: "Experience Nairobi's wild side with a morning game drive, baby elephants, and giraffe feeding.",
+    quote: "From the savannah to conservation - Nairobi in one day.",
     highlights: [
-      "360° panoramic views of Nairobi from KICC Tower",
-      "Explore Kenya's history and culture at Nairobi National Museum",
-      "Visit August 7th Memorial Park and Nairobi City Park",
-      "Shop for authentic African crafts at Maasai Market",
-      "Meet and feed baby elephants at Sheldrick Wildlife Trust",
-      "Get face-to-face with Rothschild giraffes at Giraffe Centre"
+      "Morning game drive in Nairobi National Park",
+      "Visit baby elephants at David Sheldrick Orphanage",
+      "Feed Rothschild giraffes at Giraffe Centre",
+      "360° panoramic views from KICC Tower"
     ],
-
     itinerary: [
       { 
         dayNum: 1, 
-        title: "Nairobi City Tour - From Skyscrapers to Wildlife", 
+        title: "Nairobi National Park + Sheldrick + Giraffe Centre", 
         details: [
-          "Morning pickup from JKIA Airport, your hotel, or city location",
-          "Visit KICC, National Museum, City Park, Maasai Market",
-          "Sheldrick Elephant Orphanage 11am-12pm",
+          "Morning pickup from JKIA Airport, hotel, or city location",
+          "Game drive at Nairobi National Park",
+          "Visit Sheldrick Elephant Orphanage 11am-12pm",
           "Giraffe Centre feeding experience",
+          "KICC Tower panoramic views",
           "Return transfer to hotel or JKIA"
         ], 
         meals: "Not Included" 
       }
     ],
-
     includes: [
       "Private airport or hotel pickup and drop-off",
       "Transport in a comfortable private tour van",
-      "Professional licensed guide: Dennis Juma",
-      "Bottled drinking water and snacks during tour",
-      "Entry fees to Sheldrick Elephant Orphanage and Giraffe Centre",
+      "Professional licensed guide",
+      "Bottled drinking water and snacks",
+      "Entry fees to Park, Sheldrick & Giraffe Centre",
       "All taxes and service charges"
     ],
-
     excludes: [
       "International flights",
       "Meals and drinks unless specified",
       "Personal expenses and souvenirs",
-      "Accommodation",
-      "Nairobi National Park entry fees for Sheldrick access",
       "Tips for guide and driver"
     ],
-
-    whatToBring: [
-      "Comfortable walking shoes",
-      "Light jacket or sweater for morning",
-      "Camera and binoculars",
-      "Sunglasses, hat, and sunscreen",
-      "Cash for shopping and optional lunch"
-    ],
-
-    knowBefore: [
-      "Sheldrick Elephant Orphanage visiting hours are 11:00am to 12:00pm daily",
-      "Pickup location can be customized to your hotel during booking",
-      "This tour is fully private and can be customized to your interests"
-    ],
-
-    meetingPoint: "JKIA Airport NBO, Embakasi, Nairobi or your hotel lobby",
+    whatToBring: ["Comfortable walking shoes", "Camera", "Sunglasses", "Light jacket"],
+    meetingPoint: "JKIA Airport NBO or your hotel lobby",
     tourStart: "Nairobi, Kenya",
-    tourEnd: "Tour ends with drop-off at your hotel or JKIA Airport"
+    tourEnd: "Drop-off at your hotel or JKIA Airport"
+  },
+  {
+    id: "nairobi-culture-day",
+    title: "Nairobi Culture & Heritage Day",
+    subtitle: "Max 2 people",
+    from: "Nairobi",
+    days: 1,
+    price: "480",
+    duration: "8 Hours",
+    route: "Round trip from Nairobi",
+    pace: "Easy pace",
+    gallery: [
+      "https://images.unsplash.com/photo-1599058917212-d750089bc07e", // Blixen
+      "https://images.unsplash.com/photo-1578985545062-69928b1d9587"  // Bomas
+    ],
+    journey: "Discover Nairobi's culture, history and traditions at Blixen Museum, National Museum and Bomas of Kenya.",
+    quote: "History, culture and rhythm - the heart of Nairobi.",
+    highlights: [
+      "Visit Karen Blixen Museum",
+      "Explore Nairobi National Museum",
+      "Cultural dances at Bomas of Kenya",
+      "Shop for crafts at Maasai Market"
+    ],
+    itinerary: [
+      { 
+        dayNum: 1, 
+        title: "Blixen Museum + National Museum + Bomas", 
+        details: [
+          "Morning pickup from JKIA Airport, hotel, or city location",
+          "Visit Karen Blixen Museum",
+          "Explore Nairobi National Museum",
+          "Lunch break",
+          "Cultural show at Bomas of Kenya",
+          "Shopping at Maasai Market",
+          "Return transfer to hotel or JKIA"
+        ], 
+        meals: "Not Included" 
+      }
+    ],
+    includes: [
+      "Private airport or hotel pickup and drop-off",
+      "Transport in a comfortable private tour van",
+      "Professional licensed guide",
+      "Bottled drinking water and snacks",
+      "Entry fees to Blixen, Museum & Bomas",
+      "All taxes and service charges"
+    ],
+    excludes: [
+      "International flights",
+      "Meals and drinks unless specified",
+      "Personal expenses and souvenirs",
+      "Tips for guide and driver"
+    ],
+    whatToBring: ["Comfortable walking shoes", "Camera", "Cash for shopping"],
+    meetingPoint: "JKIA Airport NBO or your hotel lobby",
+    tourStart: "Nairobi, Kenya",
+    tourEnd: "Drop-off at your hotel or JKIA Airport"
   }
-];
 
 export const getPackage = (id: string) => packages.find((p) => p.id === id);
