@@ -253,92 +253,93 @@ export const packages: Package[] = [
     whatToBring: ["Comfortable walking shoes", "Camera", "Cash for shopping"],
     meetingPoint: "JKIA Airport NBO or your hotel lobby",
     tourStart: "Nairobi, Kenya",
+     tourStart: "Nairobi, Kenya",
     tourEnd: "Drop-off at your hotel or JKIA Airport"
-  },
-
-    },{
-  id: "mt-kenya-4day",
-  title: "Mt Kenya, idyllic landscapes and primeval wilderness",
-  subtitle: "4-days of true hiking experience",
-  from: "Nanyuki, Kenya",
-  days: 4,
-  price: "2190",  // CHANGED
-  duration: "4 Days",
-  route: "Round trip from Nanyuki via Sirimon",
-  pace: "Moderate to Challenging",
-  gallery: [
-    "https://cdn.toursbylocals.com/photos/253e27ef-8221-4f55-b44b-ffbddb6128b8.JPG",
-    "https://cdn.toursbylocals.com/photos/4c657c57-b993-499f-8b9f-673051cc3149.JPG"
-  ],
-  journey: "Experience 4 days of true hiking through Mt Kenya's primeval wilderness via Sirimon Route, alpine lakes, and breathtaking landscapes to Point Lenana 4985m ASL.",
-  quote: "Summit Africa's second-highest peak with a licensed guide",
-  highlights: [
-    "Summit Point Lenana 4985m via Sirimon Route",
-    "Alpine lakes, glaciers & giant lobelias",
-    "Professional licensed guide - Dennis J. #35393",
-    "All meals during trek included",
-    "Private transportation from Nanyuki"
-  ],
-  itinerary: [
-    { 
-      dayNum: 1, 
-      title: "Nanyuki to Old Moses Camp via Sirimon Gate", 
-      details: [
-        "Drive to Mt Kenya Sirimon Gate",
-        "Park registration and briefing",
-        "Hike through rainforest to Old Moses Camp 3300m",
-        "Acclimatization walk"
-      ], 
-      meals: "Dinner" 
-    },
-    { 
-      dayNum: 2, 
-      title: "Old Moses Camp to Shipton's Camp", 
-      details: [
-        "Hike through moorland zone",
-        "Lunch with views of peaks",
-        "Arrive at Shipton's Camp 4200m"
-      ], 
-      meals: "Breakfast, Lunch, Dinner" 
-    },
-    { 
-      dayNum: 3, 
-      title: "Point Lenana Summit & Descent to Shipton's", 
-      details: [
-        "Pre-dawn summit hike to Point Lenana 4985m",
-        "Sunrise at the summit",
-        "Descent back to Shipton's Camp after lunch"
-      ], 
-      meals: "Breakfast, Lunch, Dinner" 
-    },
-    { 
-      dayNum: 4, 
-      title: "Shipton's Camp to Sirimon Gate & Nanyuki", 
-      details: [
-        "Morning after breakfast we descend to Sirimon Gate",
-        "Transfer back to Nanyuki hotel"
-      ], 
-      meals: "Breakfast" 
-    }
-  ],
-  includes: [
-    "Professional licensed guide - Dennis J.",
-    "Park entry fees",
-    "Accommodation in mountain huts",
-    "All meals on trek",
-    "Private transportation",
-    "Porters and cooking gear"
-  ],
-  excludes: [
-    "Personal hiking gear",
-    "Tips for guide and porters",
-    "Travel insurance",
-    "Accommodation before/after trek"
-  ],
-  whatToBring: ["Hiking boots", "Warm jacket", "Sleeping bag", "Headlamp", "Waterproof gear"],
-  meetingPoint: "Nanyuki Town Hotel",
-  tourStart: "Nanyuki, Kenya",
-  tourEnd: "Drop-off in Nanyuki"
-}
+  },  // <-- ONLY 1 COMMA HERE. DELETE THE EXTRA }, ON LINE 257
+  {
+    id: "mt-kenya-4day",
+    title: "Mt Kenya, idyllic landscapes and primeval wilderness",
+    subtitle: "4-days of true hiking experience",
+    from: "Nanyuki, Kenya",
+    days: 4,
+    price: "2190",  // CHANGED
+    duration: "4 Days",
+    route: "Round trip from Nanyuki via Sirimon",
+    pace: "Moderate to Challenging",
+    gallery: [
+      "https://cdn.toursbylocals.com/photos/253e27ef-8221-4f55-b44b-ffbddb6128b8.JPG",
+      "https://cdn.toursbylocals.com/photos/4c657c57-b993-499f-8b9f-673051cc3149.JPG"
+    ],
+    journey: "Experience 4 days of true hiking through Mt Kenya's primeval wilderness via Sirimon Route, alpine lakes, and breathtaking landscapes to Point Lenana 4985m ASL.",
+    quote: "Summit Africa's second-highest peak with a licensed guide",
+    highlights: [
+      "Summit Point Lenana 4985m via Sirimon Route",
+      "Alpine lakes, glaciers & giant lobelias",
+      "Professional licensed guide - Dennis J. #35393",
+      "All meals during trek included",
+      "Private transportation from Nanyuki"
+    ],
+    itinerary: [
+      { 
+        dayNum: 1, 
+        title: "Nanyuki to Old Moses Camp via Sirimon Gate", 
+        details: [
+          "Drive to Mt Kenya Sirimon Gate",
+          "Park registration and briefing",
+          "Hike through rainforest to Old Moses Camp 3300m",
+          "Acclimatization walk"
+        ], 
+        meals: "Dinner" 
+      },
+      { 
+        dayNum: 2, 
+        title: "Old Moses Camp to Shipton's Camp", 
+        details: [
+          "Hike through moorland zone",
+          "Lunch with views of peaks",
+          "Arrive at Shipton's Camp 4200m"
+        ], 
+        meals: "Breakfast, Lunch, Dinner" 
+      },
+      { 
+        dayNum: 3, 
+        title: "Point Lenana Summit & Descent to Shipton's", 
+        details: [
+          "Pre-dawn summit hike to Point Lenana 4985m",
+          "Sunrise at the summit",
+          "Descent back to Shipton's Camp after lunch"
+        ], 
+        meals: "Breakfast, Lunch, Dinner" 
+      },
+      { 
+        dayNum: 4, 
+        title: "Shipton's Camp to Sirimon Gate & Nanyuki", 
+        details: [
+          "Morning after breakfast we descend to Sirimon Gate",
+          "Transfer back to Nanyuki hotel"
+        ], 
+        meals: "Breakfast" 
+      }
+    ],
+    includes: [
+      "Professional licensed guide - Dennis J.",
+      "Park entry fees",
+      "Accommodation in mountain huts",
+      "All meals on trek",
+      "Private transportation",
+      "Porters and cooking gear"
+    ],
+    excludes: [
+      "Personal hiking gear",
+      "Tips for guide and porters",
+      "Travel insurance",
+      "Accommodation before/after trek"
+    ],
+    whatToBring: ["Hiking boots", "Warm jacket", "Sleeping bag", "Headlamp", "Waterproof gear"],
+    meetingPoint: "Nanyuki Town Hotel",
+    tourStart: "Nanyuki, Kenya",
+    tourEnd: "Drop-off in Nanyuki"
+  }
+]; 
 
 export const getPackage = (id: string) => packages.find((p) => p.id === id);
