@@ -1,7 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { packages } from "@/lib/packages";
-
-
+import { packages } from "../lib/packages";
 export const Route = createFileRoute("/")({
   component: Index,
 });
@@ -70,10 +68,10 @@ function Index() {
           <div className="flex flex-wrap items-center justify-center gap-3">
             <span className="text-sm text-muted-foreground">Popular:</span>
             {packages.slice(0, 5).map((p) => (
-              <Link
-                key={p.slug}
-                to="/packages/$slug"
-                params={{ slug: p.slug }}
+  <Link
+    key={p.id}
+    to="/package/$id"
+    params={{ id: p.id }}
                 className="rounded-full border border-border bg-card px-4 py-1.5 text-xs font-medium hover:border-primary hover:text-primary"
               >
                 {p.name}
@@ -99,10 +97,10 @@ function Index() {
 
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {packages.map((p) => (
-              <Link
-                key={p.slug}
-                to="/packages/$slug"
-                params={{ slug: p.slug }}
+  <Link
+    key={p.id}
+    to="/package/$id"
+    params={{ id: p.id }}
                 className="group overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition hover:-translate-y-1 hover:shadow-xl"
               >
                 <div className="relative aspect-[4/3] overflow-hidden">
