@@ -342,9 +342,9 @@ export const packages: Package[] = [
     whatToBring: ["Hiking boots", "Warm jacket", "Sleeping bag", "Headlamp", "Waterproof gear"],
     meetingPoint: "Nanyuki Town Hotel",
     tourStart: "Nanyuki, Kenya",
-    tourEnd: "Drop-off in Nanyuki"
+    tourEnd: "Drop-off in Nanyuki",
   }
-,
+
   {
     id: "mt-kenya-day-hike",
     title: "Hike Mount Kenya, National Park - Full Day Tour",
