@@ -254,7 +254,7 @@ export const packages: Package[] = [
     meetingPoint: "JKIA Airport NBO or your hotel lobby",
     tourStart: "Nairobi, Kenya",
     tourEnd: "Drop-off at your hotel or JKIA Airport"
-  }
+  },
 {
   id: "mt-kenya-4day",
   title: "Mt Kenya, idyllic landscapes and primeval wilderness",
