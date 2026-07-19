@@ -110,15 +110,15 @@ function Index() {
                       {p.duration}
                     </span>
                     <span className="rounded-full bg-primary px-3 py-1 text-[11px] font-semibold text-primary-foreground">
-                      From USD {p.priceFrom}}
+                      From USD {p.priceFrom}
                     </span>
                   </div>
                 </div>
                 <div className="p-5">
-                  <h3 className="text-xl font-bold group-hover:text-primary">{p.name}</h3>
-                  119 <p className="mt-1 text-sm text-muted-foreground">📍 {p.location}</p>
-120 <p className="mt-1 text-sm text-muted-foreground">👥 Max {p.maxPeople || 2} People</p>
-121 <p className="mt-3 sm:text-sm text-foreground/80 line-clamp-2">{p.tagline}</p>
+             <h3 className="text-xl font-bold group-hover:text-primary">{p.name}</h3>
+<p className="mt-1 text-sm text-muted-foreground">📍 {p.location}</p>
+<p className="mt-1 text-sm text-muted-foreground">👥 Max {p.maxPeople || 2} People</p>
+<p className="mt-3 sm:text-sm text-foreground/80 line-clamp-2">{p.tagline}</p>
                   <div className="mt-4 flex items-center justify-between text-sm">
                     <span className="text-primary font-semibold">View details →</span>
                     <span className="text-yellow-500">★★★★★</span>
