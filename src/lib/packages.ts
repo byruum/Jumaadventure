@@ -342,7 +342,7 @@ export const packages: Package[] = [
     meetingPoint: "Nanyuki Town Hotel",
     tourStart: "Nanyuki, Kenya",
     tourEnd: "Drop-off in Nanyuki",
-  }
+  },
 
   {
     id: "mt-kenya-day-hike",
