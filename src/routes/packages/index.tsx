@@ -64,10 +64,14 @@ function PackagesPage() {
           </a>
 
           {/* Email Button - CHANGE YOUR EMAIL HERE */}
-          <a
-            href="mailto:jumaadventuresandsafaris@gmail.com?subject=Custom%20Tour%20Package%20Request&body=Hello%20Juma%20Adventures,          >
-            ✉️ Email Us
-          </a>
+<a
+  href="mailto:jumaadventuresandsafaris@gmail.com?subject=Custom%20Tour%20Package%20Request&body=Hello%20Juma%20Adventures,"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="inline-flex items-center justify-center gap-2 bg-white hover:bg-gray-100 text-orange-600 px-8 py-4 rounded-xl font-bold text-lg transition"
+>
+  ✉️ Email Us
+</a>
         </div>
         
         <p className="text-sm mt-4 opacity-80">Response within 2 hours • No obligation</p>
