@@ -255,6 +255,74 @@ export const packages: Package[] = [
     tourStart: "Nairobi, Kenya",
     tourEnd: "Drop-off at your hotel or JKIA Airport"
   }
-];
+{
+  id: "mt-kenya-4day",
+  title: "Mt Kenya, idyllic landscapes and primeval wilderness",
+  subtitle: "4-days of true hiking experience",
+  from: "Nanyuki, Kenya",
+  days: 4,
+  price: "1540",
+  duration: "4 Days",
+  route: "Round trip from Nanyuki",
+  pace: "Moderate to Challenging",
+  gallery: [
+    "https://jumaadventure.webtool.co.ke/images/mt-kenya/mt-kenya-summit.jpg",
+    "https://jumaadventure.webtool.co.ke/images/mt-kenya/mt-kenya-camp.jpg",
+    "https://jumaadventure.webtool.co.ke/images/mt-kenya/mt-kenya-trail.jpg"
+  ],
+  journey: "Experience 4 days of true hiking through Mt Kenya's primeval wilderness, alpine lakes, and breathtaking landscapes to Point Lenana 4985m ASL.",
+  quote: "Summit Africa's second-highest peak with a licensed guide",
+  highlights: [
+    "Summit Point Lenana 4985m",
+    "Alpine lakes, glaciers & giant lobelias",
+    "Professional licensed guide - Dennis J. #35393",
+    "All meals during trek included",
+    "Private transportation from Nanyuki"
+  ],
+  itinerary: [
+    { 
+      dayNum: 1, 
+      title: "Nanyuki to Old Moses Camp", 
+      details: ["Pickup from Nanyuki hotel", "Drive to park gate", "Hike to Old Moses Camp 3300m", "Acclimatization walk"], 
+      meals: "Dinner" 
+    },
+    { 
+      dayNum: 2, 
+      title: "Old Moses to Shipton's Camp", 
+      details: ["Hike through rainforest & moorland", "Lunch with mountain views", "Arrive Shipton's Camp 4200m"], 
+      meals: "Breakfast, Lunch, Dinner" 
+    },
+    { 
+      dayNum: 3, 
+      title: "Shipton's to Point Lenana Summit", 
+      details: ["Pre-dawn summit hike", "Sunrise at Point Lenana 4985m", "Descend to Met Station"], 
+      meals: "Breakfast, Lunch, Dinner" 
+    },
+    { 
+      dayNum: 4, 
+      title: "Met Station to Nanyuki", 
+      details: ["Morning hike down", "Transfer to Nanyuki hotel"], 
+      meals: "Breakfast" 
+    }
+  ],
+  includes: [
+    "Professional licensed guide - Dennis J.",
+    "Park entry fees",
+    "Accommodation in mountain huts",
+    "All meals on trek",
+    "Private transportation",
+    "Porters and cooking gear"
+  ],
+  excludes: [
+    "Personal hiking gear",
+    "Tips for guide and porters",
+    "Travel insurance",
+    "Accommodation before/after trek"
+  ],
+  whatToBring: ["Hiking boots", "Warm jacket", "Sleeping bag", "Headlamp", "Waterproof gear"],
+  meetingPoint: "Nanyuki Town Hotel",
+  tourStart: "Nanyuki, Kenya",
+  tourEnd: "Drop-off in Nanyuki"
+}];
 
 export const getPackage = (id: string) => packages.find((p) => p.id === id);
