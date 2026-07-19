@@ -152,9 +152,9 @@ export const packages: Package[] = [
     route: "Round trip from Nairobi",
     pace: "Easy pace",
     gallery: [
-      "https://images.unsplash.com/photo-1547471080-7cc2caa01a7e", // Nairobi Park
-      "https://images.unsplash.com/photo-1547036967-23d11aacaee0", // Sheldrick
-      "https://images.unsplash.com/photo-1557050543-4d5f4e07ef46"  // Giraffe
+      "https://images.unsplash.com/photo-1547471080-7cc2caa01a7e",
+      "https://images.unsplash.com/photo-1547036967-23d11aacaee0",
+      "https://images.unsplash.com/photo-1557050543-4d5f4e07ef46"
     ],
     journey: "Experience Nairobi's wild side with a morning game drive, baby elephants, and giraffe feeding.",
     quote: "From the savannah to conservation - Nairobi in one day.",
@@ -209,8 +209,8 @@ export const packages: Package[] = [
     route: "Round trip from Nairobi",
     pace: "Easy pace",
     gallery: [
-      "https://images.unsplash.com/photo-1599058917212-d750089bc07e", // Blixen
-      "https://images.unsplash.com/photo-1578985545062-69928b1d9587"  // Bomas
+      "https://images.unsplash.com/photo-1599058917212-d750089bc07e",
+      "https://images.unsplash.com/photo-1578985545062-69928b1d9587"
     ],
     journey: "Discover Nairobi's culture, history and traditions at Blixen Museum, National Museum and Bomas of Kenya.",
     quote: "History, culture and rhythm - the heart of Nairobi.",
@@ -266,9 +266,8 @@ export const packages: Package[] = [
   route: "Round trip from Nanyuki",
   pace: "Moderate to Challenging",
   gallery: [
-    "https://jumaadventure.webtool.co.ke/images/mt-kenya/mt-kenya-summit.jpg",
-    "https://jumaadventure.webtool.co.ke/images/mt-kenya/mt-kenya-camp.jpg",
-    "https://jumaadventure.webtool.co.ke/images/mt-kenya/mt-kenya-trail.jpg"
+    "https://cdn.toursbylocals.com/photos/253e27ef-8221-4f55-b44b-ffbddb6128b8.JPG",
+    "https://cdn.toursbylocals.com/photos/4c657c57-b993-499f-8b9f-673051cc3149.JPG"
   ],
   journey: "Experience 4 days of true hiking through Mt Kenya's primeval wilderness, alpine lakes, and breathtaking landscapes to Point Lenana 4985m ASL.",
   quote: "Summit Africa's second-highest peak with a licensed guide",
