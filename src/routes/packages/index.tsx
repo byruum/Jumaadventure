@@ -55,7 +55,7 @@ function PackagesPage() {
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           {/* WhatsApp Button - CHANGE YOUR NUMBER HERE */}
           <a
-            href="https://wa.me/2547XXXXXXXX?text=Hello%20Juma%20Adventures!%20I%20would%20like%20a%20customized%20tour%20package.%20My%20preferred%20destinations%20are:"
+            href="https://wa.me/254746011254?text=Hello%20Juma%20Adventures!%20I%20would%20like%20a%20customized%20tour%20package.%20My%20preferred%20destinations%20are:"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 px-8 py-4 rounded-xl font-bold text-lg transition"
@@ -65,9 +65,7 @@ function PackagesPage() {
 
           {/* Email Button - CHANGE YOUR EMAIL HERE */}
           <a
-            href="mailto:info@jumaadventures.com?subject=Custom%20Tour%20Package%20Request&body=Hello%20Juma%20Adventures,%0D%0A%0D%0AI%20would%20like%20a%20customized%20tour%20package.%0D%0A%0D%0ADestinations%20I%20am%20interested%20in:%0D%0ANumber%20of%20Travelers:%0D%0ADates:%0D%0ABudget:"
-            className="inline-flex items-center justify-center gap-2 bg-white text-orange-600 hover:bg-gray-100 px-8 py-4 rounded-xl font-bold text-lg transition"
-          >
+            href="mailto:jumaadventuresandsafaris@gmail.com?subject=Custom%20Tour%20Package%20Request&body=Hello%20Juma%20Adventures,          >
             ✉️ Email Us
           </a>
         </div>
