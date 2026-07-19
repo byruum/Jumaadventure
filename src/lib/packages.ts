@@ -255,5 +255,6 @@ export const packages: Package[] = [
     tourStart: "Nairobi, Kenya",
     tourEnd: "Drop-off at your hotel or JKIA Airport"
   }
+];
 
 export const getPackage = (id: string) => packages.find((p) => p.id === id);
