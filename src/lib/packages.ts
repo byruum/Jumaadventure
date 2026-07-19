@@ -340,6 +340,62 @@ export const packages: Package[] = [
     tourStart: "Nanyuki, Kenya",
     tourEnd: "Drop-off in Nanyuki"
   }
-]; 
+,
+  {
+    id: "mt-kenya-day-hike",
+    title: "Hike Mount Kenya, National Park - Full Day Tour",
+    subtitle: "With local expert guide Dennis J.",
+    from: "Nanyuki, Kenya",
+    days: 1,
+    price: "199",
+    duration: "6 Hours",
+    route: "Round trip from Nanyuki via Narumoru Gate",
+    pace: "Moderate",
+    gallery: [
+      "https://cdn.toursbylocals.com/guides/35/35393/2023209163243301.jpg",
+      "https://cdn.toursbylocals.com/photos/261b54c6-75b3-4fb6-af9b-a59cb465c104.JPG",
+      "https://cdn.toursbylocals.com/photos/f8ed0cbe-cb21-45ce-82a1-b3abe9d1a709.JPG"
+    ],
+    journey: "Enjoy hiking on glaciers and rocks, explore the ecosystem of mountain vegetation from lower to upper rock. Trek through diverse ecosystems, from lush forests to alpine meadows.",
+    quote: "Every journey is a story — let's make yours unforgettable",
+    highlights: [
+      "Full day hike to Met Station 5 hours",
+      "View beautiful gorges, valleys & mountain vegetation",
+      "Licensed guide with 14 years experience - Dennis J. #35393",
+      "Private transportation in Hybrid Noah Voxy",
+      "Perfect for beginners and families"
+    ],
+    itinerary: [
+      { 
+        dayNum: 1, 
+        title: "Nanyuki to Met Station & Back", 
+        details: [
+          "Morning pickup from Nanyuki town",
+          "Drive to Mt Kenya National Park - Narumoru Gate for check-in",
+          "Drive 10km to end of road at Met Station",
+          "5 hour hike to view gorges, valleys & mountain vegetation",
+          "Descend back to Met Station",
+          "Drive down to gate for check out & return to Nanyuki"
+        ], 
+        meals: "Not Included" 
+      }
+    ],
+    includes: [
+      "Private licensed guide - Dennis J.",
+      "Private transportation in Hybrid Noah Voxy",
+      "Park registration assistance",
+    ],
+    excludes: [
+      "Park entry fees: $52 per person",
+      "Personal expenses",
+      "Food, drinks & snacks",
+      "Hiking equipment",
+      "Accommodation"
+    ],
+    whatToBring: ["Hiking boots", "Water", "Snacks", "Jacket", "Camera", "Sun hat"],
+    meetingPoint: "Nyeri - Nanyuki Road, Nanyuki, Laikipia County, Kenya",
+    tourStart: "Nanyuki, Kenya",
+    tourEnd: "Drop-off in Nanyuki"
+  }]; 
 
 export const getPackage = (id: string) => packages.find((p) => p.id === id);
