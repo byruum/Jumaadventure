@@ -52,20 +52,27 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   head: () => ({
     meta: [
-      { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Juma Adventures — Kenya Safaris, Mountain Treks & Cultural Tours" },
-      { name: "description", content: "Juma Adventures offers authentic Kenya safaris, Masai Mara game drives, Mount Kenya treks, Diani beach getaways and Nairobi city tours led by professional guide Dennis Juma." },
-      { name: "author", content: "Juma Adventures" },
-      { property: "og:title", content: "Juma Adventures — Kenya Safaris, Mountain Treks & Cultural Tours" },
-      { property: "og:description", content: "Juma Adventures offers authentic Kenya safaris, Masai Mara game drives, Mount Kenya treks, Diani beach getaways and Nairobi city tours led by professional guide Dennis Juma." },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Juma Adventures — Kenya Safaris, Mountain Treks & Cultural Tours" },
-      { name: "twitter:description", content: "Juma Adventures offers authentic Kenya safaris, Masai Mara game drives, Mount Kenya treks, Diani beach getaways and Nairobi city tours led by professional guide Dennis Juma." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/38eb10bf-0d10-484c-aa37-d02290107c56/id-preview-8470c087--987f463f-0147-4b1f-bc7e-ed95f6be6159.lovable.app-1783856786151.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/38eb10bf-0d10-484c-aa37-d02290107c56/id-preview-8470c087--987f463f-0147-4b1f-bc7e-ed95f6be6159.lovable.app-1783856786151.png" },
+      {
+        charSet: "utf-8",
+      },
+      {
+        name: "viewport",
+        content: "width=device-width, initial-scale=1",
+      },
+      {
+        title: "Juma Adventures | Experience Kenya Like Never Before",
+      },
+      {
+        name: "description",
+        content: "Come see Kenya with me. Real safaris, real hikes, real stories. Book your tour today and let us organize your adventure for you. WhatsApp Juma: +254 7XX XXX or Email: hello@jumaadventures.co.ke",
+      },
     ],
+    },
+{
+  name: "google-site-verification",
+  content: "V3sDPEKAywoL4sWLDktKHYZSUPGSQB0m1y013au8WxI",
+}
+    links: [
     links: [
       { rel: "stylesheet", href: appCss },
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
