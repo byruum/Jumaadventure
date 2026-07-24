@@ -60,16 +60,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         content: "width=device-width, initial-scale=1",
       },
       {
-        title: "Juma Adventures | Experience Kenya Like Never Before",
-      },
-      {
-        name: "description",
-        content: "Come see Kenya with me. Real safaris, real hikes, real stories. Book your tour today and let us organize your adventure for you. WhatsApp Juma: +254 7XX XXX or Email: hello@jumaadventures.co.ke",
-      },
-  
-{ name: "google-site-verification",
-  content: "V3sDPEKAywoL4sWLDktKHYZSUPGSQB0m1y013au8WxI",
-]
+    name: "description",
+    content: "Come see Kenya with me. Real safaris, real hikes, real stories. Book your tour today and let us organize your adventure for you. WhatsApp Juma: +254 7XX XXX or Email: hello@jumaadventures.co.ke",
+  },
+  {
+    name: "google-site-verification",
+    content: "V3sDPEKAywol4sWLDkHKYZ5UPGSQBOm1y013au8WxI",
+  },
+],
   
     links: [
       { rel: "stylesheet", href: appCss },
