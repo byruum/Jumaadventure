@@ -66,13 +66,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         name: "description",
         content: "Come see Kenya with me. Real safaris, real hikes, real stories. Book your tour today and let us organize your adventure for you. WhatsApp Juma: +254 7XX XXX or Email: hello@jumaadventures.co.ke",
       },
-    ],
-    },
-{
-  name: "google-site-verification",
+  
+{ name: "google-site-verification",
   content: "V3sDPEKAywoL4sWLDktKHYZSUPGSQB0m1y013au8WxI",
-}
-    links: [
+]
+  
     links: [
       { rel: "stylesheet", href: appCss },
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
