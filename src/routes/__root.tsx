@@ -52,32 +52,19 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   head: () => ({
     meta: [
-      {
-        charSet: "utf-8",
-      },
-      {
-        name: "viewport",
-        content: "width=device-width, initial-scale=1",
-      },
-      {
-    name: "description",
-    content: "Come see Kenya with me. Real safaris, real hikes, real stories. Book your tour today and let us organize your adventure for you. WhatsApp Juma: +254 7XX XXX or Email: hello@jumaadventures.co.ke",
-  },
-  {
-    name: "google-site-verification",
-    content: "V3sDPEKAywol4sWLDkHKYZ5UPGSQBOm1y013au8WxI",
-  },
-],
-  
+      { charSet: "utf-8" },
+      { name: "viewport", content: "width=device-width, initial-scale=1" },
+      { name: "description", content: "Come see Kenya with me. Real safaris, real hikes, real stories. Book your tour today and let us organize your adventure for you. WhatsApp Juma: +254 746 011 254 or Email: jumaadventuresandsafaris@gmail.com" },
+      { name: "google-site-verification", content: "V3sDPEKAywol4sWLDkHKYZ5UPGSQBOm1y013au8WxI" },
+    ],
     links: [
-      links: [
-  { rel: "stylesheet", href: appCss },
-  { rel: "icon", type: "image/png", href: "/Images/favicon.png" },
-  { rel: "apple-touch-icon", href: "/Images/og-image.png" },
-  { rel: "preconnect", href: "https://fonts.googleapis.com" },
-  { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-  { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700;800&display=swap" },
-],
+      { rel: "stylesheet", href: appCss },
+      { rel: "icon", type: "image/png", href: "/Images/favicon.png" },
+      { rel: "apple-touch-icon", href: "/Images/og-image.png" },
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700;800&display=swap" },
+    ],
   }),
   shellComponent: RootShell,
   component: RootComponent,
@@ -100,13 +87,13 @@ function RootShell({ children }: { children: ReactNode }) {
 function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-border/60 bg-background/80 backdrop-blur-md">
-      <Link to="/" className="flex items-center gap-2">
-  <img 
-    src="/Images/og-image.png" 
-    alt="Juma Adventures Logo" 
-    className="h-12 w-auto" 
-  />
-</Link>
+      <div className="container-page flex h-16 items-center justify-between">
+        <Link to="/" className="flex items-center gap-2">
+          <img
+            src="/Images/og-image.png"
+            alt="Juma Adventures Logo"
+            className="h-12 w-auto"
+          />
         </Link>
         <nav className="hidden items-center gap-7 text-sm font-medium md:flex">
           <Link to="/" className="hover:text-primary">Home</Link>
@@ -115,7 +102,7 @@ function Header() {
           <Link to="/gallery" className="hover:text-primary">Gallery</Link>
           <Link to="/contact" className="hover:text-primary">Contact</Link>
         </nav>
-        <Link to="/contact" className="btn-primary !py-2 !px-4 text-xs">Book Now</Link>
+        <Link to="/contact" className="btn-primary!py-2!px-4 text-xs">Book Now</Link>
       </div>
     </header>
   );
@@ -127,13 +114,12 @@ function Footer() {
       <div className="container-page grid gap-10 py-14 md:grid-cols-4">
         <div>
           <div className="flex items-center gap-2">
-            <div className="flex items-center gap-2">
-  <img 
-    src="/Images/og-image.png" 
-    alt="Juma Adventures Logo" 
-    className="h-10 w-auto" 
-  />
-</div>
+            <img
+              src="/Images/og-image.png"
+              alt="Juma Adventures Logo"
+              className="h-10 w-auto"
+            />
+          </div>
           <p className="mt-4 text-sm opacity-80">
             Authentic Kenya safaris and East Africa adventures led by professional guide Dennis Juma.
           </p>
@@ -166,7 +152,7 @@ function Footer() {
         </div>
       </div>
       <div className="border-t border-white/10">
-        <div className="container-page flex flex-col items-center justify-between gap-2 py-5 text-xs opacity-70 sm:flex-row">
+        <div className="container-page flex-col items-center justify-between gap-2 py-5 text-xs opacity-70 sm:flex-row">
           <p>© {new Date().getFullYear()} Juma Adventures. All rights reserved.</p>
           <p>Crafted with care in Nairobi, Kenya.</p>
         </div>
@@ -192,7 +178,7 @@ function RootComponent() {
           aria-label="Chat on WhatsApp"
           className="fixed bottom-5 right-5 z-50 grid h-14 w-14 place-items-center rounded-full bg-[#25D366] text-white shadow-xl transition hover:scale-105"
         >
-          <svg viewBox="0 0 24 24" className="h-7 w-7" fill="currentColor"><path d="M20.52 3.48A11.86 11.86 0 0 0 12.06 0C5.5 0 .17 5.33.17 11.9c0 2.1.55 4.14 1.6 5.94L0 24l6.32-1.66a11.9 11.9 0 0 0 5.73 1.46h.01c6.56 0 11.89-5.33 11.89-11.9 0-3.18-1.24-6.17-3.43-8.42zM12.06 21.3h-.01a9.4 9.4 0 0 1-4.79-1.31l-.34-.2-3.75.98 1-3.65-.22-.37a9.37 9.37 0 0 1-1.44-5c0-5.19 4.23-9.42 9.44-9.42 2.52 0 4.89.98 6.67 2.76a9.37 9.37 0 0 1 2.76 6.67c0 5.19-4.23 9.54-9.32 9.54zm5.44-7.05c-.3-.15-1.77-.87-2.05-.97-.28-.1-.48-.15-.68.15s-.78.97-.96 1.17c-.18.2-.35.22-.65.07a8.42 8.42 0 0 1-2.47-1.52 9.27 9.27 0 0 1-1.71-2.13c-.18-.3-.02-.47.13-.62.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.68-1.65-.93-2.26-.24-.58-.5-.5-.68-.51h-.58c-.2 0-.52.07-.8.37s-1.05 1.03-1.05 2.5 1.08 2.9 1.23 3.1c.15.2 2.12 3.24 5.14 4.55.72.31 1.28.5 1.72.63.72.23 1.38.2 1.9.12.58-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.13-.27-.2-.57-.35z"/></svg>
+          <svg viewBox="0 0 24 24" className="h-7 w-7" fill="currentColor"><path d="M20.52 3.48A11.86 11.86 0 0 0 12.06 0C5.5 0.17 5.33.17 11.9c0 2.1.55 4.14 1.6 5.94L0 24l6.32-1.66a11.9 11.9 0 0 0 5.73 1.46h.01c6.56 0 11.89-5.33 11.89-11.9 0-3.18-1.24-6.17-3.43-8.42zM12.06 21.3h-.01a9.4 9.4 0 0 1-4.79-1.31l-.34-.2-3.75.98 1-3.65-.22-.37a9.37 9.37 0 0 1-1.44-5c0-5.19 4.23-9.42 9.44-9.42 2.52 0 4.89.98 6.67 2.76a9.37 9.37 0 0 1 2.76 6.67c0 5.19-4.23 9.54-9.32 9.54zm5.44-7.05c-.3-.15-1.77-.87-2.05-.97-.28-.1-.48-.15-.68.15s-.78.97-.96 1.17c-.18.2-.35.22-.65.07a8.42 8.42 0 0 1-2.47-1.52 9.27 9.27 0 0 1-1.71-2.13c-.18-.3-.02-.47.13-.62.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.68-1.65-.93-2.26-.24-.58-.5-.5-.68-.51h-.58c-.2 0-.52.07-.8.37s-1.05 1.03-1.05 2.5 1.08 2.9 1.23 3.1c.15.2 2.12 3.24 5.14 4.55.72.31 1.28.5 1.72.63.72.23 1.38.2 1.9.12.58-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.13-.27-.2-.57-.35z"/></svg>
         </a>
       </div>
     </QueryClientProvider>
