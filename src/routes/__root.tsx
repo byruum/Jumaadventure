@@ -70,12 +70,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 ],
   
     links: [
-      { rel: "stylesheet", href: appCss },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
-      { rel: "preconnect", href: "https://fonts.googleapis.com" },
-      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700;800&display=swap" },
-    ],
+      links: [
+  { rel: "stylesheet", href: appCss },
+  { rel: "icon", type: "image/png", href: "/Images/favicon.png" },
+  { rel: "apple-touch-icon", href: "/Images/og-image.png" },
+  { rel: "preconnect", href: "https://fonts.googleapis.com" },
+  { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+  { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700;800&display=swap" },
+],
   }),
   shellComponent: RootShell,
   component: RootComponent,
@@ -98,10 +100,13 @@ function RootShell({ children }: { children: ReactNode }) {
 function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-border/60 bg-background/80 backdrop-blur-md">
-      <div className="container-page flex h-16 items-center justify-between">
-        <Link to="/" className="flex items-center gap-2">
-          <span className="grid h-9 w-9 place-items-center rounded-full bg-primary text-primary-foreground font-display text-lg font-bold">J</span>
-          <span className="font-display text-lg font-bold tracking-tight">Juma Adventures</span>
+      <Link to="/" className="flex items-center gap-2">
+  <img 
+    src="/Images/og-image.png" 
+    alt="Juma Adventures Logo" 
+    className="h-12 w-auto" 
+  />
+</Link>
         </Link>
         <nav className="hidden items-center gap-7 text-sm font-medium md:flex">
           <Link to="/" className="hover:text-primary">Home</Link>
@@ -122,9 +127,13 @@ function Footer() {
       <div className="container-page grid gap-10 py-14 md:grid-cols-4">
         <div>
           <div className="flex items-center gap-2">
-            <span className="grid h-9 w-9 place-items-center rounded-full bg-primary font-display text-lg font-bold">J</span>
-            <span className="font-display text-lg font-bold">Juma Adventures</span>
-          </div>
+            <div className="flex items-center gap-2">
+  <img 
+    src="/Images/og-image.png" 
+    alt="Juma Adventures Logo" 
+    className="h-10 w-auto" 
+  />
+</div>
           <p className="mt-4 text-sm opacity-80">
             Authentic Kenya safaris and East Africa adventures led by professional guide Dennis Juma.
           </p>
