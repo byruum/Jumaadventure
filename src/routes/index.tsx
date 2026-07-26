@@ -53,8 +53,7 @@ function Index() {
     </div>
   </Link>
 
-  
-  </h1>
+
           <span className="eyebrow text-white/80">Kenya • East Africa</span>
           <h1 className="mt-4 max-w-3xl text-5xl font-bold leading-[1.05] sm:text-6xl md:text-7xl">
             Discover Kenya<br />
