@@ -33,13 +33,28 @@ function Index() {
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/80" />
 
         <div className="container-page relative flex min-h-[86vh] flex-col justify-center py-24 text-white">
-        <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 border border-white/10 mb-6">
-  <img
-    src="/IMG-20260726-WA3768.jpg"
-    alt="Juma Adventures Logo"
-    className="h-12 w-auto drop-shadow-lg"
-  />
-</div>
+        <Link 
+  to="/" <Link 
+  to="/" 
+  className="mb-6 inline-flex items-center gap-4 bg-white/10 backdrop-blur-sm rounded-2xl p-4 border border-white/10"
+>
+  {/* Orange Circle with J */}
+  <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[#F97316]">
+    <span className="font-serif text-4xl font-bold text-white leading-none">J</span>
+  </div>
+
+  {/* Text */}
+  <div>
+    <h2 className="font-serif text-2xl md:text-4xl font-medium text-[#2C1B0F] leading-tight">
+      Juma Adventures
+    </h2>
+    <p className="font-serif text-xs md:text-base text-[#B8860B] tracking-wide">
+      Authentic Safari & Wildlife Experiences
+    </p>
+  </div>
+</Link>
+  </div>
+</Link>
           <span className="eyebrow text-white/80">Kenya • East Africa</span>
           <h1 className="mt-4 max-w-3xl text-5xl font-bold leading-[1.05] sm:text-6xl md:text-7xl">
             Discover Kenya<br />
