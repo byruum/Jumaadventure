@@ -1,5 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useState } from "react";
+import { motion } from "framer-motion";
 import { packages } from "../lib/packages";
+
 export const Route = createFileRoute("/")({
   component: Index,
 });
@@ -22,9 +25,14 @@ const reviews = [
 ];
 
 function Index() {
+  const [selectedLocation, setSelectedLocation] = useState("All");
+  const locations = ["All",...new Set(packages.map(p => p.location))];
+  const filteredPackages = selectedLocation === "All"? packages : packages.filter(p => p.location === selectedLocation);
+  const question = "Where do you want to go?";
+
   return (
     <>
-      <section className="relative isolate overflow-hidden"> {/* ADD THIS */}
+      <section className="relative isolate overflow-hidden">
         <img
           src={HERO_IMG}
           alt="Safari vehicle in the Masai Mara at sunset"
@@ -33,16 +41,13 @@ function Index() {
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/80" />
 
       <div className="container-page relative flex min-h-[86vh] flex-col justify-center py-24 text-white">
-  <Link 
-    to="/" 
-    className="mb-6 inline-flex items-center gap-4 bg-white/10 backdrop-blur-sm rounded-2xl p-4 border border-white/10 hover:bg-white/20 transition"
+  <Link
+    to="/"
+    className="mb-6 inline-flex items-center gap-4 bg-white/10 backdrop-blur-sm rounded-2xl p-4 border-white/10 hover:bg-white/20 transition"
   >
-    {/* Orange Circle with J */}
     <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[#F97316]">
       <span className="font-serif text-4xl font-bold text-white leading-none">J</span>
     </div>
-
-    {/* Text */}
     <div>
       <h2 className="font-serif text-2xl md:text-4xl font-medium text-[#2C1B0F] leading-tight">
         Juma Adventures
@@ -52,7 +57,6 @@ function Index() {
       </p>
     </div>
   </Link>
-
 
           <span className="eyebrow text-white/80">Kenya • East Africa</span>
           <h1 className="mt-4 max-w-3xl text-5xl font-bold leading-[1.05] sm:text-6xl md:text-7xl">
@@ -67,6 +71,51 @@ function Index() {
             <Link to="/packages" className="btn-primary">Explore Tours</Link>
             <Link to="/contact" className="btn-outline">Book Your Adventure</Link>
           </div>
+
+          {/* ANIMATED LOCATION FILTER - ADDED HERE */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.8, duration: 0.6 }}
+            className="mt-8"
+          >
+            <h3 className="text-xl md:text-2xl font-semibold text-white mb-4">
+              {question.split("").map((letter, i) => (
+                <motion.span
+                  key={i}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 1 + i * 0.04 }}
+                  className="inline-block"
+                >
+                  {letter === " "? "\u00A0" : letter}
+                </motion.span>
+              ))}
+            </h3>
+            <div className="flex flex-wrap gap-3">
+              {locations.map((loc, index) => (
+                <motion.button
+                  key={loc}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 1.5 + index * 0.08, type: "spring", stiffness: 200 }}
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => {
+                    setSelectedLocation(loc);
+                    document.getElementById('destinations')?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className={`px-5 py-2.5 rounded-full backdrop-blur-md border transition-all ${
+                    selectedLocation === loc
+                  ? "bg-[#F97316] text-white border-[#F97316] shadow-lg shadow-orange-500/30"
+                      : "bg-white/10 text-white border-white/20 hover:bg-white/20"
+                  }`}
+                >
+                  {loc}
+                </motion.button>
+              ))}
+            </div>
+          </motion.div>
 
           <div className="mt-14 grid max-w-2xl grid-cols-3 gap-8 border-t border-white/20 pt-6 text-white/90">
             <div>
@@ -83,20 +132,20 @@ function Index() {
             </div>
           </div>
         </div>
-      </section> {/* THIS CLOSES IT NOW */}
+      </section>
 
       <section className="border-b border-border bg-background">
         <div className="container-page py-6">
           <div className="flex flex-wrap items-center justify-center gap-3">
             <span className="text-sm text-muted-foreground">Popular:</span>
             {packages.slice(0, 5).map((p) => (
-  <Link
-    key={p.id}
-    to="/package/$id"
-    params={{ id: p.id }}
-                className="rounded-full border border-border bg-card px-4 py-1.5 text-xs font-medium hover:border-primary hover:text-primary"
+              <Link
+                key={p.id}
+                to="/package/$id"
+                params={{ id: p.id }}
+                className="rounded-full border-border bg-card px-4 py-1.5 text-xs font-medium hover:border-primary hover:text-primary"
               >
-                {p.name}
+                {p.title}
               </Link>
             ))}
           </div>
@@ -118,32 +167,32 @@ function Index() {
           </div>
 
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {packages.map((p) => (
-  <Link
-    key={p.id}
-    to="/package/$id"
-    params={{ id: p.id }}
-                className="group overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition hover:-translate-y-1 hover:shadow-xl"
+            {filteredPackages.map((p) => (
+              <Link
+                key={p.id}
+                to="/package/$id"
+                params={{ id: p.id }}
+                className="group overflow-hidden rounded-2xl border-border bg-card shadow-sm transition hover:-translate-y-1 hover:shadow-xl"
               >
                 <div className="relative aspect-[4/3] overflow-hidden">
-                  <img src={p.gallery[0]} alt={p.name} className="h-full w-full object-cover transition duration-700 group-hover:scale-110" loading="eager" />
+                  <img src={p.gallery[0]} alt={p.title} className="h-full w-full object-cover transition duration-700 group-hover:scale-110" loading="eager" />
                   <div className="absolute inset-x-3 top-3 flex items-center justify-between">
                     <span className="rounded-full bg-black/60 px-3 py-1 text-[11px] font-medium text-white backdrop-blur">
-                      {p.duration}
+                      {p.days} Days
                     </span>
                     <span className="rounded-full bg-primary px-3 py-1 text-[11px] font-semibold text-primary-foreground">
-                      From USD {p.priceFrom}
+                      From USD {p.price}
                     </span>
                   </div>
                 </div>
                 <div className="p-5">
-             <h3 className="text-xl font-bold group-hover:text-primary">{p.name}</h3>
-<p className="mt-1 text-sm text-muted-foreground">📍 {p.location}</p>
-<p className="mt-1 text-sm text-muted-foreground">👥 Max {p.maxPeople || 2} People</p>
-<p className="mt-3 sm:text-sm text-foreground/80 line-clamp-2">{p.tagline}</p>
+                  <h3 className="text-xl font-bold group-hover:text-primary">{p.title}</h3>
+                  <p className="mt-1 text-sm text-muted-foreground">📍 {p.location}</p>
+                  <p className="mt-1 text-sm text-muted-foreground">👥 Max 6 People</p>
+                  <p className="mt-3 text-sm text-foreground/80 line-clamp-2">{p.subtitle}</p>
                   <div className="mt-4 flex items-center justify-between text-sm">
                     <span className="text-primary font-semibold">View details →</span>
-                    <span className="text-yellow-500">★★★★★</span>
+                    <span className="text-yellow-500">★★★</span>
                   </div>
                 </div>
               </Link>
@@ -171,7 +220,7 @@ function Index() {
               wildlife conservation — giving him strong grounding in responsible tourism,
               environmental protection and visitor safety.
             </p>
-            <div className="mt-8 grid grid-cols-2 gap-4 text-sm">
+            <div className="mt-8 grid-cols-2 gap-4 text-sm">
               {["Masai Mara", "Amboseli", "Tsavo", "Lake Nakuru", "Serengeti", "Ngorongoro", "Mount Kenya", "Kilimanjaro"].map((d) => (
                 <div key={d} className="flex items-center gap-2 rounded-lg border border-border bg-card px-3 py-2">
                   <span className="text-primary">✓</span>{d}
@@ -280,7 +329,7 @@ function Index() {
           <p className="mx-auto mt-4 max-w-xl text-white/85">
             Tell us where you'd love to go — we'll craft a tour that fits your dates, budget and pace.
           </p>
-          <div className="mt-8 flex flex-wrap justify-center gap-3">
+          <div className="mt-8 flex-wrap justify-center gap-3">
             <Link to="/contact" className="btn-primary">Send Booking Request</Link>
             <a href="https://wa.me/254746011254" className="btn-outline">WhatsApp Us</a>
           </div>
