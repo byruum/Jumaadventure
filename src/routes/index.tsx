@@ -24,22 +24,30 @@ const reviews = [
 function Index() {
   return (
     <>
-      <div className="container-page relative flex min-h-[86vh] flex-col justify-center py-24 text-white">
-  <img 
-    src="/Images/og-image.png" 
-    alt="Juma Adventures Logo" 
-    className="h-20 w-auto mb-6" 
-  />
-  <span className="eyebrow text-white/80">Kenya • East Africa</span>
-  <h1 className="mt-4 max-w-3xl text-5xl font-bold leading-[1.05] sm:text-6xl md:text-7xl">
-    Discover Kenya<br />
-    <span className="text-primary">like never before.</span>
-  </h1>
+      <section className="relative isolate overflow-hidden"> {/* ADD THIS */}
+        <img
+          src={HERO_IMG}
+          alt="Safari vehicle in the Masai Mara at sunset"
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/80" />
+
+        <div className="container-page relative flex min-h-[86vh] flex-col justify-center py-24 text-white">
+          <img
+            src="/Images/og-image.png"
+            alt="Juma Adventures Logo"
+            className="h-20 w-auto mb-6"
+          />
+          <span className="eyebrow text-white/80">Kenya • East Africa</span>
+          <h1 className="mt-4 max-w-3xl text-5xl font-bold leading-[1.05] sm:text-6xl md:text-7xl">
+            Discover Kenya<br />
+            <span className="text-primary">like never before.</span>
+          </h1>
           <p className="mt-6 max-w-xl text-lg text-white/85">
             Unforgettable safari adventures, breathtaking landscapes and authentic cultural
             experiences — guided by Dennis Juma, KWS-trained and 10+ years in the wild.
           </p>
-          <div className="mt-8 flex flex-wrap gap-3">
+          <div className="mt-8 flex-wrap gap-3">
             <Link to="/packages" className="btn-primary">Explore Tours</Link>
             <Link to="/contact" className="btn-outline">Book Your Adventure</Link>
           </div>
@@ -59,7 +67,7 @@ function Index() {
             </div>
           </div>
         </div>
-      </section>
+      </section> {/* THIS CLOSES IT NOW */}
 
       <section className="border-b border-border bg-background">
         <div className="container-page py-6">
