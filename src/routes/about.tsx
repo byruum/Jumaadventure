@@ -27,19 +27,22 @@ function AboutPage() {
   return (
     <>
       {/* Hero with Logo + Tagline */}
-      <section className="bg-secondary text-secondary-foreground">
-        <div className="container-page py-20 flex-col items-center text-center">
-          <img 
-            src="/logo-juma.png" 
-            alt="Juma Adventures Logo" 
-            className="h-24 w-auto mb-6" 
-          />
-          <h1 className="mt-3 text-4xl md:text-5xl font-bold">Discover Africa Through Experience, Adventure, and Passion.</h1>
-          <p className="mt-5 max-w-3xl opacity-85">
-            Juma Adventures is a premier safari and adventure company founded by Dennis Juma, a passionate and highly experienced professional guide dedicated to showcasing the beauty, wildlife, and rich cultures of East Africa. Built on a lifelong passion for nature and exploration, Juma Adventures delivers authentic, safe, and unforgettable travel experiences across Kenya and Tanzania.
-          </p>
-        </div>
-      </section>
+<section className="bg-secondary text-secondary-foreground">
+  <div className="container-page py-16 flex flex-col items-center text-center"> {/* reduced py-20 to py-16 */}
+    <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/10">
+      <img 
+        src="/IMG-20260726-WA3768.jpg" 
+        alt="Juma Adventures Logo" 
+        className="h-16 w-auto"  // smaller: was h-24
+      />
+    </div>
+    
+    <h1 className="mt-6 text-4xl md:text-5xl font-bold">Discover Africa Through Experience, Adventure, and Passion.</h1>
+    <p className="mt-5 max-w-3xl opacity-85">
+      Juma Adventures is a premier safari and adventure company founded by Dennis Juma...
+    </p>
+  </div>
+</section>
 
       {/* Founder Story - Dennis Exact Text */}
       <section className="section">
