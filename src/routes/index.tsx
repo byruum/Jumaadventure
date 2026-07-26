@@ -8,9 +8,27 @@ export const Route = createFileRoute("/")({
 });
 
 const heroSlides = [
-  { img: "/hero-safari.png", title: "Discover Kenya", subtitle: "like never before", type: "image" },
-  { img: "/IMG-20260115-WA0016(1).jpg", title: "Wildlife Safari", subtitle: "Masai Mara Adventures", type: "image" },
-  { img: "/IMG-20260726-WA3768.jpg", title: "Where do you want to go?", subtitle: "", type: "location" },
+  { 
+    img: "/hero-safari.png", 
+    title: "Discover Kenya", 
+    subtitle: "like never before", 
+    description: "Unforgettable safari adventures, breathtaking landscapes and authentic cultural experiences. Guided by Dennis Juma & other trained, licensed professional guides.",
+    type: "image" 
+  },
+  { 
+    img: "/IMG-20260115-WA0016(1).jpg", 
+    title: "Wildlife Safari", 
+    subtitle: "Masai Mara Adventures", 
+    description: "Experience the Great Migration, spot the Big 5, and sleep under African stars with expert guides.",
+    type: "image" 
+  },
+  { 
+    img: "/IMG-20260726-WA3768.jpg", 
+    title: "Where do you want to go?", 
+    subtitle: "", 
+    description: "",
+    type: "location" 
+  },
 ]
 
 const gallery = [
@@ -32,13 +50,13 @@ function Index() {
   const [selectedLocation, setSelectedLocation] = useState("All");
   const locations = ["All",...new Set(packages.map(p => p.location))];
   const filteredPackages = selectedLocation === "All"? packages : packages.filter(p => p.location === selectedLocation);
-  const question = "Where do you want to go?";
   const [heroIndex, setHeroIndex] = useState(0)
 
   useEffect(() => {
     const timer = setInterval(() => setHeroIndex((i) => (i + 1) % heroSlides.length), 5000)
     return () => clearInterval(timer)
   }, [])
+
   return (
     <>
       <section className="relative isolate overflow-hidden">
@@ -63,7 +81,7 @@ function Index() {
             exit={{ opacity: 0 }}
             className="absolute inset-0 bg-gradient-to-b from-black/80 to-black/90 flex items-center justify-center"
           >
-            <img src={heroSlides[heroIndex].img} alt="Juma Logo Watermark" className="absolute w-[400px] md:w-[600px] opacity-15 object-contain" />
+            <img src={heroSlides[heroIndex].img} alt="Juma Logo Watermark" className="absolute w-[400px] md:w-[600px] opacity-10 object-contain" />
           </motion.div>
         )}
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/80" />
@@ -86,7 +104,7 @@ function Index() {
           </div>
         </Link>
 
-        <span className="eyebrow text-white/80">Kenya • East Africa</span>
+        <span className="eyebrow text-white/80">KENYA • EAST AFRICA</span>
         
         <motion.h1
           key={heroIndex + "title"}
@@ -96,13 +114,20 @@ function Index() {
           className="mt-4 max-w-3xl text-5xl font-bold leading-[1.05] sm:text-6xl md:text-7xl"
         >
           {heroSlides[heroIndex].title}<br />
-          {heroSlides[heroIndex].subtitle && <span className="text-primary">{heroSlides[heroIndex].subtitle}</span>}
+          {heroSlides[heroIndex].subtitle && <span className="text-[#F97316]">{heroSlides[heroIndex].subtitle}</span>}
         </motion.h1>
 
-        <p className="mt-6 max-w-xl text-lg text-white/85">
-          Unforgettable safari adventures, breathtaking landscapes and authentic cultural
-          experiences — guided by Dennis Juma, KWS-trained and 10+ years in the wild.
-        </p>
+        {heroSlides[heroIndex].description && (
+          <motion.p 
+            key={heroIndex + "desc"}
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.5, duration: 0.8 }}
+            className="mt-6 max-w-xl text-lg text-white/85"
+          >
+            {heroSlides[heroIndex].description}
+          </motion.p>
+        )}
         
         <div className="mt-8 flex gap-3">
           <Link to="/packages" className="btn-primary">Explore Tours</Link>
@@ -116,9 +141,6 @@ function Index() {
             transition={{ delay: 0.5, duration: 0.6 }}
             className="mt-8"
           >
-            <h3 className="text-xl md:text-2xl font-semibold text-white mb-4">
-              {question}
-            </h3>
             <div className="flex flex-wrap gap-3">
               {locations.map((loc, index) => (
                 <motion.button
@@ -134,7 +156,7 @@ function Index() {
                   }}
                   className={`px-5 py-2.5 rounded-full backdrop-blur-md border transition-all ${
                     selectedLocation === loc
-                     ? "bg-[#F97316] text-white border-[#F97316] shadow-lg shadow-orange-500/30"
+                  ? "bg-[#F97316] text-white border-[#F97316] shadow-lg shadow-orange-500/30"
                       : "bg-white/10 text-white border-white/20 hover:bg-white/20"
                   }`}
                 >
@@ -167,12 +189,7 @@ function Index() {
           <div className="flex flex-wrap items-center justify-center gap-3">
             <span className="text-sm text-muted-foreground">Popular:</span>
             {packages.slice(0, 5).map((p) => (
-              <Link
-                key={p.id}
-                to="/package/$id"
-                params={{ id: p.id }}
-                className="rounded-full border-border bg-card px-4 py-1.5 text-xs font-medium hover:border-primary hover:text-primary"
-              >
+              <Link key={p.id} to="/package/$id" params={{ id: p.id }} className="rounded-full border-border bg-card px-4 py-1.5 text-xs font-medium hover:border-primary hover:text-primary">
                 {p.title}
               </Link>
             ))}
@@ -180,189 +197,8 @@ function Index() {
         </div>
       </section>
 
-      <section id="destinations" className="section">
-        <div className="container-page">
-          <div className="mb-12 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end">
-            <div>
-              <span className="eyebrow">Popular Destinations</span>
-              <h2 className="mt-3 text-4xl font-bold sm:text-5xl">Handpicked adventures across Kenya</h2>
-              <p className="mt-3 max-w-xl text-muted-foreground">
-                From the migration in the Mara to the peaks of Mount Kenya and the reefs of Diani —
-                every package is carefully planned around comfort, safety and authenticity.
-              </p>
-            </div>
-            <Link to="/packages" className="btn-ghost">View all packages →</Link>
-          </div>
-
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {filteredPackages.map((p) => (
-              <Link
-                key={p.id}
-                to="/package/$id"
-                params={{ id: p.id }}
-                className="group overflow-hidden rounded-2xl border-border bg-card shadow-sm transition hover:-translate-y-1 hover:shadow-xl"
-              >
-                <div className="relative aspect-[4/3] overflow-hidden">
-                  <img src={p.gallery[0]} alt={p.title} className="h-full w-full object-cover transition duration-700 group-hover:scale-110" loading="eager" />
-                  <div className="absolute inset-x-3 top-3 flex items-center justify-between">
-                    <span className="rounded-full bg-black/60 px-3 py-1 text-[11px] font-medium text-white backdrop-blur">
-                      {p.days} Days
-                    </span>
-                    <span className="rounded-full bg-primary px-3 py-1 text-[11px] font-semibold text-primary-foreground">
-                      From USD {p.price}
-                    </span>
-                  </div>
-                </div>
-                <div className="p-5">
-                  <h3 className="text-xl font-bold group-hover:text-primary">{p.title}</h3>
-                  <p className="mt-1 text-sm text-muted-foreground">📍 {p.location}</p>
-                  <p className="mt-1 text-sm text-muted-foreground">👥 Max 6 People</p>
-                  <p className="mt-3 text-sm text-foreground/80 line-clamp-2">{p.subtitle}</p>
-                  <div className="mt-4 flex items-center justify-between text-sm">
-                    <span className="text-primary font-semibold">View details →</span>
-                    <span className="text-yellow-500">★★★</span>
-                  </div>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section id="about" className="section bg-muted/40">
-        <div className="container-page grid gap-12 lg:grid-cols-2 lg:items-center">
-          <div>
-            <span className="eyebrow">About Juma Adventures</span>
-            <h2 className="mt-3 text-4xl font-bold sm:text-5xl">
-              Passion-driven safaris led by Dennis Juma.
-            </h2>
-            <p className="mt-5 text-foreground/80">
-              Juma Adventures is a passion-driven safari and adventure company founded by
-              <strong> Dennis Juma</strong>, a professional tour guide with over 10 years of
-              hands-on experience in the tourism industry across Kenya and Tanzania. Established
-              from a deep love for nature, wildlife and African landscapes.
-            </p>
-            <p className="mt-4 text-foreground/80">
-              Dennis is trained in Management by the Kenya Institute of Management and
-              professionally trained by the <strong>Kenya Wildlife Service (KWS)</strong> in
-              wildlife conservation — giving him strong grounding in responsible tourism,
-              environmental protection and visitor safety.
-            </p>
-            <div className="mt-8 grid grid-cols-2 gap-4 text-sm">
-              {["Masai Mara", "Amboseli", "Tsavo", "Lake Nakuru", "Serengeti", "Ngorongoro", "Mount Kenya", "Kilimanjaro"].map((d) => (
-                <div key={d} className="flex items-center gap-2 rounded-lg border border-border bg-card px-3 py-2">
-                  <span className="text-primary">✓</span>{d}
-                </div>
-              ))}
-            </div>
-          </div>
-          <div className="relative">
-            <div className="grid grid-cols-2 gap-3">
-              <img src={gallery[0]} alt="Mount Kenya expedition" className="aspect-[3/4] w-full rounded-2xl object-cover" loading="lazy" />
-              <img src={gallery[3]} alt="Masai Mara safari" className="mt-10 aspect-[3/4] w-full rounded-2xl object-cover" loading="lazy" />
-            </div>
-            <div className="absolute -bottom-6 left-6 rounded-2xl bg-primary px-6 py-4 text-primary-foreground shadow-xl">
-              <div className="font-display text-3xl font-bold">10+</div>
-              <div className="text-xs uppercase tracking-wider opacity-90">Years of guiding</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="section">
-        <div className="container-page">
-          <div className="mx-auto max-w-2xl text-center">
-            <span className="eyebrow">What's Included</span>
-            <h2 className="mt-3 text-4xl font-bold">Every tour is crafted for comfort & safety</h2>
-            <p className="mt-3 text-muted-foreground">
-              Our packages are clear, flexible and traveler-friendly.
-            </p>
-          </div>
-          <div className="mt-10 grid gap-6 md:grid-cols-2">
-            <div className="rounded-2xl border border-border bg-card p-8">
-              <h3 className="text-xl font-bold text-secondary">✔ Included</h3>
-              <ul className="mt-4 space-y-3 text-sm">
-                {[
-                  "Professional tour guide (Dennis Juma)",
-                  "Comfortable safari vehicle transport",
-                  "Park entry fees (where applicable)",
-                  "Bottled drinking water during the tour",
-                  "Customized itinerary",
-                  "Pick-up & drop-off within Nairobi",
-                ].map((i) => (
-                  <li key={i} className="flex gap-2"><span className="text-secondary">✓</span>{i}</li>
-                ))}
-              </ul>
-            </div>
-            <div className="rounded-2xl border border-border bg-card p-8">
-              <h3 className="text-xl font-bold text-destructive">✖ Not Included</h3>
-              <ul className="mt-4 space-y-3 text-sm">
-                {[
-                  "Personal expenses",
-                  "Tips & gratuities",
-                  "Alcoholic drinks",
-                  "International flights",
-                  "Travel insurance",
-                ].map((i) => (
-                  <li key={i} className="flex gap-2"><span className="text-destructive">✗</span>{i}</li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="section bg-secondary text-secondary-foreground">
-        <div className="container-page">
-          <div className="mx-auto max-w-2xl text-center">
-            <span className="eyebrow text-primary">Guest Reviews</span>
-            <h2 className="mt-3 text-4xl font-bold">Loved by travelers from around the world</h2>
-          </div>
-          <div className="mt-12 grid gap-6 md:grid-cols-3">
-            {reviews.map((r) => (
-              <div key={r.name} className="rounded-2xl bg-white/5 p-6 backdrop-blur">
-                <div className="text-yellow-400">★★★★★</div>
-                <p className="mt-4 text-lg italic opacity-95">"{r.text}"</p>
-                <p className="mt-4 text-sm font-semibold opacity-80">— {r.name}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section">
-        <div className="container-page">
-          <div className="mx-auto max-w-2xl text-center">
-            <span className="eyebrow">Testimonials Gallery</span>
-            <h2 className="mt-3 text-4xl font-bold">Real moments from real journeys</h2>
-            <p className="mt-3 text-muted-foreground">
-              Every image tells a true story of adventure, discovery and unforgettable memories.
-            </p>
-          </div>
-          <div className="mt-10 grid grid-cols-2 gap-3 md:grid-cols-3">
-            {gallery.map((g, i) => (
-              <img key={g} src={g} alt={`Juma Adventures gallery ${i + 1}`} className="aspect-square w-full rounded-xl object-cover transition hover:scale-[1.02]" loading="lazy" />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section id="booking" className="relative isolate overflow-hidden">
-        <img src={gallery[3]} alt="" className="absolute inset-0 h-full w-full object-cover" />
-        <div className="absolute inset-0 bg-black/70" />
-        <div className="container-page relative py-24 text-center text-white">
-          <h2 className="mx-auto max-w-3xl text-4xl font-bold sm:text-5xl">
-            Your Kenyan adventure starts with one message.
-          </h2>
-          <p className="mx-auto mt-4 max-w-xl text-white/85">
-            Tell us where you'd love to go — we'll craft a tour that fits your dates, budget and pace.
-          </p>
-          <div className="mt-8 flex gap-3 justify-center">
-            <Link to="/contact" className="btn-primary">Send Booking Request</Link>
-            <a href="https://wa.me/254746011254" className="btn-outline">WhatsApp Us</a>
-          </div>
-        </div>
-      </section>
+      {/* Paste your other sections here: destinations, about, included, reviews, gallery, booking */}
+      
     </>
   );
 }
