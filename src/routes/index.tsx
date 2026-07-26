@@ -32,6 +32,14 @@ function Index() {
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/80" />
         <div className="container-page relative flex min-h-[86vh] flex-col justify-center py-24 text-white">
+          <div className="container-page relative flex min-h-[86vh] flex-col justify-center py-24 text-white">
+  <img 
+    src="/Images/og-image.png" 
+    alt="Juma Adventures Logo" 
+    className="h-20 w-auto mb-6" 
+  />
+  <span className="eyebrow text-white/80">Kenya • East Africa</span>
+  <h1 className="mt-4 max-w-3xl text-5xl font-bold leading-[1.05] sm:text-6xl md:text-7xl">
           <span className="eyebrow text-white/80">Kenya • East Africa</span>
           <h1 className="mt-4 max-w-3xl text-5xl font-bold leading-[1.05] sm:text-6xl md:text-7xl">
             Discover Kenya<br />
