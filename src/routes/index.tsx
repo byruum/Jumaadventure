@@ -33,7 +33,7 @@ function Index() {
   const locations = ["All",...new Set(packages.map(p => p.location))];
   const filteredPackages = selectedLocation === "All"? packages : packages.filter(p => p.location === selectedLocation);
   const question = "Where do you want to go?";
-const [heroIndex, setHeroIndex] = useState(0)
+  const [heroIndex, setHeroIndex] = useState(0)
 
   useEffect(() => {
     const timer = setInterval(() => setHeroIndex((i) => (i + 1) % heroSlides.length), 5000)
@@ -69,101 +69,98 @@ const [heroIndex, setHeroIndex] = useState(0)
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/80" />
 
       <div className="container-page relative flex min-h-[86vh] flex-col justify-center py-24 text-white">
-  <Link
-    to="/"
-    className="mb-6 inline-flex items-center gap-4 bg-white/10 backdrop-blur-sm rounded-2xl p-4 border-white/10 hover:bg-white/20 transition"
-  >
-    <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[#F97316]">
-      <span className="font-serif text-4xl font-bold text-white leading-none">J</span>
-    </div>
-    <div>
-      <h2 className="font-serif text-2xl md:text-4xl font-medium text-[#2C1B0F] leading-tight">
-        Juma Adventures
-      </h2>
-      <p className="font-serif text-xs md:text-base text-[#B8860B] tracking-wide">
-        Authentic Safari & Wildlife Experiences
-      </p>
-    </div>
-  </Link>
-
-          <span className="eyebrow text-white/80">Kenya • East Africa</span>
-          <motion.h1
-  key={heroIndex + "title"}
-  initial={{ y: 30, opacity: 0 }}
-  animate={{ y: 0, opacity: 1 }}
-  transition={{ delay: 0.3, duration: 0.8 }}
-  className="mt-4 max-w-3xl text-5xl font-bold leading-[1.05] sm:text-6xl md:text-7xl"
->
-  {heroSlides[heroIndex].title}<br />
-  {heroSlides[heroIndex].subtitle && <span className="text-primary">{heroSlides[heroIndex].subtitle}</span>}
-            Discover Kenya<br />
-            <span className="text-primary">like never before.</span>
-          </h1>
-          <p className="mt-6 max-w-xl text-lg text-white/85">
-            Unforgettable safari adventures, breathtaking landscapes and authentic cultural
-            experiences — guided by Dennis Juma, KWS-trained and 10+ years in the wild.
-          </p>
-          <div className="mt-8 flex-wrap gap-3">
-            <Link to="/packages" className="btn-primary">Explore Tours</Link>
-            <Link to="/contact" className="btn-outline">Book Your Adventure</Link>
+        <Link
+          to="/"
+          className="mb-6 inline-flex items-center gap-4 bg-white/10 backdrop-blur-sm rounded-2xl p-4 border-white/10 hover:bg-white/20 transition"
+        >
+          <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[#F97316]">
+            <span className="font-serif text-4xl font-bold text-white leading-none">J</span>
           </div>
-      {heroSlides[heroIndex].type === "location" && (
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 0.6 }}
-              className="mt-8"
-            >
-              <h3 className="text-xl md:text-2xl font-semibold text-white mb-4">
-                {question}
-              </h3>
-              <div className="flex flex-wrap gap-3">
-                {locations.map((loc, index) => (
-                  <motion.button
-                    key={loc}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.7 + index * 0.08, type: "spring", stiffness: 200 }}
-                    whileHover={{ scale: 1.05, y: -2 }}
-                    whileTap={{ scale: 0.95 }}
-                    onClick={() => {
-                      setSelectedLocation(loc);
-                      document.getElementById('destinations')?.scrollIntoView({ behavior: 'smooth' });
-                    }}
-                    className={`px-5 py-2.5 rounded-full backdrop-blur-md border transition-all ${
-                      selectedLocation === loc
-               ? "bg-[#F97316] text-white border-[#F97316] shadow-lg shadow-orange-500/30"
-                          : "bg-white/10 text-white border-white/20 hover:bg-white/20"
-                    }`}
-                  >
-                    {loc}
-                  </motion.button>
-                ))}
-              </div>
-            </motion.div>
-          )}
+          <div>
+            <h2 className="font-serif text-2xl md:text-4xl font-medium text-[#2C1B0F] leading-tight">
+              Juma Adventures
+            </h2>
+            <p className="font-serif text-xs md:text-base text-[#B8860B] tracking-wide">
+              Authentic Safari & Wildlife Experiences
+            </p>
+          </div>
+        </Link>
 
-    
-                  
+        <span className="eyebrow text-white/80">Kenya • East Africa</span>
+        
+        <motion.h1
+          key={heroIndex + "title"}
+          initial={{ y: 30, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.3, duration: 0.8 }}
+          className="mt-4 max-w-3xl text-5xl font-bold leading-[1.05] sm:text-6xl md:text-7xl"
+        >
+          {heroSlides[heroIndex].title}<br />
+          {heroSlides[heroIndex].subtitle && <span className="text-primary">{heroSlides[heroIndex].subtitle}</span>}
+        </motion.h1>
+
+        <p className="mt-6 max-w-xl text-lg text-white/85">
+          Unforgettable safari adventures, breathtaking landscapes and authentic cultural
+          experiences — guided by Dennis Juma, KWS-trained and 10+ years in the wild.
+        </p>
+        
+        <div className="mt-8 flex gap-3">
+          <Link to="/packages" className="btn-primary">Explore Tours</Link>
+          <Link to="/contact" className="btn-outline">Book Your Adventure</Link>
+        </div>
+
+        {heroSlides[heroIndex].type === "location" && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5, duration: 0.6 }}
+            className="mt-8"
+          >
+            <h3 className="text-xl md:text-2xl font-semibold text-white mb-4">
+              {question}
+            </h3>
+            <div className="flex flex-wrap gap-3">
+              {locations.map((loc, index) => (
+                <motion.button
+                  key={loc}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.7 + index * 0.08, type: "spring", stiffness: 200 }}
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => {
+                    setSelectedLocation(loc);
+                    document.getElementById('destinations')?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className={`px-5 py-2.5 rounded-full backdrop-blur-md border transition-all ${
+                    selectedLocation === loc
+                     ? "bg-[#F97316] text-white border-[#F97316] shadow-lg shadow-orange-500/30"
+                      : "bg-white/10 text-white border-white/20 hover:bg-white/20"
+                  }`}
+                >
+                  {loc}
+                </motion.button>
+              ))}
             </div>
           </motion.div>
+        )}
 
-          <div className="mt-14 grid max-w-2xl grid-cols-3 gap-8 border-t border-white/20 pt-6 text-white/90">
-            <div>
-              <div className="font-display text-3xl font-bold">10+</div>
-              <div className="text-xs uppercase tracking-wider opacity-70">Years guiding</div>
-            </div>
-            <div>
-              <div className="font-display text-3xl font-bold">15+</div>
-              <div className="text-xs uppercase tracking-wider opacity-70">Destinations</div>
-            </div>
-            <div>
-              <div className="font-display text-3xl font-bold">500+</div>
-              <div className="text-xs uppercase tracking-wider opacity-70">Happy guests</div>
-            </div>
+        <div className="mt-14 grid max-w-2xl grid-cols-3 gap-8 border-t border-white/20 pt-6 text-white/90">
+          <div>
+            <div className="font-display text-3xl font-bold">10+</div>
+            <div className="text-xs uppercase tracking-wider opacity-70">Years guiding</div>
+          </div>
+          <div>
+            <div className="font-display text-3xl font-bold">15+</div>
+            <div className="text-xs uppercase tracking-wider opacity-70">Destinations</div>
+          </div>
+          <div>
+            <div className="font-display text-3xl font-bold">500+</div>
+            <div className="text-xs uppercase tracking-wider opacity-70">Happy guests</div>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
       <section className="border-b border-border bg-background">
         <div className="container-page py-6">
@@ -251,7 +248,7 @@ const [heroIndex, setHeroIndex] = useState(0)
               wildlife conservation — giving him strong grounding in responsible tourism,
               environmental protection and visitor safety.
             </p>
-            <div className="mt-8 grid-cols-2 gap-4 text-sm">
+            <div className="mt-8 grid grid-cols-2 gap-4 text-sm">
               {["Masai Mara", "Amboseli", "Tsavo", "Lake Nakuru", "Serengeti", "Ngorongoro", "Mount Kenya", "Kilimanjaro"].map((d) => (
                 <div key={d} className="flex items-center gap-2 rounded-lg border border-border bg-card px-3 py-2">
                   <span className="text-primary">✓</span>{d}
@@ -360,7 +357,7 @@ const [heroIndex, setHeroIndex] = useState(0)
           <p className="mx-auto mt-4 max-w-xl text-white/85">
             Tell us where you'd love to go — we'll craft a tour that fits your dates, budget and pace.
           </p>
-          <div className="mt-8 flex-wrap justify-center gap-3">
+          <div className="mt-8 flex gap-3 justify-center">
             <Link to="/contact" className="btn-primary">Send Booking Request</Link>
             <a href="https://wa.me/254746011254" className="btn-outline">WhatsApp Us</a>
           </div>
