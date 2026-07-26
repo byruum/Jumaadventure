@@ -1,21 +1,25 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState } from "react";
-import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { packages } from "../lib/packages";
 
 export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const HERO_IMG ="/hero-safari.png";
+const heroSlides = [
+  { img: "/hero-safari.png", title: "Discover Kenya", subtitle: "like never before", type: "image" },
+  { img: "/IMG-20260115-WA0016(1).jpg", title: "Wildlife Safari", subtitle: "Masai Mara Adventures", type: "image" },
+  { img: "/IMG-20260726-WA3768.jpg", title: "Where do you want to go?", subtitle: "", type: "location" },
+]
 
 const gallery = [
-  "https://jumaadventure.webtool.co.ke/images/testimonials-gallery/Mount-kenya-1.jpg",
-  "https://jumaadventure.webtool.co.ke/images/testimonials-gallery/mt-kenya-point-lenana-peak%20(1).jpg",
-  "https://jumaadventure.webtool.co.ke/images/testimonials-gallery/mount-kenya-day-trip-hike.jpg",
-  "https://jumaadventure.webtool.co.ke/images/testimonials-gallery/masai-mara-national-reserve%20(1).jpg",
-  "https://jumaadventure.webtool.co.ke/images/testimonials-gallery/lake-nakuru-safari.jpg",
-  "https://jumaadventure.webtool.co.ke/images/testimonials-gallery/nairobi-city-kicc-building.jpg",
+  "/mt-kenya.jpg",
+  "/mount-kenya-day-trip-hike.jpg",
+  "/IMG-20260115-WA0016(1).jpg",
+  "/maasai-mara-national-reserve (1).jpg",
+  "/lake-nakuru-national-park(1).jpg",
+  "/Nairobi National Park-Wildlife roaming freely just_.jpg",
 ];
 
 const reviews = [
@@ -29,15 +33,39 @@ function Index() {
   const locations = ["All",...new Set(packages.map(p => p.location))];
   const filteredPackages = selectedLocation === "All"? packages : packages.filter(p => p.location === selectedLocation);
   const question = "Where do you want to go?";
+const [heroIndex, setHeroIndex] = useState(0)
 
+  useEffect(() => {
+    const timer = setInterval(() => setHeroIndex((i) => (i + 1) % heroSlides.length), 5000)
+    return () => clearInterval(timer)
+  }, [])
   return (
     <>
       <section className="relative isolate overflow-hidden">
-        <img
-          src={HERO_IMG}
-          alt="Safari vehicle in the Masai Mara at sunset"
-          className="absolute inset-0 h-full w-full object-cover"
-        />
+        {heroSlides[heroIndex].type === "image"? (
+          <AnimatePresence mode="wait">
+            <motion.img
+              key={heroIndex}
+              src={heroSlides[heroIndex].img}
+              initial={{ scale: 1.1, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 1.5, ease: "easeInOut" }}
+              alt="Safari"
+              className="absolute inset-0 h-full w-full object-cover"
+            />
+          </AnimatePresence>
+        ) : (
+          <motion.div
+            key={heroIndex}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="absolute inset-0 bg-gradient-to-b from-black/80 to-black/90 flex items-center justify-center"
+          >
+            <img src={heroSlides[heroIndex].img} alt="Juma Logo Watermark" className="absolute w-[400px] md:w-[600px] opacity-15 object-contain" />
+          </motion.div>
+        )}
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/80" />
 
       <div className="container-page relative flex min-h-[86vh] flex-col justify-center py-24 text-white">
@@ -59,7 +87,15 @@ function Index() {
   </Link>
 
           <span className="eyebrow text-white/80">Kenya • East Africa</span>
-          <h1 className="mt-4 max-w-3xl text-5xl font-bold leading-[1.05] sm:text-6xl md:text-7xl">
+          <motion.h1
+  key={heroIndex + "title"}
+  initial={{ y: 30, opacity: 0 }}
+  animate={{ y: 0, opacity: 1 }}
+  transition={{ delay: 0.3, duration: 0.8 }}
+  className="mt-4 max-w-3xl text-5xl font-bold leading-[1.05] sm:text-6xl md:text-7xl"
+>
+  {heroSlides[heroIndex].title}<br />
+  {heroSlides[heroIndex].subtitle && <span className="text-primary">{heroSlides[heroIndex].subtitle}</span>}
             Discover Kenya<br />
             <span className="text-primary">like never before.</span>
           </h1>
@@ -71,49 +107,44 @@ function Index() {
             <Link to="/packages" className="btn-primary">Explore Tours</Link>
             <Link to="/contact" className="btn-outline">Book Your Adventure</Link>
           </div>
+      {heroSlides[heroIndex].type === "location" && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5, duration: 0.6 }}
+              className="mt-8"
+            >
+              <h3 className="text-xl md:text-2xl font-semibold text-white mb-4">
+                {question}
+              </h3>
+              <div className="flex flex-wrap gap-3">
+                {locations.map((loc, index) => (
+                  <motion.button
+                    key={loc}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.7 + index * 0.08, type: "spring", stiffness: 200 }}
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={() => {
+                      setSelectedLocation(loc);
+                      document.getElementById('destinations')?.scrollIntoView({ behavior: 'smooth' });
+                    }}
+                    className={`px-5 py-2.5 rounded-full backdrop-blur-md border transition-all ${
+                      selectedLocation === loc
+               ? "bg-[#F97316] text-white border-[#F97316] shadow-lg shadow-orange-500/30"
+                          : "bg-white/10 text-white border-white/20 hover:bg-white/20"
+                    }`}
+                  >
+                    {loc}
+                  </motion.button>
+                ))}
+              </div>
+            </motion.div>
+          )}
 
-          {/* ANIMATED LOCATION FILTER - ADDED HERE */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.8, duration: 0.6 }}
-            className="mt-8"
-          >
-            <h3 className="text-xl md:text-2xl font-semibold text-white mb-4">
-              {question.split("").map((letter, i) => (
-                <motion.span
-                  key={i}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 1 + i * 0.04 }}
-                  className="inline-block"
-                >
-                  {letter === " "? "\u00A0" : letter}
-                </motion.span>
-              ))}
-            </h3>
-            <div className="flex flex-wrap gap-3">
-              {locations.map((loc, index) => (
-                <motion.button
-                  key={loc}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 1.5 + index * 0.08, type: "spring", stiffness: 200 }}
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  whileTap={{ scale: 0.95 }}
-                  onClick={() => {
-                    setSelectedLocation(loc);
-                    document.getElementById('destinations')?.scrollIntoView({ behavior: 'smooth' });
-                  }}
-                  className={`px-5 py-2.5 rounded-full backdrop-blur-md border transition-all ${
-                    selectedLocation === loc
-                  ? "bg-[#F97316] text-white border-[#F97316] shadow-lg shadow-orange-500/30"
-                      : "bg-white/10 text-white border-white/20 hover:bg-white/20"
-                  }`}
-                >
-                  {loc}
-                </motion.button>
-              ))}
+    
+                  
             </div>
           </motion.div>
 
