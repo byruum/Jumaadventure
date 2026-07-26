@@ -24,15 +24,7 @@ const reviews = [
 function Index() {
   return (
     <>
-      <section className="relative isolate overflow-hidden">
-        <img
-          src={HERO_IMG}
-          alt="Safari vehicle in the Masai Mara at sunset"
-          className="absolute inset-0 h-full w-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/80" />
-        <div className="container-page relative flex min-h-[86vh] flex-col justify-center py-24 text-white">
-          <div className="container-page relative flex min-h-[86vh] flex-col justify-center py-24 text-white">
+      <div className="container-page relative flex min-h-[86vh] flex-col justify-center py-24 text-white">
   <img 
     src="/Images/og-image.png" 
     alt="Juma Adventures Logo" 
@@ -40,11 +32,9 @@ function Index() {
   />
   <span className="eyebrow text-white/80">Kenya • East Africa</span>
   <h1 className="mt-4 max-w-3xl text-5xl font-bold leading-[1.05] sm:text-6xl md:text-7xl">
-          <span className="eyebrow text-white/80">Kenya • East Africa</span>
-          <h1 className="mt-4 max-w-3xl text-5xl font-bold leading-[1.05] sm:text-6xl md:text-7xl">
-            Discover Kenya<br />
-            <span className="text-primary">like never before.</span>
-          </h1>
+    Discover Kenya<br />
+    <span className="text-primary">like never before.</span>
+  </h1>
           <p className="mt-6 max-w-xl text-lg text-white/85">
             Unforgettable safari adventures, breathtaking landscapes and authentic cultural
             experiences — guided by Dennis Juma, KWS-trained and 10+ years in the wild.
