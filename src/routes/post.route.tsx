@@ -2,17 +2,15 @@ import { createFileRoute } from '@tanstack/react-router'
 import { useState } from 'react'
 import { createClient } from '@supabase/supabase-js'
 
-export const Route = createFileRoute('/post')({
-  component: PostPage,
-})
-import { useState } from 'react'
-import { createClient } from '@supabase/supabase-js'
-
 const SUPABASE_URL = 'https://ezkejiawykqfxllvbzjm.supabase.co'
 const SUPABASE_KEY = 'sb_publishable_uWwptcdqC9-Yb-mYKqGuag_7dWYE1g7'
 const supabase = createClient(SUPABASE_URL, SUPABASE_KEY)
 
-export default function PostPage() {
+export const Route = createFileRoute('/post')({
+  component: PostPage,
+})
+
+function PostPage() {
   const [status, setStatus] = useState('')
   const [preview, setPreview] = useState<string[]>([])
 
@@ -51,4 +49,4 @@ export default function PostPage() {
       <p>{status}</p>
     </div>
   )
-      }
+}
