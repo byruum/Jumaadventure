@@ -1,3 +1,10 @@
+import { createFileRoute } from '@tanstack/react-router'
+import { useState } from 'react'
+import { createClient } from '@supabase/supabase-js'
+
+export const Route = createFileRoute('/post')({
+  component: PostPage,
+})
 import { useState } from 'react'
 import { createClient } from '@supabase/supabase-js'
 
