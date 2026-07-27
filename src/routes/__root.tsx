@@ -1,3 +1,4 @@
+import PostPage from './post'
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   Outlet,
@@ -71,6 +72,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
   notFoundComponent: NotFoundComponent,
   errorComponent: ErrorComponent,
 });
+children: [
+  { path: '/post', component: PostPage },
+],
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
