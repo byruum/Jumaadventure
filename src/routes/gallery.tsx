@@ -13,16 +13,16 @@ export const Route = createFileRoute("/gallery")({
 });
 
 const photos = [
-  { src: "https://jumaadventure.webtool.co.ke/images/testimonials-gallery/Mount-kenya-1.jpg", label: "Mount Kenya adventure" },
-  { src: "https://jumaadventure.webtool.co.ke/images/testimonials-gallery/mt-kenya-point-lenana-peak%20(1).jpg", label: "Point Lenana summit" },
-  { src: "https://jumaadventure.webtool.co.ke/images/testimonials-gallery/mount-kenya-day-trip-hike.jpg", label: "Mount Kenya day hike" },
-  { src: "https://jumaadventure.webtool.co.ke/images/testimonials-gallery/masai-mara-national-reserve%20(1).jpg", label: "Masai Mara Reserve" },
-  { src: "https://jumaadventure.webtool.co.ke/images/testimonials-gallery/lake-nakuru-safari.jpg", label: "Lake Nakuru Safari" },
-  { src: "https://jumaadventure.webtool.co.ke/images/testimonials-gallery/nairobi-city-kicc-building.jpg", label: "Nairobi city tour" },
-  { src: "https://jumaadventure.webtool.co.ke/images/masai-mara/masai-mara-national-reserve.jpg", label: "Masai Mara game drive" },
-  { src: "https://jumaadventure.webtool.co.ke/images/lake-nakuru-national-park/lake-nakuru-national-park-1.jpg", label: "Lake Nakuru National Park" },
-  { src: "https://jumaadventure.webtool.co.ke/images/lake-naivasha.jpg", label: "Lake Naivasha" },
-  { src: "https://jumaadventure.webtool.co.ke/images/diani.jpg", label: "Diani Beach" },
+  { src: "/Diani.png.jpg", label: "Diani Beach" },
+  { src: "/IMG-20260111-WA0016.jpg", label: "Mount Kenya adventure" },
+  { src: "/IMG-20260115-WA0073(1).jpg", label: "Point Lenana summit" },
+  { src: "/IMG-20260726-WA0718.jpg", label: "Mount Kenya day hike" },
+  { src: "/Nairobi National Park-Wildlife roaming freely just .jpg", label: "Nairobi city tour" },
+  { src: "/lake-nakuru-national-park-1.jpg", label: "Lake Nakuru Safari" },
+  { src: "/masai-mara-national-reserve (1).jpg", label: "Masai Mara Reserve" },
+  { src: "/mount-Kenya-day-trip-hike.jpg", label: "Mount Kenya day hike" },
+  { src: "/mt.kenya.jpg", label: "Point Lenana summit" },
+  { src: "/hero-safari.png", label: "Masai Mara game drive" },
 ];
 
 function GalleryPage() {
