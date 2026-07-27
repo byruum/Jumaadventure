@@ -1,4 +1,3 @@
-import PostPage from './post'
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   Outlet,
@@ -72,9 +71,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
   notFoundComponent: NotFoundComponent,
   errorComponent: ErrorComponent,
 });
-children: [
-  { path: '/post', component: PostPage },
-],
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
@@ -105,6 +101,7 @@ function Header() {
           <Link to="/about" className="hover:text-primary">About</Link>
           <Link to="/gallery" className="hover:text-primary">Gallery</Link>
           <Link to="/contact" className="hover:text-primary">Contact</Link>
+          <Link to="/post" className="hover:text-primary">Post</Link> {/* Added Post link */}
         </nav>
         <Link to="/contact" className="btn-primary!py-2!px-4 text-xs">Book Now</Link>
       </div>
@@ -143,6 +140,7 @@ function Footer() {
             <li><Link to="/about" className="opacity-90 hover:opacity-100">About Us</Link></li>
             <li><Link to="/gallery" className="opacity-90 hover:opacity-100">Gallery</Link></li>
             <li><Link to="/contact" className="opacity-90 hover:opacity-100">Contact</Link></li>
+            <li><Link to="/post" className="opacity-90 hover:opacity-100">Post</Link></li> {/* Added Post link */}
           </ul>
         </div>
         <div>
@@ -187,4 +185,4 @@ function RootComponent() {
       </div>
     </QueryClientProvider>
   );
-}
+            }
