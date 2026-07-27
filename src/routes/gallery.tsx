@@ -25,7 +25,7 @@ const fixedPhotos = [
   { src: "/IMG-20260111-WA0016.jpg", label: "Mount Kenya adventure" },
   { src: "/IMG-20260115-WA0073(1).jpg", label: "Point Lenana summit" },
   { src: "/IMG-20260726-WA0718.jpg", label: "Mount Kenya day hike" },
-  { src: "/Nairobi National Park-Wildlife roaming freely just .jpg", label: "Nairobi city tour" },
+  { src: "/Nairobi National Park-Wildlife roaming freely just.jpg", label: "Nairobi city tour" },
   { src: "/lake-nakuru-national-park-1.jpg", label: "Lake Nakuru Safari" },
   { src: "/masai-mara-national-reserve (1).jpg", label: "Masai Mara Reserve" },
   { src: "/mount-Kenya-day-trip-hike.jpg", label: "Mount Kenya day hike" },
@@ -36,15 +36,56 @@ const fixedPhotos = [
 function GalleryPage() {
   const [posts, setPosts] = useState<Post[]>([])
   const [loading, setLoading] = useState(true)
+  const [uploading, setUploading] = useState(false)
 
   useEffect(() => {
-    const fetchPosts = async () => {
-      const { data } = await supabase.from('posts').select('*').order('created_at', { ascending: false })
-      setPosts(data || [])
-      setLoading(false)
-    }
     fetchPosts()
   }, [])
+
+  const fetchPosts = async () => {
+    const { data } = await supabase.from('posts').select('*').order('created_at', { ascending: false })
+    setPosts(data || [])
+    setLoading(false)
+  }
+
+  const handleUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0]
+    if (!file) return
+    
+    setUploading(true)
+    const fileName = `${Date.now()}-${file.name}`
+    
+    // 1. Upload to Storage
+    const { error: uploadError } = await supabase.storage
+     .from('gallery') // CHANGE THIS if your bucket is called 'photos'
+     .upload(fileName, file)
+
+    if (uploadError) {
+      alert('Upload failed: ' + uploadError.message)
+      setUploading(false)
+      return
+    }
+
+    // 2. Get public URL
+    const { data: { publicUrl } } = supabase.storage
+     .from('gallery')
+     .getPublicUrl(fileName)
+
+    // 3. Save to posts table
+    const { error: dbError } = await supabase.from('posts').insert({
+      name: 'Juma Adventures',
+      caption: file.name,
+      image_url: publicUrl
+    })
+
+    if (dbError) {
+      alert('DB Save failed: ' + dbError.message)
+    } else {
+      alert('Uploaded successfully!')
+      fetchPosts() // refresh gallery
+    }
+    setUploading(false)
+  }
 
   return (
     <>
@@ -57,9 +98,18 @@ function GalleryPage() {
 
       <section className="section">
         <div className="container-page">
+          
+          {/* UPLOAD BUTTON ADDED HERE */}
+          <div className="mb-8 text-center">
+            <label className="inline-block bg-primary text-primary-foreground px-6 py-3 rounded-lg cursor-pointer hover:opacity-90 transition">
+              {uploading? 'Uploading...' : '+ Upload Photo'}
+              <input type="file" accept="image/*" onChange={handleUpload} disabled={uploading} className="hidden" />
+            </label>
+          </div>
+
           <h2 className="text-2xl font-bold mb-6">New Posts</h2>
-          {loading ? <p>Loading...</p> : posts.length === 0 ? 
-            <p className="text-muted-foreground">No posts yet. Use /post to add one!</p> :
+          {loading? <p>Loading...</p> : posts.length === 0? 
+            <p className="text-muted-foreground">No posts yet. Upload your first photo above!</p> :
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 mb-12">
               {posts.map((post) => (
                 <div key={post.id} className="rounded-2xl border bg-card overflow-hidden">
