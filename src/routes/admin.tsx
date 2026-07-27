@@ -1,11 +1,16 @@
 import { useState, useEffect } from 'react'
 import { createClient } from '@supabase/supabase-js'
+import { createFileRoute } from '@tanstack/react-router'
 
 // YOUR REAL KEYS
 const SUPABASE_URL = 'https://ezkejiawykqfxllvbzjm.supabase.co'
 const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV6a2VqYXZ5a3FmZWxsdmJ6am0iLCJyb2xlIjoiYW5vbiIsImlhdCI6MTcxODQ4MjY5MCwiZXhwIjoyMDMzMDU4NjkwfQ.R9IsJDcaBNtoHJCaq8qpFxcQwREG3wJA93oX2ObPmPeI'
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_KEY)
+
+export const Route = createFileRoute('/admin')({
+  component: Admin,
+})
 
 export default function Admin() {
   const [email, setEmail] = useState('')
