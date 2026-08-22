@@ -23,7 +23,7 @@ export default function MtKenyaAdVideo() {
             Mt Kenya Day Hike — Guest Review — Juma Adventures — Guide Dennis Juma
           </h3>
           <Link
-            to="/packages"
+            to="/"
             className="inline-block mt-3 bg-emerald-500 hover:bg-emerald-600 text-white text-xs md:text-sm font-semibold px-4 py-2 rounded-full"
           >
             Book This Hike
