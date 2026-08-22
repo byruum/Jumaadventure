@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link } from "@tanstack/react-router"
 
 /**
  * MtKenyaAdVideo - FIXED for vertical phone video
@@ -17,7 +17,7 @@ export default function MtKenyaAdVideo() {
           playsInline
           controls
           preload="metadata"
-          poster="/images/mt-kenya-ad.jpg"
+                poster="/mt-kenya.jpg"
         >
           Your browser does not support the video tag.
         </video>
@@ -32,7 +32,7 @@ export default function MtKenyaAdVideo() {
           </p>
 
           <Link
-            to="/tours/mt-kenya"
+                  to="/packages"
             className="inline-flex w-fit items-center justify-center rounded-full bg-emerald-500 px-5 py-2.5 text-sm font-semibold text-white shadow-lg transition-colors hover:bg-emerald-600"
           >
             Book This Hike
