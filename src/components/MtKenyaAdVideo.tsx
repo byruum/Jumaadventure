@@ -10,7 +10,7 @@ export default function MtKenyaAdVideo() {
     <section className="relative w-full aspect-video max-h-[80vh] overflow-hidden rounded-2xl bg-black">
       <video
         className="absolute inset-0 h-full w-full object-cover"
-        src="/videos/VID-20260819-WA0016.mp4"
+        src="/videos/VID-20260819-WA0016.mov"
         autoPlay
         muted
         loop
