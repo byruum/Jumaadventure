@@ -1,30 +1,31 @@
-import { Link } from "@tanstack/react-router";
+import { Link } from "@tanstack/react-router"
 
 export default function MtKenyaAdVideo() {
   return (
-    <section className="w-full bg-black py-0">
-      <div className="relative w-full max-w-[480px] md:max-w-5xl mx-auto
-                      aspect-[9/16] md:aspect-video
-                      overflow-hidden">
+    <section className="w-full flex justify-center bg-black">
+      {/* No black bars — vertical on phone */}
+      <div className="relative w-full max-w-[420px] md:max-w-4xl aspect-[9/16] md:aspect-video overflow-hidden bg-black">
         <video
-          className="absolute inset-0 w-full h-full object-cover"
+          className="w-full h-full object-cover"
           autoPlay
           muted
           loop
           playsInline
           controls
-          poster="/mt-kenya.jpg"
+          preload="metadata"
+          // CHANGE THIS TO EXACT NAME YOU UPLOADED
           src="/videos/VID-20260119-WA0016.mov"
         />
 
-        {/* Text overlay */}
-        <div className="absolute bottom-0 left-0 right-0 p-4 md:p-8 bg-gradient-to-t from-black/80 to-transparent">
-          <h3 className="text-white font-bold text-sm md:text-2xl">
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+
+        <div className="absolute bottom-0 left-0 right-0 p-5">
+          <p className="text-white text-[13px] md:text-lg font-semibold leading-tight">
             Mt Kenya Day Hike — Guest Review — Juma Adventures — Guide Dennis Juma
-          </h3>
+          </p>
           <Link
-            to="/packages"
-            className="inline-block mt-3 bg-emerald-500 hover:bg-emerald-600 text-white text-xs md:text-sm font-semibold px-4 py-2 rounded-full"
+            to="/"
+            className="inline-flex mt-3 rounded-full bg-[#10b981] px-5 py-2.5 text-xs font-bold text-white"
           >
             Book This Hike
           </Link>
