@@ -185,6 +185,13 @@ function Index() {
       </div>
     </section>
 
+    {/* VIDEO AD - LIVE */}
+    <section className="bg-black py-8">
+      <div className="container-page">
+        <MtKenyaAdVideo />
+      </div>
+    </section>
+
       <section className="border-b border-border bg-background">
         <div className="container-page py-6">
           <div className="flex flex-wrap items-center justify-center gap-3">
