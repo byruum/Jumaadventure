@@ -38,7 +38,7 @@ export const packages: Package[] = [
     from: "Masai Mara National Reserve",
     days: 3,
     price: "1500",
-    gallery: [img("/mt-kenya.jpg")],
+        gallery: [img("/lake-nakuru-national-park-1.jpg")],
     journey: "Explore the world-famous Masai Mara National Reserve, home to the Big Five and the spectacular Great Wildebeest Migration.",
     highlights: ["Big Five wildlife viewing", "Great Migration (seasonal)", "Unlimited game drives", "Professional safari guide", "Scenic savannah landscapes"],
     itinerary: [
