@@ -37,7 +37,7 @@ export const packages: Package[] = [
     from: "Masai Mara National Reserve",
     days: 3,
     price: "1500",
-    gallery: [img("masai-mara-national-reserve (1).jpg"), img("og-image.png")],
+        gallery: [img("/mt-kenya.jpg")],
     journey: "Explore the world-famous Masai Mara National Reserve, home to the Big Five and the spectacular Great Wildebeest Migration.",
     highlights: ["Big Five wildlife viewing", "Great Migration (seasonal)", "Unlimited game drives", "Professional safari guide", "Scenic savannah landscapes"],
     itinerary: [
@@ -106,7 +106,7 @@ export const packages: Package[] = [
     from: "Diani, Kenyan Coast",
     days: 3,
     price: "1500",
-    gallery: [img("Diani.png.jpg")],
+        gallery: [img("/Diani.png.jpg")],
     journey: "Relax on the stunning beaches of Diani, enjoy the warm Indian Ocean, water sports, marine life and rich coastal culture.",
     highlights: ["Kenya's most beautiful white-sand beaches", "Snorkeling & water sports", "Marine life & reef exploration", "Coastal culture & cuisine"],
     itinerary: [
@@ -127,7 +127,7 @@ export const packages: Package[] = [
     duration: "8 Hours",
     route: "Round trip from Nairobi",
     pace: "Easy pace",
-    gallery: [img("Nairobi National Park-Wildlife roaming freely just .jpg")],
+        gallery: [img("/lake-nakuru-national-park-1.jpg")],
     journey: "Experience Nairobi's wild side with a morning game drive, baby elephants, and giraffe feeding.",
     quote: "From the savannah to conservation - Nairobi in one day.",
     highlights: ["Morning game drive in Nairobi National Park", "Visit baby elephants at David Sheldrick Orphanage", "Feed Rothschild giraffes at Giraffe Centre", "360° panoramic views from KICC Tower"],
