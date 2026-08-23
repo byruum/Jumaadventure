@@ -23,10 +23,11 @@ export type Package = {
 };
 
 const img = (name: string) => {
-  if (!name) return "/Images/og-image.png"
+  if (!name) return "/og-image.png"
   if (name.startsWith("http")) return name
-  if (name.startsWith("/")) return name
-  return `/Images/${name}`
+  // Remove /Images/ prefix if present, always point to root where your working photos are
+  const clean = name.replace(/^\//, "").replace(/^Images\//i, "")
+  return `/${clean}`
 }
 
 export const packages: Package[] = [
