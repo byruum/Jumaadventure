@@ -49,8 +49,8 @@ const reviews = [
 
 function Index() {
   const [selectedLocation, setSelectedLocation] = useState("All");
-  const locations = ["All",...new Set(packages.map(p => p.location))];
-  const filteredPackages = selectedLocation === "All"? packages : packages.filter(p => p.location === selectedLocation);
+  const locations = ["All",...Array.from(new Set(packages.map(p => p.from).filter(Boolean)))];
+  const filteredPackages = selectedLocation === "All"? packages : packages.filter(p => p.from === selectedLocation);
   const [heroIndex, setHeroIndex] = useState(0)
 
   useEffect(() => {
