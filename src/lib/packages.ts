@@ -151,7 +151,7 @@ export const packages: Package[] = [
     duration: "8 Hours",
     route: "Round trip from Nairobi",
     pace: "Easy pace",
-    gallery: [img("IMG-20260726-WA3768.jpg")],
+    gallery: [img("/IMG-20260726-WA3768.jpg")],
     journey: "Discover Nairobi's culture, history and traditions at Blixen Museum, National Museum and Bomas of Kenya.",
     quote: "History, culture and rhythm - the heart of Nairobi.",
     highlights: ["Visit Karen Blixen Museum", "Explore Nairobi National Museum", "Cultural dances at Bomas of Kenya", "Shop for crafts at Maasai Market"],
