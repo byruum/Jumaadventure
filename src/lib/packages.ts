@@ -37,7 +37,7 @@ export const packages: Package[] = [
     from: "Masai Mara National Reserve",
     days: 3,
     price: "1500",
-        gallery: [img("/mt-kenya.jpg")],
+    gallery: [img("/mt-kenya.jpg")],
     journey: "Explore the world-famous Masai Mara National Reserve, home to the Big Five and the spectacular Great Wildebeest Migration.",
     highlights: ["Big Five wildlife viewing", "Great Migration (seasonal)", "Unlimited game drives", "Professional safari guide", "Scenic savannah landscapes"],
     itinerary: [
@@ -106,7 +106,7 @@ export const packages: Package[] = [
     from: "Diani, Kenyan Coast",
     days: 3,
     price: "1500",
-        gallery: [img("/Diani.png.jpg")],
+    gallery: [img("/Diani.png.jpg")],
     journey: "Relax on the stunning beaches of Diani, enjoy the warm Indian Ocean, water sports, marine life and rich coastal culture.",
     highlights: ["Kenya's most beautiful white-sand beaches", "Snorkeling & water sports", "Marine life & reef exploration", "Coastal culture & cuisine"],
     itinerary: [
@@ -127,7 +127,7 @@ export const packages: Package[] = [
     duration: "8 Hours",
     route: "Round trip from Nairobi",
     pace: "Easy pace",
-        gallery: [img("/lake-nakuru-national-park-1.jpg")],
+    gallery: [img("/lake-nakuru-national-park-1.jpg")],
     journey: "Experience Nairobi's wild side with a morning game drive, baby elephants, and giraffe feeding.",
     quote: "From the savannah to conservation - Nairobi in one day.",
     highlights: ["Morning game drive in Nairobi National Park", "Visit baby elephants at David Sheldrick Orphanage", "Feed Rothschild giraffes at Giraffe Centre", "360° panoramic views from KICC Tower"],
@@ -164,7 +164,7 @@ export const packages: Package[] = [
     meetingPoint: "JKIA Airport NBO or your hotel lobby",
     tourStart: "Nairobi, Kenya",
     tourEnd: "Drop-off at your hotel or JKIA Airport"
-  }, 
+  },
   {
     id: "mt-kenya-4day",
     title: "Mt Kenya, idyllic landscapes and primeval wilderness",
@@ -224,11 +224,50 @@ export const packages: Package[] = [
     meetingPoint: "Nyeri - Nanyuki Road, Nanyuki, Laikipia County, Kenya",
     tourStart: "Nanyuki, Kenya",
     tourEnd: "Drop-off in Nanyuki",
+  },
+  {
+    id: "nairobi-culture-heritage-day",
+    title: "Nairobi Culture & Heritage Day",
+    subtitle: "Max 2 people - Full Culture Tour",
+    from: "Nairobi",
+    days: 1,
+    price: "480",
+    duration: "8 Hours",
+    route: "Round trip from Nairobi",
+    pace: "Easy pace",
+    gallery: [img("/IMG-20260726-WA3768.jpg")],
+    journey: "Discover Nairobi's culture, history and traditions at Blixen Museum, National Museum and Bomas of Kenya.",
+    quote: "History, culture and rhythm - the heart of Nairobi.",
+    highlights: ["Visit Karen Blixen Museum", "Explore Nairobi National Museum", "Cultural dances at Bomas of Kenya", "Shop for crafts at Maasai Market"],
+    itinerary: [
+      { dayNum: 1, title: "Blixen Museum + National Museum + Bomas", details: ["Morning pickup from JKIA Airport, hotel, or city location", "Visit Karen Blixen Museum", "Explore Nairobi National Museum", "Lunch break", "Cultural show at Bomas of Kenya", "Shopping at Maasai Market", "Return transfer to hotel or JKIA"], meals: "Not Included" }
+    ],
+    includes: ["Private airport or hotel pickup and drop-off", "Transport in a comfortable private tour van", "Professional licensed guide", "Bottled drinking water and snacks", "Entry fees to Blixen, Museum & Bomas", "All taxes and service charges"],
+    excludes: ["International flights", "Meals and drinks unless specified", "Personal expenses and souvenirs", "Tips for guide and driver"],
+    whatToBring: ["Comfortable walking shoes", "Camera", "Cash for shopping"],
+    meetingPoint: "JKIA Airport NBO or your hotel lobby",
+    tourStart: "Nairobi, Kenya",
+    tourEnd: "Drop-off at your hotel or JKIA Airport"
   }
-]; 
+];
 
 export const getPackage = (id: string) => {
   if (!id) return undefined
-  const cleanId = id.trim().toLowerCase()
-  return packages.find((p) => p.id.toLowerCase() === cleanId)
+  const cleanId = id.trim().toLowerCase().replace(/_/g, "-")
+
+  const direct = packages.find((p) => p.id.toLowerCase() === cleanId)
+  if (direct) return direct
+
+  const aliases: Record<string, string> = {
+    "nairobi-culture-heritage-day": "nairobi-culture-day",
+    "nairobi-culture-day-tour": "nairobi-culture-day",
+    "nairobi-wildlife": "nairobi-wildlife-day",
+    "mt-kenya-4-day": "mt-kenya-4day",
+    "mt-kenya": "mount-kenya",
+  }
+  const aliasedId = aliases[cleanId]
+  if (aliasedId) {
+    return packages.find((p) => p.id.toLowerCase() === aliasedId)
+  }
+  return undefined
 }
