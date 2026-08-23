@@ -1,5 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { getPackage } from "../../lib/packages";
+import { import { getPackage } from "../lib/packages";
 export const Route = createFileRoute('/package/$id')({
   component: PackagePage,
   loader: ({ params }) => {
