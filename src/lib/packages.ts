@@ -22,6 +22,13 @@ export type Package = {
   tourEnd?: string;
 };
 
+const img = (name: string) => {
+  if (!name) return "/Images/og-image.png"
+  if (name.startsWith("http")) return name
+  if (name.startsWith("/")) return name
+  return `/Images/${name}`
+}
+
 export const packages: Package[] = [
   {
     id: "masai-mara",
@@ -30,7 +37,7 @@ export const packages: Package[] = [
     from: "Masai Mara National Reserve",
     days: 3,
     price: "1500",
-    gallery: ["masai-mara-national-reserve (1).jpg"], // FIXED
+    gallery: [img("masai-mara-national-reserve (1).jpg"), img("og-image.png")],
     journey: "Explore the world-famous Masai Mara National Reserve, home to the Big Five and the spectacular Great Wildebeest Migration.",
     highlights: ["Big Five wildlife viewing", "Great Migration (seasonal)", "Unlimited game drives", "Professional safari guide", "Scenic savannah landscapes"],
     itinerary: [
@@ -48,7 +55,7 @@ export const packages: Package[] = [
     from: "Lake Nakuru National Park",
     days: 1,
     price: "510",
-    gallery: ["lake-nakuru-national-park-1.jpg"], // FIXED
+    gallery: [img("lake-nakuru-national-park-1.jpg")],
     journey: "Lake Nakuru National Park is one of Kenya's most beautiful parks, famous for its flamingos, rhino sanctuary, and diverse birdlife.",
     highlights: ["Flamingos & over 400 bird species", "Rhino sanctuary (black & white rhinos)", "Scenic lake views", "Guided game drive", "Professional safari guide"],
     itinerary: [
@@ -64,7 +71,7 @@ export const packages: Package[] = [
     from: "Mount Kenya National Park",
     days: 4,
     price: "1500",
-    gallery: ["mount-kenya-day-trip-hike.jpg"], // FIXED
+    gallery: [img("mount-kenya-day-trip-hike.jpg")],
     journey: "A thrilling mountain adventure through alpine landscapes, scenic trails and breathtaking views on Africa's second-highest mountain.",
     highlights: ["High-altitude trekking", "Point Lenana summit", "Experienced mountain guides", "Scenic alpine landscapes"],
     itinerary: [
@@ -83,7 +90,7 @@ export const packages: Package[] = [
     from: "Lake Naivasha, Rift Valley",
     days: 1,
     price: "480",
-    gallery: ["IMG-20260111-WA0018.jpg"], // FIXED - matches your screenshot
+    gallery: [img("IMG-20260111-WA0018.jpg")],
     journey: "Enjoy a relaxing safari experience at Lake Naivasha, famous for its birdlife, hippos and scenic landscapes.",
     highlights: ["Boat ride on Lake Naivasha", "Bird watching & hippo viewing", "Crescent Island walking safari", "Professional tour guide"],
     itinerary: [
@@ -99,7 +106,7 @@ export const packages: Package[] = [
     from: "Diani, Kenyan Coast",
     days: 3,
     price: "1500",
-    gallery: ["Diani.png.jpg"], // FIXED
+    gallery: [img("Diani.png.jpg")],
     journey: "Relax on the stunning beaches of Diani, enjoy the warm Indian Ocean, water sports, marine life and rich coastal culture.",
     highlights: ["Kenya's most beautiful white-sand beaches", "Snorkeling & water sports", "Marine life & reef exploration", "Coastal culture & cuisine"],
     itinerary: [
@@ -120,7 +127,7 @@ export const packages: Package[] = [
     duration: "8 Hours",
     route: "Round trip from Nairobi",
     pace: "Easy pace",
-    gallery: ["Nairobi National Park-Wildlife roaming freely just .jpg"], // FIXED
+    gallery: [img("Nairobi National Park-Wildlife roaming freely just .jpg")],
     journey: "Experience Nairobi's wild side with a morning game drive, baby elephants, and giraffe feeding.",
     quote: "From the savannah to conservation - Nairobi in one day.",
     highlights: ["Morning game drive in Nairobi National Park", "Visit baby elephants at David Sheldrick Orphanage", "Feed Rothschild giraffes at Giraffe Centre", "360° panoramic views from KICC Tower"],
@@ -144,7 +151,7 @@ export const packages: Package[] = [
     duration: "8 Hours",
     route: "Round trip from Nairobi",
     pace: "Easy pace",
-    gallery: ["IMG-20260726-WA3768.jpg"], // FIXED - matches your screenshot
+    gallery: [img("IMG-20260726-WA3768.jpg")],
     journey: "Discover Nairobi's culture, history and traditions at Blixen Museum, National Museum and Bomas of Kenya.",
     quote: "History, culture and rhythm - the heart of Nairobi.",
     highlights: ["Visit Karen Blixen Museum", "Explore Nairobi National Museum", "Cultural dances at Bomas of Kenya", "Shop for crafts at Maasai Market"],
@@ -164,7 +171,7 @@ export const packages: Package[] = [
     subtitle: "4-days of true hiking experience",
     from: "Nanyuki, Kenya",
     days: 4,
-    price: "2190",  // UNTOUCHED
+    price: "2190",
     duration: "4 Days",
     route: "Round trip from Nanyuki via Sirimon",
     pace: "Moderate to Challenging",
@@ -204,7 +211,7 @@ export const packages: Package[] = [
     duration: "6 Hours",
     route: "Round trip from Nanyuki via Narumoru Gate",
     pace: "Moderate",
-    gallery: ["mount-kenya-day-trip-hike.jpg"], // FIXED
+    gallery: [img("mount-kenya-day-trip-hike.jpg")],
     journey: "Enjoy hiking on glaciers and rocks, explore the ecosystem of mountain vegetation from lower to upper rock. Trek through diverse ecosystems, from lush forests to alpine meadows.",
     quote: "Every journey is a story — let's make yours unforgettable",
     highlights: ["Full day hike to Met Station 5 hours", "View beautiful gorges, valleys & mountain vegetation", "Licensed guide with 14 years experience - Dennis J. #35393", "Private transportation in Hybrid Noah Voxy", "Perfect for beginners and families"],
@@ -220,4 +227,8 @@ export const packages: Package[] = [
   }
 ]; 
 
-export const getPackage = (id: string) => packages.find((p) => p.id === id);
+export const getPackage = (id: string) => {
+  if (!id) return undefined
+  const cleanId = id.trim().toLowerCase()
+  return packages.find((p) => p.id.toLowerCase() === cleanId)
+}
