@@ -50,7 +50,7 @@ export const packages: Package[] = [
       img("masai-mara-2.jpg"),
       img("masai-mara-balloon.jpg"),
       img("masai-mara-lions.jpg"),
-      img("/lake-nakuru-national-park-1.jpg") // fallback you already have until upload
+      img("/lake-nakuru-national-park-1.jpg")
     ],
     journey: "Explore the world-famous Masai Mara National Reserve, home to the Big Five and the spectacular Great Wildebeest Migration.",
     highlights: ["Big Five wildlife viewing", "Great Migration (seasonal)", "Unlimited game drives", "Professional safari guide", "Scenic savannah landscapes"],
@@ -262,6 +262,59 @@ export const packages: Package[] = [
     meetingPoint: "JKIA Airport NBO or your hotel lobby",
     tourStart: "Nairobi, Kenya",
     tourEnd: "Drop-off at your hotel or JKIA Airport"
+  },
+  {
+    id: "big-5-and-lake-nakuru-enjoy-the-nature-and-wildlife-of-africa-664d246917832fdc0dc3d079",
+    title: "Big 5 and Lake Nakuru — Enjoy The Nature and Wildlife of Africa",
+    subtitle: "Private 4 days guided by Dennis Juma 14 yrs",
+    from: "Nairobi, Kenya",
+    days: 4,
+    price: "850",
+    deposit: "100",
+    paypalEmail: "jumaadventuresandsafaris@gmail.com",
+    paybillNo: "Coming Soon",
+    paybillAcc: "Coming Soon",
+    duration: "4 Days / 3 Nights",
+    route: "Nairobi - Lake Nakuru - Lake Naivasha - Hells Gate - Nairobi",
+    pace: "Easy to Moderate",
+    gallery: [
+      img("lake-nakuru-national-park-1.jpg"),
+      img("masai-mara-1.jpg"),
+      img("IMG-20260111-WA0018.jpg")
+    ],
+    journey: "Enjoy the nature and wildlife of Africa — Big 5 at Lake Nakuru, boat at Naivasha, gorge walk & cycling at Hells Gate. Led by licensed guide Dennis Juma.",
+    quote: "Every journey is a story — let's make yours unforgettable. Karibu Kenya hakuna matata!",
+    highlights: [
+      "Big 5 viewing — white rhinos, lions, buffalo, leopard",
+      "Lake Nakuru flamingos & birdlife",
+      "Lake Naivasha boat & 3km island park",
+      "Hells Gate gorge walking, hiking, bicycle cycling, Fishers Tower",
+      "Private Land Cruiser pop-up roof",
+      "Licensed guide Dennis Juma - 14 years - Kenya Tourism Board"
+    ],
+    itinerary: [
+      { dayNum: 1, title: "Nairobi to Lake Nakuru", details: ["Pickup from Embakasi/JKIA/hotel", "Stop at Great Rift Valley viewpoint few minutes", "Check in at Nakuru, lunch", "Afternoon first game drive at Lake Nakuru National Park", "Overnight at Hotel Waterbuck Nakuru"], meals: "Lunch, Dinner" },
+      { dayNum: 2, title: "Full day Lake Nakuru game drive", details: ["Full day game drive with packed lunch", "Watch Big 5 — white rhinos, lions, buffaloes, giraffes, rare black-maned lion", "Evening return to hotel", "Overnight at Hotel Waterbuck Nakuru"], meals: "Breakfast, Lunch, Dinner" },
+      { dayNum: 3, title: "Lake Nakuru to Lake Naivasha", details: ["Breakfast then depart to Lake Naivasha", "Check in hotel", "Visit lake & surrounded 3km squared island park", "Hippos, pelicans, waterbirds", "Overnight at Alphas Homestay Naivasha"], meals: "Breakfast, Dinner" },
+      { dayNum: 4, title: "Hells Gate National Park & back to Nairobi", details: ["Breakfast, visit Hells Gate National Park", "Walk through valley gorges, hiking, bicycle cycling, rock climbing at Fishers Tower peak", "Drive back to Nairobi to end trip at Embakasi"], meals: "Breakfast" }
+    ],
+    includes: [
+      "Private transportation - comfortable Land Cruiser pop up roof",
+      "Professional licensed guide Dennis Juma",
+      "Accommodation: Hotel Waterbuck 2 nights + Alphas Homestay 1 night",
+      "Bottled drinking water",
+      "All taxes and service charges"
+    ],
+    excludes: [
+      "Park fees: Lake Nakuru $60pp, Hells Gate $26pp, Naivasha boat ~$25pp",
+      "Meals not mentioned",
+      "Personal expenses",
+      "Tips for guide"
+    ],
+    whatToBring: ["Comfortable shoes", "Camera", "Sun hat", "Jacket"],
+    meetingPoint: "Embakasi, Nairobi / JKIA Airport / Hotel",
+    tourStart: "Nairobi, Kenya",
+    tourEnd: "Drop-off in Nairobi - Embakasi/JKIA/Hotel"
   }
 ];
 
