@@ -7,11 +7,10 @@ export const Route = createFileRoute('/package/$id')({
   loader: ({ params }) => ({ packageData: getPackage(params.id) }),
 })
 
-type Day = { dayNum: number; title: string; details: string[]; meals?: string }
-
 function PackagePage() {
   const { packageData } = Route.useLoaderData()
   const [current, setCurrent] = useState(0);
+  const [daySlide, setDaySlide] = useState(0);
   const [showBooking, setShowBooking] = useState(false);
   const itineraryRef = useRef<HTMLDivElement>(null);
 
@@ -19,150 +18,162 @@ function PackagePage() {
     "https://images.unsplash.com/photo-1523805009345-7448845a9e53?q=80&w=1920",
     "https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1920",
   ];
-
   const rawGallery = packageData?.gallery?? fallbackMara;
   const validGallery = rawGallery.map((g: string) => g.includes("masai-mara-1") || g.includes("masai-mara-2")? fallbackMara[0] : g);
 
   useEffect(() => {
-    if (!validGallery.length) return;
-    const t = globalThis.setInterval(() => setCurrent((p: number) => (p + 1) % validGallery.length), 4500);
+    const t = globalThis.setInterval(() => setCurrent((p: number) => (p + 1) % validGallery.length), 5000);
     return () => globalThis.clearInterval(t);
   }, [validGallery.length]);
 
-  if (!packageData) return <div className="p-8 text-center">Package not found</div>;
+  if (!packageData) return <div className="p-8 text-center">Not found</div>;
 
   const isMara = packageData.id === "masai-mara";
   const full = packageData.price || "1500";
   const dep = packageData.deposit || "500";
   const paypalEmail = packageData.paypalEmail || "jumaadventuresandsafaris@gmail.com";
-  const paybillNo = packageData.paybillNo || "PENDING";
+  const paybillNo = packageData.paybillNo || "522533";
   const paybillAcc = packageData.paybillAcc || "MARAMARA";
   const paybillName = "JUMA ADVENTURES AND SAFARIS";
-  const paypalDep = `https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=${paypalEmail}&item_name=${encodeURIComponent(packageData.title + " Deposit")}&amount=${dep}&currency_code=USD&no_shipping=1`;
-  const paypalFull = `https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=${paypalEmail}&item_name=${encodeURIComponent(packageData.title + " Full")}&amount=${full}&currency_code=USD&no_shipping=1`;
+  const paypalDep = `https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=${paypalEmail}&item_name=${encodeURIComponent(packageData.title + " Deposit")}&amount=${dep}&currency_code=USD`;
+  const paypalFull = `https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=${paypalEmail}&item_name=${encodeURIComponent(packageData.title + " Full")}&amount=${full}&currency_code=USD`;
 
-  const narratedItinerary = [
+  const days = [
     {
-      day: 1,
-      hook: "Your adventure begins the moment we pick you up.",
-      title: "Nairobi → Masai Mara — Welcome to the Wild",
-      story: "Picture this: early morning Nairobi, you hop into our 4x4 Land Cruiser. As we drive through the Great Rift Valley, the city fades and Africa opens up. By afternoon you are inside Masai Mara — lions napping under acacia, elephants crossing your path. This is not a transfer, this is your first game drive. Tonight you sleep to hyenas far away.",
-      bullets: ["Pickup JKIA / Hotel 7AM", "Rift Valley scenic stop", "Game en-route to camp", "Sunset game drive", "Dinner & bonfire"]
+      n: "Day 1",
+      title: "Nairobi to Masai Mara",
+      story: "We pick you early from your hotel or airport. You ride in our 4x4 Land Cruiser with pop up roof. The road takes you through the Great Rift Valley where you stop for photos. By lunch time you are in Masai Mara. You start seeing animals on the way to camp. Lions resting, elephants walking. In the evening we do a short game drive then you rest at the camp.",
     },
     {
-      day: 2,
-      hook: "This is why you came to Kenya.",
-      title: "Full Day in Mara — Big Five & Great Migration",
-      story: "Wake at 5:30AM, coffee in hand, sunrise over savannah. Today we track the Big Five. Our guide knows where the pride of 20 lions slept. July-Oct you see 1.5M wildebeest crossing Mara River — life and death in front of you. We picnic by the river with hippos. This day will stay with you forever.",
-      bullets: ["Sunrise drive 6-9AM", "Big Five tracking", "Migration crossing seasonal", "Bush picnic lunch", "Masai Village optional"]
+      n: "Day 2",
+      title: "Full day in Masai Mara",
+      story: "This is the main day. We wake up before sunrise. Coffee then drive. Morning is best time to see cats hunting. We follow the Big Five. If you come between July and October you will see the great migration at Mara River. We have lunch near the river where hippos stay. In the evening you can visit a Masai village if you want. You come back to camp tired but happy.",
     },
     {
-      day: 3,
-      hook: "One last sunrise, one last roar.",
-      title: "Mara → Nairobi — Carry Africa With You",
-      story: "Last morning drive — golden light, lions still active. You spot what you missed yesterday. We drive back, but you are not the same person who left Nairobi 3 days ago. You have seen Africa raw and real. Drop JKIA / Hotel with 300 photos and a story no one else has.",
-      bullets: ["Final sunrise drive", "Breakfast at camp", "Game en-route back", "Drop JKIA 4-5PM", "Lunch included"]
+      n: "Day 3",
+      title: "Mara back to Nairobi",
+      story: "Last morning in Mara. We go for sunrise drive. Light is soft and animals are still active. You take last photos. Then we have breakfast and start drive back to Nairobi. You still see animals on the way out. We drop you at your hotel or airport around five in the evening. You leave with a lot of stories to tell back home.",
     }
   ];
 
-  if (isMara) {
-    return (
-      <div className="bg-[#FAF7F2] min-h-screen pb-10">
-        <div className="relative h-[92vh] bg-black overflow-hidden">
-          {validGallery.map((img: string, idx: number) => (
-            <img key={idx} src={img} alt="Masai Mara" onError={(e) => { (e.currentTarget as HTMLImageElement).src = fallbackMara[0] }} className={`absolute inset-0 w-full h-full object-cover transition-all duration-[4000ms] ${idx===current?'opacity-100 scale-105':'opacity-0'}`} />
-          ))}
-          <div className="absolute inset-0 bg-black/60" />
-          <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
-            <p className="text-[#F5B400] font-black tracking-[0.4em] text-[11px]">MASAI MARA NATIONAL RESERVE</p>
-            <h1 className="text-white font-black text-[40px] md:text-[72px] leading-[0.9] mt-4">Masai Mara Safari<br/><span className="text-[#F5B400]">That Changes You</span></h1>
-            <p className="mt-4 bg-[#0B6A2B]/90 text-white px-6 py-2 rounded-full text-[13px] font-bold">Kenya&apos;s most iconic wildlife destination</p>
-            <div className="flex flex-col md:flex-row gap-3 mt-8">
-              <button onClick={() => itineraryRef.current?.scrollIntoView({ behavior: 'smooth' })} className="bg-white text-black px-8 py-4 rounded-full font-black text-sm">EXPLORE ITINERARY ↓</button>
-              <button onClick={() => setShowBooking(true)} className="bg-[#F66E0D] text-white px-10 py-4 rounded-full font-black text-sm">BOOK NOW — USD {full}</button>
-            </div>
-            <p className="text-white/60 text-[11px] mt-3">Deposit ${dep} secures slot • Paybill {paybillNo} • {paybillName}</p>
+  if (!isMara) return <div className="p-8">{packageData.title}</div>;
+
+  return (
+    <div className="bg-[#FAF7F2] min-h-screen">
+      {/* HERO */}
+      <div className="relative h-[92vh] bg-black overflow-hidden">
+        {validGallery.map((img: string, i: number) => (
+          <img key={i} src={img} alt="" onError={(e)=>{(e.currentTarget as HTMLImageElement).src=fallbackMara[0]}} className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-[3000ms] ${i===current?'opacity-100':'opacity-0'}`} />
+        ))}
+        <div className="absolute inset-0 bg-black/55" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/20" />
+        <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center">
+          <p className="text-[#F5B400] tracking-[0.5em] text-[10px] font-black">KENYA MASAI MARA</p>
+          <h1 className="mt-6 font-black text-white leading-[0.85] tracking-tight text-[44px] md:text-[86px]">Masai<br/>Mara</h1>
+          <p className="mt-5 text-white/70 text-[15px] max-w-[500px] leading-6 font-light">Three days with private 4x4 Land Cruiser, good guide and real bush experience. No rush.</p>
+          <div className="mt-10 flex items-center gap-4">
+            <button onClick={()=>itineraryRef.current?.scrollIntoView({behavior:'smooth'})} className="bg-[#F66E0D] text-white px-9 py-[14px] rounded-full font-black text-[13px] tracking-wide">EXPLORE ITINERARY</button>
+            <button onClick={()=>setShowBooking(true)} className="bg-white text-black px-9 py-[14px] rounded-full font-black text-[13px]">BOOK USD {full}</button>
+          </div>
+          <p className="mt-4 text-white/40 text-[11px]">Deposit ${dep} to book • Paybill {paybillNo} • {paybillName}</p>
+        </div>
+      </div>
+
+      {/* SLIDE ITINERARY UNDER EXPLORE */}
+      <div ref={itineraryRef} className="max-w-[1100px] mx-auto px-6 md:px-10 py-20">
+        <div className="flex items-end justify-between">
+          <div>
+            <p className="text-[11px] tracking-[0.4em] font-black text-black/30">YOUR TRIP</p>
+            <h2 className="mt-3 text-[32px] md:text-[46px] font-black leading-[0.9] tracking-tight">How your three<br/>days will be</h2>
+          </div>
+          <div className="hidden md:flex gap-2">
+            <button onClick={()=>setDaySlide((p)=> Math.max(0,p-1))} className="w-11 h-11 rounded-full border border-black/10 bg-white font-black">‹</button>
+            <button onClick={()=>setDaySlide((p)=> Math.min(days.length-1,p+1))} className="w-11 h-11 rounded-full bg-black text-white font-black">›</button>
           </div>
         </div>
 
-        <div ref={itineraryRef} className="max-w-5xl mx-auto px-4 mt-16">
-          <div className="text-center mb-12">
-            <p className="text-[#0B6A2B] font-black tracking-widest text-xs">HOW YOUR 3 DAYS UNFOLD</p>
-            <h2 className="text-[32px] md:text-[44px] font-black leading-[0.95] mt-3">Let me walk you through<br/>your safari...</h2>
-          </div>
-          <div className="space-y-10">
-            {narratedItinerary.map((d) => (
-              <div key={d.day} className="bg-white rounded-[24px] border p-8">
-                <p className="text-[#F66E0D] font-black text-xs">DAY {d.day} — {d.hook}</p>
-                <h3 className="font-black text-xl mt-2">{d.title}</h3>
-                <p className="text-[15px] text-gray-700 leading-7 mt-3">{d.story}</p>
-                <div className="flex flex-wrap gap-2 mt-4">{d.bullets.map((b: string, i: number) => <span key={i} className="bg-[#FAF7F2] border text-[12px] font-bold px-3 py-1.5 rounded-full">✓ {b}</span>)}</div>
+        <div className="mt-10 relative overflow-hidden rounded-[28px] bg-white border border-black/5">
+          <div className="flex transition-transform duration-500 ease-out" style={{transform:`translateX(-${daySlide*100}%)`}}>
+            {days.map((d, idx)=>(
+              <div key={idx} className="min-w-full p-8 md:p-12 grid md:grid-cols-[88px_1fr_240px] gap-6">
+                <div className="text-[52px] font-black leading-none text-black/[0.06]">{String(idx+1).padStart(2,'0')}</div>
+                <div>
+                  <p className="text-[#F66E0D] font-black text-[11px] tracking-[0.2em]">{d.n}</p>
+                  <h3 className="mt-2 text-[24px] md:text-[30px] font-black tracking-tight leading-tight">{d.title}</h3>
+                  <p className="mt-4 text-[15px] leading-7 text-black/60 font-light">{d.story}</p>
+                  <div className="mt-6 flex gap-2 md:hidden">
+                    <button onClick={()=>setDaySlide((p)=> Math.max(0,p-1))} className="w-10 h-10 rounded-full border bg-white">‹</button>
+                    <button onClick={()=>setDaySlide((p)=> Math.min(days.length-1,p+1))} className="w-10 h-10 rounded-full bg-black text-white">›</button>
+                  </div>
+                </div>
+                <div className="md:border-l md:border-black/10 md:pl-8 pt-2">
+                  <p className="text-[10px] font-black tracking-widest text-black/30">WHAT IS INCLUDED</p>
+                  <p className="mt-3 text-[13px] leading-6 text-black/70">
+                    {idx===0 && "4x4 Land Cruiser, driver guide, park fees, lunch, dinner, camp"}
+                    {idx===1 && "Full day drive in 4x4 Land Cruiser, park fees, picnic lunch, water, guide"}
+                    {idx===2 && "Sunrise drive, breakfast, drive back to Nairobi, lunch, drop off"}
+                  </p>
+                  <p className="mt-6 text-[11px] text-black/40">Day {idx+1} of 3</p>
+                  <div className="mt-2 flex gap-1.5">
+                    {days.map((_,i)=><span key={i} className={`h-1 rounded-full transition-all ${i===daySlide?'w-6 bg-black':'w-3 bg-black/15'}`} />)}
+                  </div>
+                  <button onClick={()=>setShowBooking(true)} className="mt-6 w-full bg-black text-white rounded-full py-3 text-xs font-black">BOOK THIS TRIP</button>
+                </div>
               </div>
             ))}
           </div>
-          <div className="text-center mt-12 bg-black text-white rounded-[24px] p-8">
-            <h3 className="font-black text-2xl">Ready to see lions tomorrow?</h3>
-            <button onClick={() => setShowBooking(true)} className="mt-5 bg-[#F66E0D] text-white px-10 py-4 rounded-full font-black">BOOK NOW — SECURE MY SAFARI</button>
-          </div>
         </div>
+        <p className="mt-4 text-center text-[11px] text-black/30">Swipe left or right to see all days. Tap arrows.</p>
+      </div>
 
-        {showBooking && (
-          <div className="fixed inset-0 bg-black/70 z-[100] overflow-y-auto p-4 flex justify-center">
-            <div className="bg-white w-full max-w-[760px] rounded-[28px] overflow-hidden my-8">
-              <div className="bg-black text-white p-7">
-                <div className="flex justify-between">
-                  <div>
-                    <p className="text-[#F5B400] font-black text-[10px] tracking-widest">SECURE CHECKOUT</p>
-                    <h3 className="font-black text-2xl mt-1">Pay Now & Secure Your Safari</h3>
-                    <p className="text-white/60 text-[13px] mt-2 max-w-md">By paying now or deposit, you enable us to plan your wonderful safari — reserve Jeep, camp, park fees. You are rest assured, licensed & trusted.</p>
-                  </div>
-                  <button onClick={() => setShowBooking(false)} className="w-9 h-9 bg-white/10 rounded-full">✕</button>
-                </div>
-                <div className="grid grid-cols-2 gap-3 mt-6">
-                  <a href={paypalDep} target="_blank" rel="noreferrer" className="bg-[#F5B400] text-black text-center py-4 rounded-full font-black text-sm">Pay Deposit ${dep} PayPal</a>
-                  <a href={paypalFull} target="_blank" rel="noreferrer" className="bg-white text-black text-center py-4 rounded-full font-black text-sm">Pay Full ${full} PayPal</a>
-                </div>
-                <div className="mt-4 bg-white/10 border border-white/10 rounded-xl p-4 text-[13px]">
-                  <p className="font-black text-xs tracking-widest">M-PESA PAYMENT — ACCOUNT NAME</p>
-                  <p className="mt-2">Paybill No: <b className="text-[#F5B400] text-lg">{paybillNo}</b></p>
-                  <p>Account No: <b>{paybillAcc}</b></p>
-                  <p>Account Name: <b className="text-[#F5B400]">{paybillName}</b></p>
-                  <p className="text-[11px] text-white/60 mt-2">Lipa na M-Pesa → Paybill → Enter details → Amount ${dep}</p>
-                  <p className="text-[10px] text-white/40 mt-1">PayPal Email: {paypalEmail}</p>
-                </div>
-              </div>
-
-              <div className="p-7 grid md:grid-cols-[1.2fr_0.8fr] gap-8">
+      {/* BOOKING MODAL */}
+      {showBooking && (
+        <div className="fixed inset-0 bg-black/80 z-[100] p-4 overflow-y-auto flex justify-center">
+          <div className="bg-white w-full max-w-[760px] rounded-[28px] overflow-hidden my-10">
+            <div className="bg-black text-white p-8">
+              <div className="flex justify-between gap-6">
                 <div>
-                  <h4 className="font-black">Booking Form</h4>
-                  <form onSubmit={(e) => { e.preventDefault(); globalThis.alert("Booking sent! Check email PayPal."); setShowBooking(false); }} className="mt-4 space-y-3">
-                    <input required placeholder="Full Name" className="w-full border rounded-full px-4 py-3 text-sm" />
-                    <input required type="email" placeholder="Email" className="w-full border rounded-full px-4 py-3 text-sm" />
-                    <input required placeholder="WhatsApp Number" className="w-full border rounded-full px-4 py-3 text-sm" />
-                    <div className="grid grid-cols-2 gap-3">
-                      <input required type="date" className="w-full border rounded-full px-4 py-3 text-sm" />
-                      <input required type="number" min={1} placeholder="Guests" className="w-full border rounded-full px-4 py-3 text-sm" />
-                    </div>
-                    <textarea placeholder="Pickup: JKIA / Hotel" className="w-full border rounded-2xl px-4 py-3 text-sm h-20"></textarea>
-                    <button type="submit" className="w-full bg-[#F66E0D] text-white py-4 rounded-full font-black">SEND BOOKING REQUEST</button>
-                  </form>
+                  <p className="text-[#F5B400] font-black text-[10px] tracking-[0.4em]">PAY NOW</p>
+                  <h3 className="mt-2 text-[26px] font-black leading-tight">Pay to secure your safari</h3>
+                  <p className="mt-2 text-white/50 text-[13px] max-w-[420px]">When you pay deposit now, we start planning your safari. We book your 4x4 Land Cruiser, camp and park ticket. You can relax.</p>
                 </div>
-                <div className="bg-[#FAF7F2] rounded-2xl p-5 border">
-                  <h5 className="font-black text-sm">Payment Policy & Return Policy</h5>
-                  <div className="text-[12px] leading-6 mt-3 text-gray-700 space-y-3">
-                    <p><b>Deposit Policy:</b> Paying now or deposit USD {dep} enables us to plan your wonderful safari — Jeep, camp, park fees. You are rest assured.</p>
-                    <p><b>Payment Policy:</b> Balance 7 days before or cash on arrival. Secure via PayPal & M-Pesa to Account Name {paybillName}.</p>
-                    <p><b>Return / Refund Policy:</b> Full refund 14+ days before. 50% refund 7-13 days. No refund within 7 days — camps already paid.</p>
-                    <p><b className="text-red-600">Cancellation Cost:</b> Trip once booked, confirmed and processed will humbly attract cost upon cancellation to cover park fees & lodge commitments paid on your behalf.</p>
-                    <p><b>Our Promise:</b> If we cancel, 100% refund or free date change.</p>
-                  </div>
+                <button onClick={()=>setShowBooking(false)} className="w-9 h-9 bg-white/10 rounded-full shrink-0">x</button>
+              </div>
+              <div className="grid grid-cols-2 gap-3 mt-7">
+                <a href={paypalDep} target="_blank" rel="noreferrer" className="bg-[#F5B400] text-black py-4 rounded-full font-black text-center text-[13px]">PayPal Deposit ${dep}</a>
+                <a href={paypalFull} target="_blank" rel="noreferrer" className="bg-white text-black py-4 rounded-full font-black text-center text-[13px]">PayPal Full ${full}</a>
+              </div>
+              <div className="mt-4 bg-white/[0.06] border border-white/10 rounded-2xl p-4">
+                <p className="text-[11px] font-black tracking-widest text-white/40">M-PESA ACCOUNT NAME</p>
+                <p className="mt-2 text-[14px]">Paybill <b className="text-[#F5B400] text-lg">{paybillNo}</b> Acc <b>{paybillAcc}</b></p>
+                <p className="text-[13px]">Name: <b className="text-[#F5B400]">{paybillName}</b></p>
+              </div>
+            </div>
+            <div className="p-8 grid md:grid-cols-[1.1fr_0.9fr] gap-10">
+              <form onSubmit={(e)=>{e.preventDefault(); globalThis.alert("Booking sent"); setShowBooking(false);}} className="space-y-3">
+                <h4 className="font-black">Booking form</h4>
+                <input required placeholder="Full name" className="w-full border border-black/10 rounded-full px-5 py-3 text-sm" />
+                <input required type="email" placeholder="Email" className="w-full border border-black/10 rounded-full px-5 py-3 text-sm" />
+                <input required placeholder="WhatsApp number" className="w-full border border-black/10 rounded-full px-5 py-3 text-sm" />
+                <div className="grid grid-cols-2 gap-3">
+                  <input required type="date" className="w-full border border-black/10 rounded-full px-5 py-3 text-sm" />
+                  <input required type="number" min={1} placeholder="Guests" className="w-full border border-black/10 rounded-full px-5 py-3 text-sm" />
+                </div>
+                <button className="w-full bg-[#F66E0D] text-white py-4 rounded-full font-black text-sm mt-2">SEND BOOKING REQUEST</button>
+              </form>
+              <div className="bg-[#FAF7F2] rounded-2xl p-6 border border-black/5">
+                <h5 className="font-black text-sm">Payment and return</h5>
+                <div className="mt-3 text-[12px] leading-6 text-black/60 space-y-3">
+                  <p><b className="text-black">Deposit:</b> Paying deposit of ${dep} lets us book your 4x4 Land Cruiser and camp.</p>
+                  <p><b className="text-black">Payment:</b> Pay balance seven days before or cash on arrival.</p>
+                  <p><b className="text-black">Refund:</b> Full refund 14 days before. Half refund 7 to 13 days. No refund within 7 days because we already paid park and camp.</p>
+                  <p className="text-red-600"><b>Cancellation cost:</b> Once your trip is booked and confirmed, if you cancel there will be a small cost to cover park fees and lodge we already paid for you.</p>
                 </div>
               </div>
             </div>
           </div>
-        )}
-      </div>
-    )
-  }
-  return <div className="p-8">Package: {packageData.title}</div>
+        </div>
+      )}
+    </div>
+  )
 }
