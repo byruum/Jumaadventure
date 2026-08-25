@@ -9,8 +9,8 @@ export const Route = createFileRoute('/package/$id')({
 
 function PackagePage() {
   const { packageData } = Route.useLoaderData()
-  const [current][setCurrent] = useState(0);
-  const [showPay][setShowPay] = useState(false);
+  const [current, setCurrent] = useState(0);
+  const [showPay, setShowPay] = useState(false);
 
   useEffect(() => {
     if (!packageData?.gallery?.length) return;
@@ -32,22 +32,18 @@ function PackagePage() {
   if (isMara) {
     return (
       <div className="bg-[#FAF7F2] min-h-screen pb-28">
-        {/* HERO - EXACT SAME AS HOME jumaadventures.co.ke */}
         <div className="relative h-[84vh] bg-black overflow-hidden">
           {packageData.gallery.map((img: string, idx: number) => (
             <img key={idx} src={img} alt="" className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-[3000ms] ${idx===current?'opacity-100 scale-105':'opacity-0'}`} />
           ))}
           <div className="absolute inset-0 bg-black/60" />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-
-          {/* CENTERED 3-LINE LYRICS - SAME AS HOME HERO */}
           <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
             <p className="text-[#F5B400] font-black tracking-[0.35em] text-[11px] md:text-[13px]">MASAI MARA NATIONAL RESERVE</p>
             <h1 className="text-white font-black text-[38px] md:text-[68px] leading-[0.9] mt-4">Masai Mara Safari</h1>
             <p className="mt-5 bg-[#0B6A2B] text-white px-6 py-2 rounded-full text-[12px] md:text-[14px] font-bold">Kenya&apos;s most iconic wildlife destination</p>
             <button onClick={()=>setShowPay(true)} className="mt-8 bg-[#F66E0D] text-white px-8 py-3.5 rounded-full font-black text-sm">Pay Now — USD {full} • Deposit ${dep}</button>
           </div>
-
           <div className="absolute bottom-0 left-0 right-0 bg-black/40 border-t border-white/10 py-2 overflow-hidden">
             <p className="animate-marquee whitespace-nowrap text-white/50 text-[10px] tracking-[0.25em]">BIG FIVE • GREAT MIGRATION • BALLOON SAFARI • LIONS • ELEPHANTS • SUNSET GAME DRIVE • MASAI VILLAGE • </p>
           </div>
@@ -60,7 +56,6 @@ function PackagePage() {
               <p className="text-[14px] text-gray-600 mt-3 leading-6">{packageData.journey}</p>
               <div className="mt-6 flex flex-wrap gap-2">{packageData.highlights.map((h:string,i:number)=><span key={i} className="bg-[#FAF7F2] border text-[11px] font-bold px-3 py-1.5 rounded-full">✓ {h}</span>)}</div>
             </div>
-
             <div className="bg-white rounded-[20px] p-8 border shadow-sm mt-6">
               <h2 className="font-black text-xl">Detailed Itinerary</h2>
               <div className="mt-6 relative border-l-2 border-[#F5B400]/30 ml-3 pl-8 space-y-8">
@@ -75,13 +70,11 @@ function PackagePage() {
                 ))}
               </div>
             </div>
-
             <div className="grid grid-cols-2 gap-4 mt-6">
               <div className="bg-white rounded-xl p-4 border"><h4 className="font-bold text-green-700 text-sm">Included</h4><ul className="text-[12px] mt-2 space-y-1">{packageData.includes.map((x:string,i:number)=><li key={i}>✓ {x}</li>)}</ul></div>
               <div className="bg-white rounded-xl p-4 border"><h4 className="font-bold text-red-700 text-sm">Excluded</h4><ul className="text-[12px] mt-2 space-y-1">{packageData.excludes.map((x:string,i:number)=><li key={i}>✗ {x}</li>)}</ul></div>
             </div>
           </div>
-
           <div className="md:sticky md:top-24 h-fit">
             <div className="bg-white rounded-[20px] p-6 shadow-xl border">
               <p className="text-[10px] tracking-widest font-bold text-gray-400">FROM</p>
@@ -105,7 +98,6 @@ function PackagePage() {
             </div>
           </div>
         )}
-
         <style>{`@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}.animate-marquee{animation:marquee 20s linear infinite; padding-left:100%}`}</style>
       </div>
     )
@@ -117,7 +109,7 @@ function PackagePage() {
       <h1 className="text-3xl font-bold mb-2">{packageData.title}</h1>
       <p className="text-gray-600 mb-4">{packageData.subtitle}</p>
       <p className="whitespace-pre-line text-gray-700 mb-6">{packageData.journey}</p>
-      <div className="fixed bottom-0 left-0 right-0 bg-white shadow-lg p-4 flex justify-between items-center border-t z-30"><div><p className="text-sm text-gray-500">From</p><p className="text-2xl font-bold">USD {packageData.price}</p></div><button onClick={() => window.location.href='/contact'} className="bg-orange-500 text-white px-6 py-3 rounded-lg font-bold">Book Now</button></div>
+      <div className="fixed bottom-0 left-0 right-0 bg-white shadow-lg p-4 flex justify-between items-center border-t z-30"><div><p className="text-sm text-gray-500">From</p><p className="text-2xl font-bold">USD {packageData.price}</p></div><button onClick={() => globalThis.location.href='/contact'} className="bg-orange-500 text-white px-6 py-3 rounded-lg font-bold">Book Now</button></div>
     </div>
   );
 }
