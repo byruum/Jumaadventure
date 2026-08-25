@@ -11,8 +11,8 @@ type Day = { dayNum: number; title: string; details: string[]; meals?: string }
 
 function PackagePage() {
   const { packageData } = Route.useLoaderData()
-  const [current][setCurrent] = useState(0);
-  const [showBooking][setShowBooking] = useState(false);
+  const [current, setCurrent] = useState(0);
+  const [showBooking, setShowBooking] = useState(false);
   const itineraryRef = useRef<HTMLDivElement>(null);
 
   const fallbackMara = [
