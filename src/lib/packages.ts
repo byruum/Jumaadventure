@@ -5,6 +5,10 @@ export type Package = {
   from: string;
   days: number;
   price: string;
+  deposit?: string;
+  paypalEmail?: string;
+  paybillNo?: string;
+  paybillAcc?: string;
   duration?: string;
   route?: string;
   pace?: string;
@@ -25,7 +29,6 @@ export type Package = {
 const img = (name: string) => {
   if (!name) return "/og-image.png"
   if (name.startsWith("http")) return name
-  // Remove /Images/ prefix if present, always point to root where your working photos are
   const clean = name.replace(/^\//, "").replace(/^Images\//i, "")
   return `/${clean}`
 }
@@ -38,7 +41,17 @@ export const packages: Package[] = [
     from: "Masai Mara National Reserve",
     days: 3,
     price: "1500",
-        gallery: [img("/lake-nakuru-national-park-1.jpg")],
+    deposit: "500",
+    paypalEmail: "jumaadventuresandsafaris@gmail.com",
+    paybillNo: "PENDING",
+    paybillAcc: "MARAMARA",
+    gallery: [
+      img("masai-mara-1.jpg"),
+      img("masai-mara-2.jpg"),
+      img("masai-mara-balloon.jpg"),
+      img("masai-mara-lions.jpg"),
+      img("/lake-nakuru-national-park-1.jpg") // fallback you already have until upload
+    ],
     journey: "Explore the world-famous Masai Mara National Reserve, home to the Big Five and the spectacular Great Wildebeest Migration.",
     highlights: ["Big Five wildlife viewing", "Great Migration (seasonal)", "Unlimited game drives", "Professional safari guide", "Scenic savannah landscapes"],
     itinerary: [
@@ -255,10 +268,8 @@ export const packages: Package[] = [
 export const getPackage = (id: string) => {
   if (!id) return undefined
   const cleanId = id.trim().toLowerCase().replace(/_/g, "-")
-
   const direct = packages.find((p) => p.id.toLowerCase() === cleanId)
   if (direct) return direct
-
   const aliases: Record<string, string> = {
     "nairobi-culture-heritage-day": "nairobi-culture-day",
     "nairobi-culture-day-tour": "nairobi-culture-day",
