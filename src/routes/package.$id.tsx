@@ -1,5 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { getPackage } from "../lib/packages";
+import { getPackage, WHATSAPP_NUMBER } from "../lib/packages";
 import { useState, useEffect, useRef } from "react";
 
 export const Route = createFileRoute('/package/$id')({
@@ -9,17 +9,17 @@ export const Route = createFileRoute('/package/$id')({
 
 function PackagePage() {
   const { packageData } = Route.useLoaderData()
-  const [current, setCurrent] = useState(0);
-  const [daySlide, setDaySlide] = useState(0);
-  const [infoSlide, setInfoSlide] = useState(0);
-  const [showItinerary, setShowItinerary] = useState(false);
-  const [showBooking, setShowBooking] = useState(false);
-  const [sending, setSending] = useState(false);
-  const [sent, setSent] = useState(false);
+  const [current][setCurrent] = useState(0);
+  const [daySlide][setDaySlide] = useState(0);
+  const [infoSlide][setInfoSlide] = useState(0);
+  const [showItinerary][setShowItinerary] = useState(false);
+  const [showBooking][setShowBooking] = useState(false);
+  const [sending][setSending] = useState(false);
+  const [sent][setSent] = useState(false);
   const itineraryRef = useRef<HTMLDivElement>(null);
   const touchStart = useRef(0);
   const infoTouch = useRef(0);
-  const [form, setForm] = useState({ name:"", guests:"2 Persons", date:"", inquiry:"", email:"", whatsapp:"" });
+  const [form][setForm] = useState({ name:"", guests:"2 Persons", date:"", inquiry:"", email:"", whatsapp:"" });
 
   const fallback = [
     "https://images.unsplash.com/photo-1523805009345-7448845a9e53?q=80&w=1920",
@@ -50,7 +50,7 @@ function PackagePage() {
   }));
 
   const priceCategories = (packageData as any).priceCategories || [];
-  const cancellationPolicy = (packageData as any).cancellationPolicy || "Free cancellation up to 7 days. 50% refund 3-6 days. No refund within 48 hrs. Book with deposit.";
+  const cancellationPolicy = (packageData as any).cancellationPolicy || "Free cancellation up to 7 days. 50% refund 3-6 days. No refund within 48 hrs.";
 
   const infoCards = [
     { title: "What to Carry", text: packageData.whatToBring?.join(", ") || "Neutral colors, fleece, hat, binoculars, camera, power bank." },
@@ -77,40 +77,34 @@ function PackagePage() {
 
   return (
     <div className="bg-[#FAF7F2] min-h-screen pb-10">
-      {/* HERO - CLEANED */}
+      {/* HERO - FIXED DYNAMIC */}
       <div className="relative h-[88vh] bg-black overflow-hidden">
         {gallery.map((img: string, i: number) => (
           <img key={i} src={img} alt={packageData.title} className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-[2000ms] ${i===current?'opacity-100':'opacity-0'}`} />
         ))}
         <div className="absolute inset-0 bg-black/65" />
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
-          <p className="text-[#F5B400] font-bold tracking-[0.25em] text-[11px]">NAIROBI, KENYA • {packageData.duration}</p>
-
-          <h1 className="mt-3 text-white font-black leading-[0.95] text-[30px] md:text-[52px] max-w-[680px]">
-            Big 5 and Lake Nakuru Safari
-          </h1>
-
-          <p className="mt-3 text-[#F5B400] font-bold text-[16px] md:text-[20px]">Private 4 Days with Dennis Juma — 14 Years</p>
-
-          <div className="mt-5 bg-[#0B6A2B] px-5 py-2 rounded-full max-w-[90%]">
-            <p className="text-white font-bold text-[11px] leading-4">Private • Nairobi - Lake Nakuru - Lake Naivasha - Hells Gate - Nairobi</p>
+          <p className="text-[#F5B400] font-bold tracking-[0.25em] text-[11px]">{packageData.from.toUpperCase()} • {packageData.duration}</p>
+          <h1 className="mt-3 text-white font-black leading-[0.95] text-[30px] md:text-[52px] max-w-[720px]">{packageData.title}</h1>
+          <p className="mt-3 text-[#F5B400] font-bold text-[15px] md:text-[18px] max-w-[680px]">{packageData.subtitle}</p>
+          <div className="mt-4 bg-[#0B6A2B] px-5 py-2 rounded-full max-w-[90%]">
+            <p className="text-white font-bold text-[11px] leading-4">{packageData.route}</p>
           </div>
-
           <button onClick={()=>{ setShowItinerary(true); setTimeout(()=>itineraryRef.current?.scrollIntoView({behavior:'smooth'}),100); }} className="mt-6 w-[180px] bg-[#F66E0D] text-white py-3.5 rounded-[12px] font-black text-[13px] tracking-widest">EXPLORE</button>
           <button onClick={()=>setShowBooking(true)} className="mt-3 w-[300px] bg-white text-black py-3.5 rounded-full font-black text-[14px]">BOOK NOW — USD {full}</button>
-          <p className="mt-3 text-white/60 text-[10px]">Deposit ${dep} • Paybill {paybillNo}</p>
+          <p className="mt-3 text-white/60 text-[10px]">Deposit ${dep} • {packageData.paybillAcc} • {(packageData as any).rating || ""}</p>
         </div>
       </div>
 
       {priceCategories.length > 0 && (
         <div className="max-w-[1100px] mx-auto px-5 md:px-10 pt-6">
           <div className="bg-white rounded-[16px] border p-4">
-            <p className="font-black text-[11px] tracking-widest">PRICE BY GROUP SIZE</p>
+            <p className="font-black text-[11px] tracking-widest">PRICE BY GROUP SIZE • Your party size</p>
             <div className="mt-3 grid gap-2">
               {priceCategories.map((pc:any,i:number)=>(
                 <div key={i} className="flex justify-between bg-[#FAF7F2] rounded-full px-4 py-2.5 text-[12px]">
                   <span className="font-bold">{pc.pax}</span>
-                  <span className="font-black">${pc.perPerson || pc.price} pp</span>
+                  <span className="font-black">${pc.perPerson} pp {pc.total? `• total $${pc.total}` : ""} {pc.note? `• ${pc.note}` : ""}</span>
                 </div>
               ))}
             </div>
@@ -121,7 +115,7 @@ function PackagePage() {
       {showItinerary && (
         <div ref={itineraryRef} className="max-w-[1100px] mx-auto px-5 md:px-10 py-12">
           <div className="text-center">
-            <p className="text-[#0B6A2B] font-black tracking-[0.3em] text-[10px]">YOUR JOURNEY</p>
+            <p className="text-[#0B6A2B] font-black tracking-[0.3em] text-[10px]">YOUR {packageData.days} DAY JOURNEY</p>
             <h2 className="mt-2 text-[26px] md:text-[36px] font-black">Day by day</h2>
           </div>
           <div className="mt-6 rounded-[20px] bg-white border overflow-hidden" onTouchStart={e=>touchStart.current=e.touches[0].clientX} onTouchEnd={e=>{ const d=touchStart.current-e.changedTouches[0].clientX; if(d>50)setDaySlide(p=>Math.min(days.length-1,p+1)); if(d<-50)setDaySlide(p=>Math.max(0,p-1)); }}>
@@ -173,13 +167,13 @@ function PackagePage() {
                   </div>
                   <div className="mt-3 bg-[#FAF7F2] border rounded-xl p-3 text-[11px]"><p className="font-black">Cancellation</p><p className="text-black/60 mt-1">{cancellationPolicy}</p></div>
                   <div className="mt-3 bg-black rounded-xl p-4 text-white flex justify-between items-center">
-                    <p className="text-[12px] font-bold">Dennis J. • 5.0 ★ • 14 tours</p>
-                    <a href="https://wa.me/254792639221" target="_blank" className="bg-[#25D366] text-black px-4 py-2 rounded-full font-black text-[11px]">WhatsApp</a>
+                    <div><p className="text-[12px] font-bold">Juma Adventures. • Business Account</p><p className="text-[10px] text-white/50">+254 746 011254 • 06:00-18:00 • Open now</p></div>
+                    <a href={`https://wa.me/${WHATSAPP_NUMBER}`} target="_blank" className="bg-[#25D366] text-black px-4 py-2 rounded-full font-black text-[11px]">WhatsApp</a>
                   </div>
                 </div>
               </>
             ) : (
-              <div className="p-8 text-center"><div className="w-12 h-12 bg-[#0B6A2B] text-white rounded-full flex items-center justify-center mx-auto font-black">✓</div><h3 className="mt-4 text-[18px] font-black">Booking received</h3><p className="mt-2 text-[13px] text-black/60">Thank you {form.name}. We'll reply shortly.</p><button onClick={()=>setShowBooking(false)} className="mt-4 bg-black text-white px-6 py-2 rounded-full font-black text-[12px]">Close</button></div>
+              <div className="p-8 text-center"><div className="w-12 h-12 bg-[#0B6A2B] text-white rounded-full flex items-center justify-center mx-auto font-black">✓</div><h3 className="mt-4 text-[18px] font-black">Booking received</h3><p className="mt-2 text-[13px] text-black/60">Thank you {form.name}. We'll reply shortly on WhatsApp Business.</p><button onClick={()=>setShowBooking(false)} className="mt-4 bg-black text-white px-6 py-2 rounded-full font-black text-[12px]">Close</button></div>
             )}
           </div>
         </div>
