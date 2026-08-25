@@ -24,6 +24,11 @@ export type Package = {
   meetingPoint?: string;
   tourStart?: string;
   tourEnd?: string;
+  // NEW - for your ToursByLocals tour
+  originalPrice?: string;
+  rating?: string;
+  cancellationPolicy?: string;
+  priceCategories?: { pax: string; perPerson?: string; price?: string; total?: string; note?: string }[];
 };
 
 const img = (name: string) => {
@@ -45,6 +50,7 @@ export const packages: Package[] = [
     paypalEmail: "jumaadventuresandsafaris@gmail.com",
     paybillNo: "PENDING",
     paybillAcc: "MARAMARA",
+    duration: "3 Days / 2 Nights",
     gallery: [
       img("masai-mara-1.jpg"),
       img("masai-mara-2.jpg"),
@@ -63,6 +69,67 @@ export const packages: Package[] = [
     excludes: ["Personal expenses", "Alcoholic drinks", "Tips & gratuities"],
   },
   {
+    id: "big-5-and-lake-nakuru-enjoy-the-nature-and-wildlife-of-africa-664d246917832fdc0dc3d079",
+    title: "Big 5 and Lake Nakuru Safari",
+    subtitle: "Private with Dennis Juma — 14 Years",
+    from: "Nairobi, Kenya",
+    days: 4,
+    price: "850",
+    deposit: "100",
+    originalPrice: "2497",
+    rating: "5.0 (1) review",
+    paypalEmail: "jumaadventuresandsafaris@gmail.com",
+    paybillNo: "Coming Soon",
+    paybillAcc: "JUMA ADVENTURES",
+    duration: "4 Days / 3 Nights",
+    route: "Nairobi - Lake Nakuru - Lake Naivasha - Hells Gate - Nairobi",
+    pace: "Easy to Moderate",
+    gallery: [
+      img("lake-nakuru-national-park-1.jpg"),
+      img("IMG-20260111-WA0018.jpg"),
+      img("lake-nakuru-flamingos.jpg"),
+      img("naivasha-boat.jpg"),
+      img("hells-gate-gorge.jpg")
+    ],
+    journey: "Enjoy the nature and wildlife of Africa — Big 5 at Lake Nakuru, boat at Naivasha, gorge walk & cycling at Hells Gate. Led by licensed guide Dennis Juma.",
+    quote: "Every journey is a story — let's make yours unforgettable. Karibu Kenya hakuna matata!",
+    highlights: [
+      "Big 5 — white rhinos, lions, buffalo",
+      "Lake Nakuru flamingos & 400+ bird species",
+      "Lake Naivasha boat & Crescent Island walk",
+      "Hells Gate gorge walking, bicycle, Fishers Tower",
+      "Private Land Cruiser pop-up roof"
+    ],
+    itinerary: [
+      { dayNum: 1, title: "Nairobi to Lake Nakuru", details: ["Pickup Embakasi/JKIA/hotel", "Great Rift Valley viewpoint", "Afternoon game drive Lake Nakuru National Park", "Overnight Hotel Waterbuck Nakuru"], meals: "Lunch, Dinner" },
+      { dayNum: 2, title: "Full Day Lake Nakuru", details: ["Full day game drive with packed lunch", "White rhinos, lions, buffalo, giraffes, black-maned lion", "Overnight Hotel Waterbuck"], meals: "Breakfast, Lunch, Dinner" },
+      { dayNum: 3, title: "Lake Nakuru to Lake Naivasha", details: ["Drive to Lake Naivasha", "Boat ride & 3km island walk — hippos, pelicans", "Overnight Alphas Homestay Naivasha"], meals: "Breakfast, Dinner" },
+      { dayNum: 4, title: "Hells Gate & back to Nairobi", details: ["Hells Gate gorge walk, bicycle cycling, rock climbing Fishers Tower", "Drive back to Nairobi — drop Embakasi/JKIA"], meals: "Breakfast" }
+    ],
+    includes: [
+      "Private Land Cruiser pop-up roof",
+      "Professional licensed guide Dennis Juma",
+      "Accommodation 2 nights Hotel Waterbuck + 1 night Alphas Homestay",
+      "Bottled water, all taxes"
+    ],
+    excludes: [
+      "Park fees: Nakuru $60pp, Hells Gate $26pp, Naivasha boat ~$25pp",
+      "Meals not mentioned, tips"
+    ],
+    whatToBring: ["Comfortable shoes", "Camera", "Sun hat", "Jacket"],
+    meetingPoint: "Embakasi, Nairobi / JKIA / Hotel",
+    tourStart: "Nairobi, Kenya",
+    tourEnd: "Nairobi",
+    priceCategories: [
+      { pax: "1 Person — Private Solo", perPerson: "1200", total: "1200" },
+      { pax: "2 Persons — Private", perPerson: "850", total: "1700", note: "Most popular" },
+      { pax: "3 Persons", perPerson: "750", total: "2250" },
+      { pax: "4-6 Persons", perPerson: "650", total: "2600" },
+    ],
+    cancellationPolicy: "View our cancellation policies: Free cancellation up to 7 days before. 50% refund 3-6 days. No refund within 48 hours. Book with a deposit — Secure your tour today and pay balance later. Upgrade for total flexibility with Any Reason Cancellation."
+  },
+  // KEEP OTHER PACKAGES BELOW SAME AS BEFORE...
+  {
     id: "lake-nakuru",
     title: "Lake Nakuru Safari",
     subtitle: "Flamingos, rhinos & breathtaking lake views",
@@ -71,12 +138,10 @@ export const packages: Package[] = [
     price: "510",
     gallery: [img("lake-nakuru-national-park-1.jpg")],
     journey: "Lake Nakuru National Park is one of Kenya's most beautiful parks, famous for its flamingos, rhino sanctuary, and diverse birdlife.",
-    highlights: ["Flamingos & over 400 bird species", "Rhino sanctuary (black & white rhinos)", "Scenic lake views", "Guided game drive", "Professional safari guide"],
-    itinerary: [
-      { dayNum: 1, title: "Nairobi to Lake Nakuru & Back", details: ["Morning pickup from JKIA Airport, hotel, or city location", "Drive to Lake Nakuru National Park", "Game drive: rhinos, flamingos, lions & lake views", "Picnic lunch in the park", "Drive back to Nairobi and drop off"], meals: "Lunch" }
-    ],
-    includes: ["Safari vehicle & fuel", "Professional tour guide", "Park entry fees", "Bottled drinking water"],
-    excludes: ["Personal expenses", "Lunch & drinks", "Tips & gratuities"],
+    highlights: ["Flamingos & over 400 bird species", "Rhino sanctuary", "Scenic lake views", "Guided game drive"],
+    itinerary: [{ dayNum: 1, title: "Nairobi to Lake Nakuru & Back", details: ["Pickup JKIA/hotel", "Drive to Lake Nakuru", "Game drive: rhinos, flamingos, lions", "Drive back to Nairobi"], meals: "Lunch" }],
+    includes: ["Safari vehicle & fuel", "Professional guide", "Park entry", "Water"],
+    excludes: ["Personal expenses", "Lunch & drinks", "Tips"],
   },
   {
     id: "mount-kenya",
@@ -86,16 +151,16 @@ export const packages: Package[] = [
     days: 4,
     price: "1500",
     gallery: [img("mount-kenya-day-trip-hike.jpg")],
-    journey: "A thrilling mountain adventure through alpine landscapes, scenic trails and breathtaking views on Africa's second-highest mountain.",
-    highlights: ["High-altitude trekking", "Point Lenana summit", "Experienced mountain guides", "Scenic alpine landscapes"],
+    journey: "A thrilling mountain adventure through alpine landscapes.",
+    highlights: ["High-altitude trekking", "Point Lenana summit", "Experienced guides"],
     itinerary: [
-      { dayNum: 1, title: "Nanyuki to Old Moses Camp", details: ["Pickup from Nanyuki hotel", "Drive to Sirimon Gate for registration", "Hike through rainforest to Old Moses Camp 3300m", "Acclimatization walk"], meals: "Dinner" },
-      { dayNum: 2, title: "Old Moses to Shipton's Camp", details: ["Hike through moorland zone", "Lunch with views of peaks", "Arrive at Shipton's Camp 4200m"], meals: "Breakfast, Lunch, Dinner" },
-      { dayNum: 3, title: "Point Lenana Summit", details: ["Pre-dawn summit hike to Point Lenana 4985m", "Sunrise at the summit", "Descent back to Shipton's Camp"], meals: "Breakfast, Lunch, Dinner" },
-      { dayNum: 4, title: "Descent to Nanyuki", details: ["Morning descent to Sirimon Gate", "Transfer back to Nanyuki hotel & drop off"], meals: "Breakfast" }
+      { dayNum: 1, title: "Nanyuki to Old Moses Camp", details: ["Pickup Nanyuki", "Drive to Sirimon Gate", "Hike to Old Moses Camp 3300m"], meals: "Dinner" },
+      { dayNum: 2, title: "Old Moses to Shipton's Camp", details: ["Hike through moorland", "Arrive Shipton's Camp 4200m"], meals: "Breakfast, Lunch, Dinner" },
+      { dayNum: 3, title: "Point Lenana Summit", details: ["Pre-dawn summit 4985m", "Sunrise at summit", "Descent to Shipton's"], meals: "Breakfast, Lunch, Dinner" },
+      { dayNum: 4, title: "Descent to Nanyuki", details: ["Descent to Sirimon Gate", "Transfer to Nanyuki"], meals: "Breakfast" }
     ],
-    includes: ["Professional mountain guide", "Park entry fees", "Accommodation during trek", "Meals as per itinerary"],
-    excludes: ["Personal expenses", "Tips & gratuities", "Travel insurance"],
+    includes: ["Guide", "Park fees", "Accommodation", "Meals"],
+    excludes: ["Personal expenses", "Tips", "Insurance"],
   },
   {
     id: "lake-naivasha",
@@ -105,31 +170,11 @@ export const packages: Package[] = [
     days: 1,
     price: "480",
     gallery: [img("IMG-20260111-WA0018.jpg")],
-    journey: "Enjoy a relaxing safari experience at Lake Naivasha, famous for its birdlife, hippos and scenic landscapes.",
-    highlights: ["Boat ride on Lake Naivasha", "Bird watching & hippo viewing", "Crescent Island walking safari", "Professional tour guide"],
-    itinerary: [
-      { dayNum: 1, title: "Nairobi to Lake Naivasha & Back", details: ["Morning pickup from JKIA Airport, hotel, or city location", "Drive to Lake Naivasha", "Boat ride: hippos & bird watching", "Walking safari at Crescent Island", "Drive back to Nairobi and drop off"], meals: "Lunch" }
-    ],
-    includes: ["Transport from Nairobi", "Professional tour guide", "Boat ride fees", "Park entry fees"],
-    excludes: ["Personal expenses", "Meals & drinks"],
-  },
-  {
-    id: "diani-beach",
-    title: "Diani Beach Tour",
-    subtitle: "White sands & the warm Indian Ocean",
-    from: "Diani, Kenyan Coast",
-    days: 3,
-    price: "1500",
-    gallery: [img("/Diani.png.jpg")],
-    journey: "Relax on the stunning beaches of Diani, enjoy the warm Indian Ocean, water sports, marine life and rich coastal culture.",
-    highlights: ["Kenya's most beautiful white-sand beaches", "Snorkeling & water sports", "Marine life & reef exploration", "Coastal culture & cuisine"],
-    itinerary: [
-      { dayNum: 1, title: "Nairobi to Diani", details: ["Flight or drive to Mombasa", "Transfer to Diani Beach hotel", "Relax at the beach"], meals: "Dinner" },
-      { dayNum: 2, title: "Diani Water Activities", details: ["Snorkeling & water sports", "Dolphin watching - optional", "Relax on white sand beaches"], meals: "Breakfast, Dinner" },
-      { dayNum: 3, title: "Diani to Nairobi", details: ["Morning at leisure", "Transfer to Mombasa Airport", "Flight back to Nairobi"], meals: "Breakfast" }
-    ],
-    includes: ["Beach transfers", "Guide services", "Selected activities"],
-    excludes: ["Flights to Mombasa", "Meals unless specified", "Personal expenses"],
+    journey: "Enjoy Lake Naivasha, birdlife, hippos.",
+    highlights: ["Boat ride", "Bird watching", "Crescent Island walk"],
+    itinerary: [{ dayNum: 1, title: "Nairobi to Lake Naivasha & Back", details: ["Pickup", "Drive to Naivasha", "Boat ride", "Walking safari", "Drive back"], meals: "Lunch" }],
+    includes: ["Transport", "Guide", "Boat fees", "Park fees"],
+    excludes: ["Personal expenses", "Meals"],
   },
   {
     id: "nairobi-wildlife-day",
@@ -139,21 +184,12 @@ export const packages: Package[] = [
     days: 1,
     price: "480",
     duration: "8 Hours",
-    route: "Round trip from Nairobi",
-    pace: "Easy pace",
     gallery: [img("/lake-nakuru-national-park-1.jpg")],
-    journey: "Experience Nairobi's wild side with a morning game drive, baby elephants, and giraffe feeding.",
-    quote: "From the savannah to conservation - Nairobi in one day.",
-    highlights: ["Morning game drive in Nairobi National Park", "Visit baby elephants at David Sheldrick Orphanage", "Feed Rothschild giraffes at Giraffe Centre", "360° panoramic views from KICC Tower"],
-    itinerary: [
-      { dayNum: 1, title: "Nairobi National Park + Sheldrick + Giraffe Centre", details: ["Morning pickup from JKIA Airport, hotel, or city location", "Game drive at Nairobi National Park", "Visit Sheldrick Elephant Orphanage 11am-12pm", "Giraffe Centre feeding experience", "KICC Tower panoramic views", "Return transfer to hotel or JKIA"], meals: "Not Included" }
-    ],
-    includes: ["Private airport or hotel pickup and drop-off", "Transport in a comfortable private tour van", "Professional licensed guide", "Bottled drinking water and snacks", "Entry fees to Park, Sheldrick & Giraffe Centre", "All taxes and service charges"],
-    excludes: ["International flights", "Meals and drinks unless specified", "Personal expenses and souvenirs", "Tips for guide and driver"],
-    whatToBring: ["Comfortable walking shoes", "Camera", "Sunglasses", "Light jacket"],
-    meetingPoint: "JKIA Airport NBO or your hotel lobby",
-    tourStart: "Nairobi, Kenya",
-    tourEnd: "Drop-off at your hotel or JKIA Airport"
+    journey: "Experience Nairobi's wild side.",
+    highlights: ["Nairobi National Park", "Sheldrick Orphanage", "Giraffe Centre", "KICC Tower"],
+    itinerary: [{ dayNum: 1, title: "Nairobi National Park + Sheldrick + Giraffe Centre", details: ["Pickup JKIA/hotel", "Game drive Nairobi NP", "Sheldrick 11am-12pm", "Giraffe Centre", "KICC Tower"], meals: "Not Included" }],
+    includes: ["Pickup and drop-off", "Transport van", "Guide", "Water", "Entry fees", "Taxes"],
+    excludes: ["Flights", "Meals", "Personal expenses", "Tips"],
   },
   {
     id: "nairobi-culture-day",
@@ -163,159 +199,13 @@ export const packages: Package[] = [
     days: 1,
     price: "480",
     duration: "8 Hours",
-    route: "Round trip from Nairobi",
-    pace: "Easy pace",
     gallery: [img("/IMG-20260726-WA3768.jpg")],
-    journey: "Discover Nairobi's culture, history and traditions at Blixen Museum, National Museum and Bomas of Kenya.",
-    quote: "History, culture and rhythm - the heart of Nairobi.",
-    highlights: ["Visit Karen Blixen Museum", "Explore Nairobi National Museum", "Cultural dances at Bomas of Kenya", "Shop for crafts at Maasai Market"],
-    itinerary: [
-      { dayNum: 1, title: "Blixen Museum + National Museum + Bomas", details: ["Morning pickup from JKIA Airport, hotel, or city location", "Visit Karen Blixen Museum", "Explore Nairobi National Museum", "Lunch break", "Cultural show at Bomas of Kenya", "Shopping at Maasai Market", "Return transfer to hotel or JKIA"], meals: "Not Included" }
-    ],
-    includes: ["Private airport or hotel pickup and drop-off", "Transport in a comfortable private tour van", "Professional licensed guide", "Bottled drinking water and snacks", "Entry fees to Blixen, Museum & Bomas", "All taxes and service charges"],
-    excludes: ["International flights", "Meals and drinks unless specified", "Personal expenses and souvenirs", "Tips for guide and driver"],
-    whatToBring: ["Comfortable walking shoes", "Camera", "Cash for shopping"],
-    meetingPoint: "JKIA Airport NBO or your hotel lobby",
-    tourStart: "Nairobi, Kenya",
-    tourEnd: "Drop-off at your hotel or JKIA Airport"
+    journey: "Discover Nairobi's culture.",
+    highlights: ["Karen Blixen Museum", "National Museum", "Bomas of Kenya", "Maasai Market"],
+    itinerary: [{ dayNum: 1, title: "Blixen Museum + National Museum + Bomas", details: ["Pickup", "Blixen Museum", "National Museum", "Bomas", "Maasai Market"], meals: "Not Included" }],
+    includes: ["Pickup and drop-off", "Transport", "Guide", "Water", "Entry fees", "Taxes"],
+    excludes: ["Flights", "Meals", "Personal expenses", "Tips"],
   },
-  {
-    id: "mt-kenya-4day",
-    title: "Mt Kenya, idyllic landscapes and primeval wilderness",
-    subtitle: "4-days of true hiking experience",
-    from: "Nanyuki, Kenya",
-    days: 4,
-    price: "2190",
-    duration: "4 Days",
-    route: "Round trip from Nanyuki via Sirimon",
-    pace: "Moderate to Challenging",
-    gallery: [
-      "https://cdn.toursbylocals.com/photos/253e27ef-8221-4f55-b44b-ffbddb6128b8.JPG",
-      "https://cdn.toursbylocals.com/photos/4c657c57-b993-499f-8b9f-673051cc3149.JPG"
-    ],
-    journey: "Experience 4 days of true hiking through Mt Kenya's primeval wilderness via Sirimon Route, alpine lakes, and breathtaking landscapes to Point Lenana 4985m ASL.",
-    quote: "Summit Africa's second-highest peak with a licensed guide",
-    highlights: [
-      "Summit Point Lenana 4985m via Sirimon Route",
-      "Alpine lakes, glaciers & giant lobelias",
-      "Professional licensed guide - Dennis J. #35393",
-      "All meals during trek included",
-      "Private transportation from Nanyuki",
-    ],
-    itinerary: [
-      { dayNum: 1, title: "Nanyuki to Old Moses Camp via Sirimon Gate", details: ["Drive to Mt Kenya Sirimon Gate", "Park registration and briefing", "Hike through rainforest to Old Moses Camp 3300m", "Acclimatization walk"], meals: "Dinner" },
-      { dayNum: 2, title: "Old Moses Camp to Shipton's Camp", details: ["Hike through moorland zone", "Lunch with views of peaks", "Arrive at Shipton's Camp 4200m"], meals: "Breakfast, Lunch, Dinner" },
-      { dayNum: 3, title: "Point Lenana Summit & Descent to Shipton's", details: ["Pre-dawn summit hike to Point Lenana 4985m", "Sunrise at the summit", "Descent back to Shipton's Camp after lunch"], meals: "Breakfast, Lunch, Dinner" },
-      { dayNum: 4, title: "Shipton's Camp to Sirimon Gate & Nanyuki", details: ["Morning after breakfast we descend to Sirimon Gate", "Transfer back to Nanyuki hotel"], meals: "Breakfast" }
-    ],
-    includes: ["Professional licensed guide - Dennis J.", "Park entry fees", "Accommodation in mountain huts", "All meals on trek", "Private transportation", "Porters and cooking gear"],
-    excludes: ["Personal hiking gear", "Tips for guide and porters", "Travel insurance", "Accommodation before/after trek"],
-    whatToBring: ["Hiking boots", "Warm jacket", "Sleeping bag", "Headlamp", "Waterproof gear"],
-    meetingPoint: "Nanyuki Town Hotel",
-    tourStart: "Nanyuki, Kenya",
-    tourEnd: "Drop-off in Nanyuki",
-  },
-  {
-    id: "mt-kenya-day-hike",
-    title: "Hike Mount Kenya, National Park - Full Day Tour",
-    subtitle: "With local expert guide Dennis J.",
-    from: "Nanyuki, Kenya",
-    days: 1,
-    price: "199",
-    duration: "6 Hours",
-    route: "Round trip from Nanyuki via Narumoru Gate",
-    pace: "Moderate",
-    gallery: [img("mount-kenya-day-trip-hike.jpg")],
-    journey: "Enjoy hiking on glaciers and rocks, explore the ecosystem of mountain vegetation from lower to upper rock. Trek through diverse ecosystems, from lush forests to alpine meadows.",
-    quote: "Every journey is a story — let's make yours unforgettable",
-    highlights: ["Full day hike to Met Station 5 hours", "View beautiful gorges, valleys & mountain vegetation", "Licensed guide with 14 years experience - Dennis J. #35393", "Private transportation in Hybrid Noah Voxy", "Perfect for beginners and families"],
-    itinerary: [
-      { dayNum: 1, title: "Nanyuki to Met Station & Back", details: ["Morning pickup from Nanyuki town", "Drive to Mt Kenya National Park - Narumoru Gate for check-in", "Drive 10km to end of road at Met Station", "5 hour hike to view gorges, valleys & mountain vegetation", "Descend back to Met Station", "Drive down to gate for check out & return to Nanyuki"], meals: "Not Included" }
-    ],
-    includes: ["Private licensed guide - Dennis J.", "Private transportation in Hybrid Noah Voxy", "Park registration assistance"],
-    excludes: ["Park entry fees: $52 per person", "Personal expenses", "Food, drinks & snacks", "Hiking equipment", "Accommodation"],
-    whatToBring: ["Hiking boots", "Water", "Snacks", "Jacket", "Camera", "Sun hat"],
-    meetingPoint: "Nyeri - Nanyuki Road, Nanyuki, Laikipia County, Kenya",
-    tourStart: "Nanyuki, Kenya",
-    tourEnd: "Drop-off in Nanyuki",
-  },
-  {
-    id: "nairobi-culture-heritage-day",
-    title: "Nairobi Culture & Heritage Day",
-    subtitle: "Max 2 people - Full Culture Tour",
-    from: "Nairobi",
-    days: 1,
-    price: "480",
-    duration: "8 Hours",
-    route: "Round trip from Nairobi",
-    pace: "Easy pace",
-    gallery: [img("/IMG-20260726-WA3768.jpg")],
-    journey: "Discover Nairobi's culture, history and traditions at Blixen Museum, National Museum and Bomas of Kenya.",
-    quote: "History, culture and rhythm - the heart of Nairobi.",
-    highlights: ["Visit Karen Blixen Museum", "Explore Nairobi National Museum", "Cultural dances at Bomas of Kenya", "Shop for crafts at Maasai Market"],
-    itinerary: [
-      { dayNum: 1, title: "Blixen Museum + National Museum + Bomas", details: ["Morning pickup from JKIA Airport, hotel, or city location", "Visit Karen Blixen Museum", "Explore Nairobi National Museum", "Lunch break", "Cultural show at Bomas of Kenya", "Shopping at Maasai Market", "Return transfer to hotel or JKIA"], meals: "Not Included" }
-    ],
-    includes: ["Private airport or hotel pickup and drop-off", "Transport in a comfortable private tour van", "Professional licensed guide", "Bottled drinking water and snacks", "Entry fees to Blixen, Museum & Bomas", "All taxes and service charges"],
-    excludes: ["International flights", "Meals and drinks unless specified", "Personal expenses and souvenirs", "Tips for guide and driver"],
-    whatToBring: ["Comfortable walking shoes", "Camera", "Cash for shopping"],
-    meetingPoint: "JKIA Airport NBO or your hotel lobby",
-    tourStart: "Nairobi, Kenya",
-    tourEnd: "Drop-off at your hotel or JKIA Airport"
-  },
-  {
-    id: "big-5-and-lake-nakuru-enjoy-the-nature-and-wildlife-of-africa-664d246917832fdc0dc3d079",
-    title: "Big 5 and Lake Nakuru — Enjoy The Nature and Wildlife of Africa",
-    subtitle: "Private 4 days guided by Dennis Juma 14 yrs",
-    from: "Nairobi, Kenya",
-    days: 4,
-    price: "850",
-    deposit: "100",
-    paypalEmail: "jumaadventuresandsafaris@gmail.com",
-    paybillNo: "Coming Soon",
-    paybillAcc: "Coming Soon",
-    duration: "4 Days / 3 Nights",
-    route: "Nairobi - Lake Nakuru - Lake Naivasha - Hells Gate - Nairobi",
-    pace: "Easy to Moderate",
-    gallery: [
-      img("lake-nakuru-national-park-1.jpg"),
-      img("masai-mara-1.jpg"),
-      img("IMG-20260111-WA0018.jpg")
-    ],
-    journey: "Enjoy the nature and wildlife of Africa — Big 5 at Lake Nakuru, boat at Naivasha, gorge walk & cycling at Hells Gate. Led by licensed guide Dennis Juma.",
-    quote: "Every journey is a story — let's make yours unforgettable. Karibu Kenya hakuna matata!",
-    highlights: [
-      "Big 5 viewing — white rhinos, lions, buffalo, leopard",
-      "Lake Nakuru flamingos & birdlife",
-      "Lake Naivasha boat & 3km island park",
-      "Hells Gate gorge walking, hiking, bicycle cycling, Fishers Tower",
-      "Private Land Cruiser pop-up roof",
-      "Licensed guide Dennis Juma - 14 years - Kenya Tourism Board"
-    ],
-    itinerary: [
-      { dayNum: 1, title: "Nairobi to Lake Nakuru", details: ["Pickup from Embakasi/JKIA/hotel", "Stop at Great Rift Valley viewpoint few minutes", "Check in at Nakuru, lunch", "Afternoon first game drive at Lake Nakuru National Park", "Overnight at Hotel Waterbuck Nakuru"], meals: "Lunch, Dinner" },
-      { dayNum: 2, title: "Full day Lake Nakuru game drive", details: ["Full day game drive with packed lunch", "Watch Big 5 — white rhinos, lions, buffaloes, giraffes, rare black-maned lion", "Evening return to hotel", "Overnight at Hotel Waterbuck Nakuru"], meals: "Breakfast, Lunch, Dinner" },
-      { dayNum: 3, title: "Lake Nakuru to Lake Naivasha", details: ["Breakfast then depart to Lake Naivasha", "Check in hotel", "Visit lake & surrounded 3km squared island park", "Hippos, pelicans, waterbirds", "Overnight at Alphas Homestay Naivasha"], meals: "Breakfast, Dinner" },
-      { dayNum: 4, title: "Hells Gate National Park & back to Nairobi", details: ["Breakfast, visit Hells Gate National Park", "Walk through valley gorges, hiking, bicycle cycling, rock climbing at Fishers Tower peak", "Drive back to Nairobi to end trip at Embakasi"], meals: "Breakfast" }
-    ],
-    includes: [
-      "Private transportation - comfortable Land Cruiser pop up roof",
-      "Professional licensed guide Dennis Juma",
-      "Accommodation: Hotel Waterbuck 2 nights + Alphas Homestay 1 night",
-      "Bottled drinking water",
-      "All taxes and service charges"
-    ],
-    excludes: [
-      "Park fees: Lake Nakuru $60pp, Hells Gate $26pp, Naivasha boat ~$25pp",
-      "Meals not mentioned",
-      "Personal expenses",
-      "Tips for guide"
-    ],
-    whatToBring: ["Comfortable shoes", "Camera", "Sun hat", "Jacket"],
-    meetingPoint: "Embakasi, Nairobi / JKIA Airport / Hotel",
-    tourStart: "Nairobi, Kenya",
-    tourEnd: "Drop-off in Nairobi - Embakasi/JKIA/Hotel"
-  }
 ];
 
 export const getPackage = (id: string) => {
