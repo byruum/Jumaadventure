@@ -18,12 +18,12 @@ export const Route = createFileRoute('/package/$id')({
 
 function PackagePage() {
   const { packageData } = Route.useLoaderData()
-  const [current][setCurrent] = useState(0);
-  const [showPay][setShowPay] = useState(false);
+  const [current, setCurrent] = useState(0);
+  const [showPay, setShowPay] = useState(false);
 
   useEffect(() => {
     if (!packageData?.gallery?.length) return;
-    const id = setInterval(() => setCurrent(p => (p+1) % packageData.gallery.length), 3500);
+    const id = setInterval(() => setCurrent((p) => (p + 1) % packageData.gallery.length), 3500);
     return () => clearInterval(id);
   }, [packageData]);
 
