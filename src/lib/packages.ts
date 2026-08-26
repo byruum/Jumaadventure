@@ -20,14 +20,11 @@ export type Package = {
   includes: string[];
   excludes: string[];
   whatToBring?: string[];
-  knowBefore?: string[];
   meetingPoint?: string;
   tourStart?: string;
   tourEnd?: string;
-  originalPrice?: string;
-  rating?: string;
   cancellationPolicy?: string;
-  priceCategories?: { pax: string; perPerson?: string; price?: string; total?: string; note?: string }[];
+  priceCategories?: any[];
 };
 
 const img = (name: string) => {
@@ -43,151 +40,92 @@ export const WHATSAPP_DISPLAY = "+254 746 011254"
 export const packages: Package[] = [
   {
     id: "masai-mara",
-    title: "Masai Mara Safari",
-    subtitle: "Kenya's most iconic wildlife destination",
+    title: "4 Days / 3 Nights Masai Mara Safari",
+    subtitle: "Accommodation: Sentrim Mara Lodge • Private",
     from: "Masai Mara National Reserve",
-    days: 3,
-    price: "1500",
-    deposit: "500",
-    paypalEmail: "jumaadventuresandsafaris@gmail.com",
-    paybillNo: "PENDING",
-    paybillAcc: "MARAMARA",
-    duration: "3 Days / 2 Nights",
-    route: "Nairobi - Masai Mara - Nairobi",
-    gallery: [img("masai-mara-1.jpg"), img("masai-mara-2.jpg"), img("masai-mara-balloon.jpg"), img("masai-mara-lions.jpg")],
-    journey: "Explore the world-famous Masai Mara National Reserve, home to the Big Five and the Great Migration.",
-    highlights: ["Big Five viewing", "Great Migration (seasonal)", "Unlimited game drives", "Professional guide"],
-    itinerary: [
-      { dayNum: 1, title: "Nairobi to Masai Mara", details: ["Pickup JKIA/hotel", "Drive to Mara with game en-route", "Afternoon game drive", "Check-in camp"], meals: "Lunch, Dinner" },
-      { dayNum: 2, title: "Full Day Game Drives", details: ["Early morning game drive", "Optional Masai Village", "Afternoon game drive"], meals: "Breakfast, Lunch, Dinner" },
-      { dayNum: 3, title: "Mara to Nairobi", details: ["Final morning drive", "Drive back to Nairobi"], meals: "Breakfast, Lunch" }
-    ],
-    includes: ["Safari vehicle & fuel", "Professional guide", "Park entry fees", "Accommodation", "Water"],
-    excludes: ["Personal expenses", "Alcoholic drinks", "Tips"],
-  },
-  {
-    id: "big-5-and-lake-nakuru-enjoy-the-nature-and-wildlife-of-africa-664d246917832fdc0dc3d079",
-    title: "Big 5 and Lake Nakuru Safari",
-    subtitle: "Private 4 Days with Dennis Juma — 14 Years",
-    from: "Nairobi, Kenya",
     days: 4,
-    price: "850",
-    deposit: "100",
-    originalPrice: "2497",
-    rating: "5.0 (1) review • 14 tours delivered",
+    price: "4950",
+    deposit: "500",
     paypalEmail: "jumaadventuresandsafaris@gmail.com",
     paybillNo: "Coming Soon",
     paybillAcc: "JUMA ADVENTURES",
     duration: "4 Days / 3 Nights",
-    route: "Nairobi - Lake Nakuru - Lake Naivasha - Hells Gate - Nairobi",
-    pace: "Easy to Moderate",
-    gallery: [
-      img("lake-nakuru-national-park-1.jpg"),
-      img("IMG-20260111-WA0018.jpg"),
-      img("IMG-20260726-WA3768.jpg"),
-      img("masai-mara-1.jpg"),
-      img("mount-kenya-day-trip-hike.jpg")
-    ],
-    journey: "Big 5 at Lake Nakuru, boat at Naivasha, gorge walk & cycling at Hells Gate. Licensed guide Dennis Juma.",
-    quote: "Every journey is a story — let's make yours unforgettable. Karibu Kenya!",
-    highlights: ["Big 5 — white rhinos, lions, buffalo", "Lake Nakuru flamingos", "Naivasha boat & Crescent Island", "Hells Gate gorge walk & cycling", "Private Land Cruiser pop-up roof"],
+    route: "Nairobi - Masai Mara - Nairobi",
+    gallery: [img("masai-mara-1.jpg"), img("masai-mara-2.jpg"), img("masai-mara-lions.jpg"), img("sentrim-mara-lodge.jpg")],
+    journey: "Enjoy 4 Days / 3 Nights Masai Mara Safari with pick-up & drop-off Nairobi Airport/Hotel. Stay at Sentrim Mara Lodge / Oldarpoi Lodge.",
+    quote: "Karibu Kenya hakuna matata!",
+    highlights: ["Game drives", "Big Five sightings", "Mara River - hippos, crocodiles, Great Migration (seasonal)", "Masai culture", "Rift Valley views", "Comfortable lodge stay"],
     itinerary: [
-      { dayNum: 1, title: "Nairobi to Lake Nakuru", details: ["Pickup Embakasi/JKIA/hotel", "Rift Valley viewpoint", "Afternoon game drive Lake Nakuru NP", "Overnight Hotel Waterbuck"], meals: "Lunch, Dinner" },
-      { dayNum: 2, title: "Full Day Lake Nakuru", details: ["Full day game drive with packed lunch", "White rhinos, lions, buffalo, giraffes", "Overnight Hotel Waterbuck"], meals: "Breakfast, Lunch, Dinner" },
-      { dayNum: 3, title: "Lake Nakuru to Lake Naivasha", details: ["Drive to Lake Naivasha", "Boat ride & island walk — hippos, pelicans", "Overnight Alphas Homestay"], meals: "Breakfast, Dinner" },
-      { dayNum: 4, title: "Hells Gate & back to Nairobi", details: ["Hells Gate gorge walk, bicycle, Fishers Tower climb", "Drive back to Nairobi — drop Embakasi/JKIA"], meals: "Breakfast" }
+      { 
+        dayNum: 1, 
+        title: "Nairobi – Masai Mara", 
+        details: ["Pick-up in Nairobi, drive via the Great Rift Valley to Masai Mara", "Lunch at Sentrim Mara Lodge", "Afternoon game drive", "Dinner & overnight at lodge"], 
+        meals: "Lunch, Dinner" 
+      },
+      { 
+        dayNum: 2, 
+        title: "Full-Day Safari", 
+        details: ["Full-day game drive with picnic lunch", "Visit the Mara River—home to hippos, crocodiles, and the Great Migration (seasonal)", "Return to lodge for dinner & overnight"], 
+        meals: "Breakfast, Lunch, Dinner" 
+      },
+      { 
+        dayNum: 3, 
+        title: "Game Drive & Maasai Village", 
+        details: ["Morning game drive", "Visit a Maasai village to experience culture and traditions", "Optional afternoon game drive", "Dinner & overnight at lodge"], 
+        meals: "Breakfast, Lunch, Dinner" 
+      },
+      { 
+        dayNum: 4, 
+        title: "Masai Mara – Nairobi", 
+        details: ["Sunrise game drive, breakfast, and return drive to Nairobi with lunch en route", "Drop-off at hotel or airport transfer for onward flight"], 
+        meals: "Breakfast, Lunch" 
+      }
     ],
-    includes: ["Private Land Cruiser pop-up roof", "Professional licensed guide Dennis Juma", "Accommodation 2 nights Hotel Waterbuck + 1 night Alphas Homestay", "Bottled water, all taxes"],
-    excludes: ["Park fees: Nakuru $60pp, Hells Gate $26pp, Naivasha boat ~$25pp", "Meals not mentioned, tips"],
-    whatToBring: ["Comfortable shoes", "Camera", "Sun hat", "Jacket"],
-    meetingPoint: "Embakasi, Nairobi / JKIA / Hotel",
-    tourStart: "Nairobi, Kenya",
-    tourEnd: "Nairobi",
-    priceCategories: [
-      { pax: "1 Person — Private Solo", perPerson: "1200", total: "1200" },
-      { pax: "2 Persons — Private", perPerson: "850", total: "1700", note: "Most popular" },
-      { pax: "3 Persons", perPerson: "750", total: "2250" },
-      { pax: "4-6 Persons", perPerson: "650", total: "2600" },
-    ],
-    cancellationPolicy: "Free cancellation up to 7 days before. 50% refund 3-6 days. No refund within 48 hours. Book with a deposit — Secure your tour today and pay balance later. Upgrade for total flexibility with Any Reason Cancellation."
-  },
-  {
-    id: "lake-nakuru",
-    title: "Lake Nakuru Safari",
-    subtitle: "Flamingos, rhinos & lake views",
-    from: "Lake Nakuru National Park",
-    days: 1,
-    price: "510",
-    gallery: [img("lake-nakuru-national-park-1.jpg")],
-    journey: "Famous for flamingos, rhino sanctuary.",
-    highlights: ["Flamingos", "Rhino sanctuary", "Lake views"],
-    itinerary: [{ dayNum: 1, title: "Nairobi to Lake Nakuru & Back", details: ["Pickup", "Drive to Nakuru", "Game drive", "Drive back"], meals: "Lunch" }],
-    includes: ["Vehicle & fuel", "Guide", "Park entry", "Water"],
-    excludes: ["Personal expenses", "Tips"],
+    includes: ["Snacks & Drinking water bottle", "Private Guide", "Private Transportation", "Park entrance fees - Tickets", "Food Drinks Snacks", "Accommodation: Bed & meals @ Oldarpoi Lodge / Sentrim Mara Lodge"],
+    excludes: ["Personal expenses"],
+    meetingPoint: "Nairobi Airport / Hotel",
+    cancellationPolicy: "Book with a deposit. Secure your tour today and pay balance later."
   },
   {
     id: "mount-kenya",
-    title: "Mount Kenya Trek",
-    subtitle: "Summit Africa's second-highest",
-    from: "Mount Kenya National Park",
-    days: 4,
-    price: "1500",
+    title: "Mt Kenya Day Trip (Hiking)",
+    subtitle: "Explore the Magic of Mt. Kenya",
+    from: "Nanyuki, Laikipia County",
+    days: 1,
+    price: "330",
+    deposit: "50",
+    paypalEmail: "jumaadventuresandsafaris@gmail.com",
+    paybillNo: "Coming Soon",
+    paybillAcc: "JUMA ADVENTURES",
+    duration: "1 Day",
+    route: "Nanyuki - Narumoru Gate - Met Station - Mountain - Nanyuki",
+    pace: "Moderate",
     gallery: [img("mount-kenya-day-trip-hike.jpg")],
-    journey: "Mountain adventure.",
-    highlights: ["Trekking", "Point Lenana", "Guides"],
+    journey: "Mt. Kenya, one of Africa's most iconic volcanic mountains, stands proudly along the equator yet remains snow-capped year-round. Its stunning peaks — Batian (5,199m), Nelion (5,190m), and Point Lenana (4,985m) — promise an unforgettable adventure for hikers and nature lovers. Trek through diverse ecosystems, from lush forests to alpine meadows and icy summits, while learning about the mountain's rich history, geology, and unique vegetation.",
+    quote: "Guided by a passionate, experienced, and safety-trained mountain guide, you'll enjoy more than just a climb — you'll experience friendship, inspiration, and care. I treat every guest like family, ensuring comfort, safety, and unforgettable memories on Africa's second-highest Mountain.",
+    highlights: ["Hiking on glaciers and rocks", "Explore the ecosystem of mountain vegetation from lower to upper rock", "View beautiful gorges, valleys", "View Batian, Nelion, Point Lenana closely", "New model Hybrid Noah Voxy"],
     itinerary: [
-      { dayNum: 1, title: "Nanyuki to Old Moses", details: ["Drive to Sirimon Gate", "Hike to Old Moses 3300m"], meals: "Dinner" },
-      { dayNum: 2, title: "Old Moses to Shipton's", details: ["Moorland hike", "Shipton's 4200m"], meals: "Breakfast, Lunch, Dinner" },
-      { dayNum: 3, title: "Summit Lenana", details: ["Summit 4985m", "Sunrise"], meals: "Breakfast, Lunch, Dinner" },
-      { dayNum: 4, title: "Descent", details: ["Descent to Nanyuki"], meals: "Breakfast" }
+      { 
+        dayNum: 1, 
+        title: "Nanyuki Tour Itinerary", 
+        details: [
+          "The journey starts in the morning with a drive from Nanyuki town to Mt Kenya National Park and check in at the Narumoru gate", 
+          "Then drive 10km to end off road at the met station before we start a hike", 
+          "The hiking will take at least 5 hrs on the mountain to be able to view beautiful gorges, valleys, mountain vegetation and view mountains closely", 
+          "Later on, come down to the met station and then drive down at the gate to check out", 
+          "If you have any special interests, please let me know"
+        ], 
+        meals: "Not Included" 
+      }
     ],
-    includes: ["Guide", "Park fees", "Accommodation", "Meals"],
-    excludes: ["Personal", "Tips", "Insurance"],
-  },
-  {
-    id: "lake-naivasha",
-    title: "Lake Naivasha Safari",
-    subtitle: "Boat rides & Crescent Island",
-    from: "Lake Naivasha",
-    days: 1,
-    price: "480",
-    gallery: [img("IMG-20260111-WA0018.jpg")],
-    journey: "Birdlife, hippos.",
-    highlights: ["Boat ride", "Bird watching", "Crescent Island"],
-    itinerary: [{ dayNum: 1, title: "Nairobi to Naivasha & Back", details: ["Pickup", "Drive", "Boat ride", "Walk", "Back"], meals: "Lunch" }],
-    includes: ["Transport", "Guide", "Boat", "Park fees"],
-    excludes: ["Personal", "Meals"],
-  },
-  {
-    id: "nairobi-wildlife-day",
-    title: "Nairobi Wildlife & Orphanage Day",
-    subtitle: "Max 2 people",
-    from: "Nairobi",
-    days: 1,
-    price: "480",
-    duration: "8 Hours",
-    gallery: [img("/lake-nakuru-national-park-1.jpg")],
-    journey: "Nairobi wild side.",
-    highlights: ["Nairobi NP", "Sheldrick", "Giraffe Centre"],
-    itinerary: [{ dayNum: 1, title: "Nairobi NP + Sheldrick + Giraffe", details: ["Pickup", "Game drive", "Sheldrick", "Giraffe Centre"], meals: "Not Included" }],
-    includes: ["Pickup", "Van", "Guide", "Water", "Entry fees"],
-    excludes: ["Flights", "Meals", "Tips"],
-  },
-  {
-    id: "nairobi-culture-day",
-    title: "Nairobi Culture & Heritage Day",
-    subtitle: "Max 2 people",
-    from: "Nairobi",
-    days: 1,
-    price: "480",
-    duration: "8 Hours",
-    gallery: [img("/IMG-20260726-WA3768.jpg")],
-    journey: "Culture and history.",
-    highlights: ["Blixen Museum", "National Museum", "Bomas", "Maasai Market"],
-    itinerary: [{ dayNum: 1, title: "Blixen + Museum + Bomas", details: ["Pickup", "Blixen", "Museum", "Bomas", "Market"], meals: "Not Included" }],
-    includes: ["Pickup", "Transport", "Guide", "Water", "Fees"],
-    excludes: ["Flights", "Meals", "Tips"],
-  },
+    includes: ["Private Guide", "Private Transportation / Category: Minivan — New model Hybrid Noah Voxy"],
+    excludes: ["Personal expenses - Park tickets fee 52 USD per person", "Accommodation", "Equipment", "Tickets", "Food Drinks Snacks"],
+    meetingPoint: "Nyeri - Nanyuki Road, Nanyuki, Laikipia County, Kenya — Hotel pickup on request",
+    tourStart: "Nanyuki",
+    tourEnd: "Nanyuki",
+    whatToBring: ["Hiking boots", "Warm jacket", "Rain jacket", "Hat", "Water 2L"],
+    cancellationPolicy: "Customizable tour — Tell your guide which places matter to you, skip what doesn't, and tailor the experience for your group's needs."
+  }
 ];
 
 export const getPackage = (id: string) => {
@@ -195,12 +133,7 @@ export const getPackage = (id: string) => {
   const cleanId = id.trim().toLowerCase().replace(/_/g, "-")
   const direct = packages.find((p) => p.id.toLowerCase() === cleanId)
   if (direct) return direct
-  const aliases: Record<string, string> = {
-    "nairobi-culture-heritage-day": "nairobi-culture-day",
-    "nairobi-wildlife": "nairobi-wildlife-day",
-    "mt-kenya-4-day": "mt-kenya-4day",
-    "mt-kenya": "mount-kenya",
-  }
+  const aliases: Record<string, string> = { "mt-kenya": "mount-kenya", "masai-mara-safari": "masai-mara" }
   const aliasedId = aliases[cleanId]
   if (aliasedId) return packages.find((p) => p.id.toLowerCase() === aliasedId)
   return undefined
