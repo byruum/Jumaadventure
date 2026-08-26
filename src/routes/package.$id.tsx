@@ -9,13 +9,13 @@ export const Route = createFileRoute('/package/$id')({
 
 function PackagePage() {
   const { packageData } = Route.useLoaderData()
-  const [showBooking, setShowBooking] = useState(false);
-  const [sending, setSending] = useState(false);
-  const [sent, setSent] = useState(false);
-  const [party, setParty] = useState(1);
-  const [tourDate, setTourDate] = useState("");
-  const [startTime, setStartTime] = useState("08:00");
-  const [form, setForm] = useState({ name:"", guests:"2 Persons", date:"", inquiry:"", email:"", whatsapp:"" });
+  const [showBooking][setShowBooking] = useState(false);
+  const [sending][setSending] = useState(false);
+  const [sent][setSent] = useState(false);
+  const [party][setParty] = useState(1);
+  const [tourDate][setTourDate] = useState("");
+  const [startTime][setStartTime] = useState("08:00");
+  const [form][setForm] = useState({ name:"", guests:"2 Persons", date:"", inquiry:"", email:"", whatsapp:"" });
 
   if (!packageData) return <div className="p-8 text-center">Package not found</div>;
 
@@ -28,7 +28,8 @@ function PackagePage() {
   const paypalFull = `https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=${paypalEmail}&item_name=${encodeURIComponent(packageData.title + " Full")}&amount=${full}&currency_code=USD&no_shipping=1`;
 
   const isDayTrip = packageData.days === 1 || packageData.duration.toLowerCase().includes("1 day") || packageData.title.toLowerCase().includes("day trip");
-  const cancellationPolicy = `Juma Adventures Standard Policy: Cancel up to 15 days before start date and get full refund including fees. 7-14 days 50% refund. Less than 7 days no refund. WhatsApp +254 746 011254`;
+  // ONLY UPDATED - DENNIS EXACT
+  const cancellationPolicy = `1. Cancellation 15 days before the tour date entitled to full refund.\n2. Cancellation 7 days before the tour, entitled to 50% refund.\n3. No refund within 7 days before commencing tour date.`;
 
   const sendEmail = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -58,6 +59,15 @@ function PackagePage() {
         </div>
       </div>
 
+      {/* ONLY ADDED - GALLERY SCROLL SIDEWAYS */}
+      <div className="max-w-[1200px] mx-auto px-4 md:px-8 mt-4">
+        <div className="flex gap-3 overflow-x-auto pb-3 snap-x snap-mandatory scrollbar-hide">
+          {gallery.map((img:string, i:number)=>(
+            <img key={i} src={img} alt={`gal ${i}`} className="w-[200px] md:w-[280px] h-[130px] md:h-[180px] object-cover rounded-[12px] flex-shrink-0 snap-start border" />
+          ))}
+        </div>
+      </div>
+
       <div className="max-w-[1200px] mx-auto px-4 md:px-8 mt-8 grid md:grid-cols-[1.3fr_0.7fr] gap-8">
         <div className="order-2 md:order-1 space-y-6">
           <div className="bg-white rounded-[20px] p-6 border">
@@ -83,14 +93,13 @@ function PackagePage() {
 
           <div className="bg-white rounded-[20px] p-6 border">
             <div className="grid md:grid-cols-2 gap-6 text-[13px]"><div><p className="font-black">Includes</p><ul className="list-disc ml-4 mt-2 text-black/60">{packageData.includes.map((a,i)=><li key={i}>{a}</li>)}</ul></div><div><p className="font-black">Excludes</p><ul className="list-disc ml-4 mt-2 text-black/60">{packageData.excludes.map((a,i)=><li key={i}>{a}</li>)}</ul></div></div>
-            <div id="cancel" className="mt-6 bg-[#FAF7F2] p-3 rounded-xl text-[11px]"><p className="font-black">Juma Adventures Cancellation</p><p className="mt-1 text-black/60">{cancellationPolicy}</p></div>
+            <div id="cancel" className="mt-6 bg-[#FAF7F2] p-3 rounded-xl text-[11px]"><p className="font-black">Cancellation Policy</p><p className="mt-1 text-black/60 whitespace-pre-line">{cancellationPolicy}</p></div>
           </div>
         </div>
 
         <div className="order-1 md:order-2">
           <div className="bg-white rounded-[16px] border shadow-[0_12px_40px_rgba(0,0,0,0.08)] p-5 sticky top-5">
             <p className="text-center font-black text-[28px]">${Number(full).toLocaleString()}.00 USD</p>
-
             <div className="mt-2 flex justify-center">
               {isDayTrip? (
                 <span className="bg-[#F5B400] text-black px-3 py-1 rounded-full text-[10px] font-black tracking-widest">DAY TRIP ONLY • $330</span>
@@ -98,9 +107,7 @@ function PackagePage() {
                 <span className="bg-[#0B6A2B] text-white px-3 py-1 rounded-full text-[10px] font-black tracking-widest">{packageData.duration.toUpperCase()} • ${full}</span>
               )}
             </div>
-
             <div className="mt-4 space-y-2 text-[13px] text-black/60"><div>🕒 {packageData.duration}</div><div>🚗 Private transportation</div><div>👥 Private tour for 1-2 people</div></div>
-
             <div className="mt-4 border border-black/20 rounded-full px-4 py-3 flex justify-between items-center">
               <span className="font-bold text-[14px]">Your party size</span>
               <div className="flex items-center gap-3">
@@ -109,17 +116,14 @@ function PackagePage() {
                 <button type="button" onClick={()=>setParty(p=>Math.min(6,p+1))} className="w-7 h-7 rounded-full bg-black text-white flex items-center justify-center">+</button>
               </div>
             </div>
-
             <label className="mt-3 border border-black/20 rounded-full px-4 py-3 flex justify-between items-center cursor-pointer hover:border-black">
               <span className="font-bold text-[14px]">Tour date</span>
               <input type="date" value={tourDate} onChange={e=>{ setTourDate(e.target.value); setForm({...form, date: e.target.value}) }} className="bg-transparent outline-none text-[13px] cursor-pointer" />
             </label>
-
             <label className="mt-3 border border-black/20 rounded-full px-4 py-3 flex justify-between items-center cursor-pointer hover:border-black">
               <span className="font-bold text-[14px]">Start time</span>
               <input type="time" value={startTime} onChange={e=>setStartTime(e.target.value)} className="bg-transparent outline-none text-[13px] cursor-pointer" />
             </label>
-
             <button onClick={()=>setShowBooking(true)} className="mt-4 w-full bg-[#0B8A5B] text-white py-4 rounded-full font-black">Book Now</button>
             <a href="#cancel" className="mt-4 flex items-center gap-2 text-[13px] underline font-bold"><span className="w-5 h-5 rounded-full border flex items-center justify-center text-[10px]">✓</span> View our cancellation policies</a>
           </div>
