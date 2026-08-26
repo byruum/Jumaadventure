@@ -1,6 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { getPackage, WHATSAPP_NUMBER } from "../lib/packages";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 export const Route = createFileRoute('/package/$id')({
   component: PackagePage,
@@ -9,25 +9,25 @@ export const Route = createFileRoute('/package/$id')({
 
 function PackagePage() {
   const { packageData } = Route.useLoaderData()
-  const [showBooking][setShowBooking] = useState(false);
-  const [sending][setSending] = useState(false);
-  const [sent][setSent] = useState(false);
-  const [party][setParty] = useState(1);
-  const [tourDate][setTourDate] = useState("");
-  const [startTime][setStartTime] = useState("08:00");
-  const [form][setForm] = useState({ name:"", guests:"2 Persons", date:"", inquiry:"", email:"", whatsapp:"" });
+  const [showBooking, setShowBooking] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [sent, setSent] = useState(false);
+  const [party, setParty] = useState(1);
+  const [tourDate, setTourDate] = useState("");
+  const [startTime, setStartTime] = useState("08:00");
+  const [form, setForm] = useState({ name:"", guests:"2 Persons", date:"", inquiry:"", email:"", whatsapp:"" });
 
   if (!packageData) return <div className="p-8 text-center">Package not found</div>;
 
   const gallery = packageData.gallery?.length? packageData.gallery : ["/og-image.png"];
-  const heroImg = gallery[0]; // HERO PHOTO ON TOP
-  const full = packageData.price; // FULL $1540
+  const heroImg = gallery[0];
+  const full = packageData.price;
   const dep = packageData.deposit || "200";
   const paypalEmail = packageData.paypalEmail || "jumaadventuresandsafaris@gmail.com";
   const paypalDep = `https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=${paypalEmail}&item_name=${encodeURIComponent(packageData.title + " Deposit")}&amount=${dep}&currency_code=USD&no_shipping=1`;
   const paypalFull = `https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=${paypalEmail}&item_name=${encodeURIComponent(packageData.title + " Full")}&amount=${full}&currency_code=USD&no_shipping=1`;
 
-  const cancellationPolicy = packageData.cancellationPolicy || `Juma Adventures Standard Policy: Cancel up to 15 days before start date and get full refund including all fees. 7-14 days 50% refund. Less than 7 days no refund. WhatsApp +254 746 011254`;
+  const cancellationPolicy = packageData.cancellationPolicy || `Juma Adventures Standard Policy: Cancel up to 15 days before start date and get full refund. 7-14 days 50% refund. Less than 7 days no refund. WhatsApp +254 746 011254`;
 
   const sendEmail = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -36,19 +36,17 @@ function PackagePage() {
       const res = await fetch(`https://formsubmit.co/ajax/${paypalEmail}`, {
         method: "POST",
         headers: { "Content-Type":"application/json", "Accept":"application/json" },
-        body: JSON.stringify({ subject: `Booking ${packageData.title} - ${form.name} - ${party} pax - ${tourDate} ${startTime}`,...form, tourDate, startTime, party, package: packageData.title })
+        body: JSON.stringify({ subject: `Booking ${packageData.title} - ${form.name} - ${party} pax`,...form, tourDate, startTime, party, package: packageData.title })
       });
       if (res.ok) { setSent(true); setTimeout(()=>{ setShowBooking(false); setSent(false); }, 4000); }
     } catch {
-      globalThis.location.href=`mailto:${paypalEmail}?subject=Booking ${form.name} ${party}pax ${tourDate} ${startTime}`;
+      globalThis.location.href=`mailto:${paypalEmail}?subject=Booking ${form.name} ${party}pax`;
     }
     setSending(false);
   };
 
   return (
     <div className="bg-[#FAF7F2] min-h-screen pb-10">
-
-      {/* HERO PHOTO - ONLY PHOTO ON TOP */}
       <div className="w-full h-[52vh] md:h-[70vh] relative bg-black">
         <img src={heroImg} alt={packageData.title} className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
@@ -59,10 +57,7 @@ function PackagePage() {
         </div>
       </div>
 
-      {/* CONTENTS BELOW HERO */}
       <div className="max-w-[1200px] mx-auto px-4 md:px-8 mt-8 grid md:grid-cols-[1.3fr_0.7fr] gap-8">
-
-        {/* LEFT - LIST ITINERARY NOT SWIPE */}
         <div className="order-2 md:order-1 space-y-6">
           <div className="bg-white rounded-[20px] p-6 border">
             <p className="text-[11px] font-black tracking-widest text-[#0B6A2B]">FULL AMOUNT ${full} • {packageData.duration}</p>
@@ -72,7 +67,7 @@ function PackagePage() {
           </div>
 
           <div className="bg-white rounded-[20px] p-6 border">
-            <h3 className="font-black text-[18px]">Itinerary - List Style (Scroll)</h3>
+            <h3 className="font-black text-[18px]">Itinerary - List Style</h3>
             <div className="mt-4 space-y-5">
               {packageData.itinerary.map((it:any)=>(
                 <div key={it.dayNum} className="border-l-4 border-[#0B6A2B] pl-4 py-1">
@@ -91,17 +86,10 @@ function PackagePage() {
           </div>
         </div>
 
-        {/* RIGHT - BOOKING CARD LIKE SCREENSHOT - CLICKABLE */}
         <div className="order-1 md:order-2">
           <div className="bg-white rounded-[16px] border shadow-[0_12px_40px_rgba(0,0,0,0.08)] p-5 sticky top-5">
             <p className="text-center font-black text-[28px]">${Number(full).toLocaleString()}.00 USD</p>
-
-            <div className="mt-4 space-y-2 text-[13px] text-black/60">
-              <div>🕒 4 days</div>
-              <div>🚗 Private transportation</div>
-              <div>👥 Private tour for 1-2 people</div>
-            </div>
-
+            <div className="mt-4 space-y-2 text-[13px] text-black/60"><div>🕒 {packageData.duration || "4 days"}</div><div>🚗 Private transportation</div><div>👥 Private tour for 1-2 people</div></div>
             <div className="mt-4 border border-black/20 rounded-full px-4 py-3 flex justify-between items-center">
               <span className="font-bold text-[14px]">Your party size</span>
               <div className="flex items-center gap-3">
@@ -110,46 +98,36 @@ function PackagePage() {
                 <button type="button" onClick={()=>setParty(p=>Math.min(6,p+1))} className="w-7 h-7 rounded-full bg-black text-white flex items-center justify-center">+</button>
               </div>
             </div>
-
-            {/* CLICKABLE DATE */}
             <label className="mt-3 border border-black/20 rounded-full px-4 py-3 flex justify-between items-center cursor-pointer">
               <span className="font-bold text-[14px]">Tour date</span>
               <input type="date" value={tourDate} onChange={e=>{ setTourDate(e.target.value); setForm({...form, date: e.target.value}) }} className="bg-transparent outline-none text-[13px] cursor-pointer" />
             </label>
-
-            {/* CLICKABLE START TIME */}
             <label className="mt-3 border border-black/20 rounded-full px-4 py-3 flex justify-between items-center cursor-pointer">
               <span className="font-bold text-[14px]">Start time</span>
               <input type="time" value={startTime} onChange={e=>setStartTime(e.target.value)} className="bg-transparent outline-none text-[13px] cursor-pointer" />
             </label>
-
             <button onClick={()=>setShowBooking(true)} className="mt-4 w-full bg-[#0B8A5B] text-white py-4 rounded-full font-black">Book Now</button>
-
             <a href="#cancel" className="mt-4 flex items-center gap-2 text-[13px] underline font-bold"><span className="w-5 h-5 rounded-full border flex items-center justify-center text-[10px]">✓</span> View our cancellation policies</a>
           </div>
         </div>
       </div>
 
       {showBooking && (
-        <div className="fixed inset-0 bg-black/80 z-[100] p-3 flex justify-center items-center overflow-y-auto">
+        <div className="fixed inset-0 bg-black/80 z-[100] p-3 flex justify-center items-center">
           <div className="bg-white w-full max-w-[520px] rounded-[24px] overflow-hidden">
             {!sent? (
               <form onSubmit={sendEmail} className="p-6 space-y-3">
-                <div className="flex justify-between"><h3 className="font-black">Book {full} USD • {party} pax</h3><button type="button" onClick={()=>setShowBooking(false)} className="w-8 h-8 bg-black/10 rounded-full">✕</button></div>
-                <p className="text-[12px]">Date: {tourDate || "Not selected"} • Time: {startTime} • Full: ${full}</p>
+                <div className="flex justify-between"><h3 className="font-black">Book ${full} • {party} pax</h3><button type="button" onClick={()=>setShowBooking(false)} className="w-8 h-8 bg-black/10 rounded-full">✕</button></div>
+                <p className="text-[12px]">Date: {tourDate || "Select"} • Time: {startTime}</p>
                 <input required value={form.name} onChange={e=>setForm({...form,name:e.target.value})} placeholder="Full name" className="w-full border rounded-full px-4 py-3 text-[13px]" />
                 <input required type="email" value={form.email} onChange={e=>setForm({...form,email:e.target.value})} placeholder="Email" className="w-full border rounded-full px-4 py-3 text-[13px]" />
                 <input required value={form.whatsapp} onChange={e=>setForm({...form,whatsapp:e.target.value})} placeholder="WhatsApp" className="w-full border rounded-full px-4 py-3 text-[13px]" />
-                <div className="grid grid-cols-2 gap-2">
-                  <input type="date" value={tourDate} onChange={e=>setTourDate(e.target.value)} className="w-full border rounded-full px-4 py-3 text-[13px]" />
-                  <input type="time" value={startTime} onChange={e=>setStartTime(e.target.value)} className="w-full border rounded-full px-4 py-3 text-[13px]" />
-                </div>
                 <button disabled={sending} className="w-full bg-[#0B8A5B] text-white py-3 rounded-full font-black">{sending?"Sending...":"Confirm $"+full}</button>
                 <a href={`https://wa.me/${WHATSAPP_NUMBER}?text=Booking%20${encodeURIComponent(packageData.title)}%20$${full}%20${party}pax%20${tourDate}%20${startTime}`} className="block text-center bg-[#25D366] py-3 rounded-full font-black text-[13px]">WhatsApp • {party} pax • {tourDate}</a>
                 <div className="grid grid-cols-2 gap-2"><a href={paypalDep} target="_blank" className="bg-black text-white py-3 rounded-full text-center text-[12px] font-black">Deposit ${dep}</a><a href={paypalFull} target="_blank" className="bg-[#F5B400] text-black py-3 rounded-full text-center text-[12px] font-black">Full ${full}</a></div>
               </form>
             ) : (
-              <div className="p-8 text-center"><p className="w-10 h-10 bg-[#0B6A2B] text-white rounded-full flex items-center justify-center mx-auto">✓</p><h3 className="mt-3 font-black">Booking received</h3><p className="text-[13px] text-black/60 mt-1">Thank you {form.name} • {party} pax • {tourDate} {startTime}</p></div>
+              <div className="p-8 text-center"><p className="w-10 h-10 bg-[#0B6A2B] text-white rounded-full flex items-center justify-center mx-auto">✓</p><h3 className="mt-3 font-black">Booking received</h3></div>
             )}
           </div>
         </div>
