@@ -56,35 +56,15 @@ export const packages: Package[] = [
     quote: "Karibu Kenya hakuna matata!",
     highlights: ["Game drives", "Big Five sightings", "Mara River - hippos, crocodiles, Great Migration (seasonal)", "Masai culture", "Rift Valley views", "Comfortable lodge stay"],
     itinerary: [
-      { 
-        dayNum: 1, 
-        title: "Nairobi – Masai Mara", 
-        details: ["Pick-up in Nairobi, drive via the Great Rift Valley to Masai Mara", "Lunch at Sentrim Mara Lodge", "Afternoon game drive", "Dinner & overnight at lodge"], 
-        meals: "Lunch, Dinner" 
-      },
-      { 
-        dayNum: 2, 
-        title: "Full-Day Safari", 
-        details: ["Full-day game drive with picnic lunch", "Visit the Mara River—home to hippos, crocodiles, and the Great Migration (seasonal)", "Return to lodge for dinner & overnight"], 
-        meals: "Breakfast, Lunch, Dinner" 
-      },
-      { 
-        dayNum: 3, 
-        title: "Game Drive & Maasai Village", 
-        details: ["Morning game drive", "Visit a Maasai village to experience culture and traditions", "Optional afternoon game drive", "Dinner & overnight at lodge"], 
-        meals: "Breakfast, Lunch, Dinner" 
-      },
-      { 
-        dayNum: 4, 
-        title: "Masai Mara – Nairobi", 
-        details: ["Sunrise game drive, breakfast, and return drive to Nairobi with lunch en route", "Drop-off at hotel or airport transfer for onward flight"], 
-        meals: "Breakfast, Lunch" 
-      }
+      { dayNum: 1, title: "Nairobi – Masai Mara", details: ["Pick-up in Nairobi, drive via the Great Rift Valley to Masai Mara", "Lunch at Sentrim Mara Lodge", "Afternoon game drive", "Dinner & overnight at lodge"], meals: "Lunch, Dinner" },
+      { dayNum: 2, title: "Full-Day Safari", details: ["Full-day game drive with picnic lunch", "Visit the Mara River—home to hippos, crocodiles, and the Great Migration (seasonal)", "Return to lodge for dinner & overnight"], meals: "Breakfast, Lunch, Dinner" },
+      { dayNum: 3, title: "Game Drive & Maasai Village", details: ["Morning game drive", "Visit a Maasai village to experience culture and traditions", "Optional afternoon game drive", "Dinner & overnight at lodge"], meals: "Breakfast, Lunch, Dinner" },
+      { dayNum: 4, title: "Masai Mara – Nairobi", details: ["Sunrise game drive, breakfast, and return drive to Nairobi with lunch en route", "Drop-off at hotel or airport transfer for onward flight"], meals: "Breakfast, Lunch" }
     ],
     includes: ["Snacks & Drinking water bottle", "Private Guide", "Private Transportation", "Park entrance fees - Tickets", "Food Drinks Snacks", "Accommodation: Bed & meals @ Oldarpoi Lodge / Sentrim Mara Lodge"],
     excludes: ["Personal expenses"],
     meetingPoint: "Nairobi Airport / Hotel",
-    cancellationPolicy: "Book with a deposit. Secure your tour today and pay balance later."
+    cancellationPolicy: "Juma Adventures Standard Policy: Book with a deposit $500. Secure your tour today and pay balance later. Cancel up to 15 days before start date and get full refund. 7-14 days 50% refund. Less than 7 days no refund. Contact Juma Adventures: WhatsApp +254 746 011254 / jumaadventuresandsafaris@gmail.com"
   },
   {
     id: "mount-kenya",
@@ -105,18 +85,7 @@ export const packages: Package[] = [
     quote: "Guided by a passionate, experienced, and safety-trained mountain guide, you'll enjoy more than just a climb — you'll experience friendship, inspiration, and care. I treat every guest like family, ensuring comfort, safety, and unforgettable memories on Africa's second-highest Mountain.",
     highlights: ["Hiking on glaciers and rocks", "Explore the ecosystem of mountain vegetation from lower to upper rock", "View beautiful gorges, valleys", "View Batian, Nelion, Point Lenana closely", "New model Hybrid Noah Voxy"],
     itinerary: [
-      { 
-        dayNum: 1, 
-        title: "Nanyuki Tour Itinerary", 
-        details: [
-          "The journey starts in the morning with a drive from Nanyuki town to Mt Kenya National Park and check in at the Narumoru gate", 
-          "Then drive 10km to end off road at the met station before we start a hike", 
-          "The hiking will take at least 5 hrs on the mountain to be able to view beautiful gorges, valleys, mountain vegetation and view mountains closely", 
-          "Later on, come down to the met station and then drive down at the gate to check out", 
-          "If you have any special interests, please let me know"
-        ], 
-        meals: "Not Included" 
-      }
+      { dayNum: 1, title: "Nanyuki Tour Itinerary", details: ["The journey starts in the morning with a drive from Nanyuki town to Mt Kenya National Park and check in at the Narumoru gate", "Then drive 10km to end off road at the met station before we start a hike", "The hiking will take at least 5 hrs on the mountain to be able to view beautiful gorges, valleys, mountain vegetation and view mountains closely", "Later on, come down to the met station and then drive down at the gate to check out", "If you have any special interests, please let me know"], meals: "Not Included" }
     ],
     includes: ["Private Guide", "Private Transportation / Category: Minivan — New model Hybrid Noah Voxy"],
     excludes: ["Personal expenses - Park tickets fee 52 USD per person", "Accommodation", "Equipment", "Tickets", "Food Drinks Snacks"],
@@ -124,7 +93,65 @@ export const packages: Package[] = [
     tourStart: "Nanyuki",
     tourEnd: "Nanyuki",
     whatToBring: ["Hiking boots", "Warm jacket", "Rain jacket", "Hat", "Water 2L"],
-    cancellationPolicy: "Customizable tour — Tell your guide which places matter to you, skip what doesn't, and tailor the experience for your group's needs."
+    cancellationPolicy: "Juma Adventures Day Trip Policy: Free cancellation up to 48 hours before. Park ticket $52 non-refundable once issued. Contact Juma Adventures WhatsApp +254 746 011254 to reschedule."
+  },
+  {
+    id: "big-5-lake-nakuru",
+    title: "Big 5 and Lake Nakuru, enjoy the nature and wildlife of Africa",
+    subtitle: "3 Days Private Safari • 1-2 People",
+    from: "Nairobi",
+    days: 3,
+    price: "850",
+    deposit: "100",
+    paypalEmail: "jumaadventuresandsafaris@gmail.com",
+    paybillNo: "Coming Soon",
+    paybillAcc: "JUMA ADVENTURES",
+    duration: "3 Days",
+    route: "Nairobi - Masai Mara - Lake Nakuru - Nairobi",
+    gallery: [img("lake-nakuru-flamingos.jpg"), img("masai-mara-1.jpg"), img("big-5-rhino.jpg")],
+    journey: "Short 3-day private safari for Big 5 — Masai Mara and Lake Nakuru National Park.",
+    highlights: ["Big 5 sightings", "Lake Nakuru flamingos & rhinos", "Great Rift Valley viewpoint"],
+    itinerary: [
+      { dayNum: 1, title: "Nairobi – Masai Mara", details: ["Pick-up via Great Rift Valley viewpoint", "Afternoon game drive in Masai Mara"], meals: "Lunch, Dinner" },
+      { dayNum: 2, title: "Masai Mara Full Day", details: ["Full-day game drive with picnic lunch", "Mara River area"], meals: "Breakfast, Lunch, Dinner" },
+      { dayNum: 3, title: "Masai Mara – Lake Nakuru – Nairobi", details: ["Drive to Lake Nakuru, game drive for rhinos & flamingos", "Return to Nairobi drop-off"], meals: "Breakfast, Lunch" }
+    ],
+    includes: ["Private Guide Dennis J", "Private Transportation", "Park entrance fees", "Accommodation bed & meals", "Food Drinks Snacks", "Drinking water"],
+    excludes: ["Personal expenses", "Tips"],
+    meetingPoint: "Embakasi, Nairobi — hotel pickup on request",
+    cancellationPolicy: "Juma Adventures Standard Policy: Cancel up to 15 days before and get full refund. Book with deposit $100 secure today, pay balance later via PayPal jumaadventuresandsafaris@gmail.com or M-Pesa. WhatsApp +254 746 011254"
+  },
+  {
+    id: "mt-kenya-4-days",
+    title: "Mt Kenya, idyllic landscapes and primeval wilderness - 4-days of true hiking experience",
+    subtitle: "Private 1-2 people • Tour Ref 583394 • Nanyuki",
+    from: "Nanyuki / Embakasi, Nairobi",
+    days: 4,
+    price: "1540",
+    deposit: "200",
+    paypalEmail: "jumaadventuresandsafaris@gmail.com",
+    paybillNo: "Coming Soon",
+    paybillAcc: "JUMA ADVENTURES",
+    duration: "4 days",
+    route: "Nairobi - Nanyuki - Mt Kenya - Nairobi",
+    pace: "Moderate - 9km Day 1, Summit 03:30 Day 3",
+    gallery: [img("mount-kenya-day-trip-hike.jpg"), img("mt-kenya-4day-1.jpg"), img("mt-kenya-4day-2.jpg"), img("mt-kenya-summit.jpg")],
+    journey: "True 4-day hiking experience in Mt Kenya's primeval wilderness. From lush forests to alpine meadows and icy summits, explore Batian (5,199m), Nelion (5,190m) and Point Lenana (4,985m) with passionate, experienced mountain guide Dennis J. Perfect for hikers and nature lovers.",
+    quote: "Every journey is a story — let’s make yours unforgettable. Karibu Kenya hakuna matata!",
+    highlights: ["9 km trek on first day", "Summit hike starts at 03:30 hrs on third day", "Idyllic landscapes & primeval wilderness", "View Batian (5,199m), Nelion (5,190m), Point Lenana (4,985m)", "New model Hybrid Noah Voxy Nairobi - Mt Kenya - Nairobi"],
+    itinerary: [
+      { dayNum: 1, title: "Nairobi - Nanyuki - Met Station (3,050m) - 9km Trek", details: ["Pickup Embakasi / Nairobi hotel or airport, drive to Narumoru Gate check-in", "Drive 10km to Met Station, start 9km trek through forest and moorland", "Dinner & overnight mountain accommodation (bed & meals included)"], meals: "Lunch, Dinner" },
+      { dayNum: 2, title: "Met Station - Mackinder's Camp (4,200m)", details: ["Moderate-level hiking over moorland", "View beautiful gorges, valleys and mountain vegetation closely", "Accommodation on mountain as per itinerary"], meals: "Breakfast, Lunch, Dinner" },
+      { dayNum: 3, title: "Mackinder's - Point Lenana Summit (4,985m) - Met Station", details: ["Wake up 03:30 hrs for summit attempt to Point Lenana for sunrise", "View Batian and Nelion peaks closely, photos at summit", "Descend to Mackinder's for breakfast then continue down to Met Station"], meals: "Breakfast, Lunch, Dinner" },
+      { dayNum: 4, title: "Met Station - Nanyuki - Nairobi", details: ["Final descent, checkout at Narumoru Gate", "Private transport Hybrid Noah Voxy back to Nanyuki / Nairobi — ends back in Nairobi after descending on fourth day"], meals: "Breakfast, Lunch" }
+    ],
+    includes: ["Porters", "Food", "Water bottles", "Accommodation on the mountain for up to five clients", "Private Guide - Dennis J, passionate & experienced mountain guide", "Private Transportation - New model Hybrid Noah Voxy, comfort throughout Nairobi to Mt Kenya and back", "Food Drinks Snacks as per itinerary (bed & meals included)"],
+    excludes: ["Personal expenses such as park fees $52 per person", "Souvenirs", "Tips", "Personal hiking gear"],
+    whatToBring: ["Sturdy hiking boots", "Warm clothing for cold summit", "Rain gear", "Sunscreen, hat, sunglasses", "Water 2L"],
+    meetingPoint: "Embakasi, Nairobi, Kenya — You can request specific meeting location (your hotel) during checkout. Flexible meeting options such as hotel or airport. Ends back in Nairobi Day 4.",
+    tourStart: "Nanyuki / Embakasi, Nairobi",
+    tourEnd: "Nairobi",
+    cancellationPolicy: "Juma Adventures Standard Policy: Cancel up to 15 days before start date and get full refund including all fees. 7-14 days 50% refund. Less than 7 days no refund. Book with deposit $200 secure today and pay balance later via PayPal jumaadventuresandsafaris@gmail.com or M-Pesa Paybill JUMA ADVENTURES. Private tour customizable — tell us what you want to see and skip. Contact Juma Adventures Business: WhatsApp +254 746 011254 / Email jumaadventuresandsafaris@gmail.com"
   }
 ];
 
@@ -133,7 +160,7 @@ export const getPackage = (id: string) => {
   const cleanId = id.trim().toLowerCase().replace(/_/g, "-")
   const direct = packages.find((p) => p.id.toLowerCase() === cleanId)
   if (direct) return direct
-  const aliases: Record<string, string> = { "mt-kenya": "mount-kenya", "masai-mara-safari": "masai-mara" }
+  const aliases: Record<string, string> = { "mt-kenya": "mount-kenya", "masai-mara-safari": "masai-mara", "mt-kenya-4days": "mt-kenya-4-days", "big-5": "big-5-lake-nakuru" }
   const aliasedId = aliases[cleanId]
   if (aliasedId) return packages.find((p) => p.id.toLowerCase() === aliasedId)
   return undefined
