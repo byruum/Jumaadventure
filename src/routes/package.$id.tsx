@@ -27,7 +27,8 @@ function PackagePage() {
   const paypalDep = `https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=${paypalEmail}&item_name=${encodeURIComponent(packageData.title + " Deposit")}&amount=${dep}&currency_code=USD&no_shipping=1`;
   const paypalFull = `https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=${paypalEmail}&item_name=${encodeURIComponent(packageData.title + " Full")}&amount=${full}&currency_code=USD&no_shipping=1`;
 
-  const cancellationPolicy = packageData.cancellationPolicy || `Juma Adventures Standard Policy: Cancel up to 15 days before start date and get full refund. 7-14 days 50% refund. Less than 7 days no refund. WhatsApp +254 746 011254`;
+  const isDayTrip = packageData.days === 1 || packageData.duration.toLowerCase().includes("1 day") || packageData.title.toLowerCase().includes("day trip");
+  const cancellationPolicy = `Juma Adventures Standard Policy: Cancel up to 15 days before start date and get full refund including fees. 7-14 days 50% refund. Less than 7 days no refund. WhatsApp +254 746 011254`;
 
   const sendEmail = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -36,7 +37,7 @@ function PackagePage() {
       const res = await fetch(`https://formsubmit.co/ajax/${paypalEmail}`, {
         method: "POST",
         headers: { "Content-Type":"application/json", "Accept":"application/json" },
-        body: JSON.stringify({ subject: `Booking ${packageData.title} - ${form.name} - ${party} pax`,...form, tourDate, startTime, party, package: packageData.title })
+        body: JSON.stringify({ subject: `Booking ${packageData.title} $${full} - ${party} pax - ${tourDate} ${startTime}`,...form, tourDate, startTime, party, package: packageData.title })
       });
       if (res.ok) { setSent(true); setTimeout(()=>{ setShowBooking(false); setSent(false); }, 4000); }
     } catch {
@@ -60,7 +61,7 @@ function PackagePage() {
       <div className="max-w-[1200px] mx-auto px-4 md:px-8 mt-8 grid md:grid-cols-[1.3fr_0.7fr] gap-8">
         <div className="order-2 md:order-1 space-y-6">
           <div className="bg-white rounded-[20px] p-6 border">
-            <p className="text-[11px] font-black tracking-widest text-[#0B6A2B]">FULL AMOUNT ${full} • {packageData.duration}</p>
+            <p className="text-[11px] font-black tracking-widest text-[#0B6A2B]">FULL AMOUNT ${full} • {packageData.duration} {isDayTrip? "• DAY TRIP ONLY" : ""}</p>
             <p className="mt-3 text-[14px] leading-6 text-black/70">{packageData.journey}</p>
             <h3 className="mt-5 font-black text-[14px]">Highlights</h3>
             <ul className="mt-2 list-disc ml-5 text-[13px] space-y-1">{packageData.highlights.map((h,i)=><li key={i}>{h}</li>)}</ul>
@@ -89,7 +90,17 @@ function PackagePage() {
         <div className="order-1 md:order-2">
           <div className="bg-white rounded-[16px] border shadow-[0_12px_40px_rgba(0,0,0,0.08)] p-5 sticky top-5">
             <p className="text-center font-black text-[28px]">${Number(full).toLocaleString()}.00 USD</p>
-            <div className="mt-4 space-y-2 text-[13px] text-black/60"><div>🕒 {packageData.duration || "4 days"}</div><div>🚗 Private transportation</div><div>👥 Private tour for 1-2 people</div></div>
+
+            <div className="mt-2 flex justify-center">
+              {isDayTrip? (
+                <span className="bg-[#F5B400] text-black px-3 py-1 rounded-full text-[10px] font-black tracking-widest">DAY TRIP ONLY • $330</span>
+              ) : (
+                <span className="bg-[#0B6A2B] text-white px-3 py-1 rounded-full text-[10px] font-black tracking-widest">{packageData.duration.toUpperCase()} • ${full}</span>
+              )}
+            </div>
+
+            <div className="mt-4 space-y-2 text-[13px] text-black/60"><div>🕒 {packageData.duration}</div><div>🚗 Private transportation</div><div>👥 Private tour for 1-2 people</div></div>
+
             <div className="mt-4 border border-black/20 rounded-full px-4 py-3 flex justify-between items-center">
               <span className="font-bold text-[14px]">Your party size</span>
               <div className="flex items-center gap-3">
@@ -98,14 +109,17 @@ function PackagePage() {
                 <button type="button" onClick={()=>setParty(p=>Math.min(6,p+1))} className="w-7 h-7 rounded-full bg-black text-white flex items-center justify-center">+</button>
               </div>
             </div>
-            <label className="mt-3 border border-black/20 rounded-full px-4 py-3 flex justify-between items-center cursor-pointer">
+
+            <label className="mt-3 border border-black/20 rounded-full px-4 py-3 flex justify-between items-center cursor-pointer hover:border-black">
               <span className="font-bold text-[14px]">Tour date</span>
               <input type="date" value={tourDate} onChange={e=>{ setTourDate(e.target.value); setForm({...form, date: e.target.value}) }} className="bg-transparent outline-none text-[13px] cursor-pointer" />
             </label>
-            <label className="mt-3 border border-black/20 rounded-full px-4 py-3 flex justify-between items-center cursor-pointer">
+
+            <label className="mt-3 border border-black/20 rounded-full px-4 py-3 flex justify-between items-center cursor-pointer hover:border-black">
               <span className="font-bold text-[14px]">Start time</span>
               <input type="time" value={startTime} onChange={e=>setStartTime(e.target.value)} className="bg-transparent outline-none text-[13px] cursor-pointer" />
             </label>
+
             <button onClick={()=>setShowBooking(true)} className="mt-4 w-full bg-[#0B8A5B] text-white py-4 rounded-full font-black">Book Now</button>
             <a href="#cancel" className="mt-4 flex items-center gap-2 text-[13px] underline font-bold"><span className="w-5 h-5 rounded-full border flex items-center justify-center text-[10px]">✓</span> View our cancellation policies</a>
           </div>
@@ -117,8 +131,8 @@ function PackagePage() {
           <div className="bg-white w-full max-w-[520px] rounded-[24px] overflow-hidden">
             {!sent? (
               <form onSubmit={sendEmail} className="p-6 space-y-3">
-                <div className="flex justify-between"><h3 className="font-black">Book ${full} • {party} pax</h3><button type="button" onClick={()=>setShowBooking(false)} className="w-8 h-8 bg-black/10 rounded-full">✕</button></div>
-                <p className="text-[12px]">Date: {tourDate || "Select"} • Time: {startTime}</p>
+                <div className="flex justify-between"><h3 className="font-black">Book ${full} • {party} pax {isDayTrip? "• DAY TRIP" : ""}</h3><button type="button" onClick={()=>setShowBooking(false)} className="w-8 h-8 bg-black/10 rounded-full">✕</button></div>
+                <p className="text-[12px]">Date: {tourDate || "Select"} • Time: {startTime} • Full: ${full}</p>
                 <input required value={form.name} onChange={e=>setForm({...form,name:e.target.value})} placeholder="Full name" className="w-full border rounded-full px-4 py-3 text-[13px]" />
                 <input required type="email" value={form.email} onChange={e=>setForm({...form,email:e.target.value})} placeholder="Email" className="w-full border rounded-full px-4 py-3 text-[13px]" />
                 <input required value={form.whatsapp} onChange={e=>setForm({...form,whatsapp:e.target.value})} placeholder="WhatsApp" className="w-full border rounded-full px-4 py-3 text-[13px]" />
