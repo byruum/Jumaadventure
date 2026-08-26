@@ -9,13 +9,13 @@ export const Route = createFileRoute('/package/$id')({
 
 function PackagePage() {
   const { packageData } = Route.useLoaderData()
-  const [showBooking][setShowBooking] = useState(false);
-  const [sending][setSending] = useState(false);
-  const [sent][setSent] = useState(false);
-  const [party][setParty] = useState(1);
-  const [tourDate][setTourDate] = useState("");
-  const [startTime][setStartTime] = useState("08:00");
-  const [form][setForm] = useState({ name:"", guests:"2 Persons", date:"", inquiry:"", email:"", whatsapp:"" });
+  const [showBooking, setShowBooking] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [sent, setSent] = useState(false);
+  const [party, setParty] = useState(1);
+  const [tourDate, setTourDate] = useState("");
+  const [startTime, setStartTime] = useState("08:00");
+  const [form, setForm] = useState({ name:"", guests:"2 Persons", date:"", inquiry:"", email:"", whatsapp:"" });
 
   if (!packageData) return <div className="p-8 text-center">Package not found</div>;
 
