@@ -1,4 +1,3 @@
-import MtKenyaAdVideo from "../components/MtKenyaAdVideo"
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -9,26 +8,26 @@ export const Route = createFileRoute("/")({
 });
 
 const heroSlides = [
-  { 
-    img: "/hero-safari.png", 
-    title: "Discover Kenya", 
-    subtitle: "like never before", 
+  {
+    img: "/hero-safari.png",
+    title: "Discover Kenya",
+    subtitle: "like never before",
     description: "Unforgettable safari adventures, breathtaking landscapes and authentic cultural experiences. Guided by Dennis Juma & other trained, licensed professional guides.",
-    type: "image" 
+    type: "image"
   },
-  { 
-    img: "/IMG-20260115-WA0016(1).jpg", 
-    title: "Wildlife Safari", 
-    subtitle: "Masai Mara Adventures", 
+  {
+    img: "/IMG-20260115-WA0016(1).jpg",
+    title: "Wildlife Safari",
+    subtitle: "Masai Mara Adventures",
     description: "Experience the Great Migration, spot the Big 5, and sleep under African stars with expert guides.",
-    type: "image" 
+    type: "image"
   },
-  { 
-    img: "/IMG-20260726-WA3768.jpg", 
-    title: "Where do you want to go?", 
-    subtitle: "", 
+  {
+    img: "/IMG-20260726-WA3768.jpg",
+    title: "Where do you want to go?",
+    subtitle: "",
     description: "",
-    type: "location" 
+    type: "location"
   },
 ]
 
@@ -106,7 +105,7 @@ function Index() {
         </Link>
 
         <span className="eyebrow text-white/80">KENYA • EAST AFRICA</span>
-        
+
         <motion.h1
           key={heroIndex + "title"}
           initial={{ y: 30, opacity: 0 }}
@@ -119,7 +118,7 @@ function Index() {
         </motion.h1>
 
         {heroSlides[heroIndex].description && (
-          <motion.p 
+          <motion.p
             key={heroIndex + "desc"}
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
@@ -129,7 +128,7 @@ function Index() {
             {heroSlides[heroIndex].description}
           </motion.p>
         )}
-        
+
         <div className="mt-8 flex gap-3">
           <Link to="/packages" className="btn-primary">Explore Tours</Link>
           <Link to="/contact" className="btn-outline">Book Your Adventure</Link>
@@ -157,7 +156,7 @@ function Index() {
                   }}
                   className={`px-5 py-2.5 rounded-full backdrop-blur-md border transition-all ${
                     selectedLocation === loc
-                  ? "bg-[#F97316] text-white border-[#F97316] shadow-lg shadow-orange-500/30"
+                 ? "bg-[#F97316] text-white border-[#F97316] shadow-lg shadow-orange-500/30"
                       : "bg-white/10 text-white border-white/20 hover:bg-white/20"
                   }`}
                 >
@@ -185,13 +184,6 @@ function Index() {
       </div>
     </section>
 
-    {/* VIDEO AD - LIVE */}
-    <section className="bg-black py-8">
-      <div className="container-page">
-        <MtKenyaAdVideo />
-      </div>
-    </section>
-
       <section className="border-b border-border bg-background">
         <div className="container-page py-6">
           <div className="flex flex-wrap items-center justify-center gap-3">
@@ -204,9 +196,6 @@ function Index() {
           </div>
         </div>
       </section>
-
-      {/* Paste your other sections here: destinations, about, included, reviews, gallery, booking */}
-      
     </>
   );
-}
+      }
