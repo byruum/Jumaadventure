@@ -28,7 +28,6 @@ function PackagePage() {
   const paypalFull = `https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=${paypalEmail}&item_name=${encodeURIComponent(packageData.title + " Full")}&amount=${full}&currency_code=USD&no_shipping=1`;
 
   const isDayTrip = packageData.days === 1 || packageData.duration.toLowerCase().includes("1 day") || packageData.title.toLowerCase().includes("day trip");
-  // ONLY UPDATED - DENNIS EXACT
   const cancellationPolicy = `1. Cancellation 15 days before the tour date entitled to full refund.\n2. Cancellation 7 days before the tour, entitled to 50% refund.\n3. No refund within 7 days before commencing tour date.`;
 
   const sendEmail = async (e: React.FormEvent) => {
@@ -59,9 +58,8 @@ function PackagePage() {
         </div>
       </div>
 
-      {/* ONLY ADDED - GALLERY SCROLL SIDEWAYS */}
       <div className="max-w-[1200px] mx-auto px-4 md:px-8 mt-4">
-        <div className="flex gap-3 overflow-x-auto pb-3 snap-x snap-mandatory scrollbar-hide">
+        <div className="flex gap-3 overflow-x-auto pb-3 snap-x snap-mandatory">
           {gallery.map((img:string, i:number)=>(
             <img key={i} src={img} alt={`gal ${i}`} className="w-[200px] md:w-[280px] h-[130px] md:h-[180px] object-cover rounded-[12px] flex-shrink-0 snap-start border" />
           ))}
