@@ -9,14 +9,14 @@ export const Route = createFileRoute("/")({
 
 const heroSlides = [
   {
-    img: "/hero safari.png",
+    img: "/IMG-20250827-WA1627.jpg",
     title: "Discover Kenya",
     subtitle: "like never before",
     description: "Unforgettable safari adventures, breathtaking landscapes and authentic cultural experiences. Guided by Dennis Juma & other trained, licensed professional guides.",
     type: "image"
   },
   {
-    img: "/IMG-20250827-WA1627.jpg",
+    img: "/IMG-20250827-WA7107.jpg",
     title: "Wildlife Safari",
     subtitle: "Masai Mara Adventures",
     description: "Experience the Great Migration, spot the Big 5, and sleep under African stars with expert guides.",
