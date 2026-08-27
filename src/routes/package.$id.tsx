@@ -16,16 +16,20 @@ function PackagePage() {
   const [tourDate, setTourDate] = useState("");
   const [startTime, setStartTime] = useState("08:00");
   const [form, setForm] = useState({ name:"", guests:"2 Persons", date:"", inquiry:"", email:"", whatsapp:"" });
+  const [activeIdx, setActiveIdx] = useState(0);
 
   if (!packageData) return <div className="p-8 text-center">Package not found</div>;
 
   const gallery = packageData.gallery?.length? packageData.gallery : ["/og-image.png"];
-  const heroImg = gallery[0];
+  const heroImg = gallery[activeIdx] || gallery[0];
   const full = packageData.price;
   const dep = packageData.deposit || "200";
   const paypalEmail = packageData.paypalEmail || "jumaadventuresandsafaris@gmail.com";
   const paypalDep = `https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=${paypalEmail}&item_name=${encodeURIComponent(packageData.title + " Deposit")}&amount=${dep}&currency_code=USD&no_shipping=1`;
   const paypalFull = `https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=${paypalEmail}&item_name=${encodeURIComponent(packageData.title + " Full")}&amount=${full}&currency_code=USD&no_shipping=1`;
+
+  const next = () => setActiveIdx(i => (i + 1) % gallery.length);
+  const prev = () => setActiveIdx(i => (i - 1 + gallery.length) % gallery.length);
 
   const isDayTrip = packageData.days === 1 || packageData.duration.toLowerCase().includes("1 day") || packageData.title.toLowerCase().includes("day trip");
   const cancellationPolicy = `1. Cancellation 15 days before the tour date entitled to full refund.\n2. Cancellation 7 days before the tour, entitled to 50% refund.\n3. No refund within 7 days before commencing tour date.`;
@@ -49,9 +53,19 @@ function PackagePage() {
   return (
     <div className="bg-[#FAF7F2] min-h-screen pb-10">
       <div className="w-full h-[52vh] md:h-[70vh] relative bg-black">
-        <img src={heroImg} alt={packageData.title} className="w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-        <div className="absolute bottom-0 left-0 right-0 p-5 md:p-10">
+        <img src={heroImg} alt={packageData.title} className="w-full h-full object-cover cursor-pointer" onClick={next} />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" />
+
+        {/* CLICKABLE ARROWS */}
+        <button onClick={prev} className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full border-2 border-white bg-black/30 text-white flex items-center justify-center text-xl z-10">‹</button>
+        <button onClick={next} className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full border-2 border-white bg-black/30 text-white flex items-center justify-center text-xl z-10">›</button>
+
+        {/* CLICKABLE COUNTER 1/12 */}
+        <button onClick={next} className="absolute bottom-5 left-1/2 -translate-x-1/2 bg-black/70 text-white px-4 py-1 rounded-full text-[12px] font-bold z-10">
+          {activeIdx + 1}/{gallery.length}
+        </button>
+
+        <div className="absolute bottom-0 left-0 right-0 p-5 md:p-10 pointer-events-none">
           <p className="text-[#F5B400] font-black text-[10px] tracking-[0.3em]">{packageData.from.toUpperCase()} • {packageData.duration}</p>
           <h1 className="mt-2 text-white font-black text-[26px] md:text-[46px] leading-[0.95] max-w-[800px]">{packageData.title}</h1>
           <p className="mt-2 text-white/80 text-[13px] max-w-[700px]">{packageData.subtitle}</p>
@@ -61,7 +75,13 @@ function PackagePage() {
       <div className="max-w-[1200px] mx-auto px-4 md:px-8 mt-4">
         <div className="flex gap-3 overflow-x-auto pb-3 snap-x snap-mandatory">
           {gallery.map((img:string, i:number)=>(
-            <img key={i} src={img} alt={`gal ${i}`} className="w-[200px] md:w-[280px] h-[130px] md:h-[180px] object-cover rounded-[12px] flex-shrink-0 snap-start border" />
+            <img
+              key={i}
+              src={img}
+              alt={`gal ${i}`}
+              onClick={()=>setActiveIdx(i)}
+              className={`w-[200px] md:w-[280px] h-[130px] md:h-[180px] object-cover rounded-[12px] flex-shrink-0 snap-start border-2 cursor-pointer ${i===activeIdx? "border-black" : "border-transparent"}`}
+            />
           ))}
         </div>
       </div>
