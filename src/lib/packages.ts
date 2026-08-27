@@ -80,11 +80,23 @@ export const packages: Package[] = [
     duration: "1 Day",
     route: "Nanyuki - Narumoru Gate - Met Station - Mountain - Nanyuki",
     pace: "Moderate",
-    // FIXED: Removed Kilimanjaro image, use real Mt Kenya Point Lenana signage images
-    gallery: [img("mt-kenya-point-lenana-sign.jpg"), img("mt-kenya-4day-1.jpg"), img("mt-kenya-4day-2.jpg"), img("mt-kenya-summit.jpg")],
-    journey: "Mt. Kenya, one of Africa's most iconic volcanic mountains, stands proudly along the equator yet remains snow-capped year-round. Its stunning peaks — Batian (5,199m) - highest, Nelion (5,188m) - second highest, and Point Lenana (4,985m) - third highest — promise an unforgettable adventure for hikers and nature lovers. Trek through diverse ecosystems, from lush forests to alpine meadows and icy summits, while learning about the mountain's rich history, geology, and unique vegetation.",
+    gallery: [
+      img("IMG-20250827-WA1627.jpg"),
+      img("IMG-20250827-WA7107.jpg"),
+      img("IMG-20250827-WA4703.jpg"),
+      img("IMG-20250827-WA0302.jpg"),
+      img("IMG-20250827-WA3138.jpg"),
+      img("IMG-20250827-WA5769.jpg"),
+      img("IMG-20250827-WA6138.jpg"),
+      img("IMG-20250827-WA7065.jpg"),
+      img("IMG-20250827-WA9899.jpg"),
+      img("IMG-20250827-WA2489.jpg"),
+      img("IMG-20250827-WA3807.jpg"),
+      img("IMG-20250827-WA5967.jpg")
+    ],
+    journey: "Mt. Kenya, one of Africa's most iconic volcanic mountains, stands proudly along the equator yet remains snow-capped year-round. Its stunning peaks — Batian (5,199m) - highest, Nelion (5,190m) - second highest, and Point Lenana (4,985m) - third highest — promise an unforgettable adventure for hikers and nature lovers. Trek through diverse ecosystems, from lush forests to alpine meadows and icy summits, while learning about the mountain's rich history, geology, and unique vegetation.",
     quote: "Guided by a passionate, experienced, and safety-trained mountain guide, you'll enjoy more than just a climb — you'll experience friendship, inspiration, and care. I treat every guest like family, ensuring comfort, safety, and unforgettable memories on Africa's second-highest Mountain.",
-    highlights: ["Hiking on glaciers and rocks", "Explore the ecosystem of mountain vegetation from lower to upper rock", "View beautiful gorges, valleys", "View Batian Peak-1 (5,199m), Nelion Peak-2 (5,188m), Point Lenana-3 (4,985m) closely", "Real Mt Kenya signage at Point Lenana", "New model Hybrid Noah Voxy"],
+    highlights: ["Hiking on glaciers and rocks", "Explore the ecosystem of mountain vegetation from lower to upper rock", "View beautiful gorges, valleys", "View Batian Peak-1 (5,199m), Nelion Peak-2 (5,188m), Point Lenana-3 (4,985m) closely", "Real Mt Kenya signage at Point Lenana - THIRD HIGHEST PEAK 4985m", "New model Hybrid Noah Voxy"],
     itinerary: [
       { dayNum: 1, title: "Nanyuki Tour Itinerary", details: ["The journey starts in the morning with a drive from Nanyuki town to Mt Kenya National Park and check in at the Narumoru gate", "Then drive 10km to end off road at the met station before we start a hike", "The hiking will take at least 5 hrs on the mountain to be able to view beautiful gorges, valleys, mountain vegetation and view mountains closely", "Later on, come down to the met station and then drive down at the gate to check out", "If you have any special interests, please let me know"], meals: "Not Included" }
     ],
@@ -136,11 +148,23 @@ export const packages: Package[] = [
     duration: "4 days",
     route: "Nairobi - Nanyuki - Mt Kenya - Nairobi",
     pace: "Moderate - 9km Day 1, Summit 03:30 Day 3",
-    // FIXED: Removed Kilimanjaro image
-    gallery: [img("mt-kenya-point-lenana-sign.jpg"), img("mt-kenya-4day-1.jpg"), img("mt-kenya-4day-2.jpg"), img("mt-kenya-summit.jpg")],
+    gallery: [
+      img("IMG-20250827-WA1627.jpg"),
+      img("IMG-20250827-WA7107.jpg"),
+      img("IMG-20250827-WA4703.jpg"),
+      img("IMG-20250827-WA0302.jpg"),
+      img("IMG-20250827-WA3138.jpg"),
+      img("IMG-20250827-WA5769.jpg"),
+      img("IMG-20250827-WA6138.jpg"),
+      img("IMG-20250827-WA7065.jpg"),
+      img("IMG-20250827-WA9899.jpg"),
+      img("IMG-20250827-WA2489.jpg"),
+      img("IMG-20250827-WA3807.jpg"),
+      img("IMG-20250827-WA5967.jpg")
+    ],
     journey: "True 4-day hiking experience in Mt Kenya's primeval wilderness. We summit the third highest point which is Point Lenana (4,985m). Mt Kenya has three main peaks: Batian Peak-1 (5,199m) highest, Nelion Peak-2 (5,188m) second highest, Point Lenana-3 (4,985m) third highest and the highest trekking peak reachable without technical climbing. From lush forests to alpine meadows and icy summits, explore with passionate, experienced mountain guide Dennis J.",
     quote: "Every journey is a story — let’s make yours unforgettable. Karibu Kenya hakuna matata!",
-    highlights: ["Summit Point Lenana - 3rd highest point (4,985m)", "Batian Peak-1 (5,199m) highest, Nelion Peak-2 (5,188m) second, Point Lenana-3 (4,985m) third", "9 km trek on first day", "Summit hike starts at 03:30 hrs on third day", "Idyllic landscapes & primeval wilderness", "Real Mt Kenya Point Lenana signage photo", "New model Hybrid Noah Voxy Nairobi - Mt Kenya - Nairobi"],
+    highlights: ["Summit Point Lenana - 3rd highest point (4,985m)", "Batian Peak-1 (5,199m) highest, Nelion Peak-2 (5,188m) second, Point Lenana-3 (4,985m) third", "9 km trek on first day", "Summit hike starts at 03:30 hrs on third day", "Idyllic landscapes & primeval wilderness", "Real Mt Kenya Point Lenana signage photo - THIRD HIGHEST PEAK", "New model Hybrid Noah Voxy Nairobi - Mt Kenya - Nairobi"],
     itinerary: [
       { dayNum: 1, title: "Nairobi - Nanyuki - Met Station (3,050m) - 9km Trek", details: ["Pickup Embakasi / Nairobi hotel or airport, drive to Narumoru Gate check-in", "Drive 10km to Met Station, start 9km trek through forest and moorland", "Dinner & overnight mountain accommodation (bed & meals included)"], meals: "Lunch, Dinner" },
       { dayNum: 2, title: "Met Station - Mackinder's Camp (4,200m)", details: ["Moderate-level hiking over moorland", "View beautiful gorges, valleys and mountain vegetation closely", "Accommodation on mountain as per itinerary"], meals: "Breakfast, Lunch, Dinner" },
