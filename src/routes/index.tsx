@@ -9,21 +9,21 @@ export const Route = createFileRoute("/")({
 
 const heroSlides = [
   {
-    img: "/IMG-20250827-WA1627.jpg",
+    img: "/hero-safari.png",
     title: "Discover Kenya",
     subtitle: "like never before",
     description: "Unforgettable safari adventures, breathtaking landscapes and authentic cultural experiences. Guided by Dennis Juma & other trained, licensed professional guides.",
     type: "image"
   },
   {
-    img: "/IMG-20250827-WA7107.jpg",
+    img: "/IMG-20260827-WA1621.jpg",
     title: "Wildlife Safari",
     subtitle: "Masai Mara Adventures",
     description: "Experience the Great Migration, spot the Big 5, and sleep under African stars with expert guides.",
     type: "image"
   },
   {
-    img: "/IMG-20250827-WA4703.jpg",
+    img: "/IMG-20260827-WA4703.jpg",
     title: "Where do you want to go?",
     subtitle: "",
     description: "",
@@ -32,18 +32,18 @@ const heroSlides = [
 ]
 
 const gallery = [
-  "/IMG-20250827-WA1627.jpg",
-  "/IMG-20250827-WA7107.jpg",
-  "/IMG-20250827-WA4703.jpg",
-  "/IMG-20250827-WA0302.jpg",
-  "/IMG-20250827-WA3138.jpg",
-  "/IMG-20250827-WA5769.jpg",
-  "/IMG-20250827-WA6138.jpg",
-  "/IMG-20250827-WA7065.jpg",
-  "/IMG-20250827-WA9899.jpg",
-  "/IMG-20250827-WA2489.jpg",
-  "/IMG-20250827-WA3807.jpg",
-  "/IMG-20250827-WA5967.jpg"
+  "/IMG-20260827-WA1621.jpg",
+  "/IMG-20260827-WA7107.jpg",
+  "/IMG-20260827-WA4703.jpg",
+  "/IMG-20260827-WA0302.jpg",
+  "/IMG-20260827-WA3138.jpg",
+  "/IMG-20260827-WA8769.jpg",
+  "/IMG-20260827-WA6138.jpg",
+  "/IMG-20260827-WA7065.jpg",
+  "/IMG-20260827-WA9899.jpg",
+  "/IMG-20260827-WA2489.jpg",
+  "/IMG-20260827-WA3807.jpg",
+  "/IMG-20260827-WA5967.jpg"
 ];
 
 const reviews = [
@@ -162,7 +162,7 @@ function Index() {
                   }}
                   className={`px-5 py-2.5 rounded-full backdrop-blur-md border transition-all ${
                     selectedLocation === loc
-                ? "bg-[#F97316] text-white border-[#F97316] shadow-lg shadow-orange-500/30"
+               ? "bg-[#F97316] text-white border-[#F97316] shadow-lg shadow-orange-500/30"
                       : "bg-white/10 text-white border-white/20 hover:bg-white/20"
                   }`}
                 >
