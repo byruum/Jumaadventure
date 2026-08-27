@@ -64,7 +64,7 @@ export const packages: Package[] = [
     includes: ["Snacks & Drinking water bottle", "Private Guide", "Private Transportation", "Park entrance fees - Tickets", "Food Drinks Snacks", "Accommodation: Bed & meals @ Oldarpoi Lodge / Sentrim Mara Lodge"],
     excludes: ["Personal expenses"],
     meetingPoint: "Nairobi Airport / Hotel",
-    cancellationPolicy: "Juma Adventures Standard Policy: Book with a deposit $500. Secure your tour today and pay balance later. Cancel up to 15 days before start date and get full refund. 7-14 days 50% refund. Less than 7 days no refund. Contact Juma Adventures: WhatsApp +254 746 011254 / jumaadventuresandsafaris@gmail.com"
+    cancellationPolicy: "1. Cancellation 15 days before the tour date entitled to full refund.\n2. Cancellation 7 days before the tour, entitled to 50% refund.\n3. No refund within 7 days before commencing tour date."
   },
   {
     id: "mount-kenya",
@@ -80,10 +80,11 @@ export const packages: Package[] = [
     duration: "1 Day",
     route: "Nanyuki - Narumoru Gate - Met Station - Mountain - Nanyuki",
     pace: "Moderate",
-    gallery: [img("mount-kenya-day-trip-hike.jpg")],
-    journey: "Mt. Kenya, one of Africa's most iconic volcanic mountains, stands proudly along the equator yet remains snow-capped year-round. Its stunning peaks — Batian (5,199m), Nelion (5,190m), and Point Lenana (4,985m) — promise an unforgettable adventure for hikers and nature lovers. Trek through diverse ecosystems, from lush forests to alpine meadows and icy summits, while learning about the mountain's rich history, geology, and unique vegetation.",
+    // FIXED: Removed Kilimanjaro image, use real Mt Kenya Point Lenana signage images
+    gallery: [img("mt-kenya-point-lenana-sign.jpg"), img("mt-kenya-4day-1.jpg"), img("mt-kenya-4day-2.jpg"), img("mt-kenya-summit.jpg")],
+    journey: "Mt. Kenya, one of Africa's most iconic volcanic mountains, stands proudly along the equator yet remains snow-capped year-round. Its stunning peaks — Batian (5,199m) - highest, Nelion (5,188m) - second highest, and Point Lenana (4,985m) - third highest — promise an unforgettable adventure for hikers and nature lovers. Trek through diverse ecosystems, from lush forests to alpine meadows and icy summits, while learning about the mountain's rich history, geology, and unique vegetation.",
     quote: "Guided by a passionate, experienced, and safety-trained mountain guide, you'll enjoy more than just a climb — you'll experience friendship, inspiration, and care. I treat every guest like family, ensuring comfort, safety, and unforgettable memories on Africa's second-highest Mountain.",
-    highlights: ["Hiking on glaciers and rocks", "Explore the ecosystem of mountain vegetation from lower to upper rock", "View beautiful gorges, valleys", "View Batian, Nelion, Point Lenana closely", "New model Hybrid Noah Voxy"],
+    highlights: ["Hiking on glaciers and rocks", "Explore the ecosystem of mountain vegetation from lower to upper rock", "View beautiful gorges, valleys", "View Batian Peak-1 (5,199m), Nelion Peak-2 (5,188m), Point Lenana-3 (4,985m) closely", "Real Mt Kenya signage at Point Lenana", "New model Hybrid Noah Voxy"],
     itinerary: [
       { dayNum: 1, title: "Nanyuki Tour Itinerary", details: ["The journey starts in the morning with a drive from Nanyuki town to Mt Kenya National Park and check in at the Narumoru gate", "Then drive 10km to end off road at the met station before we start a hike", "The hiking will take at least 5 hrs on the mountain to be able to view beautiful gorges, valleys, mountain vegetation and view mountains closely", "Later on, come down to the met station and then drive down at the gate to check out", "If you have any special interests, please let me know"], meals: "Not Included" }
     ],
@@ -93,7 +94,7 @@ export const packages: Package[] = [
     tourStart: "Nanyuki",
     tourEnd: "Nanyuki",
     whatToBring: ["Hiking boots", "Warm jacket", "Rain jacket", "Hat", "Water 2L"],
-    cancellationPolicy: "Juma Adventures Day Trip Policy: Free cancellation up to 48 hours before. Park ticket $52 non-refundable once issued. Contact Juma Adventures WhatsApp +254 746 011254 to reschedule."
+    cancellationPolicy: "1. Cancellation 15 days before the tour date entitled to full refund.\n2. Cancellation 7 days before the tour, entitled to 50% refund.\n3. No refund within 7 days before commencing tour date."
   },
   {
     id: "big-5-lake-nakuru",
@@ -119,12 +120,12 @@ export const packages: Package[] = [
     includes: ["Private Guide Dennis J", "Private Transportation", "Park entrance fees", "Accommodation bed & meals", "Food Drinks Snacks", "Drinking water"],
     excludes: ["Personal expenses", "Tips"],
     meetingPoint: "Embakasi, Nairobi — hotel pickup on request",
-    cancellationPolicy: "Juma Adventures Standard Policy: Cancel up to 15 days before and get full refund. Book with deposit $100 secure today, pay balance later via PayPal jumaadventuresandsafaris@gmail.com or M-Pesa. WhatsApp +254 746 011254"
+    cancellationPolicy: "1. Cancellation 15 days before the tour date entitled to full refund.\n2. Cancellation 7 days before the tour, entitled to 50% refund.\n3. No refund within 7 days before commencing tour date."
   },
   {
     id: "mt-kenya-4-days",
     title: "Mt Kenya, idyllic landscapes and primeval wilderness - 4-days of true hiking experience",
-    subtitle: "Private 1-2 people • Tour Ref 583394 • Nanyuki",
+    subtitle: "Private 1-2 people • Tour Ref 583394 • Nanyuki • Summit Point Lenana (3rd highest)",
     from: "Nanyuki / Embakasi, Nairobi",
     days: 4,
     price: "1540",
@@ -135,14 +136,15 @@ export const packages: Package[] = [
     duration: "4 days",
     route: "Nairobi - Nanyuki - Mt Kenya - Nairobi",
     pace: "Moderate - 9km Day 1, Summit 03:30 Day 3",
-    gallery: [img("mount-kenya-day-trip-hike.jpg"), img("mt-kenya-4day-1.jpg"), img("mt-kenya-4day-2.jpg"), img("mt-kenya-summit.jpg")],
-    journey: "True 4-day hiking experience in Mt Kenya's primeval wilderness. From lush forests to alpine meadows and icy summits, explore Batian (5,199m), Nelion (5,190m) and Point Lenana (4,985m) with passionate, experienced mountain guide Dennis J. Perfect for hikers and nature lovers.",
+    // FIXED: Removed Kilimanjaro image
+    gallery: [img("mt-kenya-point-lenana-sign.jpg"), img("mt-kenya-4day-1.jpg"), img("mt-kenya-4day-2.jpg"), img("mt-kenya-summit.jpg")],
+    journey: "True 4-day hiking experience in Mt Kenya's primeval wilderness. We summit the third highest point which is Point Lenana (4,985m). Mt Kenya has three main peaks: Batian Peak-1 (5,199m) highest, Nelion Peak-2 (5,188m) second highest, Point Lenana-3 (4,985m) third highest and the highest trekking peak reachable without technical climbing. From lush forests to alpine meadows and icy summits, explore with passionate, experienced mountain guide Dennis J.",
     quote: "Every journey is a story — let’s make yours unforgettable. Karibu Kenya hakuna matata!",
-    highlights: ["9 km trek on first day", "Summit hike starts at 03:30 hrs on third day", "Idyllic landscapes & primeval wilderness", "View Batian (5,199m), Nelion (5,190m), Point Lenana (4,985m)", "New model Hybrid Noah Voxy Nairobi - Mt Kenya - Nairobi"],
+    highlights: ["Summit Point Lenana - 3rd highest point (4,985m)", "Batian Peak-1 (5,199m) highest, Nelion Peak-2 (5,188m) second, Point Lenana-3 (4,985m) third", "9 km trek on first day", "Summit hike starts at 03:30 hrs on third day", "Idyllic landscapes & primeval wilderness", "Real Mt Kenya Point Lenana signage photo", "New model Hybrid Noah Voxy Nairobi - Mt Kenya - Nairobi"],
     itinerary: [
       { dayNum: 1, title: "Nairobi - Nanyuki - Met Station (3,050m) - 9km Trek", details: ["Pickup Embakasi / Nairobi hotel or airport, drive to Narumoru Gate check-in", "Drive 10km to Met Station, start 9km trek through forest and moorland", "Dinner & overnight mountain accommodation (bed & meals included)"], meals: "Lunch, Dinner" },
       { dayNum: 2, title: "Met Station - Mackinder's Camp (4,200m)", details: ["Moderate-level hiking over moorland", "View beautiful gorges, valleys and mountain vegetation closely", "Accommodation on mountain as per itinerary"], meals: "Breakfast, Lunch, Dinner" },
-      { dayNum: 3, title: "Mackinder's - Point Lenana Summit (4,985m) - Met Station", details: ["Wake up 03:30 hrs for summit attempt to Point Lenana for sunrise", "View Batian and Nelion peaks closely, photos at summit", "Descend to Mackinder's for breakfast then continue down to Met Station"], meals: "Breakfast, Lunch, Dinner" },
+      { dayNum: 3, title: "Mackinder's - Point Lenana Summit (4,985m) - 3rd Highest Peak - Met Station", details: ["Wake up 03:30 hrs for summit attempt to Point Lenana (4,985m) - the third highest point of Mt Kenya for sunrise", "Point Lenana is the third highest after Batian Peak-1 (5,199m) and Nelion Peak-2 (5,188m)", "View Batian and Nelion peaks closely, photos at summit signage", "Descend to Mackinder's for breakfast then continue down to Met Station"], meals: "Breakfast, Lunch, Dinner" },
       { dayNum: 4, title: "Met Station - Nanyuki - Nairobi", details: ["Final descent, checkout at Narumoru Gate", "Private transport Hybrid Noah Voxy back to Nanyuki / Nairobi — ends back in Nairobi after descending on fourth day"], meals: "Breakfast, Lunch" }
     ],
     includes: ["Porters", "Food", "Water bottles", "Accommodation on the mountain for up to five clients", "Private Guide - Dennis J, passionate & experienced mountain guide", "Private Transportation - New model Hybrid Noah Voxy, comfort throughout Nairobi to Mt Kenya and back", "Food Drinks Snacks as per itinerary (bed & meals included)"],
@@ -151,7 +153,7 @@ export const packages: Package[] = [
     meetingPoint: "Embakasi, Nairobi, Kenya — You can request specific meeting location (your hotel) during checkout. Flexible meeting options such as hotel or airport. Ends back in Nairobi Day 4.",
     tourStart: "Nanyuki / Embakasi, Nairobi",
     tourEnd: "Nairobi",
-    cancellationPolicy: "Juma Adventures Standard Policy: Cancel up to 15 days before start date and get full refund including all fees. 7-14 days 50% refund. Less than 7 days no refund. Book with deposit $200 secure today and pay balance later via PayPal jumaadventuresandsafaris@gmail.com or M-Pesa Paybill JUMA ADVENTURES. Private tour customizable — tell us what you want to see and skip. Contact Juma Adventures Business: WhatsApp +254 746 011254 / Email jumaadventuresandsafaris@gmail.com"
+    cancellationPolicy: "1. Cancellation 15 days before the tour date entitled to full refund.\n2. Cancellation 7 days before the tour, entitled to 50% refund.\n3. No refund within 7 days before commencing tour date."
   }
 ];
 
