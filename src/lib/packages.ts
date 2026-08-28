@@ -128,26 +128,27 @@ export const packages: Package[] = [
   },
   {
     id: "big-5-lake-nakuru",
-    title: "Big 5 and Lake Nakuru, enjoy the nature and wildlife of Africa",
-    subtitle: "3 Days Private Safari • 1-2 People",
+    title: "Big 5 and Lake Nakuru, Lake Naivasha 4 Days Safari",
+    subtitle: "4 Days Private Safari • Mara Sweet Acacia Lodge • Sarova Lion Hill Hotel",
     from: "Nairobi",
-    days: 3,
-    price: "850",
-    deposit: "100",
+    days: 4,
+    price: "4950",
+    deposit: "500",
     paypalEmail: "jumaadventuresandsafaris@gmail.com",
     paybillNo: "Coming Soon",
     paybillAcc: "JUMA ADVENTURES",
-    duration: "3 Days",
-    route: "Nairobi - Masai Mara - Lake Nakuru - Nairobi",
+    duration: "4 Days / 3 Nights",
+    route: "Nairobi - Masai Mara - Lake Nakuru - Lake Naivasha - Nairobi",
     gallery: [img("lake-nakuru-national-park-1.jpg"), img("maasai-mara-national-reserve (1).jpg"), img("IMG-20260827-WA1621.jpg")],
-    journey: "Short 3-day private safari for Big 5 — Masai Mara and Lake Nakuru National Park.",
-    highlights: ["Big 5 sightings", "Lake Nakuru flamingos & rhinos", "Great Rift Valley viewpoint"],
+    journey: "4-day Big 5 private safari covering Masai Mara, Lake Nakuru and Lake Naivasha. Accommodation at Masai Mara put Mara Sweet Acacia Lodge and Sarova Lion Hill Hotel in Lake Nakuru.",
+    highlights: ["Big 5 sightings Masai Mara", "Mara Sweet Acacia Lodge", "Lake Nakuru flamingos & rhinos", "Lake Naivasha boat ride - birds and hippos", "Crescent Island walk", "Great Rift Valley viewpoint"],
     itinerary: [
-      { dayNum: 1, title: "Nairobi – Masai Mara", details: ["Pick-up via Great Rift Valley viewpoint", "Afternoon game drive in Masai Mara"], meals: "Lunch, Dinner" },
-      { dayNum: 2, title: "Masai Mara Full Day", details: ["Full-day game drive with picnic lunch", "Mara River area"], meals: "Breakfast, Lunch, Dinner" },
-      { dayNum: 3, title: "Masai Mara – Lake Nakuru – Nairobi", details: ["Drive to Lake Nakuru, game drive for rhinos & flamingos", "Return to Nairobi drop-off"], meals: "Breakfast, Lunch" }
+      { dayNum: 1, title: "Nairobi – Masai Mara", details: ["Pick-up in Nairobi via Great Rift Valley viewpoint", "Drive to Masai Mara, check in at Mara Sweet Acacia Lodge", "Afternoon game drive in Masai Mara", "Dinner & overnight at Mara Sweet Acacia Lodge"], meals: "Lunch, Dinner" },
+      { dayNum: 2, title: "Masai Mara Full Day", details: ["Full-day game drive with picnic lunch", "Mara River area - hippos, crocodiles, Great Migration (seasonal)", "Return to Mara Sweet Acacia Lodge"], meals: "Breakfast, Lunch, Dinner" },
+      { dayNum: 3, title: "Masai Mara – Lake Nakuru", details: ["After breakfast, drive to Lake Nakuru", "Check in at Sarova Lion Hill Hotel, followed by an afternoon game drive", "Overnight: Sarova Lion Hill Hotel"], meals: "Breakfast, Lunch, Dinner" },
+      { dayNum: 4, title: "Lake Nakuru – Lake Naivasha – Nairobi", details: ["After breakfast, drive to Lake Naivasha for a boat ride to see birds and hippos, followed by a walk at Crescent Island", "Have lunch at Lake Naivasha Resort before driving to Nairobi to end the tour"], meals: "Breakfast, Lunch" }
     ],
-    includes: ["Private Guide Dennis J", "Private Transportation", "Park entrance fees", "Accommodation bed & meals", "Food Drinks Snacks", "Drinking water"],
+    includes: ["Private Guide Dennis J", "Private Transportation", "Park entrance fees", "Accommodation: Mara Sweet Acacia Lodge & Sarova Lion Hill Hotel", "Boat ride Lake Naivasha & Crescent Island walk", "Lunch at Lake Naivasha Resort Day 4", "Food Drinks Snacks", "Drinking water"],
     excludes: ["Personal expenses", "Tips"],
     meetingPoint: "Embakasi, Nairobi — hotel pickup on request",
     cancellationPolicy: "1. Cancellation 15 days before the tour date entitled to full refund.\n2. Cancellation 7 days before the tour, entitled to 50% refund.\n3. No refund within 7 days before commencing tour date."
@@ -208,4 +209,4 @@ export const getPackage = (id: string) => {
   const aliasedId = aliases[cleanId]
   if (aliasedId) return packages.find((p) => p.id.toLowerCase() === aliasedId)
   return undefined
-}
+       }
