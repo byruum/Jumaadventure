@@ -14,7 +14,7 @@ export const Route = createFileRoute("/gallery")({
 
 type Post = { id: number; name: string; caption: string; image_url: string; created_at: string }
 
-// ALL your photos from public folder - exact names as in GitHub
+// FIXED: Removed 17 Masai Mara duplicate brochure pages — only real unique tour photos
 const allImages = [
   { src: "/Diani.png.jpg", tour: "Diani Beach" },
   { src: "/hero-safari.png", tour: "Masai Mara" },
@@ -26,7 +26,7 @@ const allImages = [
   { src: "/IMG-20260111-WA0016.jpg", tour: "Mount Kenya" },
   { src: "/IMG-20260115-WA0013(1).jpg", tour: "Mount Kenya" },
   { src: "/IMG-20260726-WA7365.jpg", tour: "Safari Moments" },
-  // New uploads from yesterday - real tour moments
+  // Real tour moments - unique
   { src: "/IMG-20260827-WA0302.jpg", tour: "Juma Adventures Tour" },
   { src: "/IMG-20260827-WA1621.jpg", tour: "Juma Adventures Tour" },
   { src: "/IMG-20260827-WA2498.jpg", tour: "Juma Adventures Tour" },
@@ -39,24 +39,6 @@ const allImages = [
   { src: "/IMG-20260827-WA7107.jpg", tour: "Juma Adventures Tour" },
   { src: "/IMG-20260827-WA8769.jpg", tour: "Juma Adventures Tour" },
   { src: "/IMG-20260827-WA9899.jpg", tour: "Juma Adventures Tour" },
-  // Your best Masai Mara brochure photos
-  { src: "/Masai Mara tours photos_page-0001.jpg", tour: "Masai Mara Safari" },
-  { src: "/Masai Mara tours photos_page-0002.jpg", tour: "Masai Mara Safari" },
-  { src: "/Masai Mara tours photos_page-0003.jpg", tour: "Masai Mara Safari" },
-  { src: "/Masai Mara tours photos_page-0004.jpg", tour: "Masai Mara Safari" },
-  { src: "/Masai Mara tours photos_page-0005.jpg", tour: "Masai Mara Safari" },
-  { src: "/Masai Mara tours photos_page-0006.jpg", tour: "Masai Mara Safari" },
-  { src: "/Masai Mara tours photos_page-0007.jpg", tour: "Masai Mara Safari" },
-  { src: "/Masai Mara tours photos_page-0008.jpg", tour: "Masai Mara Safari" },
-  { src: "/Masai Mara tours photos_page-0009.jpg", tour: "Masai Mara Safari" },
-  { src: "/Masai Mara tours photos_page-0010.jpg", tour: "Masai Mara Safari" },
-  { src: "/Masai Mara tours photos_page-0011.jpg", tour: "Masai Mara Safari" },
-  { src: "/Masai Mara tours photos_page-0012.jpg", tour: "Masai Mara Safari" },
-  { src: "/Masai Mara tours photos_page-0013.jpg", tour: "Masai Mara Safari" },
-  { src: "/Masai Mara tours photos_page-0014.jpg", tour: "Masai Mara Safari" },
-  { src: "/Masai Mara tours photos_page-0015.jpg", tour: "Masai Mara Safari" },
-  { src: "/Masai Mara tours photos_page-0016.jpg", tour: "Masai Mara Safari" },
-  { src: "/Masai Mara tours photos_page-0017.jpg", tour: "Masai Mara Safari" },
 ];
 
 function GalleryPage() {
@@ -102,34 +84,4 @@ function GalleryPage() {
           </div>
           <h2 className="text-2xl font-bold mb-6">New Uploads</h2>
           {loading? <p>Loading...</p> : posts.length === 0? <p className="text-muted-foreground mb-10">No uploads yet.</p> :
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 mb-12">
-              {posts.map(p => (
-                <div key={p.id} className="group h-[200px] rounded-2xl overflow-hidden cursor-pointer bg-black/5 border" onClick={() => setActive(p.image_url)}>
-                  <img src={p.image_url} className="w-full h-full object-cover group-hover:scale-110 transition duration-300" alt="" />
-                </div>
-              ))}
-            </div>
-          }
-          <h2 className="text-2xl font-bold mb-6">Tour Gallery — {allImages.length} Photos</h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-            {allImages.map((item, i) => (
-              <div key={i} className="group relative h-[180px] md:h-[220px] rounded-2xl overflow-hidden cursor-pointer bg-black/5 border"
-                   onClick={() => setActive(item.src)}>
-                <img src={encodeURI(item.src)} alt={item.tour} className="w-full h-full object-cover group-hover:scale-110 transition duration-500" loading="lazy"
-                onError={(e)=> (e.currentTarget.src = '/hero-safari.png')} />
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-2">
-                  <p className="text-white text-[10px] font-bold truncate">{item.tour}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-      {active && (
-        <div className="fixed inset-0 z-[999] bg-black/90 flex items-center justify-center p-4" onClick={() => setActive(null)}>
-          <img src={encodeURI(active)} className="max-h-[90vh] max-w-[95vw] object-contain rounded-xl" alt="" />
-        </div>
-      )}
-    </>
-  );
-}
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3
