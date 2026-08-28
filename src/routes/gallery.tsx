@@ -1,7 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { supabase } from "../lib/supabaseClient";
-import { packages } from "../data/packages"
 
 export const Route = createFileRoute("/gallery")({
   head: () => ({
@@ -15,13 +14,25 @@ export const Route = createFileRoute("/gallery")({
 
 type Post = { id: number; name: string; caption: string; image_url: string; created_at: string }
 
+// Use local images - no external import = no build error
+const allImages = [
+  { src: "/Diani.png.jpg", tour: "Diani Beach" },
+  { src: "/IMG-20260111-WA0016.jpg", tour: "Mount Kenya adventure" },
+  { src: "/IMG-20260115-WA0073(1).jpg", tour: "Point Lenana summit" },
+  { src: "/IMG-20260726-WA0718.jpg", tour: "Mount Kenya day hike" },
+  { src: "/Nairobi National Park-Wildlife roaming freely just.jpg", tour: "Nairobi city tour" },
+  { src: "/lake-nakuru-national-park-1.jpg", tour: "Lake Nakuru Safari" },
+  { src: "/masai-mara-national-reserve (1).jpg", tour: "Masai Mara Reserve" },
+  { src: "/mount-Kenya-day-trip-hike.jpg", tour: "Mount Kenya day hike" },
+  { src: "/mt.kenya.jpg", tour: "Point Lenana summit" },
+  { src: "/hero-safari.png", tour: "Masai Mara game drive" },
+];
+
 function GalleryPage() {
   const [posts, setPosts] = useState<Post[]>([])
   const [loading, setLoading] = useState(true)
   const [uploading, setUploading] = useState(false)
   const [active, setActive] = useState<string | null>(null)
-
-  const allImages = packages.flatMap(p => p.gallery.map(img => ({ src: img, tour: p.title })))
 
   useEffect(() => { fetchPosts() }, [])
 
@@ -91,9 +102,8 @@ function GalleryPage() {
       {active && (
         <div className="fixed inset-0 z-[999] bg-black/90 flex items-center justify-center p-4" onClick={() => setActive(null)}>
           <img src={active} className="max-h-[90vh] max-w-[95vw] object-contain rounded-xl" alt="" />
-          <button className="absolute top-4 right-4 text-white text-3xl w-10 h-10 bg-white/10 rounded-full">✕</button>
         </div>
       )}
     </>
   );
-}
+         }
