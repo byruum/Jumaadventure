@@ -30,8 +30,8 @@ export type Package = {
 const img = (name: string) => {
   if (!name) return "/og-image.png"
   if (name.startsWith("http")) return name
-  const clean = name.replace(/^\//, "").replace(/^Images\//i, "")
-  return `/${clean}`
+  const clean = name.replace(/^\//, "").replace(/^Images\//i, "").trim()
+  return encodeURI(`/${clean}`)
 }
 
 export const WHATSAPP_NUMBER = "254746011254"
@@ -52,23 +52,23 @@ export const packages: Package[] = [
     duration: "4 Days / 3 Nights",
     route: "Nairobi - Masai Mara - Nairobi",
     gallery: [
-      img("Masai Mara tours photos _page-0001.jpg"),
-      img("Masai Mara tours photos _page-0002.jpg"),
-      img("Masai Mara tours photos _page-0003.jpg"),
-      img("Masai Mara tours photos _page-0004.jpg"),
-      img("Masai Mara tours photos _page-0005.jpg"),
-      img("Masai Mara tours photos _page-0006.jpg"),
-      img("Masai Mara tours photos _page-0007.jpg"),
-      img("Masai Mara tours photos _page-0008.jpg"),
-      img("Masai Mara tours photos _page-0009.jpg"),
-      img("Masai Mara tours photos _page-0010.jpg"),
-      img("Masai Mara tours photos _page-0011.jpg"),
-      img("Masai Mara tours photos _page-0012.jpg"),
-      img("Masai Mara tours photos _page-0013.jpg"),
-      img("Masai Mara tours photos _page-0014.jpg"),
-      img("Masai Mara tours photos _page-0015.jpg"),
-      img("Masai Mara tours photos _page-0016.jpg"),
-      img("Masai Mara tours photos _page-0017.jpg"),
+      img("Masai Mara tours photos_page_0001.jpg"),
+      img("Masai Mara tours photos_page_0002.jpg"),
+      img("Masai Mara tours photos_page_0003.jpg"),
+      img("Masai Mara tours photos_page_0004.jpg"),
+      img("Masai Mara tours photos_page_0005.jpg"),
+      img("Masai Mara tours photos_page_0006.jpg"),
+      img("Masai Mara tours photos_page_0007.jpg"),
+      img("Masai Mara tours photos_page_0008.jpg"),
+      img("Masai Mara tours photos_page_0009.jpg"),
+      img("Masai Mara tours photos_page_0010.jpg"),
+      img("Masai Mara tours photos_page_0011.jpg"),
+      img("Masai Mara tours photos_page_0012.jpg"),
+      img("Masai Mara tours photos_page_0013.jpg"),
+      img("Masai Mara tours photos_page_0014.jpg"),
+      img("Masai Mara tours photos_page_0015.jpg"),
+      img("Masai Mara tours photos_page_0016.jpg"),
+      img("Masai Mara tours photos_page_0017.jpg"),
     ],
     journey: "Enjoy 4 Days / 3 Nights Masai Mara Safari with pick-up & drop-off Nairobi Airport/Hotel. Stay at Sentrim Mara Lodge / Oldarpoi Lodge.",
     quote: "Karibu Kenya hakuna matata!",
@@ -228,9 +228,9 @@ export const packages: Package[] = [
       "Giraffe Centre"
     ],
     itinerary: [
-      { 
-        dayNum: 1, 
-        title: "Morning City Highlights", 
+      {
+        dayNum: 1,
+        title: "Morning City Highlights",
         details: [
           "Pick up at the airport/City using a comfortable car. Drive down in streets of Nairobi city",
           "Kenyatta International Conference Centre (K.I.C.C) building the tallest one in the city - aerial view",
@@ -241,18 +241,18 @@ export const packages: Package[] = [
           "7th Memorial Park",
           "Maasai Market",
           "Carnivore ground Restaurant (optional)"
-        ], 
-        meals: "Not Included" 
+        ],
+        meals: "Not Included"
       },
-      { 
-        dayNum: 2, 
-        title: "Afternoon - Animal Orphanage & Giraffe Centre", 
+      {
+        dayNum: 2,
+        title: "Afternoon - Animal Orphanage & Giraffe Centre",
         details: [
           "In the afternoon we visit Animal Orphanage-David Sheldrick",
           "Visit Giraffe Centre",
           "Later we drive back to the hotel to end the tour"
-        ], 
-        meals: "Not Included" 
+        ],
+        meals: "Not Included"
       }
     ],
     includes: ["Snacks Drinking water", "Private Guide Dennis J", "Private Transportation / Category: Van Landcruiser Jeep safari vehicle", "Entry fees at Animal Orphanage and Giraffe Centre", "Private tour for 1-2 people", "Tour categories: Nature Wildlife And Safaris, Day Trip, City Highlights, Art And Culture, Layover", "Book with a deposit - 50%"],
@@ -282,4 +282,4 @@ export const getPackage = (id: string) => {
   const aliasedId = aliases[cleanId]
   if (aliasedId) return packages.find((p) => p.id.toLowerCase() === aliasedId)
   return undefined
-} 
+}
