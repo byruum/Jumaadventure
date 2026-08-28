@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { supabase } from "../lib/supabaseClient";
-import { packages } from "@/data/packages"
+import { packages } from "../data/packages"
 
 export const Route = createFileRoute("/gallery")({
   head: () => ({
