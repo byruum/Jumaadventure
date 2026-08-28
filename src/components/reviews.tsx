@@ -92,4 +92,5 @@ export function ReviewsSection({ tourName }: { tourName: string }) {
       )}
     </div>
   );
+}
                 
