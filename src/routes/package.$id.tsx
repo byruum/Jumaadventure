@@ -9,7 +9,6 @@ export const Route = createFileRoute('/package/$id')({
 })
 
 function PackagePage() {
-  const { packageData } = Route.useLoaderData()
   const [showBooking, setShowBooking] = useState(false);
   const [sending, setSending] = useState(false);
   const [sent, setSent] = useState(false);
