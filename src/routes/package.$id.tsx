@@ -20,7 +20,7 @@ function PackagePage() {
 
   if (!packageData) return <div className="p-8 text-center">Package not found</div>;
 
-  const gallery = packageData.gallery?.length? packageData.gallery : ["/og-image.png"];
+  const gallery = Array.from(new Set(packageData.gallery?.length? packageData.gallery : ["/og-image.png"]));
   const heroImg = gallery[activeIdx] || gallery[0];
   const full = packageData.price;
   const dep = packageData.deposit || "200";
@@ -55,16 +55,11 @@ function PackagePage() {
       <div className="w-full h-[52vh] md:h-[70vh] relative bg-black">
         <img src={heroImg} alt={packageData.title} className="w-full h-full object-cover cursor-pointer" onClick={next} />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" />
-
-        {/* CLICKABLE ARROWS */}
         <button onClick={prev} className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full border-2 border-white bg-black/30 text-white flex items-center justify-center text-xl z-10">‹</button>
         <button onClick={next} className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full border-2 border-white bg-black/30 text-white flex items-center justify-center text-xl z-10">›</button>
-
-        {/* CLICKABLE COUNTER 1/12 */}
         <button onClick={next} className="absolute bottom-5 left-1/2 -translate-x-1/2 bg-black/70 text-white px-4 py-1 rounded-full text-[12px] font-bold z-10">
           {activeIdx + 1}/{gallery.length}
         </button>
-
         <div className="absolute bottom-0 left-0 right-0 p-5 md:p-10 pointer-events-none">
           <p className="text-[#F5B400] font-black text-[10px] tracking-[0.3em]">{packageData.from.toUpperCase()} • {packageData.duration}</p>
           <h1 className="mt-2 text-white font-black text-[26px] md:text-[46px] leading-[0.95] max-w-[800px]">{packageData.title}</h1>
