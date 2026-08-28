@@ -41,7 +41,7 @@ function AboutPage() {
       <section className="section">
         <div className="container-page grid gap-12 lg:grid-cols-2 lg:items-start">
           <img
-            src="/IMG-20260111-WA0016.jpg"
+            <img src="/mount-Kenya-day-trip-hike.jpg" alt="Dennis Juma on a Mount Kenya expedition" className="aspect-[4/5] w-full rounded-3xl object-cover" loading="lazy" />
             alt="Dennis Juma on a Mount Kenya expedition"
             className="aspect-[4/5] w-full rounded-3xl object-cover"
             loading="lazy"
