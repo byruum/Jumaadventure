@@ -37,6 +37,14 @@ const img = (name: string) => {
 export const WHATSAPP_NUMBER = "254746011254"
 export const WHATSAPP_DISPLAY = "+254 746 011254"
 
+const CANCELLATION_POLICY = `CANCELLATION POLICY
+Cancellation 15 Days or More Before the Tour:
+Guests are entitled to a 100% refund of the amount paid.
+Cancellation 7-14 Days Before the Tour:
+Guests are entitled to a 50% refund of the amount paid.
+Cancellation Within 7 Days of the Tour:
+No refund will be provided for cancellations made less than 7 days before the scheduled tour commencement date.`;
+
 export const packages: Package[] = [
   {
     id: "masai-mara",
@@ -51,7 +59,7 @@ export const packages: Package[] = [
     paybillAcc: "JUMA ADVENTURES",
     duration: "4 Days / 3 Nights",
     route: "Nairobi - Masai Mara - Nairobi",
-        gallery: [
+    gallery: [
       img("hero-safari.png"),
       img("maasai-mara-national-reserve (1).jpg"),
       img("lake-nakuru-national-park-1.jpg"),
@@ -66,10 +74,10 @@ export const packages: Package[] = [
       { dayNum: 3, title: "Game Drive & Maasai Village", details: ["Morning game drive", "Visit a Maasai village to experience culture and traditions", "Optional afternoon game drive", "Dinner & overnight at lodge"], meals: "Breakfast, Lunch, Dinner" },
       { dayNum: 4, title: "Masai Mara – Nairobi", details: ["Sunrise game drive, breakfast, and return drive to Nairobi with lunch en route", "Drop-off at hotel or airport transfer for onward flight"], meals: "Breakfast, Lunch" }
     ],
-    includes: ["Snacks & Drinking water bottle", "Private Guide", "Private Transportation", "Park entrance fees - Tickets", "Food Drinks Snacks", "Accommodation: Bed & meals @ Oldarpoi Lodge / Sentrim Mara Lodge"],
+    includes: ["Snacks & Drinking water bottle", "Professional guide", "Private Transportation", "Park entrance fees - Tickets", "Food Drinks Snacks", "Accommodation: Bed & meals @ Oldarpoi Lodge / Sentrim Mara Lodge"],
     excludes: ["Personal expenses"],
     meetingPoint: "Nairobi Airport / Hotel",
-    cancellationPolicy: "1. Cancellation 15 days before the tour date entitled to full refund.\n2. Cancellation 7 days before the tour, entitled to 50% refund.\n3. No refund within 7 days before commencing tour date."
+    cancellationPolicy: CANCELLATION_POLICY
   },
   {
     id: "mount-kenya",
@@ -105,13 +113,13 @@ export const packages: Package[] = [
     itinerary: [
       { dayNum: 1, title: "Nanyuki Tour Itinerary", details: ["The journey starts in the morning with a drive from Nanyuki town to Mt Kenya National Park and check in at the Narumoru gate", "Then drive 10km to end off road at the met station before we start a hike", "The hiking will take at least 5 hrs on the mountain to be able to view beautiful gorges, valleys, mountain vegetation and view mountains closely", "Later on, come down to the met station and then drive down at the gate to check out", "If you have any special interests, please let me know"], meals: "Not Included" }
     ],
-    includes: ["Private Guide", "Private Transportation / Category: Minivan — New model Hybrid Noah Voxy"],
+    includes: ["Professional guide", "Private Transportation / Category: Minivan — New model Hybrid Noah Voxy"],
     excludes: ["Personal expenses - Park tickets fee 52 USD per person", "Accommodation", "Equipment", "Tickets", "Food Drinks Snacks"],
     meetingPoint: "Nyeri - Nanyuki Road, Nanyuki, Laikipia County, Kenya — Hotel pickup on request",
     tourStart: "Nanyuki",
     tourEnd: "Nanyuki",
     whatToBring: ["Hiking boots", "Warm jacket", "Rain jacket", "Hat", "Water 2L"],
-    cancellationPolicy: "1. Cancellation 15 days before the tour date entitled to full refund.\n2. Cancellation 7 days before the tour, entitled to 50% refund.\n3. No refund within 7 days before commencing tour date."
+    cancellationPolicy: CANCELLATION_POLICY
   },
   {
     id: "big-5-lake-nakuru",
@@ -135,18 +143,18 @@ export const packages: Package[] = [
       { dayNum: 3, title: "Masai Mara – Lake Nakuru", details: ["After breakfast, drive to Lake Nakuru", "Check in at Sarova Lion Hill Hotel, followed by an afternoon game drive", "Overnight: Sarova Lion Hill Hotel"], meals: "Breakfast, Lunch, Dinner" },
       { dayNum: 4, title: "Lake Nakuru – Lake Naivasha – Nairobi", details: ["After breakfast, drive to Lake Naivasha for a boat ride to see birds and hippos, followed by a walk at Crescent Island", "Have lunch at Lake Naivasha Resort before driving to Nairobi to end the tour"], meals: "Breakfast, Lunch" }
     ],
-    includes: ["Private Guide Dennis J", "Private Transportation", "Park entrance fees", "Accommodation: Mara Sweet Acacia Lodge & Sarova Lion Hill Hotel", "Boat ride Lake Naivasha & Crescent Island walk", "Lunch at Lake Naivasha Resort Day 4", "Food Drinks Snacks", "Drinking water"],
+    includes: ["Professional guide", "Private Transportation", "Park entrance fees", "Accommodation: Mara Sweet Acacia Lodge & Sarova Lion Hill Hotel", "Boat ride Lake Naivasha & Crescent Island walk", "Lunch at Lake Naivasha Resort Day 4", "Food Drinks Snacks", "Drinking water"],
     excludes: ["Personal expenses", "Tips"],
     meetingPoint: "Embakasi, Nairobi — hotel pickup on request",
-    cancellationPolicy: "1. Cancellation 15 days before the tour date entitled to full refund.\n2. Cancellation 7 days before the tour, entitled to 50% refund.\n3. No refund within 7 days before commencing tour date."
+    cancellationPolicy: CANCELLATION_POLICY
   },
   {
     id: "mt-kenya-4-days",
     title: "Mt Kenya, idyllic landscapes and primeval wilderness - 4-days of true hiking experience",
-    subtitle: "Private 1-2 people • Tour Ref 583394 • Nanyuki • Summit Point Lenana (3rd highest)",
+    subtitle: "Private 1-2 people • Tour Ref 583394 • Nanyuki • Summit Point Lenana (3rd highest) • 2 Pax Fullboard",
     from: "Nanyuki / Embakasi, Nairobi",
     days: 4,
-    price: "1540",
+    price: "1620",
     deposit: "200",
     paypalEmail: "jumaadventuresandsafaris@gmail.com",
     paybillNo: "Coming Soon",
@@ -168,88 +176,133 @@ export const packages: Package[] = [
       img("IMG-20260827-WA3807.jpg"),
       img("IMG-20260827-WA5967.jpg")
     ],
-    journey: "True 4-day hiking experience in Mt Kenya's primeval wilderness. We summit the third highest point which is Point Lenana (4,985m). Mt Kenya has three main peaks: Batian Peak-1 (5,199m) highest, Nelion Peak-2 (5,188m) second highest, Point Lenana-3 (4,985m) third highest and the highest trekking peak reachable without technical climbing. From lush forests to alpine meadows and icy summits, explore with passionate, experienced mountain guide Dennis J.",
+    journey: "True 4-day hiking experience in Mt Kenya's primeval wilderness. We summit the third highest point which is Point Lenana (4,985m). Mt Kenya has three main peaks: Batian Peak-1 (5,199m) highest, Nelion Peak-2 (5,188m) second highest, Point Lenana-3 (4,985m) third highest and the highest trekking peak reachable without technical climbing. From lush forests to alpine meadows and icy summits, explore with a professional mountain guide.",
     quote: "Every journey is a story — let’s make yours unforgettable. Karibu Kenya hakuna matata!",
-    highlights: ["Summit Point Lenana - 3rd highest point (4,985m)", "Batian Peak-1 (5,199m) highest, Nelion Peak-2 (5,188m) second, Point Lenana-3 (4,985m) third", "9 km trek on first day", "Summit hike starts at 03:30 hrs on third day", "Idyllic landscapes & primeval wilderness", "Real Mt Kenya Point Lenana signage photo - THIRD HIGHEST PEAK", "New model Hybrid Noah Voxy Nairobi - Mt Kenya - Nairobi"],
+    highlights: ["Summit Point Lenana - 3rd highest point (4,985m)", "Batian Peak-1 (5,199m) highest, Nelion Peak-2 (5,188m) second, Point Lenana-3 (4,985m) third", "9 km trek on first day", "Summit hike starts at 03:30 hrs on third day", "Idyllic landscapes & primeval wilderness", "Accommodation for 2pax on fullboard (bed & meals)", "New model Hybrid Noah Voxy Nairobi - Mt Kenya - Nairobi"],
     itinerary: [
-      { dayNum: 1, title: "Nairobi - Nanyuki - Met Station (3,050m) - 9km Trek", details: ["Pickup Embakasi / Nairobi hotel or airport, drive to Narumoru Gate check-in", "Drive 10km to Met Station, start 9km trek through forest and moorland", "Dinner & overnight mountain accommodation (bed & meals included)"], meals: "Lunch, Dinner" },
-      { dayNum: 2, title: "Met Station - Mackinder's Camp (4,200m)", details: ["Moderate-level hiking over moorland", "View beautiful gorges, valleys and mountain vegetation closely", "Accommodation on mountain as per itinerary"], meals: "Breakfast, Lunch, Dinner" },
+      { dayNum: 1, title: "Nairobi - Nanyuki - Met Station (3,050m) - 9km Trek", details: ["Pickup Embakasi / Nairobi hotel or airport, drive to Narumoru Gate check-in", "Drive 10km to Met Station, start 9km trek through forest and moorland", "Dinner & overnight mountain accommodation for 2pax on fullboard (bed & meals)"], meals: "Lunch, Dinner" },
+      { dayNum: 2, title: "Met Station - Mackinder's Camp (4,200m)", details: ["Moderate-level hiking over moorland", "View beautiful gorges, valleys and mountain vegetation closely", "Accommodation for 2pax on fullboard (bed & meals)"], meals: "Breakfast, Lunch, Dinner" },
       { dayNum: 3, title: "Mackinder's - Point Lenana Summit (4,985m) - 3rd Highest Peak - Met Station", details: ["Wake up 03:30 hrs for summit attempt to Point Lenana (4,985m) - the third highest point of Mt Kenya for sunrise", "Point Lenana is the third highest after Batian Peak-1 (5,199m) and Nelion Peak-2 (5,188m)", "View Batian and Nelion peaks closely, photos at summit signage", "Descend to Mackinder's for breakfast then continue down to Met Station"], meals: "Breakfast, Lunch, Dinner" },
       { dayNum: 4, title: "Met Station - Nanyuki - Nairobi", details: ["Final descent, checkout at Narumoru Gate", "Private transport Hybrid Noah Voxy back to Nanyuki / Nairobi — ends back in Nairobi after descending on fourth day"], meals: "Breakfast, Lunch" }
     ],
-    includes: ["Porters", "Food", "Water bottles", "Accommodation on the mountain for up to five clients", "Private Guide - Dennis J, passionate & experienced mountain guide", "Private Transportation - New model Hybrid Noah Voxy, comfort throughout Nairobi to Mt Kenya and back", "Food Drinks Snacks as per itinerary (bed & meals included)"],
-    excludes: ["Personal expenses such as park fees $52 per person", "Souvenirs", "Tips", "Personal hiking gear"],
+    includes: [
+      "Transportation pick up and drop off",
+      "All park fees",
+      "Professional mountain guide",
+      "Accommodation for 2pax on fullboard (bed & meals)",
+      "Porters and cook",
+      "Snacks and drinking bottled water"
+    ],
+    excludes: [
+      "Personal expenses",
+      "Gratitude tips range from $20 per day"
+    ],
     whatToBring: ["Sturdy hiking boots", "Warm clothing for cold summit", "Rain gear", "Sunscreen, hat, sunglasses", "Water 2L"],
     meetingPoint: "Embakasi, Nairobi, Kenya — You can request specific meeting location (your hotel) during checkout. Flexible meeting options such as hotel or airport. Ends back in Nairobi Day 4.",
     tourStart: "Nanyuki / Embakasi, Nairobi",
     tourEnd: "Nairobi",
-    cancellationPolicy: "1. Cancellation 15 days before the tour date entitled to full refund.\n2. Cancellation 7 days before the tour, entitled to 50% refund.\n3. No refund within 7 days before commencing tour date."
+    cancellationPolicy: CANCELLATION_POLICY
   },
-    {
+  {
+    id: "nairobi-national-park-daytrip",
+    title: "Nairobi National Park + David Sheldrick + Giraffe Centre - Day Trip",
+    subtitle: "Morning Game Drive • Private • Pick-up Hotel/Airport",
+    from: "Nairobi",
+    days: 1,
+    price: "556",
+    deposit: "100",
+    paypalEmail: "jumaadventuresandsafaris@gmail.com",
+    duration: "1 Day - Morning & Afternoon",
+    route: "Nairobi Hotel/Airport - Nairobi National Park - David Sheldrick - Giraffe Centre - Hotel",
+    pace: "Easy",
+    gallery: [img("nairobi-national-park.jpg"), img("david-sheldrick.jpg"), img("giraffe-centre.jpg"), img("nairobi-city-skyline.jpg")],
+    journey: "Enjoy a full day in Nairobi starting with a morning game drive in Nairobi National Park after pick up from your hotel/airport, with a visit to David Sheldrick orphanage. And later in the afternoon we visit Giraffe Centre before being dropped to your hotel.",
+    highlights: ["Nairobi National Park morning game drive", "David Sheldrick Elephant Orphanage", "Giraffe Centre", "Private transportation", "Professional guide"],
+    itinerary: [
+      { dayNum: 1, title: "Morning: Nairobi N. Park Game Drive + David Sheldrick", details: ["Pick up from hotel/airport early morning", "Morning game drive in Nairobi National Park", "Visit David Sheldrick orphanage"], meals: "Not Included" },
+      { dayNum: 1, title: "Afternoon: Giraffe Centre", details: ["Visit Giraffe Centre in the afternoon", "Later drive to drop you to your hotel/airport to end the tour"], meals: "Not Included" }
+    ],
+    includes: [
+      "Transportation - 5 seater luxury Noah Voxy vehicle",
+      "All entry fees",
+      "Professional guide",
+      "Snacks and drinking water",
+      "Transfers pick up/drop off",
+      "All tax fees & processing fees"
+    ],
+    excludes: ["Personal expenses", "Daily tips ranging from ($20-30) per day"],
+    meetingPoint: "Nairobi Hotel / Airport",
+    cancellationPolicy: CANCELLATION_POLICY
+  },
+  {
     id: "nairobi-city-tour",
-    title: "Day Tour To Amazing Nairobi City-Kenya",
-    subtitle: "8 Hours Private Tour • City Highlights • Art and Culture • Layover • Ref 1124863",
+    title: "Amazing Nairobi City Tour - 8 Hours Cultural Tour",
+    subtitle: "8 Hours Private Tour • Starts 07:30am Ends 17:00pm • City Highlights",
     from: "Nairobi, Kenya",
     days: 1,
-    price: "506",
-    deposit: "253",
+    price: "420",
+    deposit: "100",
     paypalEmail: "jumaadventuresandsafaris@gmail.com",
     paybillNo: "Coming Soon",
     paybillAcc: "JUMA ADVENTURES",
     duration: "8 hours",
-    route: "JKIA - KICC - Museums - City Park - Parliament - Archives - Memorial Park - Maasai Market - Carnivore - Animal Orphanage - Giraffe Centre - Hotel",
-    pace: "Easy - Private Van / Landcruiser Jeep safari vehicle",
+    route: "Nairobi - Museum - Archives - Mamba - Giraffe - Carnivore - Blixen - KICC - Hotel/Airport",
+    pace: "Easy - 5 seater luxury Noah Voxy vehicle",
     gallery: [img("nairobi-city-skyline.jpg"), img("kicc-nairobi.jpg"), img("nairobi-museums.jpg"), img("giraffe-centre.jpg")],
-    journey: "As You plan to visit East Africa, never miss opportunity to experience the largest city of East African countries \"Nairobi City\" its a unique city on its own amongst other cities with its Historical backgrounds, overview outlook of amazing tallest buildings, green attractive environments, museums, market cultures and among many things. As you stand tall on one of the tallest K.I.C.C building! You are able to get a good aerial view of the city. Spend your 1hr 40Mins moving around the city of Nairobi. At the end of the trip you will be rewarded with remarkable memories of beautiful sceneries, cultures and historical stories of Nairobi City.",
+    journey: "Experience Nairobi City — the largest city in East Africa with historical backgrounds, tallest buildings, green environments, museums, and market cultures. Stand tall on K.I.C.C building for aerial view of the city.",
     quote: "Karibu Nairobi hakuna matata!",
     highlights: [
-      "Kenyatta International Conference Centre (K.I.C.C) - tallest building aerial view of city",
-      "Nairobi Museums",
-      "Nairobi City Park",
-      "Parliament Building",
+      "Nairobi Museum",
       "Nairobi Archives",
-      "7th Memorial Park",
-      "Maasai Market",
-      "Carnivore ground Restaurant (optional)",
-      "Animal Orphanage-David Sheldrick",
-      "Giraffe Centre"
+      "Mamba Village",
+      "Giraffe Centre",
+      "Lunch break at Carnivore Restaurant",
+      "Karen Blixen Museum",
+      "K.I.C.C Building - aerial view of Nairobi"
     ],
     itinerary: [
       {
         dayNum: 1,
-        title: "Morning City Highlights",
+        title: "Morning Hours",
         details: [
-          "Pick up at the airport/City using a comfortable car. Drive down in streets of Nairobi city",
-          "Kenyatta International Conference Centre (K.I.C.C) building the tallest one in the city - aerial view",
-          "Nairobi Museums",
-          "Nairobi City park",
-          "Parliament Building",
-          "Nairobi Archives",
-          "7th Memorial Park",
-          "Maasai Market",
-          "Carnivore ground Restaurant (optional)"
+          "Pick up 07:30am - Tour Starts",
+          "Visit Nairobi Museum",
+          "Visit Nairobi Archives",
+          "Visit Mamba Village",
+          "Visit Giraffe Centre",
+          "Break for lunch at Carnivore Restaurant"
         ],
         meals: "Not Included"
       },
       {
         dayNum: 2,
-        title: "Afternoon - Animal Orphanage & Giraffe Centre",
+        title: "Afternoon Hours",
         details: [
-          "In the afternoon we visit Animal Orphanage-David Sheldrick",
-          "Visit Giraffe Centre",
-          "Later we drive back to the hotel to end the tour"
+          "Visit Blixen Museum",
+          "Visit K.I.C.C Building",
+          "Later on we drive to end the tour at your hotel/airport - Tour Ends 17:00pm"
         ],
         meals: "Not Included"
       }
     ],
-    includes: ["Snacks Drinking water", "Private Guide Dennis J", "Private Transportation / Category: Van Landcruiser Jeep safari vehicle", "Entry fees at Animal Orphanage and Giraffe Centre", "Private tour for 1-2 people", "Tour categories: Nature Wildlife And Safaris, Day Trip, City Highlights, Art And Culture, Layover", "Book with a deposit - 50%"],
-    excludes: ["KICC rooftop entry fee", "Museum entry fees", "Carnivore lunch (optional)", "Personal expenses", "Tips"],
+    includes: [
+      "Transportation - 5 seater luxury Noah Voxy vehicle",
+      "All entry fees",
+      "Professional guide",
+      "Snacks and drinking water",
+      "Transfers pick up/drop off",
+      "All tax fees & processing fees"
+    ],
+    excludes: [
+      "Personal expenses",
+      "Daily tips ranging from ($20-30) per day"
+    ],
     whatToBring: ["Comfortable shoes", "Hat", "Sunglasses", "Camera"],
     meetingPoint: "JKIA (NBO), Embakasi, Nairobi, Kenya - You can request a specific meeting location (for example, your hotel) during the checkout",
-    tourStart: "Nairobi / JKIA",
-    tourEnd: "Nairobi / Hotel / JKIA",
-    cancellationPolicy: "1. Cancellation 15 days before the tour date entitled to full refund.\n2. Cancellation 7 days before the tour, entitled to 50% refund.\n3. No refund within 7 days before commencing tour date."
-  },
+    tourStart: "07:30am",
+    tourEnd: "17:00pm",
+    cancellationPolicy: CANCELLATION_POLICY
+  }
 ];
 
 export const getPackage = (id: string) => {
@@ -264,6 +317,8 @@ export const getPackage = (id: string) => {
     "big-5": "big-5-lake-nakuru",
     "nairobi-city": "nairobi-city-tour",
     "nairobi": "nairobi-city-tour",
+    "nairobi-park": "nairobi-national-park-daytrip",
+    "nairobi-national-park": "nairobi-national-park-daytrip",
     "1124863": "nairobi-city-tour"
   }
   const aliasedId = aliases[cleanId]
