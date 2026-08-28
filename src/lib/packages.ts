@@ -197,7 +197,72 @@ export const packages: Package[] = [
     tourStart: "Nanyuki / Embakasi, Nairobi",
     tourEnd: "Nairobi",
     cancellationPolicy: "1. Cancellation 15 days before the tour date entitled to full refund.\n2. Cancellation 7 days before the tour, entitled to 50% refund.\n3. No refund within 7 days before commencing tour date."
-  }
+  },
+    {
+    id: "nairobi-city-tour",
+    title: "Day Tour To Amazing Nairobi City-Kenya",
+    subtitle: "8 Hours Private Tour • City Highlights • Art and Culture • Layover • Ref 1124863",
+    from: "Nairobi, Kenya",
+    days: 1,
+    price: "506",
+    deposit: "253",
+    paypalEmail: "jumaadventuresandsafaris@gmail.com",
+    paybillNo: "Coming Soon",
+    paybillAcc: "JUMA ADVENTURES",
+    duration: "8 hours",
+    route: "JKIA - KICC - Museums - City Park - Parliament - Archives - Memorial Park - Maasai Market - Carnivore - Animal Orphanage - Giraffe Centre - Hotel",
+    pace: "Easy - Private Van / Landcruiser Jeep safari vehicle",
+    gallery: [img("nairobi-city-skyline.jpg"), img("kicc-nairobi.jpg"), img("nairobi-museums.jpg"), img("giraffe-centre.jpg")],
+    journey: "As You plan to visit East Africa, never miss opportunity to experience the largest city of East African countries \"Nairobi City\" its a unique city on its own amongst other cities with its Historical backgrounds, overview outlook of amazing tallest buildings, green attractive environments, museums, market cultures and among many things. As you stand tall on one of the tallest K.I.C.C building! You are able to get a good aerial view of the city. Spend your 1hr 40Mins moving around the city of Nairobi. At the end of the trip you will be rewarded with remarkable memories of beautiful sceneries, cultures and historical stories of Nairobi City.",
+    quote: "Karibu Nairobi hakuna matata!",
+    highlights: [
+      "Kenyatta International Conference Centre (K.I.C.C) - tallest building aerial view of city",
+      "Nairobi Museums",
+      "Nairobi City Park",
+      "Parliament Building",
+      "Nairobi Archives",
+      "7th Memorial Park",
+      "Maasai Market",
+      "Carnivore ground Restaurant (optional)",
+      "Animal Orphanage-David Sheldrick",
+      "Giraffe Centre"
+    ],
+    itinerary: [
+      { 
+        dayNum: 1, 
+        title: "Morning City Highlights", 
+        details: [
+          "Pick up at the airport/City using a comfortable car. Drive down in streets of Nairobi city",
+          "Kenyatta International Conference Centre (K.I.C.C) building the tallest one in the city - aerial view",
+          "Nairobi Museums",
+          "Nairobi City park",
+          "Parliament Building",
+          "Nairobi Archives",
+          "7th Memorial Park",
+          "Maasai Market",
+          "Carnivore ground Restaurant (optional)"
+        ], 
+        meals: "Not Included" 
+      },
+      { 
+        dayNum: 2, 
+        title: "Afternoon - Animal Orphanage & Giraffe Centre", 
+        details: [
+          "In the afternoon we visit Animal Orphanage-David Sheldrick",
+          "Visit Giraffe Centre",
+          "Later we drive back to the hotel to end the tour"
+        ], 
+        meals: "Not Included" 
+      }
+    ],
+    includes: ["Snacks Drinking water", "Private Guide Dennis J", "Private Transportation / Category: Van Landcruiser Jeep safari vehicle", "Entry fees at Animal Orphanage and Giraffe Centre", "Private tour for 1-2 people", "Tour categories: Nature Wildlife And Safaris, Day Trip, City Highlights, Art And Culture, Layover", "Book with a deposit - 50%"],
+    excludes: ["KICC rooftop entry fee", "Museum entry fees", "Carnivore lunch (optional)", "Personal expenses", "Tips"],
+    whatToBring: ["Comfortable shoes", "Hat", "Sunglasses", "Camera"],
+    meetingPoint: "JKIA (NBO), Embakasi, Nairobi, Kenya - You can request a specific meeting location (for example, your hotel) during the checkout",
+    tourStart: "Nairobi / JKIA",
+    tourEnd: "Nairobi / Hotel / JKIA",
+    cancellationPolicy: "1. Cancellation 15 days before the tour date entitled to full refund.\n2. Cancellation 7 days before the tour, entitled to 50% refund.\n3. No refund within 7 days before commencing tour date."
+  },
 ];
 
 export const getPackage = (id: string) => {
@@ -205,8 +270,16 @@ export const getPackage = (id: string) => {
   const cleanId = id.trim().toLowerCase().replace(/_/g, "-")
   const direct = packages.find((p) => p.id.toLowerCase() === cleanId)
   if (direct) return direct
-  const aliases: Record<string, string> = { "mt-kenya": "mount-kenya", "masai-mara-safari": "masai-mara", "mt-kenya-4days": "mt-kenya-4-days", "big-5": "big-5-lake-nakuru" }
+  const aliases: Record<string, string> = {
+    "mt-kenya": "mount-kenya",
+    "masai-mara-safari": "masai-mara",
+    "mt-kenya-4days": "mt-kenya-4-days",
+    "big-5": "big-5-lake-nakuru",
+    "nairobi-city": "nairobi-city-tour",
+    "nairobi": "nairobi-city-tour",
+    "1124863": "nairobi-city-tour"
+  }
   const aliasedId = aliases[cleanId]
   if (aliasedId) return packages.find((p) => p.id.toLowerCase() === aliasedId)
   return undefined
-       }
+}
