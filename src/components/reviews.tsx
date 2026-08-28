@@ -35,7 +35,6 @@ export function ReviewsSection({ tourName }: { tourName: string }) {
     setReviews(updated);
     localStorage.setItem(`reviews-${tourName}`, JSON.stringify(updated));
     
-    // Send to your WhatsApp for approval
     const msg = `NEW REVIEW for ${tourName}%0AName: ${form.name}%0ARating: ${form.rating} stars%0AReview: ${form.comment}`;
     window.open(`https://wa.me/254768118951?text=${msg}`, "_blank");
     
@@ -93,4 +92,3 @@ export function ReviewsSection({ tourName }: { tourName: string }) {
     </div>
   );
 }
-                
