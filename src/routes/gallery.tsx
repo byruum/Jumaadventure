@@ -37,10 +37,9 @@ function GalleryPage() {
   const [posts, setPosts] = useState<Post[]>([])
   const [loading, setLoading] = useState(true)
   const [uploading, setUploading] = useState(false)
+  const [activeImg, setActiveImg] = useState<string | null>(null)
 
-  useEffect(() => {
-    fetchPosts()
-  }, [])
+  useEffect(() => { fetchPosts() }, [])
 
   const fetchPosts = async () => {
     const { data } = await supabase.from('posts').select('*').order('created_at', { ascending: false })
@@ -51,39 +50,22 @@ function GalleryPage() {
   const handleUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0]
     if (!file) return
-    
     setUploading(true)
     const fileName = `${Date.now()}-${file.name}`
-    
-    // 1. Upload to Storage
-    const { error: uploadError } = await supabase.storage
-     .from('gallery') // CHANGE THIS if your bucket is called 'photos'
-     .upload(fileName, file)
-
+    const { error: uploadError } = await supabase.storage.from('gallery').upload(fileName, file)
     if (uploadError) {
       alert('Upload failed: ' + uploadError.message)
       setUploading(false)
       return
     }
-
-    // 2. Get public URL
-    const { data: { publicUrl } } = supabase.storage
-     .from('gallery')
-     .getPublicUrl(fileName)
-
-    // 3. Save to posts table
+    const { data: { publicUrl } } = supabase.storage.from('gallery').getPublicUrl(fileName)
     const { error: dbError } = await supabase.from('posts').insert({
       name: 'Juma Adventures',
       caption: file.name,
       image_url: publicUrl
     })
-
-    if (dbError) {
-      alert('DB Save failed: ' + dbError.message)
-    } else {
-      alert('Uploaded successfully!')
-      fetchPosts() // refresh gallery
-    }
+    if (dbError) alert('DB Save failed: ' + dbError.message)
+    else { alert('Uploaded successfully!'); fetchPosts() }
     setUploading(false)
   }
 
@@ -93,47 +75,58 @@ function GalleryPage() {
         <div className="container-page py-20 text-center">
           <span className="eyebrow text-primary">Gallery</span>
           <h1 className="mt-3 text-5xl font-bold">Real moments from real journeys</h1>
+          <p className="mt-3 text-muted-foreground">Tap any photo to view full size</p>
         </div>
       </section>
 
       <section className="section">
         <div className="container-page">
-          
-          {/* UPLOAD BUTTON ADDED HERE */}
+
           <div className="mb-8 text-center">
-            <label className="inline-block bg-primary text-primary-foreground px-6 py-3 rounded-lg cursor-pointer hover:opacity-90 transition">
+            <label className="inline-block bg-primary text-primary-foreground px-6 py-3 rounded-xl cursor-pointer hover:opacity-90 transition font-bold">
               {uploading? 'Uploading...' : '+ Upload Photo'}
               <input type="file" accept="image/*" onChange={handleUpload} disabled={uploading} className="hidden" />
             </label>
           </div>
 
           <h2 className="text-2xl font-bold mb-6">New Posts</h2>
-          {loading? <p>Loading...</p> : posts.length === 0? 
-            <p className="text-muted-foreground">No posts yet. Upload your first photo above!</p> :
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 mb-12">
+          {loading? <p>Loading...</p> : posts.length === 0?
+            <p className="text-muted-foreground mb-12">No posts yet. Upload your first photo above!</p> :
+            <div className="grid gap-4 grid-cols-2 lg:grid-cols-3 mb-12">
               {posts.map((post) => (
-                <div key={post.id} className="rounded-2xl border bg-card overflow-hidden">
-                  <img src={post.image_url} alt={post.caption} className="w-full h-64 object-cover" />
-                  <div className="p-4">
-                    <p className="font-semibold">{post.name}</p>
-                    <p className="text-sm text-muted-foreground">{post.caption}</p>
+                <div key={post.id} className="group rounded-2xl border bg-card overflow-hidden cursor-pointer" onClick={() => setActiveImg(post.image_url)}>
+                  <div className="h-[220px] overflow-hidden bg-black/5">
+                    <img src={post.image_url} alt={post.caption} className="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
+                  </div>
+                  <div className="p-3">
+                    <p className="font-semibold text-sm truncate">{post.name}</p>
+                    <p className="text-xs text-muted-foreground truncate">{post.caption}</p>
                   </div>
                 </div>
               ))}
             </div>
           }
 
-          <h2 className="text-2xl font-bold mb-6">Kenya Collection</h2>
-          <div className="columns-1 gap-4 sm:columns-2 lg:columns-3 [column-fill:_balance]">
+          <h2 className="text-2xl font-bold mb-6">Kenya Collection — {fixedPhotos.length} Photos</h2>
+          <div className="grid gap-4 grid-cols-2 lg:grid-cols-3">
             {fixedPhotos.map((p) => (
-              <figure key={p.src} className="mb-4 break-inside-avoid rounded-2xl border bg-card overflow-hidden">
-                <img src={p.src} alt={p.label} className="w-full" loading="lazy" />
-                <figcaption className="px-4 py-3 text-sm">{p.label}</figcaption>
+              <figure key={p.src} className="group break-inside-avoid rounded-2xl border bg-card overflow-hidden cursor-pointer" onClick={() => setActiveImg(p.src)}>
+                <div className="h-[240px] overflow-hidden bg-black/5">
+                  <img src={p.src} alt={p.label} className="w-full h-full object-cover group-hover:scale-110 transition duration-500" loading="lazy" />
+                </div>
+                <figcaption className="px-4 py-3 text-sm font-medium">{p.label}</figcaption>
               </figure>
             ))}
           </div>
         </div>
       </section>
+
+      {activeImg && (
+        <div className="fixed inset-0 z-[999] bg-black/90 flex items-center justify-center p-4" onClick={() => setActiveImg(null)}>
+          <img src={activeImg} className="max-h-[90vh] max-w-[95vw] object-contain rounded-xl" alt="" />
+          <button className="absolute top-4 right-4 text-white text-3xl font-bold w-10 h-10 bg-white/10 rounded-full">✕</button>
+        </div>
+      )}
     </>
   );
 }
