@@ -14,7 +14,6 @@ export const Route = createFileRoute("/gallery")({
 
 type Post = { id: number; name: string; caption: string; image_url: string; created_at: string }
 
-// FIXED: Masai Mara brochure (17 duplicate elephants) REMOVED from public gallery
 const allImages = [
   { src: "/Diani.png.jpg", tour: "Diani Beach" },
   { src: "/hero-safari.png", tour: "Masai Mara" },
@@ -37,32 +36,34 @@ const allImages = [
   { src: "/IMG-20260827-WA7065.jpg", tour: "Juma Adventures Tour" },
   { src: "/IMG-20260827-WA7107.jpg", tour: "Juma Adventures Tour" },
   { src: "/IMG-20260827-WA8769.jpg", tour: "Juma Adventures Tour" },
-  { src: "/IMG-20260827-WA9899.jpg", tour: "Juma Adventures Tour" },
+  { src: "/IMG-20260827-WA9899.jpg", tour: "Juma Adventures Tour" }
 ];
 
 function GalleryPage() {
-  const [posts, setPosts] = useState<Post[]>([])
-  const [loading, setLoading] = useState(true)
-  const [uploading, setUploading] = useState(false)
-  const [active, setActive] = useState<string | null>(null)
+  const [posts, setPosts] = useState<Post[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [uploading, setUploading] = useState(false);
+  const [active, setActive] = useState<string | null>(null);
 
-  useEffect(() => { fetchPosts() }, [])
+  useEffect(() => { fetchPosts(); }, []);
   const fetchPosts = async () => {
-    const { data } = await supabase.from('posts').select('*').order('created_at', { ascending: false })
-    setPosts(data || [])
-    setLoading(false)
-  }
+    const { data } = await supabase.from("posts").select("*").order("created_at", { ascending: false });
+    setPosts(data || []);
+    setLoading(false);
+  };
   const handleUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0]
-    if (!file) return
-    setUploading(true)
-    const fileName = `${Date.now()}-${file.name}`
-    const { error } = await supabase.storage.from('gallery').upload(fileName, file)
-    if (error) { alert(error.message); setUploading(false); return }
-    const { data: { publicUrl } } = supabase.storage.from('gallery').getPublicUrl(fileName)
-    await supabase.from('posts').insert({ name: 'Juma Adventures', caption: file.name, image_url: publicUrl })
-    alert('Uploaded!'); fetchPosts(); setUploading(false)
-  }
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setUploading(true);
+    const fileName = `${Date.now()}-${file.name}`;
+    const { error } = await supabase.storage.from("gallery").upload(fileName, file);
+    if (error) { alert(error.message); setUploading(false); return; }
+    const { data: { publicUrl } } = supabase.storage.from("gallery").getPublicUrl(fileName);
+    await supabase.from("posts").insert({ name: "Juma Adventures", caption: file.name, image_url: publicUrl });
+    alert("Uploaded!");
+    fetchPosts();
+    setUploading(false);
+  };
 
   return (
     <>
@@ -77,7 +78,7 @@ function GalleryPage() {
         <div className="container-page">
           <div className="mb-8 text-center">
             <label className="inline-block bg-primary text-primary-foreground px-6 py-3 rounded-xl cursor-pointer font-bold">
-              {uploading? 'Uploading...' : '+ Upload Photo'}
+              {uploading? "Uploading..." : "+ Upload Photo"}
               <input type="file" accept="image/*" onChange={handleUpload} className="hidden" />
             </label>
           </div>
@@ -86,7 +87,7 @@ function GalleryPage() {
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 mb-12">
               {posts.map(p => (
                 <div key={p.id} className="group h-[200px] rounded-2xl overflow-hidden cursor-pointer bg-black/5 border" onClick={() => setActive(p.image_url)}>
-                  <img src={p.image_url} className="w-full h-full object-cover group-hover:scale-110 transition duration-300" alt="" onError={(e)=> (e.currentTarget.src = '/hero-safari.png')} />
+                  <img src={p.image_url} className="w-full h-full object-cover group-hover:scale-110 transition duration-300" alt="" onError={(e) => (e.currentTarget.src = "/hero-safari.png")} />
                 </div>
               ))}
             </div>
@@ -94,6 +95,21 @@ function GalleryPage() {
           <h2 className="text-2xl font-bold mb-6">Tour Gallery — {allImages.length} Photos</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
             {allImages.map((item, i) => (
-              <div key={i} className="group relative h-[180px] md:h-[220px] rounded-2xl overflow-hidden cursor-pointer bg-black/5 border"
-                   onClick={() => setActive(item.src)}>
-                <img src={encodeURI
+              <div key={i} className="group relative h-[180px] md:h-[220px] rounded-2xl overflow-hidden cursor-pointer bg-black/5 border" onClick={() => setActive(item.src)}>
+                <img src={encodeURI(item.src)} alt={item.tour} className="w-full h-full object-cover group-hover:scale-110 transition duration-500" loading="lazy" onError={(e) => (e.currentTarget.src = "/hero-safari.png")} />
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-2">
+                  <p className="text-white text-[10px] font-bold truncate">{item.tour}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+      {active && (
+        <div className="fixed inset-0 z-[999] bg-black/90 flex items-center justify-center p-4" onClick={() => setActive(null)}>
+          <img src={encodeURI(active)} className="max-h-[90vh] max-w-[95vw] object-contain rounded-xl" alt="" />
+        </div>
+      )}
+    </>
+  );
+}
