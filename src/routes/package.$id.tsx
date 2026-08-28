@@ -1,6 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { getPackage, WHATSAPP_NUMBER } from "../lib/packages";
 import { useState } from "react";
+import { ReviewsSection } from "../../components/reviews";
 
 export const Route = createFileRoute('/package/$id')({
   component: PackagePage,
@@ -9,14 +10,14 @@ export const Route = createFileRoute('/package/$id')({
 
 function PackagePage() {
   const { packageData } = Route.useLoaderData()
-  const [showBooking, setShowBooking] = useState(false);
-  const [sending, setSending] = useState(false);
-  const [sent, setSent] = useState(false);
-  const [party, setParty] = useState(1);
-  const [tourDate, setTourDate] = useState("");
-  const [startTime, setStartTime] = useState("08:00");
-  const [form, setForm] = useState({ name:"", guests:"2 Persons", date:"", inquiry:"", email:"", whatsapp:"" });
-  const [activeIdx, setActiveIdx] = useState(0);
+  const [showBooking][setShowBooking] = useState(false);
+  const [sending][setSending] = useState(false);
+  const [sent][setSent] = useState(false);
+  const [party][setParty] = useState(1);
+  const [tourDate][setTourDate] = useState("");
+  const [startTime][setStartTime] = useState("08:00");
+  const [form][setForm] = useState({ name:"", guests:"2 Persons", date:"", inquiry:"", email:"", whatsapp:"" });
+  const [activeIdx][setActiveIdx] = useState(0);
 
   if (!packageData) return <div className="p-8 text-center">Package not found</div>;
 
@@ -107,6 +108,11 @@ function PackagePage() {
           <div className="bg-white rounded-[20px] p-6 border">
             <div className="grid md:grid-cols-2 gap-6 text-[13px]"><div><p className="font-black">Includes</p><ul className="list-disc ml-4 mt-2 text-black/60">{packageData.includes.map((a,i)=><li key={i}>{a}</li>)}</ul></div><div><p className="font-black">Excludes</p><ul className="list-disc ml-4 mt-2 text-black/60">{packageData.excludes.map((a,i)=><li key={i}>{a}</li>)}</ul></div></div>
             <div id="cancel" className="mt-6 bg-[#FAF7F2] p-3 rounded-xl text-[11px]"><p className="font-black">Cancellation Policy</p><p className="mt-1 text-black/60 whitespace-pre-line">{cancellationPolicy}</p></div>
+          </div>
+
+          {/* REVIEWS - Added for all packages */}
+          <div className="bg-white rounded-[20px] p-6 border">
+            <ReviewsSection tourName={packageData.title} />
           </div>
         </div>
 
