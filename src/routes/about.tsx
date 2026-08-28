@@ -48,7 +48,7 @@ function AboutPage() {
       <section className="section">
         <div className="container-page grid gap-12 lg:grid-cols-2 lg:items-start">
           <img
-            src="https://jumaadventure.webtool.co.ke/images/testimonials-gallery/Mount-kenya-1.jpg"
+            <img src="/IMG-20260111-WA0016.jpg" alt="Dennis Juma on a Mount Kenya expedition" className="w-full h-[500px] object-cover rounded-[24px]" onError={(e)=> e.currentTarget.src='/mt.kenya.jpg'} />"
             alt="Dennis Juma on a Mount Kenya expedition"
             className="aspect-[4/5] w-full rounded-3xl object-cover"
             loading="lazy"
