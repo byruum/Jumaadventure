@@ -282,4 +282,4 @@ export const getPackage = (id: string) => {
   const aliasedId = aliases[cleanId]
   if (aliasedId) return packages.find((p) => p.id.toLowerCase() === aliasedId)
   return undefined
-}
+} 
