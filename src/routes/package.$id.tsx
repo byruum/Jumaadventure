@@ -110,7 +110,6 @@ function PackagePage() {
             <div id="cancel" className="mt-6 bg-[#FAF7F2] p-3 rounded-xl text-[11px]"><p className="font-black">Cancellation Policy</p><p className="mt-1 text-black/60 whitespace-pre-line">{cancellationPolicy}</p></div>
           </div>
 
-          {/* REVIEWS - Added for all packages */}
           <div className="bg-white rounded-[20px] p-6 border">
             <ReviewsSection tourName={packageData.title} />
           </div>
