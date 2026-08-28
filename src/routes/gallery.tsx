@@ -14,18 +14,18 @@ export const Route = createFileRoute("/gallery")({
 
 type Post = { id: number; name: string; caption: string; image_url: string; created_at: string }
 
-// Use local images - no external import = no build error
 const allImages = [
   { src: "/Diani.png.jpg", tour: "Diani Beach" },
   { src: "/IMG-20260111-WA0016.jpg", tour: "Mount Kenya adventure" },
   { src: "/IMG-20260115-WA0073(1).jpg", tour: "Point Lenana summit" },
   { src: "/IMG-20260726-WA0718.jpg", tour: "Mount Kenya day hike" },
-  { src: "/Nairobi National Park-Wildlife roaming freely just.jpg", tour: "Nairobi city tour" },
+  { src: "/Nairobi National Park-Wildlife roaming freely just.jpg", tour: "Amazing Nairobi Tour" },
   { src: "/lake-nakuru-national-park-1.jpg", tour: "Lake Nakuru Safari" },
   { src: "/masai-mara-national-reserve (1).jpg", tour: "Masai Mara Reserve" },
   { src: "/mount-Kenya-day-trip-hike.jpg", tour: "Mount Kenya day hike" },
   { src: "/mt.kenya.jpg", tour: "Point Lenana summit" },
   { src: "/hero-safari.png", tour: "Masai Mara game drive" },
+  { src: "/hero-safari.png", tour: "Amazing Nairobi Tour" },
 ];
 
 function GalleryPage() {
@@ -89,7 +89,7 @@ function GalleryPage() {
             {allImages.map((item, i) => (
               <div key={i} className="group relative h-[180px] md:h-[220px] rounded-2xl overflow-hidden cursor-pointer bg-black/5 border"
                    onClick={() => setActive(item.src)}>
-                <img src={item.src} alt={item.tour} className="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
+                <img src={encodeURI(item.src)} alt={item.tour} className="w-full h-full object-cover group-hover:scale-110 transition duration-500" loading="lazy" />
                 <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-2">
                   <p className="text-white text-[10px] font-bold truncate">{item.tour}</p>
                 </div>
@@ -101,9 +101,9 @@ function GalleryPage() {
 
       {active && (
         <div className="fixed inset-0 z-[999] bg-black/90 flex items-center justify-center p-4" onClick={() => setActive(null)}>
-          <img src={active} className="max-h-[90vh] max-w-[95vw] object-contain rounded-xl" alt="" />
+          <img src={encodeURI(active)} className="max-h-[90vh] max-w-[95vw] object-contain rounded-xl" alt="" />
         </div>
       )}
     </>
   );
-         }
+}
