@@ -10,14 +10,14 @@ export const Route = createFileRoute('/package/$id')({
 
 function PackagePage() {
   const { packageData } = Route.useLoaderData()
-  const [showBooking, setShowBooking] = useState(false);
-  const [sending, setSending] = useState(false);
-  const [sent, setSent] = useState(false);
-  const [party, setParty] = useState(1);
-  const [tourDate, setTourDate] = useState("");
-  const [startTime, setStartTime] = useState("08:00");
-  const [form, setForm] = useState({ name:"", guests:"2 Persons", date:"", inquiry:"", email:"", whatsapp:"" });
-  const [activeIdx, setActiveIdx] = useState(0);
+  const [showBooking][setShowBooking] = useState(false);
+  const [sending][setSending] = useState(false);
+  const [sent][setSent] = useState(false);
+  const [party][setParty] = useState(1);
+  const [tourDate][setTourDate] = useState("");
+  const [startTime][setStartTime] = useState("08:00");
+  const [form][setForm] = useState({ name:"", guests:"2 Persons", date:"", inquiry:"", email:"", whatsapp:"" });
+  const [activeIdx][setActiveIdx] = useState(0);
 
   if (!packageData) return <div className="p-8 text-center">Package not found</div>;
 
@@ -71,13 +71,7 @@ function PackagePage() {
       <div className="max-w-[1200px] mx-auto px-4 md:px-8 mt-4">
         <div className="flex gap-3 overflow-x-auto pb-3 snap-x snap-mandatory">
           {gallery.map((img:string, i:number)=>(
-            <img
-              key={i}
-              src={img}
-              alt={`gal ${i}`}
-              onClick={()=>setActiveIdx(i)}
-              className={`w-[200px] md:w-[280px] h-[130px] md:h-[180px] object-cover rounded-[12px] flex-shrink-0 snap-start border-2 cursor-pointer ${i===activeIdx? "border-black" : "border-transparent"}`}
-            />
+            <img key={i} src={img} alt={`gal ${i}`} onClick={()=>setActiveIdx(i)} className={`w-[200px] md:w-[280px] h-[130px] md:h-[180px] object-cover rounded-[12px] flex-shrink-0 snap-start border-2 cursor-pointer ${i===activeIdx? "border-black" : "border-transparent"}`} />
           ))}
         </div>
       </div>
@@ -90,7 +84,6 @@ function PackagePage() {
             <h3 className="mt-5 font-black text-[14px]">Highlights</h3>
             <ul className="mt-2 list-disc ml-5 text-[13px] space-y-1">{packageData.highlights.map((h,i)=><li key={i}>{h}</li>)}</ul>
           </div>
-
           <div className="bg-white rounded-[20px] p-6 border">
             <h3 className="font-black text-[18px]">Itinerary - List Style</h3>
             <div className="mt-4 space-y-5">
@@ -104,26 +97,19 @@ function PackagePage() {
               ))}
             </div>
           </div>
-
           <div className="bg-white rounded-[20px] p-6 border">
             <div className="grid md:grid-cols-2 gap-6 text-[13px]"><div><p className="font-black">Includes</p><ul className="list-disc ml-4 mt-2 text-black/60">{packageData.includes.map((a,i)=><li key={i}>{a}</li>)}</ul></div><div><p className="font-black">Excludes</p><ul className="list-disc ml-4 mt-2 text-black/60">{packageData.excludes.map((a,i)=><li key={i}>{a}</li>)}</ul></div></div>
             <div id="cancel" className="mt-6 bg-[#FAF7F2] p-3 rounded-xl text-[11px]"><p className="font-black">Cancellation Policy</p><p className="mt-1 text-black/60 whitespace-pre-line">{cancellationPolicy}</p></div>
           </div>
-
           <div className="bg-white rounded-[20px] p-6 border">
             <ReviewsSection tourName={packageData.title} />
           </div>
         </div>
-
         <div className="order-1 md:order-2">
           <div className="bg-white rounded-[16px] border shadow-[0_12px_40px_rgba(0,0,0,0.08)] p-5 sticky top-5">
             <p className="text-center font-black text-[28px]">${Number(full).toLocaleString()}.00 USD</p>
             <div className="mt-2 flex justify-center">
-              {isDayTrip? (
-                <span className="bg-[#F5B400] text-black px-3 py-1 rounded-full text-[10px] font-black tracking-widest">DAY TRIP ONLY • $330</span>
-              ) : (
-                <span className="bg-[#0B6A2B] text-white px-3 py-1 rounded-full text-[10px] font-black tracking-widest">{packageData.duration.toUpperCase()} • ${full}</span>
-              )}
+              {isDayTrip? (<span className="bg-[#F5B400] text-black px-3 py-1 rounded-full text-[10px] font-black tracking-widest">DAY TRIP ONLY • $330</span>) : (<span className="bg-[#0B6A2B] text-white px-3 py-1 rounded-full text-[10px] font-black tracking-widest">{packageData.duration.toUpperCase()} • ${full}</span>)}
             </div>
             <div className="mt-4 space-y-2 text-[13px] text-black/60"><div>🕒 {packageData.duration}</div><div>🚗 Private transportation</div><div>👥 Private tour for 1-2 people</div></div>
             <div className="mt-4 border border-black/20 rounded-full px-4 py-3 flex justify-between items-center">
