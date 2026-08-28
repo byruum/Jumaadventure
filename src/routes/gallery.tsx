@@ -14,18 +14,49 @@ export const Route = createFileRoute("/gallery")({
 
 type Post = { id: number; name: string; caption: string; image_url: string; created_at: string }
 
+// ALL your photos from public folder - exact names as in GitHub
 const allImages = [
   { src: "/Diani.png.jpg", tour: "Diani Beach" },
-  { src: "/IMG-20260111-WA0016.jpg", tour: "Mount Kenya adventure" },
-  { src: "/IMG-20260115-WA0073(1).jpg", tour: "Point Lenana summit" },
-  { src: "/IMG-20260726-WA0718.jpg", tour: "Mount Kenya day hike" },
+  { src: "/hero-safari.png", tour: "Masai Mara" },
+  { src: "/lake-nakuru-national-park-1.jpg", tour: "Lake Nakuru" },
+  { src: "/masai-mara-national-reserve (1).jpg", tour: "Masai Mara" },
+  { src: "/mount-Kenya-day-trip-hike.jpg", tour: "Mount Kenya" },
+  { src: "/mt.kenya.jpg", tour: "Mount Kenya" },
   { src: "/Nairobi National Park-Wildlife roaming freely just.jpg", tour: "Amazing Nairobi Tour" },
-  { src: "/lake-nakuru-national-park-1.jpg", tour: "Lake Nakuru Safari" },
-  { src: "/masai-mara-national-reserve (1).jpg", tour: "Masai Mara Reserve" },
-  { src: "/mount-Kenya-day-trip-hike.jpg", tour: "Mount Kenya day hike" },
-  { src: "/mt.kenya.jpg", tour: "Point Lenana summit" },
-  { src: "/hero-safari.png", tour: "Masai Mara game drive" },
-  { src: "/hero-safari.png", tour: "Amazing Nairobi Tour" },
+  { src: "/IMG-20260111-WA0016.jpg", tour: "Mount Kenya" },
+  { src: "/IMG-20260115-WA0013(1).jpg", tour: "Mount Kenya" },
+  { src: "/IMG-20260726-WA7365.jpg", tour: "Safari Moments" },
+  // New uploads from yesterday - real tour moments
+  { src: "/IMG-20260827-WA0302.jpg", tour: "Juma Adventures Tour" },
+  { src: "/IMG-20260827-WA1621.jpg", tour: "Juma Adventures Tour" },
+  { src: "/IMG-20260827-WA2498.jpg", tour: "Juma Adventures Tour" },
+  { src: "/IMG-20260827-WA3138.jpg", tour: "Amazing Nairobi Tour" },
+  { src: "/IMG-20260827-WA3807.jpg", tour: "Juma Adventures Tour" },
+  { src: "/IMG-20260827-WA4103.jpg", tour: "Juma Adventures Tour" },
+  { src: "/IMG-20260827-WA5967.jpg", tour: "Juma Adventures Tour" },
+  { src: "/IMG-20260827-WA6138.jpg", tour: "Juma Adventures Tour" },
+  { src: "/IMG-20260827-WA7065.jpg", tour: "Juma Adventures Tour" },
+  { src: "/IMG-20260827-WA7107.jpg", tour: "Juma Adventures Tour" },
+  { src: "/IMG-20260827-WA8769.jpg", tour: "Juma Adventures Tour" },
+  { src: "/IMG-20260827-WA9899.jpg", tour: "Juma Adventures Tour" },
+  // Your best Masai Mara brochure photos
+  { src: "/Masai Mara tours photos_page-0001.jpg", tour: "Masai Mara Safari" },
+  { src: "/Masai Mara tours photos_page-0002.jpg", tour: "Masai Mara Safari" },
+  { src: "/Masai Mara tours photos_page-0003.jpg", tour: "Masai Mara Safari" },
+  { src: "/Masai Mara tours photos_page-0004.jpg", tour: "Masai Mara Safari" },
+  { src: "/Masai Mara tours photos_page-0005.jpg", tour: "Masai Mara Safari" },
+  { src: "/Masai Mara tours photos_page-0006.jpg", tour: "Masai Mara Safari" },
+  { src: "/Masai Mara tours photos_page-0007.jpg", tour: "Masai Mara Safari" },
+  { src: "/Masai Mara tours photos_page-0008.jpg", tour: "Masai Mara Safari" },
+  { src: "/Masai Mara tours photos_page-0009.jpg", tour: "Masai Mara Safari" },
+  { src: "/Masai Mara tours photos_page-0010.jpg", tour: "Masai Mara Safari" },
+  { src: "/Masai Mara tours photos_page-0011.jpg", tour: "Masai Mara Safari" },
+  { src: "/Masai Mara tours photos_page-0012.jpg", tour: "Masai Mara Safari" },
+  { src: "/Masai Mara tours photos_page-0013.jpg", tour: "Masai Mara Safari" },
+  { src: "/Masai Mara tours photos_page-0014.jpg", tour: "Masai Mara Safari" },
+  { src: "/Masai Mara tours photos_page-0015.jpg", tour: "Masai Mara Safari" },
+  { src: "/Masai Mara tours photos_page-0016.jpg", tour: "Masai Mara Safari" },
+  { src: "/Masai Mara tours photos_page-0017.jpg", tour: "Masai Mara Safari" },
 ];
 
 function GalleryPage() {
@@ -35,13 +66,11 @@ function GalleryPage() {
   const [active, setActive] = useState<string | null>(null)
 
   useEffect(() => { fetchPosts() }, [])
-
   const fetchPosts = async () => {
     const { data } = await supabase.from('posts').select('*').order('created_at', { ascending: false })
     setPosts(data || [])
     setLoading(false)
   }
-
   const handleUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]
     if (!file) return
@@ -60,10 +89,9 @@ function GalleryPage() {
         <div className="container-page py-16 text-center">
           <span className="eyebrow text-primary">Gallery</span>
           <h1 className="mt-3 text-4xl md:text-5xl font-bold">Real moments from real journeys</h1>
-          <p className="mt-3 text-muted-foreground">{allImages.length} photos from all safaris — tap to view</p>
+          <p className="mt-3 text-muted-foreground">{allImages.length} photos — tap to view</p>
         </div>
       </section>
-
       <section className="section">
         <div className="container-page">
           <div className="mb-8 text-center">
@@ -72,7 +100,6 @@ function GalleryPage() {
               <input type="file" accept="image/*" onChange={handleUpload} className="hidden" />
             </label>
           </div>
-
           <h2 className="text-2xl font-bold mb-6">New Uploads</h2>
           {loading? <p>Loading...</p> : posts.length === 0? <p className="text-muted-foreground mb-10">No uploads yet.</p> :
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 mb-12">
@@ -83,13 +110,13 @@ function GalleryPage() {
               ))}
             </div>
           }
-
           <h2 className="text-2xl font-bold mb-6">Tour Gallery — {allImages.length} Photos</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
             {allImages.map((item, i) => (
               <div key={i} className="group relative h-[180px] md:h-[220px] rounded-2xl overflow-hidden cursor-pointer bg-black/5 border"
                    onClick={() => setActive(item.src)}>
-                <img src={encodeURI(item.src)} alt={item.tour} className="w-full h-full object-cover group-hover:scale-110 transition duration-500" loading="lazy" />
+                <img src={encodeURI(item.src)} alt={item.tour} className="w-full h-full object-cover group-hover:scale-110 transition duration-500" loading="lazy"
+                onError={(e)=> (e.currentTarget.src = '/hero-safari.png')} />
                 <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-2">
                   <p className="text-white text-[10px] font-bold truncate">{item.tour}</p>
                 </div>
@@ -98,7 +125,6 @@ function GalleryPage() {
           </div>
         </div>
       </section>
-
       {active && (
         <div className="fixed inset-0 z-[999] bg-black/90 flex items-center justify-center p-4" onClick={() => setActive(null)}>
           <img src={encodeURI(active)} className="max-h-[90vh] max-w-[95vw] object-contain rounded-xl" alt="" />
