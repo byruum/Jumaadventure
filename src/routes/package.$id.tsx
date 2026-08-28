@@ -2,6 +2,7 @@ import { createFileRoute } from '@tanstack/react-router'
 import { getPackage, WHATSAPP_NUMBER } from "../lib/packages";
 import { useState } from "react";
 import { ReviewsSection } from "../components/reviews";
+
 export const Route = createFileRoute('/package/$id')({
   component: PackagePage,
   loader: ({ params }) => ({ packageData: getPackage(params.id) }),
@@ -9,14 +10,14 @@ export const Route = createFileRoute('/package/$id')({
 
 function PackagePage() {
   const { packageData } = Route.useLoaderData()
-  const [showBooking, setShowBooking] = useState(false);
-  const [sending, setSending] = useState(false);
-  const [sent, setSent] = useState(false);
-  const [party, setParty] = useState(1);
-  const [tourDate, setTourDate] = useState("");
-  const [startTime, setStartTime] = useState("08:00");
-  const [form, setForm] = useState({ name:"", guests:"2 Persons", date:"", inquiry:"", email:"", whatsapp:"" });
-  const [activeIdx, setActiveIdx] = useState(0);
+  const [showBooking][setShowBooking] = useState(false);
+  const [sending][setSending] = useState(false);
+  const [sent][setSent] = useState(false);
+  const [party][setParty] = useState(1);
+  const [tourDate][setTourDate] = useState("");
+  const [startTime][setStartTime] = useState("08:00");
+  const [form][setForm] = useState({ name:"", guests:"2 Persons", date:"", inquiry:"", email:"", whatsapp:"" });
+  const [activeIdx][setActiveIdx] = useState(0);
 
   if (!packageData) return <div className="p-8 text-center">Package not found</div>;
 
@@ -31,8 +32,10 @@ function PackagePage() {
   const next = () => setActiveIdx(i => (i + 1) % gallery.length);
   const prev = () => setActiveIdx(i => (i - 1 + gallery.length) % gallery.length);
 
-  const isDayTrip = packageData.days === 1 || packageData.duration.toLowerCase().includes("1 day") || packageData.title.toLowerCase().includes("day trip");
-  const cancellationPolicy = `1. Cancellation 15 days before the tour date entitled to full refund.\n2. Cancellation 7 days before the tour, entitled to 50% refund.\n3. No refund within 7 days before commencing tour date.`;
+  const isDayTrip = packageData.days === 1 || packageData.duration?.toLowerCase().includes("1 day") || packageData.title.toLowerCase().includes("day trip");
+
+  // USE CLIENT'S NEW CANCELLATION FROM packages.ts - NOT HARDCODED - NO WHATSAPP LINK
+  const cancellationPolicy = packageData.cancellationPolicy || "Contact us for cancellation policy.";
 
   const sendEmail = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -83,32 +86,46 @@ function PackagePage() {
             <h3 className="mt-5 font-black text-[14px]">Highlights</h3>
             <ul className="mt-2 list-disc ml-5 text-[13px] space-y-1">{packageData.highlights.map((h:any,i:number)=><li key={i}>{h}</li>)}</ul>
           </div>
+
           <div className="bg-white rounded-[20px] p-6 border">
-            <h3 className="font-black text-[18px]">Itinerary - List Style</h3>
+            <h3 className="font-black text-[18px]">Itinerary</h3>
             <div className="mt-4 space-y-5">
-              {packageData.itinerary.map((it:any)=>(
-                <div key={it.dayNum} className="border-l-4 border-[#0B6A2B] pl-4 py-1">
-                  <p className="font-black text-[#F66E0D] text-[10px]">DAY {it.dayNum}</p>
-                  <p className="font-black text-[15px] mt-1">{it.title}</p>
-                  <ul className="mt-2 space-y-1">{(Array.isArray(it.details)? it.details : [it.details]).map((d:string,k:number)=><li key={k} className="text-[13px] leading-6 text-black/60 list-disc ml-4">{d}</li>)}</ul>
-                  {it.meals && <p className="mt-2 text-[11px] font-bold bg-[#FAF7F2] px-2 py-1 rounded-full inline-block">Meals: {it.meals}</p>}
-                </div>
-              ))}
+              {packageData.itinerary.map((it:any, idx:number)=>{
+                const isMorningAfternoon = it.title.toLowerCase().includes('morning') || it.title.toLowerCase().includes('afternoon');
+                return (
+                  <div key={`${it.dayNum}-${idx}`} className="border-l-4 border-[#0B6A2B] pl-4 py-1">
+                    <p className="font-black text-[#F66E0D] text-[10px]">
+                      {isMorningAfternoon? it.title.toUpperCase() : `DAY ${it.dayNum}`}
+                    </p>
+                    {!isMorningAfternoon && <p className="font-black text-[15px] mt-1">{it.title}</p>}
+                    <ul className="mt-2 space-y-1">{(Array.isArray(it.details)? it.details : [it.details]).map((d:string,k:number)=><li key={k} className="text-[13px] leading-6 text-black/60 list-disc ml-4">{d}</li>)}</ul>
+                    {it.meals && <p className="mt-2 text-[11px] font-bold bg-[#FAF7F2] px-2 py-1 rounded-full inline-block">Meals: {it.meals}</p>}
+                  </div>
+                )
+              })}
             </div>
           </div>
+
           <div className="bg-white rounded-[20px] p-6 border">
             <div className="grid md:grid-cols-2 gap-6 text-[13px]"><div><p className="font-black">Includes</p><ul className="list-disc ml-4 mt-2 text-black/60">{packageData.includes.map((a:any,i:number)=><li key={i}>{a}</li>)}</ul></div><div><p className="font-black">Excludes</p><ul className="list-disc ml-4 mt-2 text-black/60">{packageData.excludes.map((a:any,i:number)=><li key={i}>{a}</li>)}</ul></div></div>
-            <div id="cancel" className="mt-6 bg-[#FAF7F2] p-3 rounded-xl text-[11px]"><p className="font-black">Cancellation Policy</p><p className="mt-1 text-black/60 whitespace-pre-line">{cancellationPolicy}</p></div>
+
+            {/* CANCELLATION - PLAIN TEXT ONLY - NO WHATSAPP LINK - FIXES CLIENT ISSUE */}
+            <div id="cancel" className="mt-6 bg-[#FAF7F2] p-4 rounded-xl text-[12px] border">
+              <p className="font-black">Cancellation Policy</p>
+              <p className="mt-2 text-black/70 whitespace-pre-line leading-6">{cancellationPolicy}</p>
+            </div>
           </div>
+
           <div className="bg-white rounded-[20px] p-6 border">
             <ReviewsSection tourName={packageData.title} />
           </div>
         </div>
+
         <div className="order-1 md:order-2">
           <div className="bg-white rounded-[16px] border shadow-[0_12px_40px_rgba(0,0,0,0.08)] p-5 sticky top-5">
             <p className="text-center font-black text-[28px]">${Number(full).toLocaleString()}.00 USD</p>
             <div className="mt-2 flex justify-center">
-              {isDayTrip? (<span className="bg-[#F5B400] text-black px-3 py-1 rounded-full text-[10px] font-black tracking-widest">DAY TRIP ONLY</span>) : (<span className="bg-[#0B6A2B] text-white px-3 py-1 rounded-full text-[10px] font-black tracking-widest">{packageData.duration.toUpperCase()} • ${full}</span>)}
+              {isDayTrip? (<span className="bg-[#F5B400] text-black px-3 py-1 rounded-full text-[10px] font-black tracking-widest">DAY TRIP ONLY</span>) : (<span className="bg-[#0B6A2B] text-white px-3 py-1 rounded-full text-[10px] font-black tracking-widest">{packageData.duration?.toUpperCase()} • ${full}</span>)}
             </div>
             <div className="mt-4 space-y-2 text-[13px] text-black/60"><div>🕒 {packageData.duration}</div><div>🚗 Private transportation</div><div>👥 Private tour for 1-2 people</div></div>
             <div className="mt-4 border border-black/20 rounded-full px-4 py-3 flex justify-between items-center">
@@ -128,14 +145,18 @@ function PackagePage() {
               <input type="time" value={startTime} onChange={e=>setStartTime(e.target.value)} className="bg-transparent outline-none text-[13px] cursor-pointer" />
             </label>
             <button onClick={()=>setShowBooking(true)} className="mt-4 w-full bg-[#0B8A5B] text-white py-4 rounded-full font-black">Book Now</button>
-            <a href="#cancel" className="mt-4 flex items-center gap-2 text-[13px] underline font-bold"><span className="w-5 h-5 rounded-full border flex items-center justify-center text-[10px]">✓</span> View our cancellation policies</a>
+
+            {/* THIS NOW SCROLLS TO FORM - NO WHATSAPP - FIXES OLD NUMBER ISSUE */}
+            <a href="#cancel" className="mt-4 flex items-center gap-2 text-[13px] underline font-bold cursor-pointer">
+              <span className="w-5 h-5 rounded-full border flex items-center justify-center text-[10px]">✓</span> View our cancellation policies
+            </a>
           </div>
         </div>
       </div>
 
       {showBooking && (
         <div className="fixed inset-0 bg-black/80 z-[100] p-3 flex justify-center items-center">
-          <div className="bg-white w-full max-w-[520px] rounded-[24px] overflow-hidden">
+          <div className="bg-white w-full max-w-[520px] rounded-[24px] overflow-hidden max-h-[90vh] overflow-y-auto">
             {!sent? (
               <form onSubmit={sendEmail} className="p-6 space-y-3">
                 <div className="flex justify-between"><h3 className="font-black">Book ${full} • {party} pax {isDayTrip? "• DAY TRIP" : ""}</h3><button type="button" onClick={()=>setShowBooking(false)} className="w-8 h-8 bg-black/10 rounded-full">✕</button></div>
@@ -144,8 +165,12 @@ function PackagePage() {
                 <input required type="email" value={form.email} onChange={e=>setForm({...form,email:e.target.value})} placeholder="Email" className="w-full border rounded-full px-4 py-3 text-[13px]" />
                 <input required value={form.whatsapp} onChange={e=>setForm({...form,whatsapp:e.target.value})} placeholder="WhatsApp" className="w-full border rounded-full px-4 py-3 text-[13px]" />
                 <button disabled={sending} className="w-full bg-[#0B8A5B] text-white py-3 rounded-full font-black">{sending?"Sending...":"Confirm $"+full}</button>
+
+                {/* BOOKING FORM SENDS - NOT CANCELLATION */}
                 <a href={`https://wa.me/${WHATSAPP_NUMBER}?text=Booking%20${encodeURIComponent(packageData.title)}%20$${full}%20${party}pax%20${tourDate}%20${startTime}`} className="block text-center bg-[#25D366] py-3 rounded-full font-black text-[13px]">WhatsApp • {party} pax • {tourDate}</a>
                 <div className="grid grid-cols-2 gap-2"><a href={paypalDep} target="_blank" className="bg-black text-white py-3 rounded-full text-center text-[12px] font-black">Deposit ${dep}</a><a href={paypalFull} target="_blank" className="bg-[#F5B400] text-black py-3 rounded-full text-center text-[12px] font-black">Full ${full}</a></div>
+
+                <p className="text-[10px] text-gray-500 mt-2">Cancellation policy: Booking form submission only - no WhatsApp for cancellation</p>
               </form>
             ) : (
               <div className="p-8 text-center"><p className="w-10 h-10 bg-[#0B6A2B] text-white rounded-full flex items-center justify-center mx-auto">✓</p><h3 className="mt-3 font-black">Booking received</h3></div>
