@@ -14,7 +14,7 @@ export const Route = createFileRoute("/gallery")({
 
 type Post = { id: number; name: string; caption: string; image_url: string; created_at: string }
 
-// FIXED: Removed 17 Masai Mara duplicate brochure pages — only real unique tour photos
+// FIXED: Masai Mara brochure (17 duplicate elephants) REMOVED from public gallery
 const allImages = [
   { src: "/Diani.png.jpg", tour: "Diani Beach" },
   { src: "/hero-safari.png", tour: "Masai Mara" },
@@ -26,7 +26,6 @@ const allImages = [
   { src: "/IMG-20260111-WA0016.jpg", tour: "Mount Kenya" },
   { src: "/IMG-20260115-WA0013(1).jpg", tour: "Mount Kenya" },
   { src: "/IMG-20260726-WA7365.jpg", tour: "Safari Moments" },
-  // Real tour moments - unique
   { src: "/IMG-20260827-WA0302.jpg", tour: "Juma Adventures Tour" },
   { src: "/IMG-20260827-WA1621.jpg", tour: "Juma Adventures Tour" },
   { src: "/IMG-20260827-WA2498.jpg", tour: "Juma Adventures Tour" },
@@ -84,4 +83,17 @@ function GalleryPage() {
           </div>
           <h2 className="text-2xl font-bold mb-6">New Uploads</h2>
           {loading? <p>Loading...</p> : posts.length === 0? <p className="text-muted-foreground mb-10">No uploads yet.</p> :
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 mb-12">
+              {posts.map(p => (
+                <div key={p.id} className="group h-[200px] rounded-2xl overflow-hidden cursor-pointer bg-black/5 border" onClick={() => setActive(p.image_url)}>
+                  <img src={p.image_url} className="w-full h-full object-cover group-hover:scale-110 transition duration-300" alt="" onError={(e)=> (e.currentTarget.src = '/hero-safari.png')} />
+                </div>
+              ))}
+            </div>
+          }
+          <h2 className="text-2xl font-bold mb-6">Tour Gallery — {allImages.length} Photos</h2>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+            {allImages.map((item, i) => (
+              <div key={i} className="group relative h-[180px] md:h-[220px] rounded-2xl overflow-hidden cursor-pointer bg-black/5 border"
+                   onClick={() => setActive(item.src)}>
+                <img src={encodeURI
