@@ -88,12 +88,12 @@ function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-border/60 bg-background/80 backdrop-blur-md">
       <div className="container-page flex h-16 items-center justify-between">
-        <Link to="/" className="flex items-center gap-2.5">
+        <Link to="/" className="flex items-center gap-[5px]">
           <div className="w-9 h-9 rounded-full bg-[#FF6A00] flex items-center justify-center font-bold text-white text-[20px] leading-none">
             J
           </div>
-          <span className="font-['Playfair_Display'] font-bold text-[19px] text-[#1F3D2B] tracking-tight">
-            Juma Adventures
+          <span className="font-bold text-[19px] text-[#1F3D2B] tracking-tight font-['Playfair_Display']">
+            uma Adventures
           </span>
         </Link>
         <nav className="hidden items-center gap-7 text-sm font-medium md:flex">
@@ -115,12 +115,12 @@ function Footer() {
     <footer className="border-t border-border bg-secondary text-secondary-foreground">
       <div className="container-page grid gap-10 py-14 md:grid-cols-4">
         <div>
-          <div className="flex items-center gap-2.5">
+          <div className="flex items-center gap-[5px]">
             <div className="w-9 h-9 rounded-full bg-[#FF6A00] flex items-center justify-center font-bold text-white text-[20px] leading-none">
               J
             </div>
-            <span className="font-['Playfair_Display'] font-bold text-[16px] text-white tracking-tight">
-              Juma Adventures
+            <span className="font-bold text-[16px] text-white tracking-tight font-['Playfair_Display']">
+              uma Adventures
             </span>
           </div>
           <p className="mt-4 text-sm opacity-80">
