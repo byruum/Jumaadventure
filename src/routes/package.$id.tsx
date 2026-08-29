@@ -2,8 +2,6 @@ import { createFileRoute } from '@tanstack/react-router'
 import { getPackage, WHATSAPP_NUMBER } from "../lib/packages";
 import { useState } from "react";
 import { ReviewsSection } from "../components/reviews";
-import { FAQsSection } from "../components/faqs"
-
 export const Route = createFileRoute('/package/$id')({
   component: PackagePage,
   loader: ({ params }) => ({ packageData: getPackage(params.id) }),
@@ -11,14 +9,14 @@ export const Route = createFileRoute('/package/$id')({
 
 function PackagePage() {
   const { packageData } = Route.useLoaderData()
-  const [showBooking][setShowBooking] = useState(false);
-  const [sending][setSending] = useState(false);
-  const [sent][setSent] = useState(false);
-  const [party][setParty] = useState(1);
-  const [tourDate][setTourDate] = useState("");
-  const [startTime][setStartTime] = useState("08:00");
-  const [form][setForm] = useState({ name:"", guests:"2 Persons", date:"", inquiry:"", email:"", whatsapp:"" });
-  const [activeIdx][setActiveIdx] = useState(0);
+  const [showBooking, setShowBooking] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [sent, setSent] = useState(false);
+  const [party, setParty] = useState(1);
+  const [tourDate, setTourDate] = useState("");
+  const [startTime, setStartTime] = useState("08:00");
+  const [form, setForm] = useState({ name:"", guests:"2 Persons", date:"", inquiry:"", email:"", whatsapp:"" });
+  const [activeIdx, setActiveIdx] = useState(0);
 
   if (!packageData) return <div className="p-8 text-center">Package not found</div>;
 
@@ -33,8 +31,8 @@ function PackagePage() {
   const next = () => setActiveIdx(i => (i + 1) % gallery.length);
   const prev = () => setActiveIdx(i => (i - 1 + gallery.length) % gallery.length);
 
-  const isDayTrip = packageData.days === 1 || packageData.duration?.toLowerCase().includes("1 day") || packageData.title.toLowerCase().includes("day trip");
-  const cancellationPolicy = packageData.cancellationPolicy || "";
+  const isDayTrip = packageData.days === 1 || packageData.duration.toLowerCase().includes("1 day") || packageData.title.toLowerCase().includes("day trip");
+  const cancellationPolicy = `1. Cancellation 15 days before the tour date entitled to full refund.\n2. Cancellation 7 days before the tour, entitled to 50% refund.\n3. No refund within 7 days before commencing tour date.`;
 
   const sendEmail = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -59,13 +57,16 @@ function PackagePage() {
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" />
         <button onClick={prev} className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full border-2 border-white bg-black/30 text-white flex items-center justify-center text-xl z-10">‹</button>
         <button onClick={next} className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full border-2 border-white bg-black/30 text-white flex items-center justify-center text-xl z-10">›</button>
-        <button onClick={next} className="absolute bottom-5 left-1/2 -translate-x-1/2 bg-black/70 text-white px-4 py-1 rounded-full text-[12px] font-bold z-10">{activeIdx + 1}/{gallery.length}</button>
+        <button onClick={next} className="absolute bottom-5 left-1/2 -translate-x-1/2 bg-black/70 text-white px-4 py-1 rounded-full text-[12px] font-bold z-10">
+          {activeIdx + 1}/{gallery.length}
+        </button>
         <div className="absolute bottom-0 left-0 right-0 p-5 md:p-10 pointer-events-none">
           <p className="text-[#F5B400] font-black text-[10px] tracking-[0.3em]">{packageData.from.toUpperCase()} • {packageData.duration}</p>
           <h1 className="mt-2 text-white font-black text-[26px] md:text-[46px] leading-[0.95] max-w-[800px]">{packageData.title}</h1>
           <p className="mt-2 text-white/80 text-[13px] max-w-[700px]">{packageData.subtitle}</p>
         </div>
       </div>
+
       <div className="max-w-[1200px] mx-auto px-4 md:px-8 mt-4">
         <div className="flex gap-3 overflow-x-auto pb-3 snap-x snap-mandatory">
           {gallery.map((img:string, i:number)=>(
@@ -73,6 +74,7 @@ function PackagePage() {
           ))}
         </div>
       </div>
+
       <div className="max-w-[1200px] mx-auto px-4 md:px-8 mt-8 grid md:grid-cols-[1.3fr_0.7fr] gap-8">
         <div className="order-2 md:order-1 space-y-6">
           <div className="bg-white rounded-[20px] p-6 border">
@@ -82,33 +84,31 @@ function PackagePage() {
             <ul className="mt-2 list-disc ml-5 text-[13px] space-y-1">{packageData.highlights.map((h:any,i:number)=><li key={i}>{h}</li>)}</ul>
           </div>
           <div className="bg-white rounded-[20px] p-6 border">
-            <h3 className="font-black text-[18px]">Itinerary</h3>
+            <h3 className="font-black text-[18px]">Itinerary - List Style</h3>
             <div className="mt-4 space-y-5">
-              {packageData.itinerary.map((it:any, idx:number)=>{
-                const isMA = it.title.toLowerCase().includes('morning') || it.title.toLowerCase().includes('afternoon');
-                return (
-                  <div key={`${it.dayNum}-${idx}`} className="border-l-4 border-[#0B6A2B] pl-4 py-1">
-                    <p className="font-black text-[#F66E0D] text-[10px]">{isMA? it.title.toUpperCase() : `DAY ${it.dayNum}`}</p>
-                    {!isMA && <p className="font-black text-[15px] mt-1">{it.title}</p>}
-                    <ul className="mt-2 space-y-1">{(Array.isArray(it.details)? it.details : [it.details]).map((d:string,k:number)=><li key={k} className="text-[13px] leading-6 text-black/60 list-disc ml-4">{d}</li>)}</ul>
-                    {it.meals && <p className="mt-2 text-[11px] font-bold bg-[#FAF7F2] px-2 py-1 rounded-full inline-block">Meals: {it.meals}</p>}
-                  </div>
-                )
-              })}
+              {packageData.itinerary.map((it:any)=>(
+                <div key={it.dayNum} className="border-l-4 border-[#0B6A2B] pl-4 py-1">
+                  <p className="font-black text-[#F66E0D] text-[10px]">DAY {it.dayNum}</p>
+                  <p className="font-black text-[15px] mt-1">{it.title}</p>
+                  <ul className="mt-2 space-y-1">{(Array.isArray(it.details)? it.details : [it.details]).map((d:string,k:number)=><li key={k} className="text-[13px] leading-6 text-black/60 list-disc ml-4">{d}</li>)}</ul>
+                  {it.meals && <p className="mt-2 text-[11px] font-bold bg-[#FAF7F2] px-2 py-1 rounded-full inline-block">Meals: {it.meals}</p>}
+                </div>
+              ))}
             </div>
           </div>
           <div className="bg-white rounded-[20px] p-6 border">
             <div className="grid md:grid-cols-2 gap-6 text-[13px]"><div><p className="font-black">Includes</p><ul className="list-disc ml-4 mt-2 text-black/60">{packageData.includes.map((a:any,i:number)=><li key={i}>{a}</li>)}</ul></div><div><p className="font-black">Excludes</p><ul className="list-disc ml-4 mt-2 text-black/60">{packageData.excludes.map((a:any,i:number)=><li key={i}>{a}</li>)}</ul></div></div>
-            <div id="cancel" className="mt-6 bg-[#FAF7F2] p-4 rounded-xl text-[11px] border"><p className="font-black">Cancellation Policy</p><p className="mt-2 text-black/70 whitespace-pre-line leading-6">{cancellationPolicy}</p></div>
+            <div id="cancel" className="mt-6 bg-[#FAF7F2] p-3 rounded-xl text-[11px]"><p className="font-black">Cancellation Policy</p><p className="mt-1 text-black/60 whitespace-pre-line">{cancellationPolicy}</p></div>
           </div>
-          <div className="bg-white rounded-[20px] p-6 border"><ReviewsSection tourName={packageData.title} /></div>
-          <div className="bg-white rounded-[20px] p-6 border"><FAQsSection /></div>
+          <div className="bg-white rounded-[20px] p-6 border">
+            <ReviewsSection tourName={packageData.title} />
+          </div>
         </div>
         <div className="order-1 md:order-2">
           <div className="bg-white rounded-[16px] border shadow-[0_12px_40px_rgba(0,0,0,0.08)] p-5 sticky top-5">
             <p className="text-center font-black text-[28px]">${Number(full).toLocaleString()}.00 USD</p>
             <div className="mt-2 flex justify-center">
-              {isDayTrip? (<span className="bg-[#F5B400] text-black px-3 py-1 rounded-full text-[10px] font-black tracking-widest">DAY TRIP ONLY</span>) : (<span className="bg-[#0B6A2B] text-white px-3 py-1 rounded-full text-[10px] font-black tracking-widest">{packageData.duration?.toUpperCase()} • ${full}</span>)}
+              {isDayTrip? (<span className="bg-[#F5B400] text-black px-3 py-1 rounded-full text-[10px] font-black tracking-widest">DAY TRIP ONLY</span>) : (<span className="bg-[#0B6A2B] text-white px-3 py-1 rounded-full text-[10px] font-black tracking-widest">{packageData.duration.toUpperCase()} • ${full}</span>)}
             </div>
             <div className="mt-4 space-y-2 text-[13px] text-black/60"><div>🕒 {packageData.duration}</div><div>🚗 Private transportation</div><div>👥 Private tour for 1-2 people</div></div>
             <div className="mt-4 border border-black/20 rounded-full px-4 py-3 flex justify-between items-center">
@@ -132,9 +132,10 @@ function PackagePage() {
           </div>
         </div>
       </div>
+
       {showBooking && (
         <div className="fixed inset-0 bg-black/80 z-[100] p-3 flex justify-center items-center">
-          <div className="bg-white w-full max-w-[520px] rounded-[24px] overflow-hidden max-h-[90vh] overflow-y-auto">
+          <div className="bg-white w-full max-w-[520px] rounded-[24px] overflow-hidden">
             {!sent? (
               <form onSubmit={sendEmail} className="p-6 space-y-3">
                 <div className="flex justify-between"><h3 className="font-black">Book ${full} • {party} pax {isDayTrip? "• DAY TRIP" : ""}</h3><button type="button" onClick={()=>setShowBooking(false)} className="w-8 h-8 bg-black/10 rounded-full">✕</button></div>
@@ -154,4 +155,4 @@ function PackagePage() {
       )}
     </div>
   )
-                                                                                                                                                                                                                                                                                                                                                                    }
+}
