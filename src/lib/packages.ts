@@ -213,6 +213,46 @@ export const packages: Package[] = [
     tourStart: "07:30am",
     tourEnd: "17:00pm",
     cancellationPolicy: CANCELLATION_POLICY
+  },
+  {
+    id: "12-days-kenya-tanzania",
+    title: "12 Days - Wildlife Safari to Lake Nakuru, Masai Mara, Serengeti, Ngorongoro, Manyara & Amboseli",
+    subtitle: "Private 1-2 Pax • Off Roader 4WD Landcruiser Jeep • Fullboard Accommodation",
+    from: "Nairobi",
+    days: 12,
+    price: "5720",
+    deposit: "500",
+    paypalEmail: "jumaadventuresandsafaris@gmail.com",
+    paybillNo: "Coming Soon",
+    paybillAcc: "JUMA ADVENTURES",
+    duration: "12 Days / 11 Nights",
+    route: "Nairobi - Lake Nakuru - Masai Mara - Isebania - Serengeti - Ngorongoro - Manyara - Amboseli - Nairobi",
+    pace: "Moderate - Off Roader 4WD Landcruiser Jeep",
+    gallery: [img("lake-nakuru-national-park-1.jpg"), img("maasai-mara-national-reserve (1).jpg"), img("serengeti-national-park.jpg"), img("ngorongoro-crater.jpg"), img("amboseli-national-park.jpg")],
+    journey: "This is a unique tour on its own not only for being on Safari but for having an experience with a passionate guide who takes you through historic events, sceneries and wildlife behaviors amongst other things you never knew about these beautiful parks. I am determined of going beyond guiding, ensuring my clients feel happy, establishing best friendship & treating my clients like my own beloved family. I do Educate & advise on dangerous animals & behaviors to protect my clients not get injured while on safaris. Besides I am a best first Aider too. This tour takes you through a majestic experience to Kenya's richest parks like Lake Nakuru National Park and Maasai Mara National Reserve crossing then to Serengeti in Tanzania. This tour starts from Nairobi, the capital city of Kenya to Tanzania Serengeti driving you through the Great Rift Valley viewing amazing sceneries.",
+    quote: "Karibu Kenya & Tanzania - Hakuna Matata! I treat my clients like my own beloved family.",
+    highlights: ["Lake Nakuru - rhinos, giraffes, Baboon Cliff & Menengai Crater", "Masai Mara - Big 5, Mara River, Great Migration", "Cross Isebania Border to Serengeti", "Serengeti full-day game drives (2 days)", "Ngorongoro Crater full-day game drive", "Lake Manyara", "Amboseli - Mount Kilimanjaro views", "Passionate guide - wildlife, history, first aid, safety"],
+    itinerary: [
+      { dayNum: 1, title: "Nairobi – Lake Nakuru", details: ["Pick up in Nairobi and drive to Lake Nakuru via Great Rift Valley", "Game drive, Baboon Cliff & Menengai Crater", "Overnight at Lake Nakuru"], meals: "Lunch, Dinner" },
+      { dayNum: 2, title: "Lake Nakuru Full Day", details: ["Full-day game drive in Lake Nakuru National Park spotting rhinos, giraffes, and other wildlife"], meals: "Breakfast, Lunch, Dinner" },
+      { dayNum: 3, title: "Lake Nakuru – Masai Mara", details: ["Drive to Masai Mara, check in, lunch, evening game drive", "Overnight: La Maison Royale Masai Mara"], meals: "Breakfast, Lunch, Dinner" },
+      { dayNum: 4, title: "Masai Mara Full Day", details: ["Full-day game drive in Masai Mara, including a visit to the Mara River"], meals: "Breakfast, Lunch, Dinner" },
+      { dayNum: 5, title: "Masai Mara – Serengeti via Isebania Border", details: ["Depart Masai Mara and cross the Isebania Border to Serengeti National Park", "Overnight: African Safari Serengeti Lodge (Ikoma gate)"], meals: "Breakfast, Lunch, Dinner" },
+      { dayNum: 6, title: "Serengeti Full Day", details: ["Full-day game drive in Serengeti"], meals: "Breakfast, Lunch, Dinner" },
+      { dayNum: 7, title: "Serengeti Exploration", details: ["Another day of wildlife exploration in Serengeti National Park"], meals: "Breakfast, Lunch, Dinner" },
+      { dayNum: 8, title: "Serengeti – Ngorongoro Crater", details: ["Drive to Ngorongoro, full-day game drive in the Ngorongoro Crater", "Overnight: Africa Safari Lodge Karatu"], meals: "Breakfast, Lunch, Dinner" },
+      { dayNum: 9, title: "Ngorongoro Conservation Area", details: ["Continued exploration of the Ngorongoro Conservation Area"], meals: "Breakfast, Lunch, Dinner" },
+      { dayNum: 10, title: "Ngorongoro – Amboseli", details: ["Drive to Amboseli National Park", "Overnight: Sopa Lodge Amboseli"], meals: "Breakfast, Lunch, Dinner" },
+      { dayNum: 11, title: "Amboseli Full Day - Kilimanjaro Views", details: ["Full-day game drives in Amboseli, with views of Mount Kilimanjaro"], meals: "Breakfast, Lunch, Dinner" },
+      { dayNum: 12, title: "Amboseli – Nairobi", details: ["Morning game drive in Amboseli, then return to Nairobi to end the safari", "Drop-off at hotel/airport"], meals: "Breakfast, Lunch" }
+    ],
+    includes: ["Private Guide - passionate, safety trained, first aider", "Private Transportation: Off Roader 4WD Landcruiser Jeep", "Drinking water/snacks for whole safari", "Fullboard Accommodation: La Maison Royale Masai Mara, African Safari Serengeti Lodge (Ikoma gate), Africa Safari Lodge Karatu, Sopa Lodge Amboseli"],
+    excludes: ["Personal expenses", "Park fees - budget ~$80-100 per park per day", "Visas Kenya & Tanzania", "International flights", "Tips $20-30 per day"],
+    whatToBring: ["Passport for border", "Yellow fever certificate", "Warm clothes for crater", "Hat, camera"],
+    meetingPoint: "Nairobi, Kenya — JKIA / Hotel pickup. You can request specific meeting location during checkout",
+    tourStart: "Nairobi",
+    tourEnd: "Nairobi",
+    cancellationPolicy: CANCELLATION_POLICY
   }
 ];
 
@@ -230,7 +270,11 @@ export const getPackage = (id: string) => {
     "nairobi": "nairobi-city-tour",
     "nairobi-park": "nairobi-national-park-daytrip",
     "nairobi-national-park": "nairobi-national-park-daytrip",
-    "1124863": "nairobi-city-tour"
+    "1124863": "nairobi-city-tour",
+    "12-days": "12-days-kenya-tanzania",
+    "kenya-tanzania": "12-days-kenya-tanzania",
+    "wildlife-safari-12-days": "12-days-kenya-tanzania",
+    "5720": "12-days-kenya-tanzania"
   }
   const aliasedId = aliases[cleanId]
   if (aliasedId) return packages.find((p) => p.id.toLowerCase() === aliasedId)
