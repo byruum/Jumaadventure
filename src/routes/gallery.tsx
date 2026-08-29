@@ -16,27 +16,27 @@ type Post = { id: number; name: string; caption: string; image_url: string; crea
 
 const allImages = [
   { src: "/Diani.png.jpg", tour: "Diani Beach" },
-  { src: "/hero-safari.png", tour: "Ol Pejeta Conservancy, Nanyuki" }, // FIX - Landcruiser look - was Masai Mara
+  { src: "/hero-safari.png", tour: "Ol Pejeta Conservancy, Nanyuki" },
   { src: "/lake-nakuru-national-park-1.jpg", tour: "Lake Nakuru" },
   { src: "/masai-mara-national-reserve (1).jpg", tour: "Masai Mara" },
-  { src: "/mount-Kenya-day-trip-hike.jpg", tour: "Mount Kenya" }, // keep if real Mt Kenya, if it's snow mountain with tree then change to Kilimanjaro Peak
-  { src: "/mt.kenya.jpg", tour: "Kilimanjaro Peak" }, // FIX - snow mountain + acacia tree = Kilimanjaro Peak - was Mount Kenya
-  { src: "/Nairobi National Park-Wildlife roaming freely just.jpg", tour: "Nairobi National Park" }, // FIX - was Amazing Nairobi Tour
-  { src: "/IMG-20260111-WA0016.jpg", tour: "Ol Pejeta Conservancy, Nanyuki" }, // FIX - Landcruiser look - was Mount Kenya
-  { src: "/IMG-20260115-WA0013(1).jpg", tour: "Ol Pejeta Conservancy, Nanyuki" }, // FIX - Landcruiser look - was Mount Kenya
-  { src: "/IMG-20260726-WA7365.jpg", tour: "Safari Moments" },
-  { src: "/IMG-20260827-WA0302.jpg", tour: "Mount Kenya" }, // FIX - was Juma Adventures Tour
-  { src: "/IMG-20260827-WA1621.jpg", tour: "Ol Pejeta Conservancy, Nanyuki" }, // FIX - Landcruiser look - Dennis main complaint
-  { src: "/IMG-20260827-WA2498.jpg", tour: "Mount Kenya" }, // FIX
-  { src: "/IMG-20260827-WA3138.jpg", tour: "Masai Mara Plains" }, // FIX - zebra + hot air balloon - was Amazing Nairobi Tour
-  { src: "/IMG-20260827-WA3807.jpg", tour: "Mount Kenya" }, // FIX
-  { src: "/IMG-20260827-WA4103.jpg", tour: "Mount Kenya" }, // FIX
-  { src: "/IMG-20260827-WA5967.jpg", tour: "Mount Kenya" }, // FIX - summit signage
-  { src: "/IMG-20260827-WA6138.jpg", tour: "Lake Nakuru" }, // FIX - was Juma Adventures Tour
-  { src: "/IMG-20260827-WA7065.jpg", tour: "Masai Mara Plains" }, // FIX
-  { src: "/IMG-20260827-WA7107.jpg", tour: "Mount Kenya" }, // FIX - Batian peak
-  { src: "/IMG-20260827-WA8769.jpg", tour: "Masai Mara" }, // FIX - lions = Masai Mara - was Juma Adventures Tour
-  { src: "/IMG-20260827-WA9899.jpg", tour: "Masai Mara Plains" } // FIX
+  { src: "/mount-Kenya-day-trip-hike.jpg", tour: "Mount Kenya" },
+  { src: "/mt.kenya.jpg", tour: "Kilimanjaro Peak" },
+  { src: "/Nairobi National Park-Wildlife roaming freely just.jpg", tour: "Ol Pejeta Conservancy, Nanyuki" }, // FIX - was Nairobi National Park but image is Landcruiser elephants
+  { src: "/IMG-20260111-WA0016.jpg", tour: "Mount Kenya" }, // FIX - you on signage = Mount Kenya, was Ol Pejeta
+  { src: "/IMG-20260115-WA0013(1).jpg", tour: "Mount Kenya" }, // FIX - same
+  { src: "/IMG-20260726-WA7365.jpg", tour: "Amboseli - Kilimanjaro Views" },
+  { src: "/IMG-20260827-WA0302.jpg", tour: "Mount Kenya" },
+  { src: "/IMG-20260827-WA1621.jpg", tour: "Ol Pejeta Conservancy, Nanyuki" }, // Landcruiser + elephants
+  { src: "/IMG-20260827-WA2498.jpg", tour: "Mount Kenya" },
+  { src: "/IMG-20260827-WA3138.jpg", tour: "Masai Mara Plains" }, // FIX - zebra + balloon = Masai Mara Plains, was Ol Pejeta
+  { src: "/IMG-20260827-WA3807.jpg", tour: "Mount Kenya" },
+  { src: "/IMG-20260827-WA4103.jpg", tour: "Mount Kenya" },
+  { src: "/IMG-20260827-WA5967.jpg", tour: "Mount Kenya" },
+  { src: "/IMG-20260827-WA6138.jpg", tour: "Lake Nakuru" },
+  { src: "/IMG-20260827-WA7065.jpg", tour: "Masai Mara Plains" },
+  { src: "/IMG-20260827-WA7107.jpg", tour: "Mount Kenya" },
+  { src: "/IMG-20260827-WA8769.jpg", tour: "Masai Mara" },
+  { src: "/IMG-20260827-WA9899.jpg", tour: "Masai Mara Plains" }
 ];
 
 function GalleryPage() {
