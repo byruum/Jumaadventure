@@ -214,6 +214,37 @@ export const packages: Package[] = [
     tourEnd: "17:00pm",
     cancellationPolicy: CANCELLATION_POLICY
   },
+    {
+    id: "amboseli-3-days",
+    title: "Amboseli Park Wildlife Safari - 3 Days",
+    subtitle: "2hrs 30mins from Nairobi • Private 1-2 Pax • 4WD Landcruiser Pop-up Roof • Kilima Safari Camp",
+    from: "Nairobi",
+    days: 3,
+    price: "2596",
+    deposit: "300",
+    paypalEmail: "jumaadventuresandsafaris@gmail.com",
+    paybillNo: "Coming Soon",
+    paybillAcc: "JUMA ADVENTURES",
+    duration: "3 Days / 2 Nights",
+    route: "Nairobi - Amboseli - Nairobi",
+    pace: "Easy - Off Roader 4WD Landcruiser with pop-up roof",
+    gallery: [img("amboseli-national-park.jpg"), img("kilima-safari-camp.jpg"), img("amboseli-elephants.jpg"), img("hero-safari.png")],
+    journey: "Amboseli National Park is just 2hrs 30mins drive from Nairobi City. The park is among one of the most premium parks in the country. Here is a place you don't have to miss to visit! If you are looking for best experience of wildlife safaris to watch large families of elephants (Jumbo's), buffaloes, antelopes species, giraffes among others then don't forget to include Amboseli Park in travel plan. Visiting this amazing Amboseli park will give you a beautiful memories of wildlife experience especially the jumbo's. It has plains for good viewing and watching of wild animals while grazing and moving around the habitats. The surrounding community The Masai's are so attractive in the way of their daily life and traditional culture. You will have an opportunity to visit the masai village to meet most famous historic morans. Join their singing songs & dances.",
+    quote: "Home of the Jumbo's - Best elephant experience!",
+    highlights: ["Amboseli - 2hrs 30mins from Nairobi", "Large families of elephants (Jumbo's)", "Buffaloes, antelopes, giraffes", "Kilima Safari Camp", "Masai village cultural experience", "Mount Kilimanjaro views", "Private 4WD Landcruiser pop-up roof"],
+    itinerary: [
+      { dayNum: 1, title: "Nairobi – Amboseli", details: ["Pick up at Nairobi City or airport", "Drive to Amboseli Park 2hrs 30mins", "Check in at Kilima Safari Camp", "Afternoon game safari", "Overnight at Kilima Safari Camp"], meals: "Lunch, Dinner" },
+      { dayNum: 2, title: "Full Day Amboseli Wildlife Experience", details: ["Full day game drive in Amboseli", "Watch elephants, buffaloes, giraffes", "Optional Masai village visit", "Overnight at Kilima Safari Camp"], meals: "Breakfast, Lunch, Dinner" },
+      { dayNum: 3, title: "Amboseli – Nairobi", details: ["Half day morning game drive", "Afternoon leave to Nairobi", "Drop off at hotel or airport"], meals: "Breakfast, Lunch" }
+    ],
+    includes: ["Private Guide", "Private Transportation - Off Roader 4WD Landcruiser with pop-up roof", "Park fees - Tickets", "Accommodation bed & meals at Kilima Safari Camp", "Food Drinks Snacks + Water bottles + Snacks", "All tax fees"],
+    excludes: ["Personal expenses", "Masai village tour experience", "Tips $20-30 per day"],
+    whatToBring: ["Camera", "Hat, sunglasses"],
+    meetingPoint: "Embakasi, Nairobi — You can request specific meeting location during checkout",
+    tourStart: "Nairobi",
+    tourEnd: "Nairobi",
+    cancellationPolicy: CANCELLATION_POLICY
+  },
   {
     id: "12-days-kenya-tanzania",
     title: "12 Days - Wildlife Safari to Lake Nakuru, Masai Mara, Serengeti, Ngorongoro, Manyara & Amboseli",
