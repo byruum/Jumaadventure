@@ -30,10 +30,10 @@ const allImages = [
   { src: "/mt.kenya.jpg", tour: "Kilimanjaro Peak" },
 
   { src: "/IMG-20260827-WA7065.jpg", tour: "Mount Kenya" },
-  { src: "/IMG-20260827-WA9899.jpg", tour: "Mount Kenya" },
+  { src: "/IMG-20260827-WA9899.jpg", tour: "Mount Kenya - Sirimon Route" },
   { src: "/IMG-20260827-WA3807.jpg", tour: "Mount Kenya" },
   { src: "/IMG-20260827-WA5967.jpg", tour: "Mount Kenya" },
-  { src: "/IMG-20260827-WA7107.jpg", tour: "Mount Kenya" },
+  { src: "/IMG-20260827-WA7107.jpg", tour: "Mount Kenya - Sirimon Gate" },
   { src: "/IMG-20260827-WA6138.jpg", tour: "Mount Kenya" },
 ];
 function GalleryPage() {
