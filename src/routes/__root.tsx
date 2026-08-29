@@ -88,13 +88,18 @@ function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-border/60 bg-background/80 backdrop-blur-md">
       <div className="container-page flex h-16 items-center justify-between">
-        <Link to="/" className="flex items-center gap-[5px]">
-          <div className="w-9 h-9 rounded-full bg-[#FF6A00] flex items-center justify-center font-bold text-white text-[20px] leading-none">
+        <Link to="/" className="flex items-center gap-2.5">
+          <div className="w-9 h-9 rounded-full bg-[#FF6A00] flex items-center justify-center font-bold text-white text-[20px] leading-none shrink-0">
             J
           </div>
-          <span className="font-bold text-[19px] text-[#1F3D2B] tracking-tight font-['Playfair_Display']">
-            uma Adventures
-          </span>
+          <div className="flex flex-col leading-none">
+            <span className="font-bold text-[19px] text-[#1F3D2B] tracking-tight font-['Playfair_Display']">
+              uma Adventures
+            </span>
+            <span className="text-[7.5px] font-medium tracking-[0.12em] uppercase text-[#D97706] mt-[2px]">
+              Authentic Safari & Wildlife Experiences
+            </span>
+          </div>
         </Link>
         <nav className="hidden items-center gap-7 text-sm font-medium md:flex">
           <Link to="/" className="hover:text-primary">Home</Link>
@@ -109,6 +114,7 @@ function Header() {
     </header>
   );
 }
+
 
 function Footer() {
   return (
