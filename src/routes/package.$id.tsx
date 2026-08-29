@@ -105,6 +105,9 @@ function PackagePage() {
             <ReviewsSection tourName={packageData.title} />
           </div>
         </div>
+                  <div className="bg-white rounded-[20px] p-6 border mt-6">
+            <FAQsSection />
+          </div>
         <div className="order-1 md:order-2">
           <div className="bg-white rounded-[16px] border shadow-[0_12px_40px_rgba(0,0,0,0.08)] p-5 sticky top-5">
             <p className="text-center font-black text-[28px]">${Number(full).toLocaleString()}.00 USD</p>
