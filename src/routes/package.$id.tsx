@@ -2,7 +2,7 @@ import { createFileRoute } from '@tanstack/react-router'
 import { getPackage, WHATSAPP_NUMBER } from "../lib/packages";
 import { useState } from "react";
 import { ReviewsSection } from "../components/reviews";
-import { FAQsSection } from "~/components/faqs"
+import { FAQsSection } from "../components/faqs"
 
 export const Route = createFileRoute('/package/$id')({
   component: PackagePage,
@@ -107,6 +107,9 @@ function PackagePage() {
           </div>
           <div className="bg-white rounded-[20px] p-6 border">
             <ReviewsSection tourName={packageData.title} />
+          </div>
+          <div className="bg-white rounded-[20px] p-6 border">
+            <FAQsSection />
           </div>
         </div>
         <div className="order-1 md:order-2">
