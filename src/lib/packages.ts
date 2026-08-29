@@ -59,12 +59,7 @@ export const packages: Package[] = [
     paybillAcc: "JUMA ADVENTURES",
     duration: "4 Days / 3 Nights",
     route: "Nairobi - Masai Mara - Nairobi",
-    gallery: [
-      img("hero-safari.png"),
-      img("maasai-mara-national-reserve (1).jpg"),
-      img("lake-nakuru-national-park-1.jpg"),
-      img("Diani.png.jpg"),
-    ],
+    gallery: [img("hero-safari.png"), img("maasai-mara-national-reserve (1).jpg"), img("lake-nakuru-national-park-1.jpg"), img("Diani.png.jpg")],
     journey: "Enjoy 4 Days / 3 Nights Masai Mara Safari with pick-up & drop-off Nairobi Airport/Hotel. Stay at Sentrim Mara Lodge / Oldarpoi Lodge.",
     quote: "Karibu Kenya hakuna matata!",
     highlights: ["Game drives", "Big Five sightings", "Mara River - hippos, crocodiles, Great Migration (seasonal)", "Masai culture", "Rift Valley views", "Comfortable lodge stay"],
@@ -93,26 +88,11 @@ export const packages: Package[] = [
     duration: "1 Day",
     route: "Nanyuki - Narumoru Gate - Met Station - Mountain - Nanyuki",
     pace: "Moderate",
-    gallery: [
-      img("IMG-20260827-WA2489.jpg"),
-      img("IMG-20260827-WA1621.jpg"),
-      img("IMG-20260827-WA7107.jpg"),
-      img("IMG-20260827-WA4703.jpg"),
-      img("IMG-20260827-WA0302.jpg"),
-      img("IMG-20260827-WA3138.jpg"),
-      img("IMG-20260827-WA8769.jpg"),
-      img("IMG-20260827-WA6138.jpg"),
-      img("IMG-20260827-WA7065.jpg"),
-      img("IMG-20260827-WA9899.jpg"),
-      img("IMG-20260827-WA3807.jpg"),
-      img("IMG-20260827-WA5967.jpg")
-    ],
+    gallery: [img("IMG-20260827-WA2489.jpg"), img("IMG-20260827-WA1621.jpg"), img("IMG-20260827-WA7107.jpg"), img("IMG-20260827-WA4703.jpg"), img("IMG-20260827-WA0302.jpg"), img("IMG-20260827-WA3138.jpg"), img("IMG-20260827-WA8769.jpg"), img("IMG-20260827-WA6138.jpg"), img("IMG-20260827-WA7065.jpg"), img("IMG-20260827-WA9899.jpg"), img("IMG-20260827-WA3807.jpg"), img("IMG-20260827-WA5967.jpg")],
     journey: "Mt. Kenya, one of Africa's most iconic volcanic mountains, stands proudly along the equator yet remains snow-capped year-round. Its stunning peaks — Batian (5,199m) - highest, Nelion (5,190m) - second highest, and Point Lenana (4,985m) - third highest — promise an unforgettable adventure for hikers and nature lovers. Trek through diverse ecosystems, from lush forests to alpine meadows and icy summits, while learning about the mountain's rich history, geology, and unique vegetation.",
     quote: "Guided by a passionate, experienced, and safety-trained mountain guide, you'll enjoy more than just a climb — you'll experience friendship, inspiration, and care. I treat every guest like family, ensuring comfort, safety, and unforgettable memories on Africa's second-highest Mountain.",
     highlights: ["Hiking on glaciers and rocks", "Explore the ecosystem of mountain vegetation from lower to upper rock", "View beautiful gorges, valleys", "View Batian Peak-1 (5,199m), Nelion Peak-2 (5,188m), Point Lenana-3 (4,985m) closely", "Real Mt Kenya signage at Point Lenana - THIRD HIGHEST PEAK 4985m", "New model Hybrid Noah Voxy"],
-    itinerary: [
-      { dayNum: 1, title: "Nanyuki Tour Itinerary", details: ["The journey starts in the morning with a drive from Nanyuki town to Mt Kenya National Park and check in at the Narumoru gate", "Then drive 10km to end off road at the met station before we start a hike", "The hiking will take at least 5 hrs on the mountain to be able to view beautiful gorges, valleys, mountain vegetation and view mountains closely", "Later on, come down to the met station and then drive down at the gate to check out", "If you have any special interests, please let me know"], meals: "Not Included" }
-    ],
+    itinerary: [{ dayNum: 1, title: "Nanyuki Tour Itinerary", details: ["The journey starts in the morning with a drive from Nanyuki town to Mt Kenya National Park and check in at the Narumoru gate", "Then drive 10km to end off road at the met station before we start a hike", "The hiking will take at least 5 hrs on the mountain to be able to view beautiful gorges, valleys, mountain vegetation and view mountains closely", "Later on, come down to the met station and then drive down at the gate to check out", "If you have any special interests, please let me know"], meals: "Not Included" }],
     includes: ["Professional guide", "Private Transportation / Category: Minivan — New model Hybrid Noah Voxy"],
     excludes: ["Personal expenses - Park tickets fee 52 USD per person", "Accommodation", "Equipment", "Tickets", "Food Drinks Snacks"],
     meetingPoint: "Nyeri - Nanyuki Road, Nanyuki, Laikipia County, Kenya — Hotel pickup on request",
@@ -162,20 +142,7 @@ export const packages: Package[] = [
     duration: "4 days",
     route: "Nairobi - Nanyuki - Mt Kenya - Nairobi",
     pace: "Moderate - 9km Day 1, Summit 03:30 Day 3",
-    gallery: [
-      img("IMG-20260827-WA2489.jpg"),
-      img("IMG-20260827-WA1621.jpg"),
-      img("IMG-20260827-WA7107.jpg"),
-      img("IMG-20260827-WA4703.jpg"),
-      img("IMG-20260827-WA0302.jpg"),
-      img("IMG-20260827-WA3138.jpg"),
-      img("IMG-20260827-WA8769.jpg"),
-      img("IMG-20260827-WA6138.jpg"),
-      img("IMG-20260827-WA7065.jpg"),
-      img("IMG-20260827-WA9899.jpg"),
-      img("IMG-20260827-WA3807.jpg"),
-      img("IMG-20260827-WA5967.jpg")
-    ],
+    gallery: [img("IMG-20260827-WA2489.jpg"), img("IMG-20260827-WA1621.jpg"), img("IMG-20260827-WA7107.jpg"), img("IMG-20260827-WA4703.jpg"), img("IMG-20260827-WA0302.jpg"), img("IMG-20260827-WA3138.jpg"), img("IMG-20260827-WA8769.jpg"), img("IMG-20260827-WA6138.jpg"), img("IMG-20260827-WA7065.jpg"), img("IMG-20260827-WA9899.jpg"), img("IMG-20260827-WA3807.jpg"), img("IMG-20260827-WA5967.jpg")],
     journey: "True 4-day hiking experience in Mt Kenya's primeval wilderness. We summit the third highest point which is Point Lenana (4,985m). Mt Kenya has three main peaks: Batian Peak-1 (5,199m) highest, Nelion Peak-2 (5,188m) second highest, Point Lenana-3 (4,985m) third highest and the highest trekking peak reachable without technical climbing. From lush forests to alpine meadows and icy summits, explore with a professional mountain guide.",
     quote: "Every journey is a story — let’s make yours unforgettable. Karibu Kenya hakuna matata!",
     highlights: ["Summit Point Lenana - 3rd highest point (4,985m)", "Batian Peak-1 (5,199m) highest, Nelion Peak-2 (5,188m) second, Point Lenana-3 (4,985m) third", "9 km trek on first day", "Summit hike starts at 03:30 hrs on third day", "Idyllic landscapes & primeval wilderness", "Accommodation for 2pax on fullboard (bed & meals)", "New model Hybrid Noah Voxy Nairobi - Mt Kenya - Nairobi"],
@@ -185,18 +152,8 @@ export const packages: Package[] = [
       { dayNum: 3, title: "Mackinder's - Point Lenana Summit (4,985m) - 3rd Highest Peak - Met Station", details: ["Wake up 03:30 hrs for summit attempt to Point Lenana (4,985m) - the third highest point of Mt Kenya for sunrise", "Point Lenana is the third highest after Batian Peak-1 (5,199m) and Nelion Peak-2 (5,188m)", "View Batian and Nelion peaks closely, photos at summit signage", "Descend to Mackinder's for breakfast then continue down to Met Station"], meals: "Breakfast, Lunch, Dinner" },
       { dayNum: 4, title: "Met Station - Nanyuki - Nairobi", details: ["Final descent, checkout at Narumoru Gate", "Private transport Hybrid Noah Voxy back to Nanyuki / Nairobi — ends back in Nairobi after descending on fourth day"], meals: "Breakfast, Lunch" }
     ],
-    includes: [
-      "Transportation pick up and drop off",
-      "All park fees",
-      "Professional mountain guide",
-      "Accommodation for 2pax on fullboard (bed & meals)",
-      "Porters and cook",
-      "Snacks and drinking bottled water"
-    ],
-    excludes: [
-      "Personal expenses",
-      "Gratitude tips range from $20 per day"
-    ],
+    includes: ["Transportation pick up and drop off", "All park fees", "Professional mountain guide", "Accommodation for 2pax on fullboard (bed & meals)", "Porters and cook", "Snacks and drinking bottled water"],
+    excludes: ["Personal expenses", "Gratitude tips range from $20 per day"],
     whatToBring: ["Sturdy hiking boots", "Warm clothing for cold summit", "Rain gear", "Sunscreen, hat, sunglasses", "Water 2L"],
     meetingPoint: "Embakasi, Nairobi, Kenya — You can request specific meeting location (your hotel) during checkout. Flexible meeting options such as hotel or airport. Ends back in Nairobi Day 4.",
     tourStart: "Nanyuki / Embakasi, Nairobi",
@@ -206,7 +163,7 @@ export const packages: Package[] = [
   {
     id: "nairobi-national-park-daytrip",
     title: "Nairobi National Park + David Sheldrick + Giraffe Centre - Day Trip",
-    subtitle: "Morning Game Drive • Private • Pick-up Hotel/Airport",
+    subtitle: "Morning Game Drive • Private • Landcruiser Jeep 7 Seater • Pick-up Hotel/Airport",
     from: "Nairobi",
     days: 1,
     price: "556",
@@ -214,22 +171,15 @@ export const packages: Package[] = [
     paypalEmail: "jumaadventuresandsafaris@gmail.com",
     duration: "1 Day - Morning & Afternoon",
     route: "Nairobi Hotel/Airport - Nairobi National Park - David Sheldrick - Giraffe Centre - Hotel",
-    pace: "Easy",
+    pace: "Easy - Landcruiser Jeep safari vehicle (7 seater)",
     gallery: [img("nairobi-national-park.jpg"), img("david-sheldrick.jpg"), img("giraffe-centre.jpg"), img("nairobi-city-skyline.jpg")],
-    journey: "Enjoy a full day in Nairobi starting with a morning game drive in Nairobi National Park after pick up from your hotel/airport, with a visit to David Sheldrick orphanage. And later in the afternoon we visit Giraffe Centre before being dropped to your hotel.",
-    highlights: ["Nairobi National Park morning game drive", "David Sheldrick Elephant Orphanage", "Giraffe Centre", "Private transportation", "Professional guide"],
+    journey: "Enjoy a full day in Nairobi starting with a morning game drive in Nairobi National Park after pick up from your hotel/airport, with a visit to David Sheldrick orphanage. And later in the afternoon we visit Giraffe Centre before being dropped to your hotel. Transportation is Landcruiser Jeep safari vehicle (7 seater).",
+    highlights: ["Nairobi National Park morning game drive - Landcruiser Jeep (7 seater)", "David Sheldrick Elephant Orphanage", "Giraffe Centre", "Private Landcruiser Jeep safari vehicle", "Professional guide"],
     itinerary: [
-      { dayNum: 1, title: "Morning: Nairobi N. Park Game Drive + David Sheldrick", details: ["Pick up from hotel/airport early morning", "Morning game drive in Nairobi National Park", "Visit David Sheldrick orphanage"], meals: "Not Included" },
+      { dayNum: 1, title: "Morning: Nairobi N. Park Game Drive + David Sheldrick", details: ["Pick up from hotel/airport early morning with Landcruiser Jeep safari vehicle (7 seater)", "Morning game drive in Nairobi National Park", "Visit David Sheldrick orphanage"], meals: "Not Included" },
       { dayNum: 1, title: "Afternoon: Giraffe Centre", details: ["Visit Giraffe Centre in the afternoon", "Later drive to drop you to your hotel/airport to end the tour"], meals: "Not Included" }
     ],
-    includes: [
-      "Transportation - 5 seater luxury Noah Voxy vehicle",
-      "All entry fees",
-      "Professional guide",
-      "Snacks and drinking water",
-      "Transfers pick up/drop off",
-      "All tax fees & processing fees"
-    ],
+    includes: ["Transportation - Landcruiser Jeep safari vehicle (7 seater)", "All entry fees", "Professional guide", "Snacks and drinking water", "Transfers pick up/drop off", "All tax fees & processing fees"],
     excludes: ["Personal expenses", "Daily tips ranging from ($20-30) per day"],
     meetingPoint: "Nairobi Hotel / Airport",
     cancellationPolicy: CANCELLATION_POLICY
@@ -251,52 +201,13 @@ export const packages: Package[] = [
     gallery: [img("nairobi-city-skyline.jpg"), img("kicc-nairobi.jpg"), img("nairobi-museums.jpg"), img("giraffe-centre.jpg")],
     journey: "Experience Nairobi City — the largest city in East Africa with historical backgrounds, tallest buildings, green environments, museums, and market cultures. Stand tall on K.I.C.C building for aerial view of the city.",
     quote: "Karibu Nairobi hakuna matata!",
-    highlights: [
-      "Nairobi Museum",
-      "Nairobi Archives",
-      "Mamba Village",
-      "Giraffe Centre",
-      "Lunch break at Carnivore Restaurant",
-      "Karen Blixen Museum",
-      "K.I.C.C Building - aerial view of Nairobi"
-    ],
+    highlights: ["Nairobi Museum", "Nairobi Archives", "Mamba Village", "Giraffe Centre", "Lunch break at Carnivore Restaurant", "Karen Blixen Museum", "K.I.C.C Building - aerial view of Nairobi"],
     itinerary: [
-      {
-        dayNum: 1,
-        title: "Morning Hours",
-        details: [
-          "Pick up 07:30am - Tour Starts",
-          "Visit Nairobi Museum",
-          "Visit Nairobi Archives",
-          "Visit Mamba Village",
-          "Visit Giraffe Centre",
-          "Break for lunch at Carnivore Restaurant"
-        ],
-        meals: "Not Included"
-      },
-      {
-        dayNum: 2,
-        title: "Afternoon Hours",
-        details: [
-          "Visit Blixen Museum",
-          "Visit K.I.C.C Building",
-          "Later on we drive to end the tour at your hotel/airport - Tour Ends 17:00pm"
-        ],
-        meals: "Not Included"
-      }
+      { dayNum: 1, title: "Morning Hours", details: ["Pick up 07:30am - Tour Starts", "Visit Nairobi Museum", "Visit Nairobi Archives", "Visit Mamba Village", "Visit Giraffe Centre", "Break for lunch at Carnivore Restaurant"], meals: "Not Included" },
+      { dayNum: 2, title: "Afternoon Hours", details: ["Visit Blixen Museum", "Visit K.I.C.C Building", "Later on we drive to end the tour at your hotel/airport - Tour Ends 17:00pm"], meals: "Not Included" }
     ],
-    includes: [
-      "Transportation - 5 seater luxury Noah Voxy vehicle",
-      "All entry fees",
-      "Professional guide",
-      "Snacks and drinking water",
-      "Transfers pick up/drop off",
-      "All tax fees & processing fees"
-    ],
-    excludes: [
-      "Personal expenses",
-      "Daily tips ranging from ($20-30) per day"
-    ],
+    includes: ["Transportation - 5 seater luxury Noah Voxy vehicle", "All entry fees", "Professional guide", "Snacks and drinking water", "Transfers pick up/drop off", "All tax fees & processing fees"],
+    excludes: ["Personal expenses", "Daily tips ranging from ($20-30) per day"],
     whatToBring: ["Comfortable shoes", "Hat", "Sunglasses", "Camera"],
     meetingPoint: "JKIA (NBO), Embakasi, Nairobi, Kenya - You can request a specific meeting location (for example, your hotel) during the checkout",
     tourStart: "07:30am",
