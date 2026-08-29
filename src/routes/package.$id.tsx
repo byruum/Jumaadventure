@@ -53,70 +53,80 @@ function PackagePage() {
 
   return (
     <div className="bg-[#FAF7F2] min-h-screen pb-10">
-      <div className="w-full h-[52vh] md:h-[70vh] relative bg-black">
+      <div className="w-full h-[48vh] md:h-[62vh] relative bg-black">
         <img src={heroImg} alt={packageData.title} className="w-full h-full object-cover cursor-pointer" onClick={next} />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" />
-        <button onClick={prev} className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full border-2 border-white bg-black/30 text-white flex items-center justify-center text-xl z-10">‹</button>
-        <button onClick={next} className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full border-2 border-white bg-black/30 text-white flex items-center justify-center text-xl z-10">›</button>
-        <button onClick={next} className="absolute bottom-5 left-1/2 -translate-x-1/2 bg-black/70 text-white px-4 py-1 rounded-full text-[12px] font-bold z-10">
+        <button onClick={prev} className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full border border-white/60 bg-black/30 text-white flex items-center justify-center text-xl z-10">‹</button>
+        <button onClick={next} className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full border border-white/60 bg-black/30 text-white flex items-center justify-center text-xl z-10">›</button>
+        <button onClick={next} className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/70 text-white px-4 py-1 rounded-full text-[11px] font-bold z-10">
           {activeIdx + 1}/{gallery.length}
         </button>
         <div className="absolute bottom-0 left-0 right-0 p-5 md:p-10 pointer-events-none">
-          <p className="text-[#F5B400] font-black text-[10px] tracking-[0.3em]">{packageData.from.toUpperCase()} • {packageData.duration}</p>
-          <h1 className="mt-2 text-white font-black text-[26px] md:text-[46px] leading-[0.95] max-w-[800px]">{packageData.title}</h1>
-          <p className="mt-2 text-white/80 text-[13px] max-w-[700px]">{packageData.subtitle}</p>
+          <p className="text-[#F5B400] font-bold text-[9px] md:text-[10px] tracking-[0.25em]">{packageData.from.toUpperCase()} • {packageData.duration}</p>
+          <h1 className="mt-2 text-white font-bold text-[22px] md:text-[36px] leading-[1.05] max-w-[800px] font-['Playfair_Display']">{packageData.title}</h1>
+          <p className="mt-2 text-white/80 text-[12px] md:text-[13px] max-w-[700px]">{packageData.subtitle}</p>
         </div>
       </div>
 
       <div className="max-w-[1200px] mx-auto px-4 md:px-8 mt-4">
-        <div className="flex gap-3 overflow-x-auto pb-3 snap-x snap-mandatory">
+        <div className="flex gap-2.5 overflow-x-auto pb-3 snap-x snap-mandatory">
           {gallery.map((img:string, i:number)=>(
-            <img key={i} src={img} alt={`gal ${i}`} onClick={()=>setActiveIdx(i)} className={`w-[200px] md:w-[280px] h-[130px] md:h-[180px] object-cover rounded-[12px] flex-shrink-0 snap-start border-2 cursor-pointer ${i===activeIdx? "border-black" : "border-transparent"}`} />
+            <img key={i} src={img} alt={`gal ${i}`} onClick={()=>setActiveIdx(i)} className={`w-[140px] md:w-[240px] h-[90px] md:h-[150px] object-cover rounded-[10px] flex-shrink-0 snap-start border-2 cursor-pointer ${i===activeIdx? "border-black" : "border-transparent"}`} />
           ))}
         </div>
       </div>
 
-      <div className="max-w-[1200px] mx-auto px-4 md:px-8 mt-8 grid md:grid-cols-[1.3fr_0.7fr] gap-8">
+      {/* FIXED GRID - FAQ NOW AFTER TOUR */}
+      <div className="max-w-[1200px] mx-auto px-4 md:px-8 mt-6 grid md:grid-cols-[1.3fr_0.7fr] gap-6 md:gap-8">
+
+        {/* LEFT - TOUR DETAILS FIRST */}
         <div className="order-2 md:order-1 space-y-6">
-          <div className="bg-white rounded-[20px] p-6 border">
-            <p className="text-[11px] font-black tracking-widest text-[#0B6A2B]">FULL AMOUNT ${full} • {packageData.duration} {isDayTrip? "• DAY TRIP ONLY" : ""}</p>
-            <p className="mt-3 text-[14px] leading-6 text-black/70">{packageData.journey}</p>
-            <h3 className="mt-5 font-black text-[14px]">Highlights</h3>
-            <ul className="mt-2 list-disc ml-5 text-[13px] space-y-1">{packageData.highlights.map((h:any,i:number)=><li key={i}>{h}</li>)}</ul>
+          <div className="bg-white rounded-[16px] p-5 md:p-6 border">
+            <p className="text-[10px] font-black tracking-widest text-[#0B6A2B]">FULL AMOUNT ${full} • {packageData.duration} {isDayTrip? "• DAY TRIP ONLY" : ""}</p>
+            <p className="mt-3 text-[13px] leading-6 text-black/70">{packageData.journey}</p>
+            <h3 className="mt-5 font-black text-[13px]">Highlights</h3>
+            <ul className="mt-2 list-disc ml-5 text-[12px] space-y-1">{packageData.highlights.map((h:any,i:number)=><li key={i}>{h}</li>)}</ul>
           </div>
-          <div className="bg-white rounded-[20px] p-6 border">
-            <h3 className="font-black text-[18px]">Itinerary - List Style</h3>
+
+          <div className="bg-white rounded-[16px] p-5 md:p-6 border">
+            <h3 className="font-black text-[16px]">Itinerary - List Style</h3>
             <div className="mt-4 space-y-5">
               {packageData.itinerary.map((it:any)=>(
                 <div key={it.dayNum} className="border-l-4 border-[#0B6A2B] pl-4 py-1">
-                  <p className="font-black text-[#F66E0D] text-[10px]">DAY {it.dayNum}</p>
-                  <p className="font-black text-[15px] mt-1">{it.title}</p>
-                  <ul className="mt-2 space-y-1">{(Array.isArray(it.details)? it.details : [it.details]).map((d:string,k:number)=><li key={k} className="text-[13px] leading-6 text-black/60 list-disc ml-4">{d}</li>)}</ul>
-                  {it.meals && <p className="mt-2 text-[11px] font-bold bg-[#FAF7F2] px-2 py-1 rounded-full inline-block">Meals: {it.meals}</p>}
+                  <p className="font-black text-[#F66E0D] text-[9px]">DAY {it.dayNum}</p>
+                  <p className="font-bold text-[14px] mt-1">{it.title}</p>
+                  <ul className="mt-2 space-y-1">{(Array.isArray(it.details)? it.details : [it.details]).map((d:string,k:number)=><li key={k} className="text-[12px] leading-5 text-black/60 list-disc ml-4">{d}</li>)}</ul>
+                  {it.meals && <p className="mt-2 text-[10px] font-bold bg-[#FAF7F2] px-2 py-1 rounded-full inline-block">Meals: {it.meals}</p>}
                 </div>
               ))}
             </div>
           </div>
-          <div className="bg-white rounded-[20px] p-6 border">
-            <div className="grid md:grid-cols-2 gap-6 text-[13px]"><div><p className="font-black">Includes</p><ul className="list-disc ml-4 mt-2 text-black/60">{packageData.includes.map((a:any,i:number)=><li key={i}>{a}</li>)}</ul></div><div><p className="font-black">Excludes</p><ul className="list-disc ml-4 mt-2 text-black/60">{packageData.excludes.map((a:any,i:number)=><li key={i}>{a}</li>)}</ul></div></div>
+
+          <div className="bg-white rounded-[16px] p-5 md:p-6 border">
+            <div className="grid md:grid-cols-2 gap-6 text-[12px]"><div><p className="font-black">Includes</p><ul className="list-disc ml-4 mt-2 text-black/60">{packageData.includes.map((a:any,i:number)=><li key={i}>{a}</li>)}</ul></div><div><p className="font-black">Excludes</p><ul className="list-disc ml-4 mt-2 text-black/60">{packageData.excludes.map((a:any,i:number)=><li key={i}>{a}</li>)}</ul></div></div>
             <div id="cancel" className="mt-6 bg-[#FAF7F2] p-3 rounded-xl text-[11px]"><p className="font-black">Cancellation Policy</p><p className="mt-1 text-black/60 whitespace-pre-line">{cancellationPolicy}</p></div>
           </div>
-          <div className="bg-white rounded-[20px] p-6 border">
+
+          <div className="bg-white rounded-[16px] p-5 md:p-6 border">
             <ReviewsSection tourName={packageData.title} />
           </div>
-        </div>
-                  <div className="bg-white rounded-[20px] p-6 border mt-6">
+
+          {/* FAQ NOW AT THE BOTTOM - AFTER TOUR */}
+          <div className="bg-white rounded-[16px] p-5 md:p-6 border">
             <FAQsSection />
           </div>
+        </div>
+
+        {/* RIGHT - BOOKING BOX - STAYS SECOND ON MOBILE */}
         <div className="order-1 md:order-2">
           <div className="bg-white rounded-[16px] border shadow-[0_12px_40px_rgba(0,0,0,0.08)] p-5 sticky top-5">
-            <p className="text-center font-black text-[28px]">${Number(full).toLocaleString()}.00 USD</p>
+            <p className="text-center font-black text-[24px] md:text-[28px]">${Number(full).toLocaleString()}.00 USD</p>
             <div className="mt-2 flex justify-center">
-              {isDayTrip? (<span className="bg-[#F5B400] text-black px-3 py-1 rounded-full text-[10px] font-black tracking-widest">DAY TRIP ONLY</span>) : (<span className="bg-[#0B6A2B] text-white px-3 py-1 rounded-full text-[10px] font-black tracking-widest">{packageData.duration.toUpperCase()} • ${full}</span>)}
+              {isDayTrip? (<span className="bg-[#F5B400] text-black px-3 py-1 rounded-full text-[9px] font-black tracking-widest">DAY TRIP ONLY</span>) : (<span className="bg-[#0B6A2B] text-white px-3 py-1 rounded-full text-[9px] font-black tracking-widest">{packageData.duration.toUpperCase()} • ${full}</span>)}
             </div>
-            <div className="mt-4 space-y-2 text-[13px] text-black/60"><div>🕒 {packageData.duration}</div><div>🚗 Private transportation</div><div>👥 Private tour for 1-2 people</div></div>
+            <div className="mt-4 space-y-2 text-[12px] text-black/60"><div>🕒 {packageData.duration}</div><div>🚗 Private transportation</div><div>👥 Private tour for 1-2 people</div></div>
             <div className="mt-4 border border-black/20 rounded-full px-4 py-3 flex justify-between items-center">
-              <span className="font-bold text-[14px]">Your party size</span>
+              <span className="font-bold text-[13px]">Your party size</span>
               <div className="flex items-center gap-3">
                 <button type="button" onClick={()=>setParty(p=>Math.max(1,p-1))} className="w-7 h-7 rounded-full border flex items-center justify-center">−</button>
                 <span className="font-black text-[#0B8A5B]">{party}</span>
@@ -124,15 +134,15 @@ function PackagePage() {
               </div>
             </div>
             <label className="mt-3 border border-black/20 rounded-full px-4 py-3 flex justify-between items-center cursor-pointer hover:border-black">
-              <span className="font-bold text-[14px]">Tour date</span>
-              <input type="date" value={tourDate} onChange={e=>{ setTourDate(e.target.value); setForm({...form, date: e.target.value}) }} className="bg-transparent outline-none text-[13px] cursor-pointer" />
+              <span className="font-bold text-[13px]">Tour date</span>
+              <input type="date" value={tourDate} onChange={e=>{ setTourDate(e.target.value); setForm({...form, date: e.target.value}) }} className="bg-transparent outline-none text-[12px] cursor-pointer" />
             </label>
             <label className="mt-3 border border-black/20 rounded-full px-4 py-3 flex justify-between items-center cursor-pointer hover:border-black">
-              <span className="font-bold text-[14px]">Start time</span>
-              <input type="time" value={startTime} onChange={e=>setStartTime(e.target.value)} className="bg-transparent outline-none text-[13px] cursor-pointer" />
+              <span className="font-bold text-[13px]">Start time</span>
+              <input type="time" value={startTime} onChange={e=>setStartTime(e.target.value)} className="bg-transparent outline-none text-[12px] cursor-pointer" />
             </label>
-            <button onClick={()=>setShowBooking(true)} className="mt-4 w-full bg-[#0B8A5B] text-white py-4 rounded-full font-black">Book Now</button>
-            <a href="#cancel" className="mt-4 flex items-center gap-2 text-[13px] underline font-bold"><span className="w-5 h-5 rounded-full border flex items-center justify-center text-[10px]">✓</span> View our cancellation policies</a>
+            <button onClick={()=>setShowBooking(true)} className="mt-4 w-full bg-[#0B8A5B] text-white py-3.5 rounded-full font-black text-[14px]">Book Now</button>
+            <a href="#cancel" className="mt-4 flex items-center gap-2 text-[12px] underline font-bold"><span className="w-5 h-5 rounded-full border flex items-center justify-center text-[10px]">✓</span> View our cancellation policies</a>
           </div>
         </div>
       </div>
