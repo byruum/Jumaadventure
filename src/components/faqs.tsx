@@ -61,3 +61,4 @@ export function FAQsSection() {
     </div>
   )
 }
+export const FAQSection = FAQsSection;
