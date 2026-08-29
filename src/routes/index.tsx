@@ -10,40 +10,40 @@ export const Route = createFileRoute("/")({
 const heroSlides = [
   {
     img: "/hero-safari.png",
-    title: "Ol Pejeta Conservancy",
-    subtitle: "Nanyuki",
-    description: "Landcruiser safari experience in Ol Pejeta Conservancy, Nanyuki - home to rhinos and big game. Guided by Dennis Juma & other trained, licensed professional guides.",
+    title: "Discover Kenya",
+    subtitle: "like never before",
+    description: "Unforgettable safari adventures, breathtaking landscapes and authentic cultural experiences. Guided by Dennis Juma & other trained, licensed professional guides.",
     type: "image"
   },
   {
     img: "/IMG-20260827-WA1621.jpg",
-    title: "Ol Pejeta Conservancy",
-    subtitle: "Nanyuki Wildlife",
-    description: "Experience wildlife in Ol Pejeta Conservancy - elephants, rhinos and scenic savannah with expert guides.",
+    title: "Wildlife Safari",
+    subtitle: "Masai Mara Adventures",
+    description: "Experience the Great Migration, spot the Big 5, and sleep under African stars with expert guides.",
     type: "image"
   },
   {
     img: "/IMG-20260827-WA4703.jpg",
-    title: "Kilimanjaro Peak",
+    title: "Where do you want to go?",
     subtitle: "",
-    description: "Views of Kilimanjaro Peak from Amboseli - not Mt Kenya. The highest peak in Africa.",
-    type: "image"
+    description: "",
+    type: "location"
   },
 ]
 
 const gallery = [
-  "/IMG-20260827-WA1621.jpg", // Ol Pejeta Conservancy, Nanyuki - Landcruiser look
-  "/IMG-20260827-WA7107.jpg", // Mt Kenya - Batian Peak
-  "/IMG-20260827-WA4703.jpg", // Kilimanjaro Peak - NOT Mt Kenya
-  "/IMG-20260827-WA0302.jpg", // Mt Kenya - Point Lenana
-  "/IMG-20260827-WA3138.jpg", // Masai Mara Plains - balloon
-  "/IMG-20260827-WA8769.jpg", // Masai Mara Plains
-  "/IMG-20260827-WA6138.jpg", // Lake Nakuru - Rhinos
-  "/IMG-20260827-WA7065.jpg", // Masai Mara Plains
-  "/IMG-20260827-WA9899.jpg", // Masai Mara Plains
-  "/IMG-20260827-WA2489.jpg", // Mt Kenya Trail
-  "/IMG-20260827-WA3807.jpg", // Mt Kenya Vegetation
-  "/IMG-20260827-WA5967.jpg" // Mt Kenya Summit
+  "/IMG-20260827-WA1621.jpg",
+  "/IMG-20260827-WA7107.jpg",
+  "/IMG-20260827-WA4703.jpg",
+  "/IMG-20260827-WA0302.jpg",
+  "/IMG-20260827-WA3138.jpg",
+  "/IMG-20260827-WA8769.jpg",
+  "/IMG-20260827-WA6138.jpg",
+  "/IMG-20260827-WA7065.jpg",
+  "/IMG-20260827-WA9899.jpg",
+  "/IMG-20260827-WA2489.jpg",
+  "/IMG-20260827-WA3807.jpg",
+  "/IMG-20260827-WA5967.jpg"
 ];
 
 const reviews = [
