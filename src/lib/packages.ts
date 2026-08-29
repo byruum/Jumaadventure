@@ -305,7 +305,12 @@ export const getPackage = (id: string) => {
     "12-days": "12-days-kenya-tanzania",
     "kenya-tanzania": "12-days-kenya-tanzania",
     "wildlife-safari-12-days": "12-days-kenya-tanzania",
-    "5720": "12-days-kenya-tanzania"
+    "5720": "12-days-kenya-tanzania",
+    "amboseli": "amboseli-3-days",
+    "amboseli-park": "amboseli-3-days",
+    "3-days-amboseli": "amboseli-3-days",
+    "2596": "amboseli-3-days",
+    "amboseli-park-wildlife-safari-3-days": "amboseli-3-days"
   }
   const aliasedId = aliases[cleanId]
   if (aliasedId) return packages.find((p) => p.id.toLowerCase() === aliasedId)
