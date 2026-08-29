@@ -2,6 +2,7 @@ import { createFileRoute } from '@tanstack/react-router'
 import { getPackage, WHATSAPP_NUMBER } from "../lib/packages";
 import { useState } from "react";
 import { ReviewsSection } from "../components/reviews";
+import { FAQsSection } from "../components/faqs";
 export const Route = createFileRoute('/package/$id')({
   component: PackagePage,
   loader: ({ params }) => ({ packageData: getPackage(params.id) }),
