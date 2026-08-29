@@ -23,13 +23,13 @@ const allImages = [
   { src: "/IMG-20260827-WA8769.jpg", tour: "Masai Mara" },
 
   { src: "/IMG-20260827-WA3138.jpg", tour: "Masai Mara Plains" },
-  { src: "/IMG-20260827-WA7065.jpg", tour: "Masai Mara Plains" },
 
   { src: "/hero-safari.png", tour: "Ol Pejeta Conservancy, Nanyuki" },
   { src: "/IMG-20260111-WA0016.jpg", tour: "Ol Pejeta Conservancy, Nanyuki" },
 
   { src: "/mt.kenya.jpg", tour: "Kilimanjaro Peak" },
 
+  { src: "/IMG-20260827-WA7065.jpg", tour: "Mount Kenya" },
   { src: "/IMG-20260827-WA9899.jpg", tour: "Mount Kenya" },
   { src: "/IMG-20260827-WA3807.jpg", tour: "Mount Kenya" },
   { src: "/IMG-20260827-WA5967.jpg", tour: "Mount Kenya" },
