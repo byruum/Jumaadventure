@@ -1,199 +1,108 @@
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import {
-  Outlet,
-  Link,
-  createRootRouteWithContext,
-  useRouter,
-  HeadContent,
-  Scripts,
-} from "@tanstack/react-router";
-import { useEffect, type ReactNode } from "react";
+import { createFileRoute } from '@tanstack/react-router'
+import { getPackage, WHATSAPP_NUMBER } from "../lib/packages";
+import { useState } from "react";
+import { ReviewsSection } from "../components/reviews";
+import { FAQsSection } from "../components/faqs"
 
-import appCss from "../styles.css?url";
-import { reportLovableError } from "../lib/lovable-error-reporting";
+export const Route = createFileRoute('/package/$id')({
+  component: PackagePage,
+  loader: ({ params }) => ({ packageData: getPackage(params.id) }),
+})
 
-function NotFoundComponent() {
+function PackagePage() {
+  const { packageData } = Route.useLoaderData()
+  const [showBooking][setShowBooking] = useState(false);
+  const [sending][setSending] = useState(false);
+  const [sent][setSent] = useState(false);
+  const [party][setParty] = useState(1);
+  const [tourDate][setTourDate] = useState("");
+  const [startTime][setStartTime] = useState("08:00");
+  const [form][setForm] = useState({ name:"", guests:"2 Persons", date:"", inquiry:"", email:"", whatsapp:"" });
+  const [activeIdx][setActiveIdx] = useState(0);
+
+  if (!packageData) return <div className="p-8 text-center">Package not found</div>;
+
+  const gallery = Array.from(new Set(packageData.gallery?.length? packageData.gallery : ["/og-image.png"]));
+  const heroImg = gallery[activeIdx] || gallery[0];
+  const full = packageData.price;
+  const dep = packageData.deposit || "200";
+  const paypalEmail = packageData.paypalEmail || "jumaadventuresandsafaris@gmail.com";
+  const paypalDep = `https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=${paypalEmail}&item_name=${encodeURIComponent(packageData.title + " Deposit")}&amount=${dep}&currency_code=USD&no_shipping=1`;
+  const paypalFull = `https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=${paypalEmail}&item_name=${encodeURIComponent(packageData.title + " Full")}&amount=${full}&currency_code=USD&no_shipping=1`;
+
+  const next = () => setActiveIdx(i => (i + 1) % gallery.length);
+  const prev = () => setActiveIdx(i => (i - 1 + gallery.length) % gallery.length);
+
+  const isDayTrip = packageData.days === 1 || packageData.duration?.toLowerCase().includes("1 day") || packageData.title.toLowerCase().includes("day trip");
+  const cancellationPolicy = packageData.cancellationPolicy || "";
+
+  const sendEmail = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setSending(true);
+    try {
+      const res = await fetch(`https://formsubmit.co/ajax/${paypalEmail}`, {
+        method: "POST",
+        headers: { "Content-Type":"application/json", "Accept":"application/json" },
+        body: JSON.stringify({ subject: `Booking ${packageData.title} $${full} - ${party} pax - ${tourDate} ${startTime}`,...form, tourDate, startTime, party, package: packageData.title })
+      });
+      if (res.ok) { setSent(true); setTimeout(()=>{ setShowBooking(false); setSent(false); }, 4000); }
+    } catch {
+      globalThis.location.href=`mailto:${paypalEmail}?subject=Booking ${form.name} ${party}pax`;
+    }
+    setSending(false);
+  };
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
-      <div className="max-w-md text-center">
-        <h1 className="text-7xl font-bold text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold">Page not found</h2>
-        <p className="mt-2 text-sm text-muted-foreground">
-          The page you're looking for doesn't exist or has been moved.
-        </p>
-        <div className="mt-6">
-          <Link to="/" className="btn-primary">Go home</Link>
+    <div className="bg-[#FAF7F2] min-h-screen pb-10">
+      <div className="w-full h-[52vh] md:h-[70vh] relative bg-black">
+        <img src={heroImg} alt={packageData.title} className="w-full h-full object-cover cursor-pointer" onClick={next} />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" />
+        <button onClick={prev} className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full border-2 border-white bg-black/30 text-white flex items-center justify-center text-xl z-10">‹</button>
+        <button onClick={next} className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full border-2 border-white bg-black/30 text-white flex items-center justify-center text-xl z-10">›</button>
+        <button onClick={next} className="absolute bottom-5 left-1/2 -translate-x-1/2 bg-black/70 text-white px-4 py-1 rounded-full text-[12px] font-bold z-10">{activeIdx + 1}/{gallery.length}</button>
+        <div className="absolute bottom-0 left-0 right-0 p-5 md:p-10 pointer-events-none">
+          <p className="text-[#F5B400] font-black text-[10px] tracking-[0.3em]">{packageData.from.toUpperCase()} • {packageData.duration}</p>
+          <h1 className="mt-2 text-white font-black text-[26px] md:text-[46px] leading-[0.95] max-w-[800px]">{packageData.title}</h1>
+          <p className="mt-2 text-white/80 text-[13px] max-w-[700px]">{packageData.subtitle}</p>
         </div>
       </div>
-    </div>
-  );
-}
-
-function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
-  console.error(error);
-  const router = useRouter();
-  useEffect(() => {
-    reportLovableError(error, { boundary: "tanstack_root_error_component" });
-  }, [error]);
-  return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
-      <div className="max-w-md text-center">
-        <h1 className="text-xl font-semibold">This page didn't load</h1>
-        <p className="mt-2 text-sm text-muted-foreground">Something went wrong. Please try again.</p>
-        <div className="mt-6 flex justify-center gap-2">
-          <button onClick={() => { router.invalidate(); reset(); }} className="btn-primary">Try again</button>
-          <a href="/" className="btn-ghost">Home</a>
+      <div className="max-w-[1200px] mx-auto px-4 md:px-8 mt-4">
+        <div className="flex gap-3 overflow-x-auto pb-3 snap-x snap-mandatory">
+          {gallery.map((img:string, i:number)=>(
+            <img key={i} src={img} alt={`gal ${i}`} onClick={()=>setActiveIdx(i)} className={`w-[200px] md:w-[280px] h-[130px] md:h-[180px] object-cover rounded-[12px] flex-shrink-0 snap-start border-2 cursor-pointer ${i===activeIdx? "border-black" : "border-transparent"}`} />
+          ))}
         </div>
       </div>
-    </div>
-  );
-}
-
-export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
-  head: () => ({
-    meta: [
-      { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { name: "description", content: "Come see Kenya with me. Real safaris, real hikes, real stories. Book your tour today and let us organize your adventure for you. WhatsApp Juma: +254 746 011 254 or Email: jumaadventuresandsafaris@gmail.com" },
-      { name: "google-site-verification", content: "V3sDPEKAywol4sWLDkHKYZ5UPGSQBOm1y013au8WxI" },
-    ],
-    links: [
-      { rel: "stylesheet", href: appCss },
-      { rel: "icon", type: "image/png", href: "/Images/favicon.png" },
-      { rel: "apple-touch-icon", href: "/Images/og-image.png" },
-      { rel: "preconnect", href: "https://fonts.googleapis.com" },
-      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700;800&display=swap" },
-    ],
-  }),
-  shellComponent: RootShell,
-  component: RootComponent,
-  notFoundComponent: NotFoundComponent,
-  errorComponent: ErrorComponent,
-});
-
-function RootShell({ children }: { children: ReactNode }) {
-  return (
-    <html lang="en">
-      <head><HeadContent /></head>
-      <body>
-        {children}
-        <Scripts />
-      </body>
-    </html>
-  );
-}
-
-function Header() {
-  return (
-    <header className="sticky top-0 z-40 border-b border-border/60 bg-background/80 backdrop-blur-md">
-      <div className="container-page flex h-16 items-center justify-between">
-        <Link to="/" className="flex items-center gap-[5px]">
-          <div className="w-9 h-9 rounded-full bg-[#FF6A00] flex items-center justify-center font-bold text-white text-[20px] leading-none">
-            J
+      <div className="max-w-[1200px] mx-auto px-4 md:px-8 mt-8 grid md:grid-cols-[1.3fr_0.7fr] gap-8">
+        <div className="order-2 md:order-1 space-y-6">
+          <div className="bg-white rounded-[20px] p-6 border">
+            <p className="text-[11px] font-black tracking-widest text-[#0B6A2B]">FULL AMOUNT ${full} • {packageData.duration} {isDayTrip? "• DAY TRIP ONLY" : ""}</p>
+            <p className="mt-3 text-[14px] leading-6 text-black/70">{packageData.journey}</p>
+            <h3 className="mt-5 font-black text-[14px]">Highlights</h3>
+            <ul className="mt-2 list-disc ml-5 text-[13px] space-y-1">{packageData.highlights.map((h:any,i:number)=><li key={i}>{h}</li>)}</ul>
           </div>
-          <span className="font-bold text-[19px] text-[#1F3D2B] tracking-tight font-['Playfair_Display']">
-            uma Adventures
-          </span>
-        </Link>
-        <nav className="hidden items-center gap-7 text-sm font-medium md:flex">
-          <Link to="/" className="hover:text-primary">Home</Link>
-          <Link to="/packages" className="hover:text-primary">Packages</Link>
-          <Link to="/about" className="hover:text-primary">About</Link>
-          <Link to="/gallery" className="hover:text-primary">Gallery</Link>
-          <Link to="/contact" className="hover:text-primary">Contact</Link>
-          <Link to="/post" className="hover:text-primary">Post</Link>
-        </nav>
-        <Link to="/contact" className="btn-primary!py-2!px-4 text-xs">Book Now</Link>
-      </div>
-    </header>
-  );
-}
-
-function Footer() {
-  return (
-    <footer className="border-t border-border bg-secondary text-secondary-foreground">
-      <div className="container-page grid gap-10 py-14 md:grid-cols-4">
-        <div>
-          <div className="flex items-center gap-[5px]">
-            <div className="w-9 h-9 rounded-full bg-[#FF6A00] flex items-center justify-center font-bold text-white text-[20px] leading-none">
-              J
+          <div className="bg-white rounded-[20px] p-6 border">
+            <h3 className="font-black text-[18px]">Itinerary</h3>
+            <div className="mt-4 space-y-5">
+              {packageData.itinerary.map((it:any, idx:number)=>{
+                const isMA = it.title.toLowerCase().includes('morning') || it.title.toLowerCase().includes('afternoon');
+                return (
+                  <div key={`${it.dayNum}-${idx}`} className="border-l-4 border-[#0B6A2B] pl-4 py-1">
+                    <p className="font-black text-[#F66E0D] text-[10px]">{isMA? it.title.toUpperCase() : `DAY ${it.dayNum}`}</p>
+                    {!isMA && <p className="font-black text-[15px] mt-1">{it.title}</p>}
+                    <ul className="mt-2 space-y-1">{(Array.isArray(it.details)? it.details : [it.details]).map((d:string,k:number)=><li key={k} className="text-[13px] leading-6 text-black/60 list-disc ml-4">{d}</li>)}</ul>
+                    {it.meals && <p className="mt-2 text-[11px] font-bold bg-[#FAF7F2] px-2 py-1 rounded-full inline-block">Meals: {it.meals}</p>}
+                  </div>
+                )
+              })}
             </div>
-            <span className="font-bold text-[16px] text-white tracking-tight font-['Playfair_Display']">
-              uma Adventures
-            </span>
-          </div>
-          <p className="mt-4 text-sm opacity-80">
-            Authentic Kenya safaris and East Africa adventures led by professional guide Dennis Juma.
-          </p>
-        </div>
-        <div>
-          <h4 className="text-sm font-semibold uppercase tracking-wider opacity-70">Explore</h4>
-          <ul className="mt-4 space-y-2 text-sm">
-            <li><Link to="/packages" className="opacity-90 hover:opacity-100">All Packages</Link></li>
-            <li><Link to="/packages/masai-mara" className="opacity-90 hover:opacity-100">Masai Mara Safari</Link></li>
-            <li><Link to="/packages/mount-kenya" className="opacity-90 hover:opacity-100">Mount Kenya Trek</Link></li>
-            <li><Link to="/packages/diani-beach" className="opacity-90 hover:opacity-100">Diani Beach</Link></li>
-          </ul>
-        </div>
-        <div>
-          <h4 className="text-sm font-semibold uppercase tracking-wider opacity-70">Company</h4>
-          <ul className="mt-4 space-y-2 text-sm">
-            <li><Link to="/about" className="opacity-90 hover:opacity-100">About Us</Link></li>
-            <li><Link to="/gallery" className="opacity-90 hover:opacity-100">Gallery</Link></li>
-            <li><Link to="/contact" className="opacity-90 hover:opacity-100">Contact</Link></li>
-            <li><Link to="/post" className="opacity-90 hover:opacity-100">Post</Link></li>
-          </ul>
-        </div>
-        <div>
-          <h4 className="text-sm font-semibold uppercase tracking-wider opacity-70">Contact</h4>
-          <ul className="mt-4 space-y-2 text-sm opacity-90">
-            <li>Nairobi, Kenya</li>
-            <li><a href="tel:+254746011254" className="hover:opacity-100">+254 746 011 254</a></li>
-            <li><a href="mailto:jumaadventuresandsafaris@gmail.com" className="hover:opacity-100 break-all">jumaadventuresandsafaris@gmail.com</a></li>
-            <li><a href="https://wa.me/254746011254" className="hover:opacity-100">WhatsApp Chat</a></li>
-          </ul>
-        </div>
-      </div>
-      <div className="border-t border-white/10">
-        <div className="container-page flex-col items-center justify-between gap-2 py-5 text-xs opacity-70 sm:flex-row">
-          <p>© {new Date().getFullYear()} Juma Adventures. All rights reserved.</p>
-          <p>Crafted with care in Nairobi, Kenya.</p>
-        </div>
-      </div>
-    </footer>
-  );
-}
-
-function RootComponent() {
-  const { queryClient } = Route.useRouteContext();
-  return (
-    <QueryClientProvider client={queryClient}>
-      <div className="flex min-h-screen flex-col">
-        <Header />
-        <main className="flex-1">
-          <Outlet />
-        </main>
-        <Footer />
-        <a
-          href="https://wa.me/254746011254"
-          target="_blank"
-          rel="noreferrer"
-          aria-label="Chat on WhatsApp"
-          className="fixed bottom-5 right-5 z-50 grid h-14 w-14 place-items-center rounded-full bg-[#25D366] text-white shadow-xl transition hover:scale-105"
-        >
-          <svg viewBox="0 0 24 24" className="h-7 w-7" fill="currentColor"><path d="M20.52 3.48A11.86 11.86 0 0 0 12.06 0C5.5 0.17 5.33.17 11.9c0 2.1.55 4.14 1.6 5.94L0 24l6.32-1.66a11.9 11.9 0 0 0 5.73 1.46h.01c6.56 0 11.89-5.33 11.89-11.9 0-3.18-1.24-6.17-3.43-8.42zM12.06 21.3h-.01a9.4 9.4 0 0 1-4.79-1.31l-.34-.2-3.75.98 1-3.65-.22-.37a9.37 9.37 0 0 1-1.44-5c0-5.19 4.23-9.42 9.44-9.42 2.52 0 4.89.98 6.67 2.76a9.37 9.37 0 0 1 2.76 6.67c0 5.19-4.23 9.54-9.32 9.54zm5.44-7.05c-.3-.15-1.77-.87-2.05-.97-.28-.1-.48-.15-.68.15s-.78.97-.96 1.17c-.18.2-.35.22-.65.07a8.42 8.42 0 0 1-2.47-1.52 9.27 9.27 0 0 1-1.71-2.13c-.18-.3-.02-.47.13-.62.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.68-1.65-.93-2.26-.24-.58-.5-.5-.68-.51h-.58c-.2 0-.52.07-.8.37s-1.05 1.03-1.05 2.5 1.08 2.9 1.23 3.1c.15.2 2.12 3.24 5.14 4.55.72.31 1.28.5 1.72.63.72.23 1.38.2 1.9.12.58-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.13-.27-.2-.57-.35z"/></svg>
-        </a>
-      </div>
-    </QueryClientProvider>
-  );
-}          </div>
-          <div className="bg-white rounded-[20px] p-6 border">
-            <ReviewsSection tourName={packageData.title} />
           </div>
           <div className="bg-white rounded-[20px] p-6 border">
-            <FAQsSection />
+            <div className="grid md:grid-cols-2 gap-6 text-[13px]"><div><p className="font-black">Includes</p><ul className="list-disc ml-4 mt-2 text-black/60">{packageData.includes.map((a:any,i:number)=><li key={i}>{a}</li>)}</ul></div><div><p className="font-black">Excludes</p><ul className="list-disc ml-4 mt-2 text-black/60">{packageData.excludes.map((a:any,i:number)=><li key={i}>{a}</li>)}</ul></div></div>
+            <div id="cancel" className="mt-6 bg-[#FAF7F2] p-4 rounded-xl text-[11px] border"><p className="font-black">Cancellation Policy</p><p className="mt-2 text-black/70 whitespace-pre-line leading-6">{cancellationPolicy}</p></div>
           </div>
+          <div className="bg-white rounded-[20px] p-6 border"><ReviewsSection tourName={packageData.title} /></div>
+          <div className="bg-white rounded-[20px] p-6 border"><FAQsSection /></div>
         </div>
         <div className="order-1 md:order-2">
           <div className="bg-white rounded-[16px] border shadow-[0_12px_40px_rgba(0,0,0,0.08)] p-5 sticky top-5">
@@ -223,7 +132,6 @@ function RootComponent() {
           </div>
         </div>
       </div>
-
       {showBooking && (
         <div className="fixed inset-0 bg-black/80 z-[100] p-3 flex justify-center items-center">
           <div className="bg-white w-full max-w-[520px] rounded-[24px] overflow-hidden max-h-[90vh] overflow-y-auto">
@@ -246,4 +154,4 @@ function RootComponent() {
       )}
     </div>
   )
-}
+                                                                                                                                                                                                                                                                                                                                                                    }
