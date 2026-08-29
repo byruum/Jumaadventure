@@ -14,27 +14,32 @@ export const Route = createFileRoute("/gallery")({
 
 type Post = { id: number; name: string; caption: string; image_url: string; created_at: string }
 
+// FIXED: 1 photo = 1 name, no duplicate van photos
 const allImages = [
   { src: "/Diani.png.jpg", tour: "Diani Beach" },
-  { src: "/hero-safari.png", tour: "Ol Pejeta Conservancy, Nanyuki" },
   { src: "/lake-nakuru-national-park-1.jpg", tour: "Lake Nakuru" },
+  { src: "/IMG-20260827-WA6138.jpg", tour: "Lake Nakuru" },
+
   { src: "/masai-mara-national-reserve (1).jpg", tour: "Masai Mara" },
-  { src: "/mount-Kenya-day-trip-hike.jpg", tour: "Mount Kenya" },
-  { src: "/mt.kenya.jpg", tour: "Kilimanjaro Peak" },
-  { src: "/IMG-20260111-WA0016.jpg", tour: "Mount Kenya" },
-  { src: "/IMG-20260726-WA7365.jpg", tour: "Amboseli - Kilimanjaro Views" },
-  { src: "/IMG-20260827-WA0302.jpg", tour: "Mount Kenya" },
-  { src: "/IMG-20260827-WA1621.jpg", tour: "Ol Pejeta Conservancy, Nanyuki" },
-  { src: "/IMG-20260827-WA2498.jpg", tour: "Mount Kenya" },
+  { src: "/IMG-20260827-WA8769.jpg", tour: "Masai Mara" },
+
   { src: "/IMG-20260827-WA3138.jpg", tour: "Masai Mara Plains" },
+  { src: "/IMG-20260827-WA7065.jpg", tour: "Masai Mara Plains" },
+  { src: "/IMG-20260827-WA9899.jpg", tour: "Masai Mara Plains" },
+
+  { src: "/hero-safari.png", tour: "Ol Pejeta Conservancy, Nanyuki" },
+  { src: "/IMG-20260827-WA1621.jpg", tour: "Ol Pejeta Conservancy, Nanyuki" },
+
+  { src: "/mt.kenya.jpg", tour: "Kilimanjaro Peak" },
+  { src: "/IMG-20260726-WA7365.jpg", tour: "Amboseli - Kilimanjaro Views" },
+
+  { src: "/IMG-20260111-WA0016.jpg", tour: "Mount Kenya" },
+  { src: "/IMG-20260827-WA0302.jpg", tour: "Mount Kenya" },
+  { src: "/IMG-20260827-WA2498.jpg", tour: "Mount Kenya" },
   { src: "/IMG-20260827-WA3807.jpg", tour: "Mount Kenya" },
   { src: "/IMG-20260827-WA4103.jpg", tour: "Mount Kenya" },
   { src: "/IMG-20260827-WA5967.jpg", tour: "Mount Kenya" },
-  { src: "/IMG-20260827-WA6138.jpg", tour: "Lake Nakuru" },
-  { src: "/IMG-20260827-WA7065.jpg", tour: "Masai Mara Plains" },
   { src: "/IMG-20260827-WA7107.jpg", tour: "Mount Kenya" },
-  { src: "/IMG-20260827-WA8769.jpg", tour: "Masai Mara" },
-  { src: "/IMG-20260827-WA9899.jpg", tour: "Masai Mara Plains" }
 ];
 
 function GalleryPage() {
