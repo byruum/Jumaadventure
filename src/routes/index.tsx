@@ -92,32 +92,18 @@ function Index() {
         )}
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/80" />
 
-      <div className="container-page relative flex min-h-[86vh] flex-col justify-center py-24 text-white">
-        <Link
-          to="/"
-          className="mb-6 inline-flex items-center gap-4 bg-white/10 backdrop-blur-sm rounded-2xl p-4 border-white/10 hover:bg-white/20 transition"
-        >
-          <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[#F97316]">
-            <span className="font-serif text-4xl font-bold text-white leading-none">J</span>
-          </div>
-          <div>
-            <h2 className="font-serif text-2xl md:text-4xl font-medium text-[#2C1B0F] leading-tight">
-              Juma Adventures
-            </h2>
-            <p className="font-serif text-xs md:text-base text-[#B8860B] tracking-wide">
-              Authentic Safari & Wildlife Experiences
-            </p>
-          </div>
-        </Link>
+      <div className="container-page relative flex min-h-[75vh] md:min-h-[86vh] flex-col justify-center py-16 md:py-24 text-white">
 
-        <span className="eyebrow text-white/80">KENYA • EAST AFRICA</span>
+        {/* REMOVED DOUBLE LOGO CARD - you already have it in header */}
+
+        <span className="eyebrow text-white/80 text-[11px] md:text-sm tracking-[0.2em]">KENYA • EAST AFRICA</span>
 
         <motion.h1
           key={heroIndex + "title"}
           initial={{ y: 30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.3, duration: 0.8 }}
-          className="mt-4 max-w-3xl text-5xl font-bold leading-[1.05] sm:text-6xl md:text-7xl"
+          className="mt-3 max-w-3xl text-[36px] leading-[1.0] sm:text-[42px] md:text-[56px] lg:text-[64px] font-bold font-['Playfair_Display']"
         >
           {heroSlides[heroIndex].title}<br />
           {heroSlides[heroIndex].subtitle && <span className="text-[#F97316]">{heroSlides[heroIndex].subtitle}</span>}
@@ -129,15 +115,15 @@ function Index() {
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.5, duration: 0.8 }}
-            className="mt-6 max-w-xl text-lg text-white/85"
+            className="mt-4 max-w-xl text-[15px] md:text-lg text-white/85 leading-relaxed"
           >
             {heroSlides[heroIndex].description}
           </motion.p>
         )}
 
-        <div className="mt-8 flex gap-3">
-          <Link to="/packages" className="btn-primary">Explore Tours</Link>
-          <Link to="/contact" className="btn-outline">Book Your Adventure</Link>
+        <div className="mt-6 flex flex-wrap gap-3">
+          <Link to="/packages" className="btn-primary text-sm px-6 py-3">Explore Tours</Link>
+          <Link to="/contact" className="btn-outline text-sm px-6 py-3">Book Your Adventure</Link>
         </div>
 
         {heroSlides[heroIndex].type === "location" && (
@@ -162,7 +148,7 @@ function Index() {
                   }}
                   className={`px-5 py-2.5 rounded-full backdrop-blur-md border transition-all ${
                     selectedLocation === loc
-              ? "bg-[#F97316] text-white border-[#F97316] shadow-lg shadow-orange-500/30"
+             ? "bg-[#F97316] text-white border-[#F97316] shadow-lg shadow-orange-500/30"
                       : "bg-white/10 text-white border-white/20 hover:bg-white/20"
                   }`}
                 >
@@ -173,18 +159,18 @@ function Index() {
           </motion.div>
         )}
 
-        <div className="mt-14 grid max-w-2xl grid-cols-3 gap-8 border-t border-white/20 pt-6 text-white/90">
+        <div className="mt-10 grid max-w-2xl grid-cols-3 gap-6 border-t border-white/20 pt-5 text-white/90">
           <div>
-            <div className="font-display text-3xl font-bold">10+</div>
-            <div className="text-xs uppercase tracking-wider opacity-70">Years guiding</div>
+            <div className="font-display text-2xl md:text-3xl font-bold">10+</div>
+            <div className="text-[10px] md:text-xs uppercase tracking-wider opacity-70">Years guiding</div>
           </div>
           <div>
-            <div className="font-display text-3xl font-bold">15+</div>
-            <div className="text-xs uppercase tracking-wider opacity-70">Destinations</div>
+            <div className="font-display text-2xl md:text-3xl font-bold">15+</div>
+            <div className="text-[10px] md:text-xs uppercase tracking-wider opacity-70">Destinations</div>
           </div>
           <div>
-            <div className="font-display text-3xl font-bold">500+</div>
-            <div className="text-xs uppercase tracking-wider opacity-70">Happy guests</div>
+            <div className="font-display text-2xl md:text-3xl font-bold">500+</div>
+            <div className="text-[10px] md:text-xs uppercase tracking-wider opacity-70">Happy guests</div>
           </div>
         </div>
       </div>
