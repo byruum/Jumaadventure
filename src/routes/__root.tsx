@@ -8,7 +8,6 @@ import {
   Scripts,
 } from "@tanstack/react-router";
 import { useEffect, useState, type ReactNode } from "react";
-
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 
@@ -18,12 +17,8 @@ function NotFoundComponent() {
       <div className="max-w-md text-center">
         <h1 className="text-7xl font-bold text-foreground">404</h1>
         <h2 className="mt-4 text-xl font-semibold">Page not found</h2>
-        <p className="mt-2 text-sm text-muted-foreground">
-          The page you're looking for doesn't exist or has been moved.
-        </p>
-        <div className="mt-6">
-          <Link to="/" className="btn-primary">Go home</Link>
-        </div>
+        <p className="mt-2 text-sm text-muted-foreground">The page you're looking for doesn't exist or has been moved.</p>
+        <div className="mt-6"><Link to="/" className="btn-primary">Go home</Link></div>
       </div>
     </div>
   );
@@ -32,9 +27,7 @@ function NotFoundComponent() {
 function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   console.error(error);
   const router = useRouter();
-  useEffect(() => {
-    reportLovableError(error, { boundary: "tanstack_root_error_component" });
-  }, [error]);
+  useEffect(() => { reportLovableError(error, { boundary: "tanstack_root_error_component" }); }, [error]);
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
@@ -76,10 +69,7 @@ function RootShell({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <head><HeadContent /></head>
-      <body>
-        {children}
-        <Scripts />
-      </body>
+      <body>{children}<Scripts /></body>
     </html>
   );
 }
@@ -89,16 +79,10 @@ function Header() {
     <header className="sticky top-0 z-40 border-b border-border/60 bg-background/80 backdrop-blur-md">
       <div className="container-page flex h-16 items-center justify-between">
         <Link to="/" className="flex items-center gap-[5px]">
-          <div className="w-9 h-9 rounded-full bg-[#FF6A00] flex items-center justify-center font-bold text-white text-[20px] leading-none">
-            J
-          </div>
+          <div className="w-9 h-9 rounded-full bg-[#FF6A00] flex items-center justify-center font-bold text-white text-[20px] leading-none">J</div>
           <div className="flex flex-col leading-none">
-            <span className="font-bold text-[19px] text-[#1F3D2B] tracking-tight font-['Playfair_Display']">
-              uma Adventures
-            </span>
-            <span className="text-[7.5px] font-medium tracking-[0.12em] uppercase text-[#D97706] mt-[1px]">
-              Authentic Safari & Wildlife Experiences
-            </span>
+            <span className="font-bold text-[19px] text-[#1F3D2B] tracking-tight font-['Playfair_Display']">uma Adventures</span>
+            <span className="text-[7.5px] font-medium tracking-[0.12em] uppercase text-[#D97706] mt-[1px]">Authentic Safari & Wildlife Experiences</span>
           </div>
         </Link>
         <nav className="hidden items-center gap-7 text-sm font-medium md:flex">
@@ -121,16 +105,10 @@ function Footer() {
       <div className="container-page grid gap-10 py-14 md:grid-cols-4">
         <div>
           <div className="flex items-center gap-[5px]">
-            <div className="w-9 h-9 rounded-full bg-[#FF6A00] flex items-center justify-center font-bold text-white text-[20px] leading-none">
-              J
-            </div>
-            <span className="font-bold text-[16px] text-white tracking-tight font-['Playfair_Display']">
-              uma Adventures
-            </span>
+            <div className="w-9 h-9 rounded-full bg-[#FF6A00] flex items-center justify-center font-bold text-white text-[20px] leading-none">J</div>
+            <span className="font-bold text-[16px] text-white tracking-tight font-['Playfair_Display']">uma Adventures</span>
           </div>
-          <p className="mt-4 text-sm opacity-80">
-            Authentic Kenya safaris and East Africa adventures led by professional guide Dennis Juma.
-          </p>
+          <p className="mt-4 text-sm opacity-80">Authentic Kenya safaris and East Africa adventures led by professional guide Dennis Juma.</p>
         </div>
         <div>
           <h4 className="text-sm font-semibold uppercase tracking-wider opacity-70">Explore</h4>
@@ -154,9 +132,9 @@ function Footer() {
           <h4 className="text-sm font-semibold uppercase tracking-wider opacity-70">Contact</h4>
           <ul className="mt-4 space-y-2 text-sm opacity-90">
             <li>Nairobi, Kenya</li>
-            <li><a href="tel:+254746011254" className="hover:opacity-100">+254 746 011 254</a></li>
-            <li><a href="mailto:jumaadventuresandsafaris@gmail.com" className="hover:opacity-100 break-all">jumaadventuresandsafaris@gmail.com</a></li>
-            <li><a href="https://wa.me/254746011254" className="hover:opacity-100">WhatsApp Chat</a></li>
+            <li><a href="tel:+254746011254">+254 746 011 254</a></li>
+            <li><a href="mailto:jumaadventuresandsafaris@gmail.com" className="break-all">jumaadventuresandsafaris@gmail.com</a></li>
+            <li><a href="https://wa.me/254746011254">WhatsApp Chat</a></li>
           </ul>
         </div>
       </div>
@@ -170,65 +148,48 @@ function Footer() {
   );
 }
 
-// --- NEW WHATSAPP WIDGET WITH OFFICIAL LOGO + WELCOME MESSAGE ---
 function WhatsAppWidget() {
   const [showBubble, setShowBubble] = useState(false);
-
   useEffect(() => {
     const t = setTimeout(() => setShowBubble(true), 4000);
     return () => clearTimeout(t);
   }, []);
-
-  const message = encodeURIComponent(
-    "Jambo! Welcome to Juma Adventures 🦁\n\nI'm interested in a safari. Can you help me plan my trip?"
-  );
+  const message = encodeURIComponent("Jambo! Welcome to Juma Adventures 🦁\n\nI'm interested in a safari. Can you help me plan my trip?");
   const waLink = `https://wa.me/254746011254?text=${message}`;
 
   return (
-    <>
+    <div>
       {showBubble && (
-        <div className="fixed bottom-[92px] right-4 md:right-6 z-[60] w-[310px] overflow-hidden rounded-[16px] border border-black/5 bg-white shadow-[0_12px_40px_rgba(0,0,0,0.18)] animate-[slideUp_0.4s_ease]">
+        <div className="fixed bottom-[92px] right-4 md:right-6 z-[60] w-[310px] overflow-hidden rounded-[16px] border border-black/5 bg-white shadow-[0_12px_40px_rgba(0,0,0,0.18)]">
           <div className="flex items-center justify-between bg-[#075E54] p-3 text-white">
             <div className="flex items-center gap-3">
               <div className="grid h-10 w-10 place-items-center rounded-full bg-white text-[18px]">🦁</div>
               <div>
                 <p className="text-[13px] font-bold leading-none">Juma Adventures</p>
-                <p className="mt-1 flex items-center gap-1 text-[11px] opacity-80">
-                  <span className="inline-block h-2 w-2 rounded-full bg-[#25D366]"></span> Online • Licensed Local Guides
-                </p>
+                <p className="mt-1 flex items-center gap-1 text-[11px] opacity-80"><span className="inline-block h-2 w-2 rounded-full bg-[#25D366]"></span> Online • Licensed Local Guides</p>
               </div>
             </div>
-            <button onClick={() => setShowBubble(false)} className="grid h-7 w-7 place-items-center rounded-full bg-white/10 hover:bg-white/20">✕</button>
+            <button onClick={() => setShowBubble(false)} className="grid h-7 w-7 place-items-center rounded-full bg-white/10">✕</button>
           </div>
-
           <div className="bg-[#E5DDD5] p-4">
             <div className="max-w-[85%] rounded-[12px] rounded-tl-none bg-white p-3 shadow-sm">
-              <p className="text-[13px] leading-[18px] text-[#111]">
-                <span className="font-bold">Jambo! Karibu! 👋</span><br />
-                Welcome to Juma Adventures!<br /><br />
-                Want to see the Big 5 in Masai Mara? I'm Dennis Juma — let's plan your dream safari.
-              </p>
+              <p className="text-[13px] leading-[18px] text-[#111]"><span className="font-bold">Jambo! Karibu! 👋</span><br/>Welcome to Juma Adventures!<br/><br/>Want to see the Big 5 in Masai Mara? I'm Dennis — let's plan your dream safari.</p>
               <p className="mt-1 text-right text-[10px] text-black/40">Now ✓✓</p>
             </div>
           </div>
-
           <div className="bg-white p-3">
             <a href={waLink} target="_blank" rel="noreferrer" className="flex w-full items-center justify-center gap-2 rounded-full bg-[#25D366] py-3 text-[14px] font-bold text-white hover:bg-[#20bd5a]">
               <svg viewBox="0 0 24 24" width="20" height="20" fill="white"><path d="M19.05 4.91A9.815 9.815 0 0 0 12.03 2C6.51 2 2.03 6.48 2.03 12a9.896 9.896 0 0 0 1.32 4.96L2 22l5.2-1.36a9.9 9.9 0 0 0 4.83 1.23h.01c5.52 0 10-4.48 10-10a9.87 9.87 0 0 0-2.99-7.16zM12.03 20.14h-.01a8.057 8.057 0 0 1-4.12-1.13l-.3-.18-3.09.81.83-3.01-.2-.31A8.15 8.15 0 0 1 4 12c0-4.48 3.65-8.13 8.14-8.13 2.17 0 4.21.85 5.74 2.39a8.06 8.06 0 0 1 2.39 5.74c0 4.48-3.65 8.14-8.24 8.14zm4.46-6.1c-.24-.12-1.42-.7-1.64-.78-.22-.08-.38-.12-.54.12s-.62.78-.76.94-.28.18-.52.06-.97-.36-1.81-1.14c-.67-.6-1.12-1.33-1.25-1.56s-.01-.35.1-.47c.1-.1.24-.26.36-.38.12-.13.16-.22.24-.36.08-.15.04-.27-.02-.39s-.54-1.31-.74-1.79c-.19-.46-.39-.4-.54-.41h-.46c-.16 0-.42.06-.64.27s-.84.82-.84 2.87.22.36.66.54.98.18 2.08-.13 1.84-.53 3.09-.53 2.11.53 2.43.79.52.39.6.61.02.36-.02.48-.08.13-.2.25z"/></svg>
               Start Chat
             </a>
-            <p className="mt-2 text-center text-[10px] text-black/40">Powered by WhatsApp Business</p>
           </div>
         </div>
       )}
-
       <a href={waLink} target="_blank" rel="noreferrer" aria-label="Chat on WhatsApp" className="fixed bottom-5 right-5 z-50 grid h-[62px] w-[62px] place-items-center rounded-full bg-[#25D366] text-white shadow-[0_8px_24px_rgba(37,211,102,0.45)] transition hover:scale-105">
         <svg viewBox="0 0 24 24" className="h-[34px] w-[34px]" fill="white"><path d="M19.05 4.91A9.815 9.815 0 0 0 12.03 2C6.51 2 2.03 6.48 2.03 12a9.896 9.896 0 0 0 1.32 4.96L2 22l5.2-1.36a9.9 9.9 0 0 0 4.83 1.23h.01c5.52 0 10-4.48 10-10a9.87 9.87 0 0 0-2.99-7.16zM12.03 20.14h-.01a8.057 8.057 0 0 1-4.12-1.13l-.3-.18-3.09.81.83-3.01-.2-.31A8.15 8.15 0 0 1 4 12c0-4.48 3.65-8.13 8.14-8.13 2.17 0 4.21.85 5.74 2.39a8.06 8.06 0 0 1 2.39 5.74c0 4.48-3.65 8.14-8.24 8.14zm4.46-6.1c-.24-.12-1.42-.7-1.64-.78-.22-.08-.38-.12-.54.12s-.62.78-.76.94-.28.18-.52.06-.97-.36-1.81-1.14c-.67-.6-1.12-1.33-1.25-1.56s-.01-.35.1-.47c.1-.1.24-.26.36-.38.12-.13.16-.22.24-.36.08-.15.04-.27-.02-.39s-.54-1.31-.74-1.79c-.19-.46-.39-.4-.54-.41h-.46c-.16 0-.42.06-.64.27s-.84.82-.84 2.87.22.36.66.54.98.18 2.08-.13 1.84-.53 3.09-.53 2.11.53 2.43.79.52.39.6.61.02.36-.02.48-.08.13-.2.25z"/></svg>
         <span className="absolute right-0 top-0 h-3.5 w-3.5 rounded-full border-2 border-white bg-red-500"></span>
       </a>
-
-      <style>{`@keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }`}</style>
-    </>
+    </div>
   );
 }
 
@@ -238,116 +199,9 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       <div className="flex min-h-screen flex-col">
         <Header />
-        <main className="flex-1">
-          <Outlet />
-        </main>
+        <main className="flex-1"><Outlet /></main>
         <Footer />
         <WhatsAppWidget />
-      </div>
-    </QueryClientProvider>
-  );
-}      <div className="container-page flex h-16 items-center justify-between">
-        <Link to="/" className="flex items-center gap-[5px]">
-          <div className="w-9 h-9 rounded-full bg-[#FF6A00] flex items-center justify-center font-bold text-white text-[20px] leading-none">
-            J
-          </div>
-          <div className="flex flex-col leading-none">
-            <span className="font-bold text-[19px] text-[#1F3D2B] tracking-tight font-['Playfair_Display']">
-              uma Adventures
-            </span>
-            <span className="text-[7.5px] font-medium tracking-[0.12em] uppercase text-[#D97706] mt-[1px]">
-              Authentic Safari & Wildlife Experiences
-            </span>
-          </div>
-        </Link>
-        <nav className="hidden items-center gap-7 text-sm font-medium md:flex">
-          <Link to="/" className="hover:text-primary">Home</Link>
-          <Link to="/packages" className="hover:text-primary">Packages</Link>
-          <Link to="/about" className="hover:text-primary">About</Link>
-          <Link to="/gallery" className="hover:text-primary">Gallery</Link>
-          <Link to="/contact" className="hover:text-primary">Contact</Link>
-          <Link to="/post" className="hover:text-primary">Post</Link>
-        </nav>
-        <Link to="/contact" className="btn-primary!py-2!px-4 text-xs">Book Now</Link>
-      </div>
-    </header>
-  );
-}
-
-function Footer() {
-  return (
-    <footer className="border-t border-border bg-secondary text-secondary-foreground">
-      <div className="container-page grid gap-10 py-14 md:grid-cols-4">
-        <div>
-          <div className="flex items-center gap-[5px]">
-            <div className="w-9 h-9 rounded-full bg-[#FF6A00] flex items-center justify-center font-bold text-white text-[20px] leading-none">
-              J
-            </div>
-            <span className="font-bold text-[16px] text-white tracking-tight font-['Playfair_Display']">
-              uma Adventures
-            </span>
-          </div>
-          <p className="mt-4 text-sm opacity-80">
-            Authentic Kenya safaris and East Africa adventures led by professional guide Dennis Juma.
-          </p>
-        </div>
-        <div>
-          <h4 className="text-sm font-semibold uppercase tracking-wider opacity-70">Explore</h4>
-          <ul className="mt-4 space-y-2 text-sm">
-            <li><Link to="/packages" className="opacity-90 hover:opacity-100">All Packages</Link></li>
-            <li><Link to="/packages/masai-mara" className="opacity-90 hover:opacity-100">Masai Mara Safari</Link></li>
-            <li><Link to="/packages/mount-kenya" className="opacity-90 hover:opacity-100">Mount Kenya Trek</Link></li>
-            <li><Link to="/packages/diani-beach" className="opacity-90 hover:opacity-100">Diani Beach</Link></li>
-          </ul>
-        </div>
-        <div>
-          <h4 className="text-sm font-semibold uppercase tracking-wider opacity-70">Company</h4>
-          <ul className="mt-4 space-y-2 text-sm">
-            <li><Link to="/about" className="opacity-90 hover:opacity-100">About Us</Link></li>
-            <li><Link to="/gallery" className="opacity-90 hover:opacity-100">Gallery</Link></li>
-            <li><Link to="/contact" className="opacity-90 hover:opacity-100">Contact</Link></li>
-            <li><Link to="/post" className="opacity-90 hover:opacity-100">Post</Link></li>
-          </ul>
-        </div>
-        <div>
-          <h4 className="text-sm font-semibold uppercase tracking-wider opacity-70">Contact</h4>
-          <ul className="mt-4 space-y-2 text-sm opacity-90">
-            <li>Nairobi, Kenya</li>
-            <li><a href="tel:+254746011254" className="hover:opacity-100">+254 746 011 254</a></li>
-            <li><a href="mailto:jumaadventuresandsafaris@gmail.com" className="hover:opacity-100 break-all">jumaadventuresandsafaris@gmail.com</a></li>
-            <li><a href="https://wa.me/254746011254" className="hover:opacity-100">WhatsApp Chat</a></li>
-          </ul>
-        </div>
-      </div>
-      <div className="border-t border-white/10">
-        <div className="container-page flex-col items-center justify-between gap-2 py-5 text-xs opacity-70 sm:flex-row">
-          <p>© {new Date().getFullYear()} Juma Adventures. All rights reserved.</p>
-          <p>Crafted with care in Nairobi, Kenya.</p>
-        </div>
-      </div>
-    </footer>
-  );
-}
-
-function RootComponent() {
-  const { queryClient } = Route.useRouteContext();
-  return (
-    <QueryClientProvider client={queryClient}>
-      <div className="flex min-h-screen flex-col">
-        <Header />
-        <main className="flex-1">
-          <Outlet />
-        </main>
-        <Footer />
-        <a
-          href="https://wa.me/254746011254"
-          target="_blank"
-          rel="noreferrer"
-          aria-label="Chat on WhatsApp"
-          className="fixed bottom-5 right-5 z-50 grid h-14 w-14 place-items-center rounded-full bg-[#25D366] text-white shadow-xl transition hover:scale-105"
-        >
-          <svg viewBox="0 0 24 24" className="h-7 w-7" fill="currentColor"><path d="M20.52 3.48A11.86 11.86 0 0 0 12.06 0C5.5 0.17 5.33.17 11.9c0 2.1.55 4.14 1.6 5.94L0 24l6.32-1.66a11.9 11.9 0 0 0 5.73 1.46h.01c6.56 0 11.89-5.33 11.89-11.9 0-3.18-1.24-6.17-3.43-8.42zM12.06 21.3h-.01a9.4 9.4 0 0 1-4.79-1.31l-.34-.2-3.75.98 1-3.65-.22-.37a9.37 9.37 0 0 1-1.44-5c0-5.19 4.23-9.42 9.44-9.42 2.52 0 4.89.98 6.67 2.76a9.37 9.37 0 0 1 2.76 6.67c0 5.19-4.23 9.54-9.32 9.54zm5.44-7.05c-.3-.15-1.77-.87-2.05-.97-.28-.1-.48-.15-.68.15s-.78.97-.96 1.17c-.18.2-.35.22-.65.07a8.42 8.42 0 0 1-2.47-1.52 9.27 9.27 0 0 1-1.71-2.13c-.18-.3-.02-.47.13-.62.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.68-1.65-.93-2.26-.24-.58-.5-.5-.68-.51h-.58c-.2 0-.52.07-.8.37s-1.05 1.03-1.05 2.5 1.08 2.9 1.23 3.1c.15.2 2.12 3.24 5.14 4.55.72.31 1.28.5 1.72.63.72.23 1.38.2 1.9.12.58-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.13-.27-.2-.57-.35z"/></svg>
-        </a>
       </div>
     </QueryClientProvider>
   );
