@@ -4,6 +4,19 @@ import { motion, AnimatePresence } from "framer-motion";
 import { packages } from "../lib/packages";
 
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "Juma Adventures | Authentic Kenya Safaris & Mt Kenya Treks" },
+      { name: "description", content: "Juma Adventures - Authentic Kenya safaris, Masai Mara, Mt Kenya treks & Diani Beach holidays. Licensed local guide Dennis Juma. Book today +254 746 011 254" },
+      { property: "og:title", content: "Juma Adventures | Authentic Kenya Safaris" },
+      { property: "og:description", content: "Real safaris, real hikes, real stories. Book your tour today and let us organize your adventure." },
+      { property: "og:image", content: "/images/og-image.png" },
+      { property: "og:url", content: "https://www.jumaadventures.co.ke" },
+    ],
+    links: [
+      { rel: "canonical", href: "https://www.jumaadventures.co.ke" },
+    ]
+  }),
   component: Index,
 });
 
@@ -148,7 +161,7 @@ function Index() {
                   }}
                   className={`px-5 py-2.5 rounded-full backdrop-blur-md border transition-all ${
                     selectedLocation === loc
-             ? "bg-[#F97316] text-white border-[#F97316] shadow-lg shadow-orange-500/30"
+            ? "bg-[#F97316] text-white border-[#F97316] shadow-lg shadow-orange-500/30"
                       : "bg-white/10 text-white border-white/20 hover:bg-white/20"
                   }`}
                 >
