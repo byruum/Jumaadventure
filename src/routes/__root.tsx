@@ -52,8 +52,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     ],
     links: [
       { rel: "stylesheet", href: appCss },
-      { rel: "icon", type: "image/png", href: "/Images/favicon.png" },
-      { rel: "apple-touch-icon", href: "/Images/og-image.png" },
+      { rel: "icon", type: "image/png", href: "/images/favicon.png" },
+      { rel: "apple-touch-icon", href: "/images/og-image.png" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700;800&display=swap" },
@@ -78,10 +78,10 @@ function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-border/60 bg-background/80 backdrop-blur-md">
       <div className="container-page flex h-16 items-center justify-between">
-        <Link to="/" className="flex items-center gap-[5px]">
+        <Link to="/" className="flex items-center gap-0">
           <div className="w-9 h-9 rounded-full bg-[#FF6A00] flex items-center justify-center font-bold text-white text-[20px] leading-none">J</div>
-          <div className="flex flex-col leading-none">
-            <span className="font-bold text-[19px] text-[#1F3D2B] tracking-tight font-['Playfair_Display']">uma Adventures</span>
+          <div className="flex flex-col leading-none ml-[6px]">
+            <span className="font-bold text-[19px] text-[#1F3D2B] tracking-tight font-['Playfair_Display']">Juma Adventures</span>
             <span className="text-[7.5px] font-medium tracking-[0.12em] uppercase text-[#D97706] mt-[1px]">Authentic Safari & Wildlife Experiences</span>
           </div>
         </Link>
@@ -93,7 +93,7 @@ function Header() {
           <Link to="/contact" className="hover:text-primary">Contact</Link>
           <Link to="/post" className="hover:text-primary">Post</Link>
         </nav>
-        <Link to="/contact" className="btn-primary!py-2!px-4 text-xs">Book Now</Link>
+        <Link to="/contact" className="btn-primary py-2 px-4 text-xs">Book Now</Link>
       </div>
     </header>
   );
@@ -104,9 +104,9 @@ function Footer() {
     <footer className="border-t border-border bg-secondary text-secondary-foreground">
       <div className="container-page grid gap-10 py-14 md:grid-cols-4">
         <div>
-          <div className="flex items-center gap-[5px]">
+          <div className="flex items-center gap-0">
             <div className="w-9 h-9 rounded-full bg-[#FF6A00] flex items-center justify-center font-bold text-white text-[20px] leading-none">J</div>
-            <span className="font-bold text-[16px] text-white tracking-tight font-['Playfair_Display']">uma Adventures</span>
+            <span className="ml-[6px] font-bold text-[16px] text-white tracking-tight font-['Playfair_Display']">Juma Adventures</span>
           </div>
           <p className="mt-4 text-sm opacity-80">Authentic Kenya safaris and East Africa adventures led by professional guide Dennis Juma.</p>
         </div>
@@ -205,4 +205,4 @@ function RootComponent() {
       </div>
     </QueryClientProvider>
   );
-}
+          }
